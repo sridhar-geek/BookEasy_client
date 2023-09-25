@@ -3,11 +3,11 @@ import { AppBar, Box, Button, Toolbar, Typography, styled } from "@mui/material"
 import { Link } from "react-router-dom";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 
-import Logo from "../assests/Hotel_logo.jpeg"
+import Logo from "../../assests/Hotel_logo.jpeg"
 
 
 const Container = styled(AppBar)`
-  background: transparent;
+  background-color: #282525;
 `;
 const RightContainer = styled(Box)`
   display: flex;

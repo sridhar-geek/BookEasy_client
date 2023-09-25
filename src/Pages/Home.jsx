@@ -1,21 +1,32 @@
-import React from 'react'
-import { Box, Grid, styled, Card, CardContent, CardMedia, CardActionArea, Typography } from '@mui/material'
+import React from "react";
+import {
+  Box,
+  Grid,
+  styled,
+  Card,
+  CardContent,
+  CardMedia,
+  CardActionArea,
+  Typography,
+} from "@mui/material";
+import { Link } from "react-router-dom";
 
-import Banner_Image from '../assests/Website Main Image.jpg'
-import { cardAttraction, cardHotel } from '../assests/ImageUrl'
-import Header from '../Components/HomePage/Header'
-import Footer from '../Components/Footer'
+import Banner_Image from "../assests/Website Main Image.jpg";
+import { cardAttraction, cardHotel } from "../assests/ImageUrl";
+import Header from "../Components/HomePage/Header";
+import SearchComponent from "../Components/SearchComponent";
 
 const PaddingBox = styled(Box)`
-  padding:38px;
-`
-const Image = styled('img')`
+  padding: 38px;
+`;
+const Image = styled("img")`
   height: 90vh;
   width: 100%;
-`
-const ContentBox = styled(Box)`
-  z-index: 3;
-`
+`;
+const Search = styled(Box)`
+  /* display: flex; */
+  /* justify-content: center; */
+`;
 const CardHover = styled(Card)`
   max-width: 400px;
   &:hover {
@@ -29,51 +40,56 @@ const Home = () => {
       <Header />
       <Box>
         <Image src={Banner_Image} alt="Welcome image" />
-        <ContentBox>this is written on image</ContentBox>
       </Box>
+      <Search>
+        <Typography variant="h1">BookEasy</Typography>
+        <Typography variant="subtitle 1">Book your next stay here</Typography>
+        <SearchComponent />
+      </Search>
       <PaddingBox>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={6}>
-            <CardHover>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="160"
-                  image={cardHotel}
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Show all Hotels in Visakhapatnam
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </CardHover>
+            <Link to={"/hotels"} style={{ textDecoration: "none" }}>
+              <CardHover>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="160"
+                    image={cardHotel}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Show all Hotels in Visakhapatnam
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </CardHover>
+            </Link>
           </Grid>
           <Grid item xs={12} md={6} lg={6}>
-            <CardHover>
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  height="140"
-                  image={cardAttraction}
-                  alt="green iguana"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Show all Famous Tourists places in Visakhapatnam
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </CardHover>
+            <Link to={"/attractions"} style={{ textDecoration: "none" }}>
+              <CardHover>
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    height="140"
+                    image={cardAttraction}
+                    alt="green iguana"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      Show all Famous Tourists places in Visakhapatnam
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </CardHover>
+            </Link>
           </Grid>
         </Grid>
       </PaddingBox>
-      <Footer />
     </div>
   );
-}
+};
 
-export default Home
-
-
+export default Home;

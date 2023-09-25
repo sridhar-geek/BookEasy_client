@@ -1,14 +1,15 @@
 import { AppBar, Box, Toolbar, styled } from '@mui/material'
 import { Link } from "react-router-dom";
+// import headImage from "../../assests/Website Main Image.jpg";
+
 import Logo from '../../assests/Hotel_logo.jpeg'
-
-
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Login_Singup from '../LoginBtn';
 
+
+// const liveLocation =  navigator.geolocation.getCurrentPosition( )
 const Container = styled(AppBar)`
-    background: transparent;
-    
+background: transparent
 `;
 const RightContainer = styled(Box)`
     display: flex;
