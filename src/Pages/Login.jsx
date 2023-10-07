@@ -16,10 +16,9 @@ import { useDispatch, useSelector } from "react-redux";
 import {toast} from 'react-toastify'
 
 import Header from "../Components/LoginSingupHeader/Header";
-import { useLoginMutation } from "../Slice/userApiSlice";
-import { setCredentials } from "../Slice/auth";
-import Loader from "../Components/Loader";
 import axios from "axios";
+import {loginStart, loginFailure, loginSuccess} from '../redux/userSlice'
+import Loader from "../Components/Loader";
 
 // Component styles
 const Container = styled(Box)`
@@ -56,45 +55,33 @@ const Login = () => {
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
-  // const dispatch = useDispatch()
-  // const [login, {isLoading}] = useLoginMutation()
-  // const {userInfo} = useSelector((state)=> state.auth)
+  const dispatch = useDispatch()
+  const {loading, error} = useSelector((state)=> state.user)
 
+  // this is for hide and unhide password feild 
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => setShowPassword((show) => !show);
        const handleMouseDownPassword = (event) => {
          event.preventDefault();
        };
 
-  // useEffect(()=> {
-  //   if(userInfo){
-  //     navigate('/')
-  //   }
-  // },[navigate, userInfo])
-
-  // const sumbitHandler = async(e)=>{
-  //   e.preventDefault();
-  //   try {
-  //     const res = await login({ email, password }).unwrap()
-  //     dispatch(setCredentials({...res}))
-  //     toast.success('login Sucessful')
-  //     navigate('/')
-  //   } catch (err) {
-  //     toast.error(err.data.msg)
-  //   }
-  // }
-const data = {
+const formData = {
   email, 
   password
 }
+const disabled = email && password;
   const sumbitHandler = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/api/auth/login', data)
-      console.log('user login successful')
+      dispatch(loginStart())
+      console.log('Im here')
+      const data = await axios.post('/api/auth/login', formData)
+      dispatch(loginSuccess(data.data))
+      toast.success('user login successful')
       navigate('/')
     } catch (error) {
-      console.log(error)
+      toast.error(error.response.data.msg)
+      dispatch(loginFailure(error))
     }
   };
   return (
@@ -139,7 +126,13 @@ const data = {
                 </InputAdornment>
               }
             />
-            <LoginBtn type="submit">Login</LoginBtn>
+            {loading ? (
+              <Loader />
+            ) : (
+              <LoginBtn type="submit" disabled={!disabled}>
+                Login
+              </LoginBtn>
+            )}
             <SignupText>
               New to BookEasy?{" "}
               <Link to={"/signup"} style={{ textDecoration: "none" }}>

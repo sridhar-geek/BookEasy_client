@@ -1,9 +1,8 @@
 import { AppBar, Box, Toolbar, styled } from '@mui/material'
 import { Link } from "react-router-dom";
-// import headImage from "../../assests/Website Main Image.jpg";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 import Logo from '../../assests/Hotel_logo.jpeg'
-import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Login_Singup from '../LoginBtn';
 
 

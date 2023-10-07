@@ -1,11 +1,9 @@
-
-
 import { Button, styled } from "@mui/material";
 import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 
-import UserProfile from "./UserProfile";
 
+// styled components
 const LoginBtn = styled(Button)`
     color: white;
     background-color: orangered;
@@ -24,17 +22,11 @@ const UserBtn = styled(Button)`
   }
 `;
 const Login_Singup = () => {
-  const {userInfo } = useSelector((state)=> state.auth)
-
   return (
     <>
-      {userInfo ? (
-          <UserProfile />
-      ) : (
         <Link to={"/login"}>
           <LoginBtn contained>Login/Singup</LoginBtn>
         </Link>
-      )}
     </>
   );
 };

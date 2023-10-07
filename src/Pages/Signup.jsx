@@ -17,9 +17,6 @@ import { toast } from "react-toastify";
 import axios from 'axios'
 
 /**Imports components from another files */
-import { setCredentials } from "../Slice/auth";
-import { useRegisterMutation } from "../Slice/userApiSlice";
-
 import Header from "../Components/LoginSingupHeader/Header";
 import Loader from "../Components/Loader";
 
@@ -60,8 +57,7 @@ const Signup = () => {
   const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
-  // const dispatch = useDispatch()
-  // const {userInfo } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
 
   // const [register, {isLoading}] = useRegisterMutation()
 
@@ -74,26 +70,6 @@ const Signup = () => {
    const handleMouseDownPassword = (event) => {
      event.preventDefault();
    };
-
-  // useEffect (()=> {
-  //   if(userInfo)
-  //     navigate('/')
-  // }, [navigate, userInfo])
-
-  //  const submitHandler = async (e) => {
-  //    e.preventDefault();
-  //    if (password !== conformPassword) {
-  //      toast.error("Passwords do not match");
-  //    } else {
-  //      try {
-  //        const res = await register({ name, email, password }).unwrap();
-  //        dispatch(setCredentials({ ...res }));
-  //        navigate("/");
-  //      } catch (err) {
-  //        toast.error(err.data.msg);
-  //      }
-  //    }
-  //  };
 
   const data = {
     name,
@@ -114,7 +90,7 @@ const Signup = () => {
         setLoading(false)
         navigate('/')
       } catch (err) {
-        toast.erro(err.data)
+        toast.error(err.data)
       }
     }
   }
