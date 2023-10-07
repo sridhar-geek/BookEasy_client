@@ -29,7 +29,7 @@ const Login_Singup = () => {
   return (
     <>
       {userInfo ? (
-          <UserProfile userName = {userInfo.user}/>
+          <UserProfile />
       ) : (
         <Link to={"/login"}>
           <LoginBtn contained>Login/Singup</LoginBtn>

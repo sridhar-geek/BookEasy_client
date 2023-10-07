@@ -1,9 +1,10 @@
-import * as React from "react";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import { useSelector } from "react-redux";
-import { styled } from "@mui/material";
+import React from "react";
+import { styled, Button, Menu, MenuItem } from "@mui/material";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate} from 'react-router-dom'
+import { useLogoutMutation } from "../Slice/userApiSlice";
+import { logout } from "../Slice/auth";
+import { toast } from "react-toastify";
 
 const UserBtn = styled(Button)`
     background-color: orangered;
@@ -19,12 +20,26 @@ const UserBtn = styled(Button)`
 const UserProfile =()=> {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const [logoutApiCall ] = useLogoutMutation()
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const logoutHandler = async ()=>{
+    try {
+      await logoutApiCall().unwrap()
+      dispatch(logout())
+      navigate('/')
+      toast.success('Logout sucessful')
+    } catch (error) {
+      console.log(error)
+    }
+  }
   const { userInfo } = useSelector((state) => state.auth);
 
   return (
@@ -49,7 +64,7 @@ const UserProfile =()=> {
       >
         <MenuItem onClick={handleClose}>Profile</MenuItem>
         <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={logoutHandler}>Logout</MenuItem>
       </Menu>
     </div>
   );
