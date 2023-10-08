@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Box,
   styled,
@@ -9,6 +9,7 @@ import {
   OutlinedInput,
   InputAdornment,
   IconButton,
+  Divider,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,6 +20,7 @@ import Header from "../Components/LoginSingupHeader/Header";
 import axios from "axios";
 import {loginStart, loginFailure, loginSuccess} from '../redux/userSlice'
 import Loader from "../Components/Loader";
+import SocialLogin from "../Components/SocialLogin";
 
 // Component styles
 const Container = styled(Box)`
@@ -57,6 +59,7 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const {loading, error} = useSelector((state)=> state.user)
+  // const loading = false
 
   // this is for hide and unhide password feild 
     const [showPassword, setShowPassword] = useState(false);
@@ -140,6 +143,8 @@ const disabled = email && password;
               </Link>
             </SignupText>
           </form>
+              <Divider />
+              <SocialLogin />
         </Wrapper>
       </Container>
     </>

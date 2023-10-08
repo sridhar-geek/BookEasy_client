@@ -9,6 +9,7 @@ import {
   OutlinedInput,
   InputAdornment,
   IconButton,
+  Divider,
 } from "@mui/material";
 import {Visibility, VisibilityOff} from '@mui/icons-material'
 import { Link, useNavigate } from "react-router-dom";
@@ -19,6 +20,7 @@ import axios from 'axios'
 /**Imports components from another files */
 import Header from "../Components/LoginSingupHeader/Header";
 import Loader from "../Components/Loader";
+import SocialLogin from "../Components/SocialLogin";
 
 // Component styles
 const Container = styled(Box)`
@@ -88,7 +90,7 @@ const Signup = () => {
         console.log('user registration successful')
 
         setLoading(false)
-        navigate('/')
+        navigate('/login')
       } catch (err) {
         toast.error(err.data)
       }
@@ -184,6 +186,8 @@ const Signup = () => {
               </Link>
             </SignupText>
           </form>
+          <Divider />
+          <SocialLogin />
         </Wrapper>
       </Container>
     </>
