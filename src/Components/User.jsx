@@ -28,7 +28,7 @@ const User = ({user})=> {
           aria-expanded={open ? "true" : undefined}
           onClick={handleClick}
         >
-          <Avatar alt="Remy Sharp" src={user.userDetails.profilePicture} />
+          <Avatar alt="Profile Photo" src={user.userDetails.profilePicture} />
         </Button>
       </Tooltip>
       <Menu

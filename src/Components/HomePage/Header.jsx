@@ -8,7 +8,7 @@ import Login_Singup from '../LoginBtn';
 
 // const liveLocation =  navigator.geolocation.getCurrentPosition( )
 const Container = styled(AppBar)`
-background: transparent
+/* background: transparent */
 `;
 const RightContainer = styled(Box)`
     display: flex;

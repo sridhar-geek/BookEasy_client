@@ -15,9 +15,9 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {toast} from 'react-toastify'
+import axios from "axios";
 
 import Header from "../Components/LoginSingupHeader/Header";
-import axios from "axios";
 import {loginStart, loginFailure, loginSuccess} from '../redux/userSlice'
 import Loader from "../Components/Loader";
 import SocialLogin from "../Components/SocialLogin";
@@ -59,7 +59,6 @@ const Login = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const {loading, error} = useSelector((state)=> state.user)
-  // const loading = false
 
   // this is for hide and unhide password feild 
     const [showPassword, setShowPassword] = useState(false);
@@ -73,13 +72,13 @@ const formData = {
   password
 }
 const disabled = email && password;
+
   const sumbitHandler = async (e) => {
     e.preventDefault();
     try {
       dispatch(loginStart())
       const data = await axios.post('/api/auth/login', formData)
       dispatch(loginSuccess(data.data))
-      console.log(data.data)
       toast.success('user login successful')
       navigate('/')
     } catch (error) {
