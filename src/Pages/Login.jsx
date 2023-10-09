@@ -77,9 +77,9 @@ const disabled = email && password;
     e.preventDefault();
     try {
       dispatch(loginStart())
-      console.log('Im here')
       const data = await axios.post('/api/auth/login', formData)
       dispatch(loginSuccess(data.data))
+      console.log(data.data)
       toast.success('user login successful')
       navigate('/')
     } catch (error) {

@@ -4,10 +4,11 @@ import GoogleIcon from "@mui/icons-material/Google";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import {  useNavigate } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 import { app } from "./firebase";
 import {loginSuccess, loginFailure} from '../redux/userSlice'
-import axios from "axios";
 //styled components
 const GoogleButton = styled(Button)`
   display: flex;
@@ -31,14 +32,16 @@ const SocialLogin = () => {
       const resultData = {
         name: result.user.displayName,
         email: result.user.email,
-        photo: result.user.photoURL,
+        profilePicture: result.user.photoURL,
       };
       const res = await axios.post("/api/auth/socialLogin", resultData);
       dispatch(loginSuccess(res.data))
+      toast.success('Login successful')
       Navigate('/')
     } catch (error) {
       console.log(error);
       dispatch(loginFailure(error))
+      toast.error('something went wrong, please try again later')
     }
   };
 

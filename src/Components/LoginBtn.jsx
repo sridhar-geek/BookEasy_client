@@ -2,7 +2,7 @@ import { Button, styled } from "@mui/material";
 import {Link} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 
-
+import ShowUserDetails from "./User";
 // styled components
 const LoginBtn = styled(Button)`
     color: white;
@@ -12,21 +12,19 @@ const LoginBtn = styled(Button)`
       background-color: red
     }
 `
-const UserBtn = styled(Button)`
-  color: white;
-  background-color: orangered;
-  border-radius: 20px;
-  text-transform: capitalize;
-  &:hover {
-    background-color: red;
-  }
-`;
+
 const Login_Singup = () => {
+  const loggedUser = useSelector((state)=> state.user)
+  const user = loggedUser.currentUser
   return (
     <>
+      {user ? (
+        <ShowUserDetails user={user} />
+      ) : (
         <Link to={"/login"}>
           <LoginBtn contained>Login/Singup</LoginBtn>
         </Link>
+      )}
     </>
   );
 };

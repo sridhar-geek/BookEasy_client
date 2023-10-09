@@ -9,21 +9,26 @@ import Signup from './Pages/Signup';
 import Footer from './Components/Footer';
 import ShowHotels from './Pages/Hotels';
 import Attractions from './Pages/Attractions';
+import Profile from './Pages/Profile';
+import ProtectedRoute from './Components/ProtectedRoute' 
 
 function App() {
   return (
-   <Box>
-    <ToastContainer />
-    <CssBaseline />
-    <Routes>
-    <Route path='/' element={ <Home /> } />
-    <Route path='/login' element={ <Login /> } />
-    <Route path='/signup' element={ <Signup /> } />
-    <Route path='/hotels' element ={ <ShowHotels /> } />
-    <Route path='/attractions' element ={ <Attractions /> } />
-    </Routes>
-    <Footer />
-   </Box>
+    <Box>
+      <ToastContainer />
+      <CssBaseline />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/hotels" element={<ShowHotels />} />
+        <Route path="/attractions" element={<Attractions />} />
+        <Route element={<ProtectedRoute />} >
+          <Route path="/profile" element={<Profile />} />
+        </Route>
+      </Routes>
+      <Footer />
+    </Box>
   );
 }
 

@@ -19,7 +19,6 @@ import axios from 'axios'
 
 /**Imports components from another files */
 import Header from "../Components/LoginSingupHeader/Header";
-import Loader from "../Components/Loader";
 import SocialLogin from "../Components/SocialLogin";
 
 // Component styles
@@ -88,7 +87,7 @@ const Signup = () => {
         setLoading(true)
         await axios.post("/api/auth/register" , data);
         console.log('user registration successful')
-
+        toast.success('user registration successful')
         setLoading(false)
         navigate('/login')
       } catch (err) {
@@ -100,7 +99,6 @@ const Signup = () => {
   return (
     <>
       <Header />
-      {loading && (<Loader />)}
       <Container>
         <Wrapper>
           <form onSubmit={submitHandler}>
