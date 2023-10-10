@@ -20,10 +20,13 @@ import {
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useSelector, useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 /**Imports components from another files */
 import Header from "../Components/HomePage/Header";
+import Loader from "./Loader";
 import { app } from "./firebase";
+import {updateUserFailure, updateUserStart, updateUserSuccess} from '../redux/userSlice'
 
 // Component styles
 const Container = styled(Box)`
@@ -55,22 +58,24 @@ const AvatarComp = styled(Avatar)`
 `;
 
 const UpdateProfile = () => {
+  // for storing form data
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [conformPassword, setConformPassword] = useState("");
 
+  // for uplading image and create reference to avatar
   const fileRef = useRef(null);
   const [image, setImage] = useState(undefined);
   const [imagePercent, setImagePercent] = useState(0);
   const [imageError, setImageError] = useState(false);
   const [imageUrl, setImageUrl] = useState({});
-  console.log(imagePercent);
-  console.log(imageUrl);
+
   useEffect(() => {
     if (image) handleFileUpload(image);
   }, [image]);
 
+  /** upload image to firebase storage */
   const handleFileUpload = async (image) => {
     const storage = getStorage(app);
     const fileName = new Date().getTime() + image.name;
@@ -94,7 +99,9 @@ const UpdateProfile = () => {
     );
   };
 
+  // functions for redux toolkit
   const dispatch = useDispatch();
+  const { loading, error } = useSelector((state) => state.user);
   const { currentUser } = useSelector((state) => state.user);
 
   // these states and handlers helps to hide and unhide password
@@ -107,8 +114,42 @@ const UpdateProfile = () => {
     event.preventDefault();
   };
 
+  // storing user data in single object
+  const profilePicture = imageUrl.profilePicture;
+  const formData = {
+    name,
+    email,
+    password,
+    profilePicture,
+  };
+
+  // pre populating user details in the update user route
+  useEffect(() => {
+    const getDetails = () => {
+      setName(currentUser.userDetails.name);
+      setEmail(currentUser.userDetails.email);
+    };
+    getDetails();
+  }, []);
+
+  // sending data to updata user profile
   const submitHandler = async (e) => {
     e.preventDefault();
+    if (password !== conformPassword) toast.error("Passwords not matched");
+    else {
+      try {
+        dispatch(updateUserStart());
+        const data = await axios.put(
+          `/api/user/${currentUser.userDetails._id}`,
+          formData
+        );
+        dispatch(updateUserSuccess(data.data));
+        toast.success("Update successful");
+      } catch (error) {
+        toast.error(error.response.data.msg);
+        dispatch(updateUserFailure(error));
+      }
+    }
   };
 
   return (
@@ -135,21 +176,25 @@ const UpdateProfile = () => {
               }
               onClick={() => fileRef.current.click()}
             />
-            {imageError ? (
-              <Typography component="span" sx={{ color: "red" }}>
-                Error Upload Image (please upload image less than 2mb)
-              </Typography>
-            ) : imagePercent > 0 && imagePercent < 100 ? (
-              <Typography component="span" sx={{ color: "green" }}>
-                {`Uploading: ${imagePercent} %`}
-              </Typography>
-            ) : imagePercent == 100 ? (
-              <Typography component="span" sx={{ color: "green" }}>
-                Image uploaded Successfully
-              </Typography>
-            ) : (
-              " "
-            )}
+            {/* shows image uploading progress */}
+            <Box sx={{ margin: 2 }}>
+              {imageError ? (
+                <Typography component="span" sx={{ color: "red" }}>
+                  Error Upload Image (please upload image less than 2mb)
+                </Typography>
+              ) : imagePercent > 0 && imagePercent < 100 ? (
+                <Typography component="span" sx={{ color: "green" }}>
+                  {`Uploading: ${imagePercent} %`}
+                </Typography>
+              ) : imagePercent === 100 ? (
+                <Typography component="span" sx={{ color: "green" }}>
+                  Image uploaded Successfully
+                </Typography>
+              ) : (
+                " "
+              )}
+            </Box>
+            {/* creating reference to avatar image */}
             <input
               type="file"
               ref={fileRef}
@@ -220,7 +265,7 @@ const UpdateProfile = () => {
                 </InputAdornment>
               }
             />
-            <UpdateBtn type="submit">Update</UpdateBtn>
+            {loading ? <Loader /> : <UpdateBtn type="submit">Update</UpdateBtn>}
           </form>
         </Wrapper>
       </Container>
@@ -229,3 +274,6 @@ const UpdateProfile = () => {
 };
 
 export default UpdateProfile;
+
+
+// updates user profile and upload image to firebase storage

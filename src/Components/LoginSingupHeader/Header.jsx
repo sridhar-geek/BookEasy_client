@@ -1,15 +1,13 @@
-import React from 'react'
+import React from "react";
 import { AppBar, Box, Button, Toolbar, styled } from "@mui/material";
 import { Link } from "react-router-dom";
-import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
-
-import Logo from "../../assests/Hotel_logo.jpeg"
+import Logo from "../../assests/Hotel_logo.jpeg";
 
 // Component styles
 const Container = styled(AppBar)`
   background-color: #282525;
-
 `;
 const RightContainer = styled(Box)`
   display: flex;
@@ -57,5 +55,4 @@ const Login_Header = () => {
 
 export default Login_Header;
 
-
-
+// this header is for login and signup pages

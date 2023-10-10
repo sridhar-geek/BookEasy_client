@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {toast} from 'react-toastify'
 import axios from "axios";
 
+// import functions from another files
 import Header from "../Components/LoginSingupHeader/Header";
 import {loginStart, loginFailure, loginSuccess} from '../redux/userSlice'
 import Loader from "../Components/Loader";
@@ -73,6 +74,7 @@ const formData = {
 }
 const disabled = email && password;
 
+// sending data for login
   const sumbitHandler = async (e) => {
     e.preventDefault();
     try {
@@ -151,3 +153,5 @@ const disabled = email && password;
 };
 
 export default Login;
+
+// login user

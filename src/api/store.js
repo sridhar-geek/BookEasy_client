@@ -22,3 +22,5 @@ export const Store = configureStore({
 })
 
 export const persistor = persistStore(Store)
+
+// redux store for global data storage

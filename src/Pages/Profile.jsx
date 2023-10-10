@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Header from "../Components/HomePage/Header";
 import {
   Box,
@@ -10,15 +10,27 @@ import {
   ListItemText,
   Divider,
   Paper,
+  Dialog,
+  DialogActions,
+  DialogTitle,
+  Button,
 } from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AllInboxIcon from "@mui/icons-material/AllInbox";
 import DeleteIcon from "@mui/icons-material/Delete";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 import UpdateUser from "../Components/UpdateUser";
 import MyBookings from "../Components/MyBookings";
+import {
+  deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+} from "../redux/userSlice";
 
-//component Styles 
+//component Styles
 const Container = styled(Paper)`
   margin-top: 80px;
   display: flex;
@@ -27,31 +39,73 @@ const Container = styled(Paper)`
   margin-left: 7%;
   margin-right: 7%;
   margin-bottom: 20px;
-`
+`;
 const LeftBox = styled(Box)`
   margin-right: 2%;
   background-color: #f4bef2;
   height: 75vh;
-`
+`;
 const RightBox = styled(Paper)`
   margin-left: 2%;
-`
+`;
+const DeleteBtn = styled(Button)`
+  background-color: red;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  &:hover {
+    background-color: #ba2b43;
+  }
+`;
+const NoBtn = styled(Button)`
+  background-color: #7be67b;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  &:hover {
+    background-color: #203e20;
+  }
+`;
 
 const Profile = () => {
-  const [updateUser, setUpdateUser] = useState(true)
+  const [updateUser, setUpdateUser] = useState(true);
+  const [open, setOpen] = React.useState(false);
 
-  const hanleProfile = ()=> {
-    setUpdateUser(true)
-  }
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
-  const handleBookings = ()=> {
-    setUpdateUser(false)
-  }
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const hanleProfile = () => {
+    setUpdateUser(true);
+  };
+
+  const handleBookings = () => {
+    setUpdateUser(false);
+  };
+  const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+  const handleDelete = async (e) => {
+    e.preventDefault();
+    try {
+      dispatch(deleteUserStart());
+      const data = await axios.delete(
+        `/api/user/${currentUser.userDetails._id}`
+      );
+      dispatch(deleteUserSuccess(data.data));
+    } catch (error) {
+      toast.error("Something went wrong, Please try again later");
+      dispatch(deleteUserFailure(error));
+    }
+  };
   return (
     <div>
       <Header />
       <Container elevation={6}>
-        <LeftBox >
+        <LeftBox>
           <List>
             <ListItem>
               <ListItemButton onClick={hanleProfile}>
@@ -71,7 +125,7 @@ const Profile = () => {
             </ListItem>
             <Divider />
             <ListItem>
-              <ListItemButton>
+              <ListItemButton onClick={handleClickOpen}>
                 <ListItemIcon>
                   <DeleteIcon />
                 </ListItemIcon>
@@ -80,8 +134,24 @@ const Profile = () => {
             </ListItem>
           </List>
         </LeftBox>
-        <RightBox >
+        <RightBox>
           {updateUser ? <UpdateUser /> : <MyBookings />}
+          <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Are you sure you want to Delete your account?"}
+            </DialogTitle>
+            <DialogActions
+              sx={{ display: "flex", justifyContent: "space-around" }}
+            >
+              <DeleteBtn onClick={handleDelete}>Yes</DeleteBtn>
+              <NoBtn onClick={handleClose}>No</NoBtn>
+            </DialogActions>
+          </Dialog>
         </RightBox>
       </Container>
     </div>
@@ -89,17 +159,3 @@ const Profile = () => {
 };
 
 export default Profile;
-
-{
-  /* <CssBaseline />
-      <AppBar
-        position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-      >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Permanent drawer
-          </Typography>
-        </Toolbar>
-      </AppBar> */
-}

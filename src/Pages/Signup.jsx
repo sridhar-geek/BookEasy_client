@@ -19,7 +19,9 @@ import axios from 'axios'
 
 /**Imports components from another files */
 import Header from "../Components/LoginSingupHeader/Header";
+import Loader from "../Components/Loader";
 import SocialLogin from "../Components/SocialLogin";
+import {loginStart, loginSuccess, loginFailure} from '../redux/userSlice'
 
 // Component styles
 const Container = styled(Box)`
@@ -55,12 +57,10 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [conformPassword, setConformPassword] = useState("");
-  const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-
-  // const [register, {isLoading}] = useRegisterMutation()
+  const { loading, error } = useSelector((state) => state.user);
 
   // these states and handlers helps to hide and unhide password 
    const [showPassword, setShowPassword] = useState(false);
@@ -72,7 +72,7 @@ const Signup = () => {
      event.preventDefault();
    };
 
-  const data = {
+  const formData = {
     name,
     email,
     password
@@ -84,14 +84,14 @@ const Signup = () => {
       toast.error('Passwords do not match')
     else{
       try {
-        setLoading(true)
-        await axios.post("/api/auth/register" , data);
-        console.log('user registration successful')
+         dispatch(loginStart());
+         const data = await axios.post("/api/auth/register", formData);
+         dispatch(loginSuccess(data.data));
         toast.success('user registration successful')
-        setLoading(false)
         navigate('/login')
-      } catch (err) {
-        toast.error(err.data)
+      } catch (error) {
+      toast.error(error.response.data.msg);
+      dispatch(loginFailure(error));
       }
     }
   }
@@ -176,7 +176,7 @@ const Signup = () => {
                 </InputAdornment>
               }
             />
-            <LoginBtn type="submit">Signup</LoginBtn>
+            {loading ? <Loader /> : <LoginBtn type="submit">Signup</LoginBtn>}
             <SignupText>
               Already have an account?{" "}
               <Link to={"/login"} style={{ textDecoration: "none" }}>

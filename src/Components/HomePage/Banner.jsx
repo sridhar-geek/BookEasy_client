@@ -2,7 +2,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import { bannerImages } from "../../assests/ImageUrl";
-import { styled  } from "@mui/material";
+import { styled } from "@mui/material";
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1024 },
@@ -18,10 +18,10 @@ const responsive = {
   },
 };
 
-const Image = styled('img')`
-    width: 100%;
-    height: 400px;
-`
+const Image = styled("img")`
+  width: 100%;
+  height: 400px;
+`;
 const Banner = () => {
   return (
     <Carousel
@@ -38,7 +38,7 @@ const Banner = () => {
       dotListClass="custom-dot-list-style"
       itemClass="carousel-item-padding-40-px"
     >
-      {bannerImages.map((img,index) => (
+      {bannerImages.map((img, index) => (
         <Image src={img.url} alt="Hotel" />
       ))}
     </Carousel>
@@ -46,3 +46,5 @@ const Banner = () => {
 };
 
 export default Banner;
+
+// banner for homepage
