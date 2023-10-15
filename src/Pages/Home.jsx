@@ -8,6 +8,7 @@ import {
   CardMedia,
   CardActionArea,
   Typography,
+  Paper,
 } from "@mui/material";
 import { Link } from "react-router-dom";
 
@@ -16,16 +17,21 @@ import { cardAttraction, cardHotel } from "../assests/ImageUrl";
 import Header from "../Components/HomePage/Header";
 import SearchComponent from "../Components/SearchComponent";
 
-const PaddingBox = styled(Box)`
-  padding: 38px;
-`;
-const Image = styled("img")`
+const WelcomeNote = styled(Box)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 90vh;
   width: 100%;
 `;
-const Search = styled(Box)`
-  /* display: flex; */
-  /* justify-content: center; */
+const SearchBox = styled(Paper)`
+  padding: 25px;
+  margin: 10px;
+`
+
+const PaddingBox = styled(Box)`
+  padding: 38px;
 `;
 const CardHover = styled(Card)`
   max-width: 400px;
@@ -34,18 +40,18 @@ const CardHover = styled(Card)`
     box-shadow: 10px 10px 5px gray;
   }
 `;
+
 const Home = () => {
   return (
     <div>
       <Header />
-      <Box>
-        <Image src={Banner_Image} alt="Welcome image" />
-      </Box>
-      <Search>
-        <Typography variant="h1">BookEasy</Typography>
-        <Typography variant="subtitle 1">Book your next stay here</Typography>
-        <SearchComponent />
-      </Search>
+      <WelcomeNote>
+          <Typography variant="h1">Book Easy</Typography>
+          <Typography>Book your next Stay here</Typography>
+          <SearchBox elevation={6}>
+          <SearchComponent />
+          </SearchBox>
+      </WelcomeNote>
       <PaddingBox>
         <Grid container spacing={3}>
           <Grid item xs={12} md={6} lg={6}>

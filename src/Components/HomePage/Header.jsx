@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
 import Logo from "../../assests/Hotel_logo.jpeg";
-import LoginSingup from "../LoginBtn";
+import LoginSignup from "../LoginBtn";
 
 // const liveLocation =  navigator.geolocation.getCurrentPosition( )
 const Container = styled(AppBar)`
@@ -36,7 +36,7 @@ const Header = () => {
           <Image src={Logo} alt="logo" />
         </Link>
         <RightContainer>
-          <LoginSingup />
+          <LoginSignup />
           <LocationBox>
             <LocationOnIcon sx={{ marginLeft: "20px" }} />
             Visakhapatnam

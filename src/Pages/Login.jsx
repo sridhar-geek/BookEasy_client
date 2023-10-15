@@ -72,7 +72,6 @@ const formData = {
   email, 
   password
 }
-const disabled = email && password;
 
 // sending data for login
   const sumbitHandler = async (e) => {
@@ -104,6 +103,7 @@ const disabled = email && password;
               variant="outlined"
               placeholder="Enter your Email"
               fullWidth
+              required
               type="email"
               label="Email"
               value={email}
@@ -113,6 +113,7 @@ const disabled = email && password;
             <OutlinedInput
               placeholder="Password"
               fullWidth
+              required
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -130,13 +131,7 @@ const disabled = email && password;
                 </InputAdornment>
               }
             />
-            {loading ? (
-              <Loader />
-            ) : (
-              <LoginBtn type="submit" disabled={!disabled}>
-                Login
-              </LoginBtn>
-            )}
+            {loading ? <Loader /> : <LoginBtn type="submit">Login</LoginBtn>}
             <SignupText>
               New to BookEasy?{" "}
               <Link to={"/signup"} style={{ textDecoration: "none" }}>
@@ -144,8 +139,8 @@ const disabled = email && password;
               </Link>
             </SignupText>
           </form>
-              <Divider />
-              <SocialLogin />
+          <Divider />
+          <SocialLogin />
         </Wrapper>
       </Container>
     </>

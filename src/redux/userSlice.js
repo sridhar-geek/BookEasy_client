@@ -10,8 +10,8 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    loginStart: (start) => {
-      start.loading = true;
+    loginStart: (state) => {
+      state.loading = true;
     },
     loginSuccess: (state, action) => {
       state.currentUser = action.payload;

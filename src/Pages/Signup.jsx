@@ -116,6 +116,7 @@ const Signup = () => {
               variant="outlined"
               placeholder="Enter your Name"
               fullWidth
+              required
               type="text"
               label="Name"
               id="name"
@@ -139,6 +140,7 @@ const Signup = () => {
             <OutlinedInput
               placeholder="Password"
               fullWidth
+              required
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

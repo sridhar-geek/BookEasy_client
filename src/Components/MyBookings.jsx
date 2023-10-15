@@ -3,7 +3,9 @@ import React from 'react'
 const MyBookings = () => {
   return (
     <div>
-      <h1>All booked Hotels shown here</h1>
+      <h1>No Bookings Yet , 
+        Book some hotels 
+      </h1>
     </div>
   )
 }

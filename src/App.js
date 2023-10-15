@@ -8,7 +8,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Footer from "./Components/Footer";
-import ShowHotels from "./Pages/Hotels";
+import ShowHotels from "./Pages/ShowHotels";
 import Attractions from "./Pages/Attractions";
 import Profile from "./Pages/Profile";
 import ProtectedRoute from "./Components/ProtectedRoute";

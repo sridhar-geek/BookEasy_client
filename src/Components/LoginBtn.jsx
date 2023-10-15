@@ -13,7 +13,7 @@ const LoginBtn = styled(Button)`
   }
 `;
 
-const Login_Singup = () => {
+const Login_Signup = () => {
   const loggedUser = useSelector((state) => state.user);
   const user = loggedUser.currentUser;
   return (
@@ -22,13 +22,13 @@ const Login_Singup = () => {
         <ShowUserDetails user={user} />
       ) : (
         <Link to={"/login"}>
-          <LoginBtn contained>Login/Singup</LoginBtn>
+          <LoginBtn contained>Login/Signup</LoginBtn>
         </Link>
       )}
     </>
   );
 };
 
-export default Login_Singup;
+export default Login_Signup;
 
 // this component shows user profile pic if user exists other wise it shows login button

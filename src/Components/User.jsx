@@ -38,15 +38,11 @@ const User = ({ user }) => {
   return (
     <div>
       <Tooltip title={user.userDetails.name}>
-        <Button
-          id="basic-button"
-          aria-controls={open ? "basic-menu" : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? "true" : undefined}
-          onClick={handleClick}
-        >
-          <Avatar alt="Profile Photo" src={user.userDetails.profilePicture} />
-        </Button>
+          <Avatar
+            alt="Profile Photo"
+            src={user.userDetails.profilePicture}
+            onClick={handleClick}
+          />
       </Tooltip>
       <Menu
         id="basic-menu"
