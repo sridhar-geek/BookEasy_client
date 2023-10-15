@@ -104,10 +104,6 @@ const SearchComponent = () => {
 
   }
   return (
-    <>
-      {loading ? (
-        <Loader />
-      ) : (
         <Container container spacing={2}>
           <Individual xs={8} md={6} lg={4}>
             <BedIcon />
@@ -171,8 +167,6 @@ const SearchComponent = () => {
             <SearchBtn onClick={handleSumbit}>Search</SearchBtn>
           </Individual>
         </Container>
-      )}
-    </>
   );
 };
 
