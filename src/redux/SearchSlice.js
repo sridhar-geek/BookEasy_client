@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     places: null,
+    hotelDetails: null,
     loading: false,
 }
 
@@ -16,9 +17,13 @@ const HotelSlice = createSlice({
             state.places = action.payload;
             state.loading = false
         },
+        getSingleHotelDetails: (state, action) => {
+            state.hotelDetails = action.payload;
+            state.loading = false
+        }
     }
 })
 
-export const { gettingDetails, getHotelData } = HotelSlice.actions;
+export const { gettingDetails, getHotelData, getSingleHotelDetails } = HotelSlice.actions;
 
 export default HotelSlice.reducer;

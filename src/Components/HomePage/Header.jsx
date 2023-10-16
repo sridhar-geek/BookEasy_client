@@ -2,10 +2,13 @@ import { AppBar, Box, Toolbar, styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
+/*Imported files */
 import Logo from "../../assests/Hotel_logo.jpeg";
 import LoginSignup from "../LoginBtn";
 
 // const liveLocation =  navigator.geolocation.getCurrentPosition( )
+
+//component styles
 const Container = styled(AppBar)`
   /* background: transparent */
 `;
@@ -49,4 +52,4 @@ const Header = () => {
 
 export default Header;
 
-// This header is  for all pages
+// This is common header for all the pages 

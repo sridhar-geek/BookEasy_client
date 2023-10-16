@@ -1,0 +1,96 @@
+{
+"location_id":"12879889",
+
+"name":"Fairfield by Marriott Visakhapatnam",
+
+"latitude":"17.747955",
+"longitude":"83.24624",
+"num_reviews":"634",
+
+"timezone":"Asia/Kolkata",
+
+"location_string":"Visakhapatnam, Visakhapatnam District, Andhra Pradesh",
+
+"photo":
+{"images":
+{"small":{"width":"150","url":"https://media-cdn.tripadvisor.com/media/photo-l/29/5b/ed/64/exterior.jpg","height":"150"},
+"thumbnail":{"width":"50","url":"https://media-cdn.tripadvisor.com/media/photo-t/29/5b/ed/64/exterior.jpg","height":"50"},
+"original":{"width":"4000","url":"https://media-cdn.tripadvisor.com/media/photo-o/29/5b/ed/64/exterior.jpg","height":"2667"},
+"large":{"width":"550","url":"https://media-cdn.tripadvisor.com/media/photo-s/29/5b/ed/64/exterior.jpg","height":"367"},
+"medium":{"width":"250","url":"https://media-cdn.tripadvisor.com/media/photo-f/29/5b/ed/64/exterior.jpg","height":"167"}
+},
+
+"is_blessed":true,
+
+"uploaded_date":"2023-06-01T21:54:20-0400",
+
+"caption":"Exterior",
+
+"id":"693890404",
+
+"helpful_votes":"0",
+
+"published_date":"2023-06-01T21:54:20-0400",
+
+"user":null},
+
+"awards":[],
+
+"preferred_map_engine":"default",
+
+"autobroaden_type":"category_integrated",
+
+"autobroaden_label":"Visakhapatnam Places to Stay",
+
+"raw_ranking":"4.775053024291992",
+
+"ranking_geo":"Visakhapatnam",
+
+"ranking_geo_id":"297588",
+
+"ranking_position":"1",
+
+"ranking_denominator":"748",
+
+"ranking_category":"hotel","ranking":"#1 Best Value of 748 places to stay in Visakhapatnam",
+
+"subcategory_type":"hotel",
+
+"subcategory_type_label":"Hotel",
+
+"distance":"4.607564718341914",
+
+"distance_string":null,
+
+"bearing":"northeast",
+
+"rating":"5.0",
+
+"is_closed":false,
+
+"open_now_text":"Open Now",
+
+"is_long_closed":false,
+
+"price_level":"$",
+
+"price":"$71 - $94",
+
+"hotel_class":"0.0",
+
+"business_listings":{
+"desktop_contacts":[],
+"mobile_contacts":[{"value":"https://www.tripadvisor.com/Commerce?p=Marriott_BA&src=183958586&geo=12879889&from=api&area=&slot=1&matchID=1&oos=0&cnt=1&silo=38058&bucket=934870&nrank=1&crank=1&clt=CLM&ttype=ContactLinkMobile&tm=277255067&managed=false&capped=false&gosox=g3xMt9YCHBy3ZUg-YypssegjQviHlJQg6b-lnBPg98x_z9Z0XP9pjcZi3RyRnEOZK6pPOYHwPCmlV5wWIOGG-mZpbbQCLOlvVmV4rajanqU&dated=true&bapid=1&cs=1e07465f547f72c2e46d086c91b6ebb4e",
+"label":"Hotel website",
+"type":"url"}
+]},
+"special_offers":
+{"desktop":[],
+"mobile":[
+    {"headline":"Earn Marriott Bonvoy bonus points on each stay",
+    "url":"https://www.tripadvisor.com/ShowSpecialOffer-a_d.12879889-a_offer.11339413-a_trafficSource.ba",
+    "offerless_click_tracking_url":"https://www.tripadvisor.com/Commerce?p=Marriott_BA&src=183958586&geo=12879889&from=api&area=OID:11339413%7COT:12&slot=1&matchID=1&oos=0&cnt=1&silo=38058&bucket=934870&ubucket=934870&nrank=1&crank=1&clt=SOIM&tm=277255067&managed=false&capped=false&gosox=5_3Y6UYwwGjgw_c7hEwIkRLr-UdsRQGaQhSqX_Smp6LcNmm2f2Wg2ruG066xkRSsNoe2CAldtHItGoI30YMUpw&cs=1e2c484a663b036775f012db9b997b219"}
+]
+},
+"listing_key":"f468edc6-4387-4432-8814-09697fa6e7e4"
+}

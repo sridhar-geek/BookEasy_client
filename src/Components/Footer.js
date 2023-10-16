@@ -5,15 +5,15 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
-/** Imports  */
+/** Imported files  */
 import AppStore from '../assests/appStore.png'
 import PlayStore from '../assests/playStore.png'
 import Logo from "../assests/Hotel_logo.jpeg";
 
+//component styles
 const Container = styled(Box)`
     background-color: #24262b;
     padding: 30px ;
-
 `
 const Image = styled("img")`
   height: 45px;
@@ -132,3 +132,6 @@ const Footer = () => {
 };
 
 export default Footer;
+
+
+// Common footer for all pages

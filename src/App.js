@@ -12,6 +12,7 @@ import ShowHotels from "./Pages/ShowHotels";
 import Attractions from "./Pages/Attractions";
 import Profile from "./Pages/Profile";
 import ProtectedRoute from "./Components/ProtectedRoute";
+import HotelDetails from "./Pages/HotelDetails";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/hotels" element={<ShowHotels />} />
         <Route path="/attractions" element={<Attractions />} />
+        <Route path="/hotelDetails" element={ <HotelDetails /> } />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>

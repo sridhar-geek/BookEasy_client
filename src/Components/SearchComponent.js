@@ -13,10 +13,12 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
+/* Imported files */
 import { getHotels } from "../api/getHotels";
 import {getHotelData, gettingDetails } from '../redux/SearchSlice'
 import Loader from "./Loader";
 
+//Component Styles
 const Container = styled(Grid)`
   display: flex;
   align-items: center;
@@ -87,25 +89,21 @@ const SearchComponent = () => {
     setAnchorEl(null);
   };
 
-  // submitting data to hotel api
+  // storing all hotel details in redux global store
   const dispatch = useDispatch()
-  const loading  = useSelector((state) => state.hotels);
-  console.log({loading})
+  const {loading}  = useSelector((state) => state.hotels);
+
   const handleSumbit = async(e)=> {
     e.preventDefault();
-    console.log("loading start")
     dispatch(gettingDetails())
     const data = await getHotels();
-    console.log('api call made')
     dispatch(getHotelData(data))
-    console.log("hotel data is exported")
     navigate("/hotels");
-    console.log("navigate to hotels page")
-
   }
+
   return (
         <Container container spacing={2}>
-          <Individual xs={8} md={6} lg={4}>
+          <Individual item xs={8} md={6} lg={4}>
             <BedIcon />
             <input
               type="text"
@@ -116,7 +114,7 @@ const SearchComponent = () => {
               style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
             />
           </Individual>
-          <Individual xs={8} md={6} lg={4}>
+          <Individual item xs={8} md={6} lg={4}>
             <CalendarMonthIcon />
             <input
               type="text"
@@ -143,7 +141,7 @@ const SearchComponent = () => {
               )}
             </Calender>
           </Individual>
-          <Individual xs={8} md={6} lg={4}>
+          <Individual item xs={8} md={6} lg={4}>
             <PeopleAltIcon />
             <input
               type="text"
@@ -171,3 +169,4 @@ const SearchComponent = () => {
 };
 
 export default SearchComponent;
+

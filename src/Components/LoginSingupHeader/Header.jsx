@@ -3,6 +3,7 @@ import { AppBar, Box, Button, Toolbar, styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 
+/* Imports  */
 import Logo from "../../assests/Hotel_logo.jpeg";
 
 // Component styles
@@ -55,4 +56,4 @@ const Login_Header = () => {
 
 export default Login_Header;
 
-// this header is for login and signup pages
+// this is common  header  for only  login and signup pages
