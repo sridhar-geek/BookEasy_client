@@ -17,8 +17,7 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-// import place from './A_dummy data.json'
-
+import place from './A_dummy data.json'
 /* Imported files */
 import { singleHotelDetails } from "../api/getHotels";
 import { getSingleHotelDetails, gettingDetails } from "../redux/SearchSlice";
@@ -51,7 +50,8 @@ const AvaBtn = styled(Button)`
 `;
 
 const Hotels = ({ place }) => {
-
+// const Hotels = () => {
+// console.log(place)
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.hotels);
   const navigate = useNavigate();
@@ -67,21 +67,22 @@ const Hotels = ({ place }) => {
     const data = await singleHotelDetails(locationId);
     dispatch(getSingleHotelDetails(data));
     navigate("/hotelDetails");
+    console.log(locationId)
   };
 
   return (
-    <Card>
+    <Card >
       <CardActionArea
         sx={{ display: "flex" }}
-        onClick={handleClick(place.location_id)}
+        onClick={() => handleClick(place.location_id)}
       >
         <MediaCard
           component="img"
           image={
             place.photo
               ? place.photo.images.large.url
-              : {cardHotel}
-              // : "https://imgs.search.brave.com/aPFnAJCGtCjFvRI5vCCVs1edHRYSG5PiucHMlkDOaw8/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTIw/NDQzMDYwL3Bob3Rv/L3RoZS10YWotbWFo/YWwtcGFsYWNlLWhv/dGVsLWF0LWR1c2su/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PUVKa1ZlZUxtXzZu/eW5zN2JmVWxDamdz/UE40STRSOWd0Q3Nm/a3RZX2dsOWs9"
+              // : {cardHotel}
+              : "https://imgs.search.brave.com/aPFnAJCGtCjFvRI5vCCVs1edHRYSG5PiucHMlkDOaw8/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTIw/NDQzMDYwL3Bob3Rv/L3RoZS10YWotbWFo/YWwtcGFsYWNlLWhv/dGVsLWF0LWR1c2su/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PUVKa1ZlZUxtXzZu/eW5zN2JmVWxDamdz/UE40STRSOWd0Q3Nm/a3RZX2dsOWs9"
           }
           alt="hotel image"
         />
@@ -90,21 +91,21 @@ const Hotels = ({ place }) => {
             gutterBottom
             variant="h5"
             component="div"
-            marginBottom={2}
+            marginbottom={2}
           >
             {place.name}
           </Typography>
           <Typography variant="body1" color="text.primary">
             {place.location_string}
           </Typography>
-          <Typography variant="body2" color="text.secondary" marginBottom={2}>
+          <Typography variant="body2" color="text.secondary" marginbottom={2}>
             {Math.round(place.distance)} km distance from center of the city
           </Typography>
           <FlexBox>
             <Box marginRight={5}>
               <RatingBox>
                 <Rating
-                  value={place.rating}
+                  value={Number(place.rating)}
                   precision={0.5}
                   size="small"
                   readOnly
@@ -115,13 +116,13 @@ const Hotels = ({ place }) => {
                 icon={<ThumbUpIcon />}
                 label={place.ranking}
                 variant="outlined"
-                marginBottom={2}
+                marginbottom={2}
               />
               {place.awards?.map((award) => (
                 <Chip
                   icon={<EmojiEventsIcon />}
                   label={award.display_name}
-                  marginBottom={2}
+                  marginbottom={2}
                 />
               ))}
             </Box>

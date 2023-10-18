@@ -24,6 +24,9 @@ const WelcomeNote = styled(Box)`
   align-items: center;
   height: 90vh;
   width: 100%;
+  background: url("");
+  background: url("https://c4.wallpaperflare.com/wallpaper/849/275/712/resort-maui-hawaii-widescreen-free-download-1920%C3%971080-wallpaper-preview.jpg")
+    no-repeat;
 `;
 const SearchBox = styled(Paper)`
   padding: 25px;

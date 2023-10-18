@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import { useNavigate } from "react-router-dom";
-import { styled, Box, MenuItem, Grid, Menu, Button } from "@mui/material";
+import { styled, Box, Grid, Menu, Button, MenuItem, Typography } from "@mui/material";
 import { DateRange } from "react-date-range";
 import { addDays } from "date-fns";
 import format from "date-fns/format";
@@ -42,6 +42,11 @@ const SelectPeople = styled('input')`
 cursor: pointer;
 border: none;
 `
+const Items = styled(Box)`
+width: 350px;
+display: flex;
+justify-content: space-between;
+`
 const SearchBtn = styled(Button)`
   background-color: orangered;
   padding: 10px;
@@ -67,7 +72,7 @@ const SearchComponent = () => {
   useEffect(() => {
     document.addEventListener("keydown", hideOnEscape, true);
     document.addEventListener("click", hideOnOutsideClick, true);
-  }, []);
+  }, [range]);
 
   // closes calender when press escape key
   const hideOnEscape = (e) => {
@@ -88,6 +93,34 @@ const SearchComponent = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const [rooms, setRooms] = useState(1)
+  const [adults, setAdults] = useState(1)
+  const [children, setChildren] = useState(0)
+
+  const increseRooms = ()=>{
+    if(rooms < 11)
+    setRooms((prestate) => prestate+1)
+  }
+  const decreseRooms = ()=>{
+    if(rooms > 1)
+    setRooms((prestate) => prestate-1)
+  }
+  const addAdults = ()=>{
+    if(adults < 11)
+    setAdults((prestate) => prestate+1)
+  }
+  const removeAdults = ()=>{
+    if(adults > 1)
+    setAdults((prestate) => prestate - 1);
+  }
+  const addChildren = ()=>{
+    if(children < 20)
+    setChildren((prestate) => prestate + 1);
+  }
+  const removeChildren = ()=>{
+    if(children > 0)
+    setChildren((prestate) => prestate - 1);
+  }
 
   // storing all hotel details in redux global store
   const dispatch = useDispatch()
@@ -96,75 +129,99 @@ const SearchComponent = () => {
   const handleSumbit = async(e)=> {
     e.preventDefault();
     dispatch(gettingDetails())
+    console.log('call api')
     const data = await getHotels();
+    console.log('got response')
     dispatch(getHotelData(data))
     navigate("/hotels");
   }
 
   return (
-        <Container container spacing={2}>
-          <Individual item xs={8} md={6} lg={4}>
-            <BedIcon />
-            <input
-              type="text"
-              required
-              placeholder="Where are you going..."
-              value={destination}
-              onChange={(e) => setDestination(e.target.value)}
-              style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
+    <Container container spacing={2}>
+      <Individual item xs={8} md={6} lg={4}>
+        <BedIcon />
+        <input
+          type="text"
+          required
+          placeholder="Where are you going..."
+          value={destination}
+          onChange={(e) => setDestination(e.target.value)}
+          style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
+        />
+      </Individual>
+      <Individual item xs={8} md={6} lg={4}>
+        <CalendarMonthIcon />
+        <input
+          type="text"
+          value={`${format(range[0].startDate, "ccc-dd-MMM")}  to ${format(
+            range[0].endDate,
+            "ccc-dd-MMM"
+          )}`}
+          readOnly
+          placeholder="Check-in-Date  Check-out-date"
+          onClick={() => setOpenDate((prestate) => !prestate)}
+          style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
+        />
+        <Calender ref={reference}>
+          {openDate && (
+            <DateRange
+              onChange={(item) => setRange([item.selection])}
+              editableDateInputs={true}
+              moveRangeOnFirstSelection={false}
+              ranges={range}
+              months={2}
+              direction="horizontal"
+              minDate={new Date()}
             />
-          </Individual>
-          <Individual item xs={8} md={6} lg={4}>
-            <CalendarMonthIcon />
-            <input
-              type="text"
-              value={`${format(range[0].startDate, "dd/MM/yyyy")} to ${format(
-                range[0].endDate,
-                "dd/MM/yyyy"
-              )}`}
-              readOnly
-              placeholder="Check-in-Date  Check-out-date"
-              onClick={() => setOpenDate((prestate) => !prestate)}
-              style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
-            />
-            <Calender ref={reference}>
-              {openDate && (
-                <DateRange
-                  onChange={(item) => setRange([item.selection])}
-                  editableDateInputs={true}
-                  moveRangeOnFirstSelection={false}
-                  ranges={range}
-                  months={2}
-                  direction="horizontal"
-                  minDate={new Date()}
-                />
-              )}
-            </Calender>
-          </Individual>
-          <Individual item xs={8} md={6} lg={4}>
-            <PeopleAltIcon />
-            <input
-              type="text"
-              onClick={handleClick}
-              readOnly
-              style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
-            />
-            <Menu
-              id="basic-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={handleClose}
-              MenuListProps={{
-                "aria-labelledby": "basic-button",
-              }}
-            >
-              <MenuItem onClick={handleClose}>Adults</MenuItem>
-              <MenuItem onClick={handleClose}>Children</MenuItem>
-              <MenuItem onClick={handleClose}>Logout</MenuItem>
-            </Menu>
-            <SearchBtn onClick={handleSumbit}>Search</SearchBtn>
-          </Individual>
-        </Container>
+          )}
+        </Calender>
+      </Individual>
+      <Individual item xs={8} md={6} lg={4}>
+        <PeopleAltIcon />
+        <SelectPeople
+          type="text"
+          onClick={handleClick}
+          readOnly
+          value={`${rooms}Rooms ${adults}Adults ${children}Children`}
+          style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
+        />
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <Items>
+            <Typography>Room</Typography>
+            <Box>
+              <Button onClick={increseRooms}>+</Button>
+              {rooms}
+              <Button onClick={decreseRooms}>-</Button>
+            </Box>
+          </Items>
+          <Items>
+            <Typography>Adults</Typography>
+            <Box>
+              <Button onClick={addAdults}>+</Button>
+              {adults}
+              <Button onClick={removeAdults}>-</Button>
+            </Box>
+          </Items>
+          <Items>
+            <Typography>childeren</Typography>
+            <Box>
+              <Button onClick={addChildren}>+</Button>
+              {children}
+              <Button onClick={removeChildren}>-</Button>
+            </Box>
+          </Items>
+        </Menu>
+        <SearchBtn onClick={handleSumbit}>Search</SearchBtn>
+      </Individual>
+    </Container>
   );
 };
 

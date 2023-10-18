@@ -1,0 +1,761 @@
+{
+    "data": [
+        {
+            "location_id": "12879889",
+            "name": "Fairfield by Marriott Visakhapatnam",
+            "latitude": "17.747955",
+            "longitude": "83.24624",
+            "num_reviews": "634",
+            "timezone": "Asia/Kolkata",
+            "location_string": "Visakhapatnam, Visakhapatnam District, Andhra Pradesh",
+            "photo": {
+                "images": {
+                    "small": {
+                        "width": "150",
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-l/29/5b/ed/64/exterior.jpg",
+                        "height": "150"
+                    },
+                    "thumbnail": {
+                        "width": "50",
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-t/29/5b/ed/64/exterior.jpg",
+                        "height": "50"
+                    },
+                    "original": {
+                        "width": "1280",
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-m/1280/29/5b/ed/64/exterior.jpg",
+                        "height": "853"
+                    },
+                    "large": {
+                        "width": "1024",
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-w/29/5b/ed/64/exterior.jpg",
+                        "height": "683"
+                    },
+                    "medium": {
+                        "width": "550",
+                        "url": "https://media-cdn.tripadvisor.com/media/photo-s/29/5b/ed/64/exterior.jpg",
+                        "height": "367"
+                    }
+                },
+                "is_blessed": true,
+                "uploaded_date": "2023-06-01T21:54:20-0400",
+                "caption": "Exterior",
+                "id": "693890404",
+                "helpful_votes": "0",
+                "published_date": "2023-06-01T21:54:20-0400",
+                "user": null
+            },
+            "awards": [],
+            "preferred_map_engine": "default",
+            "raw_ranking": "4.775053024291992",
+            "ranking_geo": "Visakhapatnam",
+            "ranking_geo_id": "297588",
+            "ranking_position": "9",
+            "ranking_denominator": "360",
+            "ranking_category": "hotel",
+            "ranking": "#9 of 360 hotels in Visakhapatnam",
+            "subcategory_type": "hotel",
+            "subcategory_type_label": "Hotel",
+            "distance": null,
+            "distance_string": null,
+            "bearing": null,
+            "rating": "4.56786",
+            "is_closed": false,
+            "open_now_text": "Open Now",
+            "is_long_closed": false,
+            "price_level": "$",
+            "price": "$72 - $94",
+            "hotel_class": "0.0",
+            "business_listings": {
+                "desktop_contacts": [],
+                "mobile_contacts": [
+                    {
+                        "value": "https://www.tripadvisor.com/Commerce?p=Marriott_BA&src=183958586&geo=12879889&from=api&area=&slot=1&matchID=1&oos=0&cnt=1&silo=38058&bucket=934870&nrank=1&crank=1&clt=CLM&ttype=ContactLinkMobile&tm=277360914&managed=false&capped=false&gosox=g3xMt9YCHBy3ZUg-YypssegjQviHlJQg6b-lnBPg98x_z9Z0XP9pjcZi3RyRnEOZFUEuNchNxsF0WmoH4wnwtUlfeP2IH68kAIHzJLjC4qY&dated=true&bapid=1&cs=1d67c7b0692d09577e1e05da71932983b",
+                        "label": "Hotel website",
+                        "type": "url"
+                    },
+                    {
+                        "value": "https://www.tripadvisor.com/Commerce?p=Marriott_BA&src=183958586&geo=12879889&from=api&area=&slot=2&matchID=1&oos=0&cnt=1&silo=38058&bucket=934870&nrank=1&crank=1&clt=CDM&ttype=CLDealsMobile&tm=277360914&managed=false&capped=false&gosox=g3xMt9YCHBy3ZUg-YypssegjQviHlJQg6b-lnBPg98x_z9Z0XP9pjcZi3RyRnEOZuraTNErrJyDO1aN6RG7a-9B_bgb18rsDC3uFpnUmzB8&dated=true&bapid=2&cs=15540bcb5890d6e3bec6a76ca25121075",
+                        "label": "Hotel deals",
+                        "type": "url_deals"
+                    },
+                    {
+                        "value": "1 (844) 631-0595",
+                        "label": "Phone number",
+                        "type": "phone",
+                        "offerless_commerce_track_url": "https://www.tripadvisor.com/Commerce?p=Marriott_BA&src=183958586&geo=12879889&from=api&area=&slot=3&matchID=1&oos=0&cnt=1&silo=38058&bucket=934870&ubucket=934870&nrank=1&crank=1&clt=CLTM&tm=277360914&managed=false&capped=false&gosox=5_3Y6UYwwGjgw_c7hEwIkRLr-UdsRQGaQhSqX_Smp6INHs6th1RSHQ6wTWpZPmvafmIKjlbSTLQV-n4xoixOdg&bapid=3&cs=1bc7080c3e948dfdc2a6982d2c007fed2"
+                    }
+                ]
+            },
+            "special_offers": {
+                "desktop": [],
+                "mobile": [
+                    {
+                        "headline": "Earn Marriott Bonvoy bonus points on each stay",
+                        "url": "https://www.tripadvisor.com/ShowSpecialOffer-a_d.12879889-a_offer.11339413-a_trafficSource.ba",
+                        "offerless_click_tracking_url": "https://www.tripadvisor.com/Commerce?p=Marriott_BA&src=183958586&geo=12879889&from=api&area=OID:11339413%7COT:12&slot=1&matchID=1&oos=0&cnt=1&silo=38058&bucket=934870&ubucket=934870&nrank=1&crank=1&clt=SOIM&tm=277360914&managed=false&capped=false&gosox=5_3Y6UYwwGjgw_c7hEwIkRLr-UdsRQGaQhSqX_Smp6IChVgSXdjgysk2r1HR6PtuB48ZWHrYvYUu9X5nwvCPUg&cs=107b6cca2e76b03fe2c507131fc144552",
+                        "coupon_id": null,
+                        "coupon_type": "PACKAGE",
+                        "bl_language": null,
+                        "description": "",
+                        "valid_start_date": "2023-09-18T00:00:00-04:00",
+                        "valid_end_date": "2023-11-22T00:00:00-05:00",
+                        "valid_days": "Offer valid on the following days: .",
+                        "taxes": null
+                    }
+                ]
+            },
+            "listing_key": "4c8c5eaf-5d5d-4fba-9d13-a700c59c376f",
+            "description": "Rest easy at Fairfield by Marriott Visakhapatnam. Our hotel in Visakhapatnam, India is located in a business district 3 km from Visakhapatnam Airport, 10 km from Ramakrishna Beach, and 13 km from the Sri Varaha Lakshmi Narasimha Swamy hilltop Hindu temple. After a busy day, unwind at our rooftop pool or enjoy on-site dining at Kava and Liquid Lounge BAR.",
+            "web_url": "https://www.tripadvisor.com/Hotel_Review-g297588-d12879889-Reviews-Fairfield_by_Marriott_Visakhapatnam-Visakhapatnam_Visakhapatnam_District_Andhra_Prade.html",
+            "write_review": "https://www.tripadvisor.com/UserReview-g297588-d12879889-Fairfield_by_Marriott_Visakhapatnam-Visakhapatnam_Visakhapatnam_District_Andhra_Pradesh.html",
+            "ancestors": [
+                {
+                    "subcategory": [
+                        {
+                            "key": "city",
+                            "name": "City"
+                        }
+                    ],
+                    "name": "Visakhapatnam",
+                    "abbrv": null,
+                    "location_id": "297588"
+                },
+                {
+                    "subcategory": [
+                        {
+                            "key": "district",
+                            "name": "District"
+                        }
+                    ],
+                    "name": "Visakhapatnam District",
+                    "abbrv": null,
+                    "location_id": "12421929"
+                },
+                {
+                    "subcategory": [
+                        {
+                            "key": "state",
+                            "name": "State"
+                        }
+                    ],
+                    "name": "Andhra Pradesh",
+                    "abbrv": null,
+                    "location_id": "297585"
+                },
+                {
+                    "subcategory": [
+                        {
+                            "key": "country",
+                            "name": "Country"
+                        }
+                    ],
+                    "name": "India",
+                    "abbrv": null,
+                    "location_id": "293860"
+                }
+            ],
+            "category": {
+                "key": "hotel",
+                "name": "Hotel"
+            },
+            "subcategory": [
+                {
+                    "key": "hotel",
+                    "name": "Hotel"
+                }
+            ],
+            "parent_display_name": "Visakhapatnam",
+            "guide_count": "0",
+            "is_jfy_enabled": false,
+            "nearest_metro_station": [],
+            "phone": "18446310595",
+            "website": "https://www.marriott.com/en-us/hotels/vtzfi-fairfield-by-marriott-visakhapatnam/overview/?scid=45f93f1b-bd77-45c9-8dab-83b6a417f6fe&y_source=1_NzM3Mjg1MC03NjktbG9jYXRpb24ud2Vic2l0ZQ%3D%3D",
+            "email": "baranirathan.chidambaram@fairfieldinn.com",
+            "address_obj": {
+                "street1": "KSR Prime, R&B Junction",
+                "street2": "Opposite Paidimamba Temple",
+                "city": "Visakhapatnam",
+                "state": "Andhra Pradesh",
+                "country": "India",
+                "postalcode": "530018"
+            },
+            "address": "KSR Prime, R&B Junction Opposite Paidimamba Temple, Visakhapatnam 530018 India",
+            "local_name": "Fairfield by Marriott Visakhapatnam",
+            "local_address": "KSR Prime, R&B Junction, Opposite Paidimamba Temple, 530018",
+            "local_lang_code": "en-IN",
+            "is_candidate_for_contact_info_suppression": false,
+            "amenities": [
+                {
+                    "key": "room_service",
+                    "name": "Room service"
+                },
+                {
+                    "key": "restaurant",
+                    "name": "Restaurant"
+                },
+                {
+                    "key": "fitness_center",
+                    "name": "Fitness center"
+                },
+                {
+                    "key": "high_speed_internet_in_room",
+                    "name": "Internet"
+                },
+                {
+                    "key": "suites",
+                    "name": "Suites"
+                },
+                {
+                    "key": "Free Internet",
+                    "name": "Free Internet"
+                },
+                {
+                    "key": "free_parking",
+                    "name": "Free parking"
+                },
+                {
+                    "key": "wheelchair_access",
+                    "name": "Wheelchair access"
+                },
+                {
+                    "key": "spa",
+                    "name": "Spa"
+                },
+                {
+                    "key": "Wifi",
+                    "name": "Wifi"
+                },
+                {
+                    "key": "Public Wifi",
+                    "name": "Public Wifi"
+                },
+                {
+                    "key": "meeting_room",
+                    "name": "Meeting rooms"
+                },
+                {
+                    "key": "Non-Smoking Rooms",
+                    "name": "Non-smoking rooms"
+                },
+                {
+                    "key": "business_services",
+                    "name": "Business center"
+                },
+                {
+                    "key": "Laundry Service",
+                    "name": "Laundry Service"
+                },
+                {
+                    "key": "concierge_desk",
+                    "name": "Concierge"
+                },
+                {
+                    "key": "Banquet Room",
+                    "name": "Banquet Room"
+                },
+                {
+                    "key": "air_conditioning",
+                    "name": "Air conditioning"
+                },
+                {
+                    "key": "Family Rooms",
+                    "name": "Family Rooms"
+                },
+                {
+                    "key": "Multilingual Staff",
+                    "name": "Multilingual Staff"
+                },
+                {
+                    "key": "Smoking Rooms Available",
+                    "name": "Smoking rooms available"
+                },
+                {
+                    "key": "Refrigerator",
+                    "name": "Refrigerator in room"
+                },
+                {
+                    "key": "Conference Facilities",
+                    "name": "Conference Facilities"
+                },
+                {
+                    "key": "Babysitting",
+                    "name": "Babysitting"
+                },
+                {
+                    "key": "Safe",
+                    "name": "Safe"
+                },
+                {
+                    "key": "Rooftop Pool",
+                    "name": "Rooftop Pool"
+                },
+                {
+                    "key": "Flatscreen TV",
+                    "name": "Flatscreen TV"
+                },
+                {
+                    "key": "Rooftop Terrace",
+                    "name": "Rooftop Terrace"
+                },
+                {
+                    "key": "Breakfast Buffet",
+                    "name": "Breakfast Buffet"
+                },
+                {
+                    "key": "Infinity Pool",
+                    "name": "Infinity Pool"
+                },
+                {
+                    "key": "Housekeeping",
+                    "name": "Housekeeping"
+                },
+                {
+                    "key": "Baggage Storage",
+                    "name": "Baggage Storage"
+                },
+                {
+                    "key": "Bath / Shower",
+                    "name": "Bath / Shower"
+                },
+                {
+                    "key": "Bathrobes",
+                    "name": "Bathrobes"
+                },
+                {
+                    "key": "Bottled Water",
+                    "name": "Bottled Water"
+                },
+                {
+                    "key": "Breakfast in the Room",
+                    "name": "Breakfast in the Room"
+                },
+                {
+                    "key": "24-Hour Check-in",
+                    "name": "24-Hour Check-in"
+                },
+                {
+                    "key": "Coffee / Tea Maker",
+                    "name": "Coffee / Tea Maker"
+                },
+                {
+                    "key": "Desk",
+                    "name": "Desk"
+                },
+                {
+                    "key": "Doorperson",
+                    "name": "Doorperson"
+                },
+                {
+                    "key": "English - Amenities",
+                    "name": "English"
+                },
+                {
+                    "key": "Complimentary Toiletries",
+                    "name": "Complimentary Toiletries"
+                },
+                {
+                    "key": "24-Hour Front Desk",
+                    "name": "24-Hour Front Desk"
+                },
+                {
+                    "key": "Gift Shop - Amenities",
+                    "name": "Gift Shop"
+                },
+                {
+                    "key": "Hair Dryer",
+                    "name": "Hair Dryer"
+                },
+                {
+                    "key": "Hindi",
+                    "name": "Hindi"
+                },
+                {
+                    "key": "Iron",
+                    "name": "Iron"
+                },
+                {
+                    "key": "Massage",
+                    "name": "Massage"
+                },
+                {
+                    "key": "Newspaper",
+                    "name": "Newspaper"
+                },
+                {
+                    "key": "24-Hour Security",
+                    "name": "24-Hour Security"
+                },
+                {
+                    "key": "Soundproof Rooms",
+                    "name": "Soundproof Rooms"
+                },
+                {
+                    "key": "swimming_pool",
+                    "name": "Pool"
+                },
+                {
+                    "key": "bar_lounge",
+                    "name": "Bar/Lounge"
+                },
+                {
+                    "key": "Paid Internet",
+                    "name": "Paid Internet"
+                },
+                {
+                    "key": "Minibar",
+                    "name": "Minibar"
+                },
+                {
+                    "key": "non_smoking_hotel",
+                    "name": "Non-smoking hotel"
+                },
+                {
+                    "key": "Kids Pool",
+                    "name": "Kids pool"
+                },
+                {
+                    "key": "Outdoor Pool",
+                    "name": "Outdoor pool"
+                },
+                {
+                    "key": "Breakfast Available",
+                    "name": "Breakfast Available"
+                },
+                {
+                    "key": "Parking",
+                    "name": "Parking"
+                },
+                {
+                    "key": "Facilities for Disabled Guests",
+                    "name": "Facilities for Disabled Guests"
+                },
+                {
+                    "key": "Body Wrap",
+                    "name": "Body Wrap"
+                },
+                {
+                    "key": "Cable / Satellite TV",
+                    "name": "Cable / Satellite TV"
+                },
+                {
+                    "key": "Express Check-in / Check-out",
+                    "name": "Express Check-in / Check-out"
+                },
+                {
+                    "key": "Convenience Store",
+                    "name": "Convenience Store"
+                },
+                {
+                    "key": "Couples Massage",
+                    "name": "Couples Massage"
+                },
+                {
+                    "key": "Currency Exchange",
+                    "name": "Currency Exchange"
+                },
+                {
+                    "key": "Electric Kettle",
+                    "name": "Electric Kettle"
+                },
+                {
+                    "key": "Extra Long Beds",
+                    "name": "Extra Long Beds"
+                },
+                {
+                    "key": "Fence Around Pool",
+                    "name": "Fence Around Pool"
+                },
+                {
+                    "key": "First Aid Kit",
+                    "name": "First Aid Kit"
+                },
+                {
+                    "key": "Foot Bath",
+                    "name": "Foot Bath"
+                },
+                {
+                    "key": "Foot Massage",
+                    "name": "Foot Massage"
+                },
+                {
+                    "key": "Full Body Massage",
+                    "name": "Full Body Massage"
+                },
+                {
+                    "key": "Hand Massage",
+                    "name": "Hand Massage"
+                },
+                {
+                    "key": "Head Massage",
+                    "name": "Head Massage"
+                },
+                {
+                    "key": "Interconnected rooms available",
+                    "name": "Interconnected room(s) available"
+                },
+                {
+                    "key": "Mountain View - Amenities",
+                    "name": "Mountain View"
+                },
+                {
+                    "key": "Neck Massage",
+                    "name": "Neck Massage"
+                },
+                {
+                    "key": "On-Demand Movies",
+                    "name": "On-Demand Movies"
+                },
+                {
+                    "key": "Outdoor Furniture",
+                    "name": "Outdoor Furniture"
+                },
+                {
+                    "key": "Pool / Beach Towels",
+                    "name": "Pool / Beach Towels"
+                },
+                {
+                    "key": "Pool with View",
+                    "name": "Pool with View"
+                },
+                {
+                    "key": "Private Bathrooms",
+                    "name": "Private Bathrooms"
+                },
+                {
+                    "key": "Radio",
+                    "name": "Radio"
+                },
+                {
+                    "key": "Seating Area",
+                    "name": "Seating Area"
+                },
+                {
+                    "key": "Shared Lounge / TV Area",
+                    "name": "Shared Lounge / TV Area"
+                },
+                {
+                    "key": "Sofa",
+                    "name": "Sofa"
+                },
+                {
+                    "key": "Steam Room",
+                    "name": "Steam Room"
+                },
+                {
+                    "key": "Sun Deck",
+                    "name": "Sun Deck"
+                },
+                {
+                    "key": "Sun Loungers / Beach Chairs",
+                    "name": "Sun Loungers / Beach Chairs"
+                },
+                {
+                    "key": "Tamil",
+                    "name": "Tamil"
+                },
+                {
+                    "key": "Telephone",
+                    "name": "Telephone"
+                },
+                {
+                    "key": "Tile / Marble Floor",
+                    "name": "Tile / Marble Floor"
+                },
+                {
+                    "key": "Valet Parking - Amenities",
+                    "name": "Valet Parking"
+                },
+                {
+                    "key": "Wake Up Service / Alarm Clock",
+                    "name": "Wake Up Service / Alarm Clock"
+                }
+            ],
+            "owner_website": "/Commerce?p=Marriott_BA&src=183958586&geo=12879889&from=api&area=&slot=1&matchID=1&oos=0&cnt=1&silo=38058&bucket=934870&nrank=1&crank=1&clt=CLM&ttype=ContactLinkMobile&tm=277360914&managed=false&capped=false&gosox=g3xMt9YCHBy3ZUg-YypssegjQviHlJQg6b-lnBPg98x_z9Z0XP9pjcZi3RyRnEOZFUEuNchNxsF0WmoH4wnwtUlfeP2IH68kAIHzJLjC4qY&dated=true&bapid=1&cs=1d67c7b0692d09577e1e05da71932983b",
+            "photo_count": "377",
+            "has_review_draft": false,
+            "has_panoramic_photos": false,
+            "rating_histogram": {
+                "count_1": "10",
+                "count_2": "6",
+                "count_3": "17",
+                "count_4": "63",
+                "count_5": "538"
+            },
+            "room_tips": [
+                {
+                    "user": {
+                        "user_id": "8C91657CCA8E21415060587EE7AE2284",
+                        "type": "user",
+                        "first_name": null,
+                        "last_initial": null,
+                        "name": null,
+                        "member_id": "0",
+                        "username": "Curious53381732149",
+                        "user_location": {
+                            "name": null,
+                            "id": null
+                        },
+                        "avatar": {
+                            "small": {
+                                "url": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e8/24/default-avatar-2020-60.jpg"
+                            },
+                            "large": {
+                                "url": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e8/24/default-avatar-2020-60.jpg"
+                            }
+                        },
+                        "link": "https://www.tripadvisor.com/MemberProfile-a_uid.8C91657CCA8E21415060587EE7AE2284",
+                        "points": "0",
+                        "created_time": "2023-10-01T05:34:39-0400",
+                        "locale": "en_IN"
+                    },
+                    "type": "room_tip",
+                    "text": "Best \nNo suggestions needed for this Fairfield\nTotally loved it\nMust visit\nHave fun\nYou ll love it\nVisit with your frnds\nOr family\nOr loves ",
+                    "rating": "5",
+                    "review_id": "919251970",
+                    "id": "919251970",
+                    "created_time": "2023-10-01T01:34:41-04:00"
+                },
+                {
+                    "user": {
+                        "user_id": "5A577B692B76E00D2EF597EB98651DE7",
+                        "type": "user",
+                        "first_name": null,
+                        "last_initial": null,
+                        "name": null,
+                        "member_id": "0",
+                        "username": "Dronamrajusasi123",
+                        "user_location": {
+                            "name": "Visakhapatnam District, India",
+                            "id": "12421929"
+                        },
+                        "avatar": {
+                            "small": {
+                                "url": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e7/fe/default-avatar-2020-58.jpg"
+                            },
+                            "large": {
+                                "url": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e7/fe/default-avatar-2020-58.jpg"
+                            }
+                        },
+                        "link": "https://www.tripadvisor.com/MemberProfile-a_uid.5A577B692B76E00D2EF597EB98651DE7",
+                        "points": "0",
+                        "created_time": "2021-07-26T12:24:00-0400",
+                        "locale": "en_IN"
+                    },
+                    "type": "room_tip",
+                    "text": "Single or Family, business or Pleasure, you can stay at Marriott. \nWorth for Single Rupee. ",
+                    "rating": "5",
+                    "review_id": "919023737",
+                    "id": "919023737",
+                    "created_time": "2023-09-29T11:48:04-04:00"
+                },
+                {
+                    "user": {
+                        "user_id": "C8D4137ABC5B80728A78174DF3310368",
+                        "type": "user",
+                        "first_name": null,
+                        "last_initial": null,
+                        "name": null,
+                        "member_id": "0",
+                        "username": "Trek51089015427",
+                        "user_location": {
+                            "name": null,
+                            "id": null
+                        },
+                        "avatar": {
+                            "small": {
+                                "url": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/ef/9c/default-avatar-2020-14.jpg"
+                            },
+                            "large": {
+                                "url": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/ef/9c/default-avatar-2020-14.jpg"
+                            }
+                        },
+                        "link": "https://www.tripadvisor.com/MemberProfile-a_uid.C8D4137ABC5B80728A78174DF3310368",
+                        "points": "0",
+                        "created_time": "2023-09-28T00:23:32-0400",
+                        "locale": "en_IN"
+                    },
+                    "type": "room_tip",
+                    "text": "Sunday brunch are best",
+                    "rating": "5",
+                    "review_id": "918771649",
+                    "id": "918771649",
+                    "created_time": "2023-09-27T20:23:33-04:00"
+                },
+                {
+                    "user": {
+                        "user_id": "7704ECE90C0A95780C62B206600B918E",
+                        "type": "user",
+                        "first_name": null,
+                        "last_initial": null,
+                        "name": null,
+                        "member_id": "0",
+                        "username": "Cruiser56450375214",
+                        "user_location": {
+                            "name": null,
+                            "id": null
+                        },
+                        "avatar": {
+                            "small": {
+                                "url": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/f3/7c/default-avatar-2020-29.jpg"
+                            },
+                            "large": {
+                                "url": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/f3/7c/default-avatar-2020-29.jpg"
+                            }
+                        },
+                        "link": "https://www.tripadvisor.com/MemberProfile-a_uid.7704ECE90C0A95780C62B206600B918E",
+                        "points": "0",
+                        "created_time": "2023-09-24T00:14:10-0400",
+                        "locale": "en_IN"
+                    },
+                    "type": "room_tip",
+                    "text": "Get the aloo paratha, it's pretty good",
+                    "rating": "5",
+                    "review_id": "918097959",
+                    "id": "918097959",
+                    "created_time": "2023-09-23T20:14:15-04:00"
+                },
+                {
+                    "user": {
+                        "user_id": "B7879FCCAA65DC8DACA5D6CCA39EE59C",
+                        "type": "user",
+                        "first_name": null,
+                        "last_initial": null,
+                        "name": null,
+                        "member_id": "0",
+                        "username": "256660A",
+                        "user_location": {
+                            "name": "Lucknow, India",
+                            "id": "297684"
+                        },
+                        "avatar": {
+                            "small": {
+                                "url": "https://media-cdn.tripadvisor.com/media/photo-t/1a/f6/e2/e6/default-avatar-2020-45.jpg"
+                            },
+                            "large": {
+                                "url": "https://media-cdn.tripadvisor.com/media/photo-l/1a/f6/e2/e6/default-avatar-2020-45.jpg"
+                            }
+                        },
+                        "link": "https://www.tripadvisor.com/MemberProfile-a_uid.B7879FCCAA65DC8DACA5D6CCA39EE59C",
+                        "points": "0",
+                        "created_time": "2019-12-01T09:10:07-0500",
+                        "locale": "en_IN"
+                    },
+                    "type": "room_tip",
+                    "text": "All good",
+                    "rating": "5",
+                    "review_id": "905953251",
+                    "id": "905953251",
+                    "created_time": "2023-07-27T05:37:44-04:00"
+                }
+            ]
+        }
+    ],
+    "status": {
+        "unfiltered_total_size": "1",
+        "commerce_country_iso_code": "US",
+        "autobroadened": false,
+        "progress": "100",
+        "auction_key": "88d552f96966470282069fa70fd031a2",
+        "pricing": "base"
+    }
+}

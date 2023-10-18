@@ -6,13 +6,13 @@ import { useSelector } from 'react-redux'
 import Header from '../Components/HomePage/Header'
 import SearchComponent from '../Components/SearchComponent'
 import Hotels from '../Components/HotelsCard'
+import GoogleMap from '../Components/GoogleMap'
 
 //Component Styles
 const SearchBox = styled(Box)`
-  margin-top: 85px;
+  margin-top: 80px;
   z-index: 1;
-  display: flex;
-  justify-content: center;
+  padding: 20px 40px;
 `
 const SortBox = styled(Box)`
   padding: 20px;
@@ -32,7 +32,6 @@ const HotelCard = styled(Paper)`
 const ShowHotels = () => {
   // const [isMapOpen, setIsMapOpen] = useState(false)
   const hotelDetails = useSelector((state) => state.hotels);
-  console.log(hotelDetails.places);
   const places = hotelDetails.places 
 
   return (
@@ -50,8 +49,13 @@ const ShowHotels = () => {
               <Hotels place={place} />
             </HotelCard>
           ))}
+          {/* <HotelCard elevation={5}>
+            <Hotels />
+          </HotelCard> */}
         </Grid>
-        <Grid item></Grid>
+        <Grid item>
+          <GoogleMap />
+        </Grid>
       </Grid>
     </div>
   );

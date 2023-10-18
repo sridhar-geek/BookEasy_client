@@ -17,6 +17,32 @@ export const bannerImages = [
   },
 ];
 
+export const HotelRoomImages = [
+  {
+    id: 1,
+    url: "https://media.gettyimages.com/id/173587041/photo/hotel-bedroom.jpg?s=612x612&w=0&k=20&c=mzbT-i0sbivf2hK4aAJi0mdYVTUca8o5vij0bJq97Ks=",
+  },
+  {
+    id: 2,
+    url: "https://static4.depositphotos.com/1025354/368/i/600/depositphotos_3683483-stock-photo-suite-bed-room-of-a.jpg",
+  },
+  {
+    id: 3,
+    url: "https://img.freepik.com/free-photo/interior-modern-comfortable-hotel-room_1232-1822.jpg?size=626&ext=jpg",
+  },
+  {
+    id: 4,
+    url: "https://media.gettyimages.com/id/907633960/photo/lobby-entrance-with-reception-desk-and-lounge-area.jpg?s=612x612&w=0&k=20&c=rGw13Hy03S2qVpVelfIl1zSmtH_UXZsJchFjfr-qSHU=",
+  },
+  {
+    id: 5,
+    url: "https://media.gettyimages.com/id/1250509765/photo/enjoying-a-leisure-holiday.jpg?s=612x612&w=0&k=20&c=QT9vlSIy7EbgT5b2nYXhdZLpUe6h6A3PYuIwa1I54Fk=",
+  },
+  {
+    id: 6,
+    url: "https://img.freepik.com/premium-photo/photo-lunch-restaurant-hotel-photography-ai-generated_925376-7339.jpg?size=626&ext=jpg",
+  },
+];
 
 export const logo =
   "https://logodownload.org/wp-content/uploads/2020/02/oyo-logo-1.png";

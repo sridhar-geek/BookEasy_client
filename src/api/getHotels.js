@@ -21,10 +21,10 @@ export const getHotels = async () => {
         },
       }
     );
-    // console.log(data)
+    console.log(data);
     return data;
   } catch (error) {
-    toast.error('error in retreving all hotels')
+    toast.error("error in retreving all hotels");
     console.log(error);
   }
 };
@@ -32,7 +32,9 @@ export const getHotels = async () => {
 // get details of a single hotel based on location_id
 export const singleHotelDetails = async (locationId) => {
   try {
-    const { data } = axios.get(
+    const {
+      data: { data },
+    } = await axios.get(
       "https://travel-advisor.p.rapidapi.com/hotels/get-details",
       {
         params: {
@@ -47,6 +49,7 @@ export const singleHotelDetails = async (locationId) => {
       }
     );
     console.log(data);
+    console.log("api called data");
     return data;
   } catch (error) {
     console.log(error);
