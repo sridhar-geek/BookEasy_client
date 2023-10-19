@@ -48,9 +48,9 @@ export const singleHotelDetails = async (locationId) => {
         },
       }
     );
-    console.log(data);
+    console.log(data.data);
     console.log("api called data");
-    return data;
+    return data.data;
   } catch (error) {
     console.log(error);
     toast.error("error in retrieving hotel details");

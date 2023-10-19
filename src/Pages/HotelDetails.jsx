@@ -15,7 +15,7 @@ import StarIcon from "@mui/icons-material/Star";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailIcon from "@mui/icons-material/Mail";
 
-import HotelData from "../Components/B_dummy data.json";
+// import HotelData from "../Components/B_dummy data.json";
 import Header from "../Components/HomePage/Header";
 import { HotelRoomImages } from "../assests/ImageUrl";
 import ReviewComponent from "../Components/ReviewComponent";
@@ -91,12 +91,10 @@ const Link = styled("a")`
 `;
 const HotelDetails = () => {
   const singleHotel = useSelector((state) => state.hotels);
-  console.log(singleHotel.HotelDetails[0])
-  console.log(singleHotel)
-  const details = singleHotel.hotelDetails[0]
-
-  // const details = HotelData.data[0];
-
+  // console.log(singleHotel)
+  // console.log(singleHotel.hotelDetails)
+  const details = singleHotel.hotelDetails;
+// console.log(details.address)
 
   return (
     <div>

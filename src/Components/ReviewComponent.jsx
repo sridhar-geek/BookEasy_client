@@ -1,4 +1,5 @@
-import React, { useSelector } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import {Avatar, Box, Paper, Typography} from '@mui/material'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
 import HotelData from "./B_dummy data.json";
@@ -6,12 +7,9 @@ import HotelData from "./B_dummy data.json";
 
 
 const ReviewComponent = () => {
-  const singleHotel = useSelector((state) => state.hotels);
-  // console.log(singleHotel.HotelDetails)
-  // console.log(singleHotel)
-  const details = singleHotel.hotelDetails
-
-  // const details = HotelData.data[0];
+   const singleHotel = useSelector((state) => state.hotels);
+  const details = singleHotel.hotelDetails[0];
+  console.log(details.rating)
 
   return (
     <>
