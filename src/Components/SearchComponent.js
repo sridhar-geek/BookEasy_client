@@ -1,10 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useReducer } from "react";
 import {useDispatch, useSelector} from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import { styled, Box, Grid, Menu, Button, MenuItem, Typography } from "@mui/material";
 import { DateRange } from "react-date-range";
 import { addDays } from "date-fns";
 import format from "date-fns/format";
+import {Autocomplete} from '@react-google-maps/api'
 
 import BedIcon from "@mui/icons-material/Bed";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -140,14 +141,16 @@ const SearchComponent = () => {
     <Container container spacing={2}>
       <Individual item xs={8} md={6} lg={4}>
         <BedIcon />
-        <input
-          type="text"
-          required
-          placeholder="Where are you going..."
-          value={destination}
-          onChange={(e) => setDestination(e.target.value)}
-          style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
-        />
+        {/* <Autocomplete> */}
+          <input
+            type="text"
+            required
+            placeholder="Where are you going..."
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+            style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
+          />
+        {/* </Autocomplete> */}
       </Individual>
       <Individual item xs={8} md={6} lg={4}>
         <CalendarMonthIcon />
@@ -219,7 +222,9 @@ const SearchComponent = () => {
             </Box>
           </Items>
         </Menu>
+        {loading ? (<Loader open={loading} />) :(
         <SearchBtn onClick={handleSumbit}>Search</SearchBtn>
+         )}
       </Individual>
     </Container>
   );

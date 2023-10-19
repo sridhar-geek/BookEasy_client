@@ -1,6 +1,7 @@
-import React from 'react'
-import { Box, styled, Grid, Paper } from '@mui/material'
+import React, { useState } from 'react'
+import { Box, styled, Grid, Paper} from '@mui/material'
 import { useSelector } from 'react-redux'
+import { useJsApiLoader } from "@react-google-maps/api";
 
 /* Imported files */
 import Header from '../Components/HomePage/Header'
@@ -34,6 +35,11 @@ const ShowHotels = () => {
   const hotelDetails = useSelector((state) => state.hotels);
   const places = hotelDetails.places 
 
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    libraries: ['places']
+  });
+
   return (
     <div>
       <Header />
@@ -53,10 +59,9 @@ const ShowHotels = () => {
             <Hotels />
           </HotelCard> */}
         </Grid>
-        <Grid item>
-          <GoogleMap />
-        </Grid>
+        <Grid item>{/* <GoogleMap /> */}</Grid>
       </Grid>
+   {isLoaded ? <GoogleMap /> : <div>Loading....</div>}
     </div>
   );
 }

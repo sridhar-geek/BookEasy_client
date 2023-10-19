@@ -91,9 +91,9 @@ const Link = styled("a")`
 `;
 const HotelDetails = () => {
   const singleHotel = useSelector((state) => state.hotels);
-  console.log(singleHotel.HotelDetails)
-  // console.log(singleHotel)
-  const details = singleHotel.hotelDetails
+  console.log(singleHotel.HotelDetails[0])
+  console.log(singleHotel)
+  const details = singleHotel.hotelDetails[0]
 
   // const details = HotelData.data[0];
 

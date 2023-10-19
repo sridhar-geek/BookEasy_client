@@ -178,7 +178,7 @@ const Signup = () => {
                 </InputAdornment>
               }
             />
-            {loading ? <Loader /> : <LoginBtn type="submit">Signup</LoginBtn>}
+            {loading ? <Loader open={loading} /> : <LoginBtn type="submit">Signup</LoginBtn>}
             <SignupText>
               Already have an account?{" "}
               <Link to={"/login"} style={{ textDecoration: "none" }}>

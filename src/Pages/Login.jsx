@@ -131,7 +131,7 @@ const formData = {
                 </InputAdornment>
               }
             />
-            {loading ? <Loader /> : <LoginBtn type="submit">Login</LoginBtn>}
+            {loading ? <Loader open={loading} /> : <LoginBtn type="submit">Login</LoginBtn>}
             <SignupText>
               New to BookEasy?{" "}
               <Link to={"/signup"} style={{ textDecoration: "none" }}>
