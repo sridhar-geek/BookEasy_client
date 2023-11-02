@@ -19,4 +19,5 @@ root.render(
     {/* </React.StrictMode> */}
   </Provider>
 );
+  // "proxy": "https://book-easy-server.vercel.app/"
 

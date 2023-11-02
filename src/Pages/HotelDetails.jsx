@@ -148,7 +148,7 @@ const HotelDetails = () => {
               <Typography variant="h4" mt={4}>
                 Amenities
               </Typography>
-              {details.amenities.map((item, i) => (
+              {details.amenities?.map((item, i) => (
                 <Chip
                   sx={{ padding: 2, margin: 1, userSelect: "none" }}
                   key={i}
@@ -166,7 +166,7 @@ const HotelDetails = () => {
                 </Typography>
               </Stack>
               <ReviewBox>
-                <ReviewComponent />
+                {/* <ReviewComponent /> */}
                 <Link href={details.write_review} target="blank">
                   Write your Experience
                 </Link>

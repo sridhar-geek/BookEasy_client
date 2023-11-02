@@ -125,9 +125,9 @@ const SearchComponent = () => {
   const handleSumbit = async (e) => {
     e.preventDefault();
     dispatch(gettingDetails());
-    console.log("call api");
+    // console.log("call api");
     const data = await getHotels();
-    console.log("got response");
+    // console.log("got response");
     dispatch(getHotelData(data));
     navigate("/hotels");
   };

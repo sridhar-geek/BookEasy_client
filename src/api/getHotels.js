@@ -19,11 +19,11 @@ export const getHotels = async () => {
         },
       }
     );
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     toast.error("error in retreving all hotels");
-    console.log(error);
+    // console.log(error);
   }
 };
 
@@ -45,7 +45,7 @@ export const singleHotelDetails = async (locationId) => {
       }
     );
     console.log(data);
-    console.log("api called data");
+    // console.log("api called data");
     return data
   } catch (error) {
     console.log(error);

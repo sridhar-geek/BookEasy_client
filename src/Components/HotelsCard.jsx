@@ -71,6 +71,7 @@ const Hotels = ({ place }) => {
   const handleClick = async (locationId) => {
     dispatch(gettingDetails());
     const data = await singleHotelDetails(locationId);
+    console.log(data)
     dispatch(getSingleHotelDetails(data));
     navigate("/hotelDetails");
     console.log(locationId)

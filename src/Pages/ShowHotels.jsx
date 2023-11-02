@@ -37,7 +37,7 @@ const ShowHotels = () => {
         <SearchComponent />
       </SearchBox>
       <SortBox>
-        <Typography>{places.length}No of Properties</Typography>
+        <Typography>{places?.length}No of Properties</Typography>
         <Typography>Map ToggleBtn</Typography>
         <Typography>Sort</Typography>
       </SortBox>

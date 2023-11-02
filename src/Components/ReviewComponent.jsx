@@ -9,11 +9,11 @@ import HotelData from "./B_dummy data.json";
 const ReviewComponent = () => {
    const singleHotel = useSelector((state) => state.hotels);
   const details = singleHotel.hotelDetails[0];
-  console.log(details.rating)
+  // console.log(details.rating)
 
   return (
     <>
-      {details.room_tips.map((reviews, i) => (
+      {details.room_tips?.map((reviews, i) => (
         <Paper elevation={4} sx={{ padding: "10px", margin: "10px" }}>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
