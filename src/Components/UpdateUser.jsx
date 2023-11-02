@@ -10,6 +10,7 @@ import {
   InputAdornment,
   IconButton,
   Avatar,
+  Stack,
 } from "@mui/material";
 import {
   getDownloadURL,
@@ -53,8 +54,8 @@ const UpdateBtn = styled(Button)`
 const AvatarComp = styled(Avatar)`
   width: 120px;
   height: 120px;
-  margin: 10, auto;
   cursor: pointer;
+  margin-left: 20px ;
 `;
 
 const UpdateProfile = () => {
@@ -158,42 +159,44 @@ const UpdateProfile = () => {
       <Container>
         <Wrapper>
           <form onSubmit={submitHandler}>
-            <Typography
-              variant="h3"
-              sx={{
-                marginBottom: "20px",
-                textAlign: "center",
-                userSelect: "none",
-              }}
-            >
-              Update Profile
-            </Typography>
-            <AvatarComp
-              alt="Profile Photo"
-              src={
-                imageUrl.profilePicture ||
-                currentUser.userDetails.profilePicture
-              }
-              onClick={() => fileRef.current.click()}
-            />
-            {/* shows image uploading progress */}
-            <Box sx={{ margin: 2 }}>
-              {imageError ? (
-                <Typography component="span" sx={{ color: "red" }}>
-                  Error Upload Image (please upload image less than 2mb)
-                </Typography>
-              ) : imagePercent > 0 && imagePercent < 100 ? (
-                <Typography component="span" sx={{ color: "green" }}>
-                  {`Uploading: ${imagePercent} %`}
-                </Typography>
-              ) : imagePercent === 100 ? (
-                <Typography component="span" sx={{ color: "green" }}>
-                  Image uploaded Successfully
-                </Typography>
-              ) : (
-                " "
-              )}
-            </Box>
+            <Stack direction="column" sx={{ alignItems: "center" }}>
+              <Typography
+                variant="h3"
+                sx={{
+                  marginBottom: "20px",
+                  textAlign: "center",
+                  userSelect: "none",
+                }}
+              >
+                Update Profile
+              </Typography>
+              <AvatarComp
+                alt="Profile Photo"
+                src={
+                  imageUrl.profilePicture ||
+                  currentUser.userDetails.profilePicture
+                }
+                onClick={() => fileRef.current.click()}
+              />
+              {/* shows image uploading progress */}
+              <Box sx={{ margin: 2 }}>
+                {imageError ? (
+                  <Typography component="span" sx={{ color: "red" }}>
+                    Error Upload Image (please upload image less than 2mb)
+                  </Typography>
+                ) : imagePercent > 0 && imagePercent < 100 ? (
+                  <Typography component="span" sx={{ color: "green" }}>
+                    {`Uploading: ${imagePercent} %`}
+                  </Typography>
+                ) : imagePercent === 100 ? (
+                  <Typography component="span" sx={{ color: "green" }}>
+                    Image uploaded Successfully
+                  </Typography>
+                ) : (
+                  " "
+                )}
+              </Box>
+            </Stack>
             {/* creating reference to avatar image */}
             <input
               type="file"

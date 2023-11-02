@@ -29,7 +29,6 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
         </Route>
-        {/* <Route path="/reviews" element={<ReviewComponent /> } /> */}
       </Routes>
       <Footer />
     </Box>

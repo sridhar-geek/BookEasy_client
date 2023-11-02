@@ -1,6 +1,10 @@
 import React, { useState, useMemo, useCallback, useRef } from "react";
-import { GoogleMap, Marker, MarkerClusterer } from "@react-google-maps/api";
-import { Box, styled } from "@mui/material";
+import {
+  GoogleMap,
+  Marker,
+  MarkerClusterer,
+  Autocomplete,} from "@react-google-maps/api";
+import {  Box, styled } from "@mui/material";
 
 // component styles
 const Container = styled(Box)`

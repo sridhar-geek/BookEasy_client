@@ -69,7 +69,7 @@ const NoBtn = styled(Button)`
 
 const Profile = () => {
   const [updateUser, setUpdateUser] = useState(true);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);

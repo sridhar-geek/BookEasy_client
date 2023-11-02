@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
-import { Box, styled, Grid, Paper} from '@mui/material'
+import { Box, styled, Grid, Paper, Typography} from '@mui/material'
 import { useSelector } from 'react-redux'
-import { useJsApiLoader } from "@react-google-maps/api";
 
 /* Imported files */
 import Header from '../Components/HomePage/Header'
@@ -18,27 +17,18 @@ const SearchBox = styled(Box)`
 const SortBox = styled(Box)`
   padding: 20px;
   margin: 10px;
+  display: flex;
+  justify-content: space-between;
   `
 
 const HotelCard = styled(Paper)`
   margin: 20px 60px;
-  /* min-width: 200px;
-  width: 50%; */
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; */
 `
 
 const ShowHotels = () => {
-  // const [isMapOpen, setIsMapOpen] = useState(false)
   const hotelDetails = useSelector((state) => state.hotels);
   const places = hotelDetails.places 
-
-  const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-    libraries: ['places']
-  });
+  const isloaded = useSelector((state)=>state.details)
 
   return (
     <div>
@@ -46,8 +36,12 @@ const ShowHotels = () => {
       <SearchBox>
         <SearchComponent />
       </SearchBox>
-      <SortBox> Map and Sort </SortBox>
-      <Box>{places.length}No of Properties</Box>
+      <SortBox>
+        <Typography>{places.length}No of Properties</Typography>
+        <Typography>Map ToggleBtn</Typography>
+        <Typography>Sort</Typography>
+      </SortBox>
+
       <Grid container spacing={2}>
         <Grid item>
           {places?.map((place, i) => (
@@ -55,13 +49,10 @@ const ShowHotels = () => {
               <Hotels place={place} />
             </HotelCard>
           ))}
-          {/* <HotelCard elevation={5}>
-            <Hotels />
-          </HotelCard> */}
         </Grid>
-        <Grid item>{/* <GoogleMap /> */}</Grid>
+        <Grid item></Grid>
       </Grid>
-   {isLoaded ? <GoogleMap /> : <div>Loading....</div>}
+      {isloaded ? <GoogleMap /> : <div>Loading....</div>}
     </div>
   );
 }

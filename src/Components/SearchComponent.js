@@ -5,7 +5,8 @@ import { styled, Box, Grid, Menu, Button, MenuItem, Typography } from "@mui/mate
 import { DateRange } from "react-date-range";
 import { addDays } from "date-fns";
 import format from "date-fns/format";
-import {Autocomplete} from '@react-google-maps/api'
+import { Autocomplete } from "@react-google-maps/api";
+
 
 import BedIcon from "@mui/icons-material/Bed";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -59,7 +60,7 @@ const SearchBtn = styled(Button)`
 
 const SearchComponent = () => {
   const [destination, setDestination] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [range, setRange] = useState([
     {
       startDate: new Date(),
@@ -94,48 +95,42 @@ const SearchComponent = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const [rooms, setRooms] = useState(1)
-  const [adults, setAdults] = useState(1)
-  const [children, setChildren] = useState(0)
+  const [rooms, setRooms] = useState(1);
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
 
-  const increseRooms = ()=>{
-    if(rooms < 11)
-    setRooms((prestate) => prestate+1)
-  }
-  const decreseRooms = ()=>{
-    if(rooms > 1)
-    setRooms((prestate) => prestate-1)
-  }
-  const addAdults = ()=>{
-    if(adults < 11)
-    setAdults((prestate) => prestate+1)
-  }
-  const removeAdults = ()=>{
-    if(adults > 1)
-    setAdults((prestate) => prestate - 1);
-  }
-  const addChildren = ()=>{
-    if(children < 20)
-    setChildren((prestate) => prestate + 1);
-  }
-  const removeChildren = ()=>{
-    if(children > 0)
-    setChildren((prestate) => prestate - 1);
-  }
+  const increseRooms = () => {
+    if (rooms < 11) setRooms((prestate) => prestate + 1);
+  };
+  const decreseRooms = () => {
+    if (rooms > 1) setRooms((prestate) => prestate - 1);
+  };
+  const addAdults = () => {
+    if (adults < 11) setAdults((prestate) => prestate + 1);
+  };
+  const removeAdults = () => {
+    if (adults > 1) setAdults((prestate) => prestate - 1);
+  };
+  const addChildren = () => {
+    if (children < 20) setChildren((prestate) => prestate + 1);
+  };
+  const removeChildren = () => {
+    if (children > 0) setChildren((prestate) => prestate - 1);
+  };
 
   // storing all hotel details in redux global store
-  const dispatch = useDispatch()
-  const {loading}  = useSelector((state) => state.hotels);
+  const dispatch = useDispatch();
+  const { loading } = useSelector((state) => state.hotels);
 
-  const handleSumbit = async(e)=> {
+  const handleSumbit = async (e) => {
     e.preventDefault();
-    dispatch(gettingDetails())
-    console.log('call api')
+    dispatch(gettingDetails());
+    console.log("call api");
     const data = await getHotels();
-    console.log('got response')
-    dispatch(getHotelData(data))
+    console.log("got response");
+    dispatch(getHotelData(data));
     navigate("/hotels");
-  }
+  };
 
   return (
     <Container container spacing={2}>
@@ -222,9 +217,11 @@ const SearchComponent = () => {
             </Box>
           </Items>
         </Menu>
-        {loading ? (<Loader open={loading} />) :(
-        <SearchBtn onClick={handleSumbit}>Search</SearchBtn>
-         )}
+        {loading ? (
+          <Loader open={loading} />
+        ) : (
+          <SearchBtn onClick={handleSumbit}>Search</SearchBtn>
+        )}
       </Individual>
     </Container>
   );

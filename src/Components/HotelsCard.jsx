@@ -22,6 +22,7 @@ import place from './A_dummy data.json'
 import { singleHotelDetails } from "../api/getHotels";
 import { getSingleHotelDetails, gettingDetails } from "../redux/SearchSlice";
 import { cardHotel } from "../assests/ImageUrl";
+import Loader from "./Loader";
 
 //Component styles
 const MediaCard = styled(CardMedia)`
@@ -51,7 +52,6 @@ const AvaBtn = styled(Button)`
 
 const Hotels = ({ place }) => {
 // const Hotels = () => {
-// console.log(place)
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.hotels);
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ const Hotels = ({ place }) => {
         const price = 800;
         return price
      }
-    const reservePrice = place.price?.slice(1, 3) * 80;
+    const reservePrice = place.price.slice(1, 3) * 80;
     return reservePrice;
   };
   // storing singlehotel in redux store
@@ -146,9 +146,13 @@ const Hotels = ({ place }) => {
                     ₹ {price()}
                   </Typography>
                   <Typography>Gst here</Typography>
-                  <AvaBtn>
-                    See Avalibilty <ChevronRightIcon />
-                  </AvaBtn>
+                  {loading ? (
+                    <Loader open={loading} />
+                  ) : (
+                    <AvaBtn>
+                      See Avalibilty <ChevronRightIcon />
+                    </AvaBtn>
+                  )}
                 </Box>
               </FlexBox>
             </CardContent>
@@ -161,14 +165,3 @@ const Hotels = ({ place }) => {
 
 export default Hotels;
 
-
-{
-  /* <Box>
-    <Link to={place.business_listings.mobile_contacts[0].value}>
-      Contacts
-    </Link>
-  </Box>
-  <Box>
-    <Link to={place.special_offers.mobile[0].headline}>Offers</Link>
-  </Box> */
-}

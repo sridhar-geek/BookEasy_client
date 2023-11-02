@@ -5,8 +5,9 @@ import { persistReducer,persistStore } from 'redux-persist'
     /**Import functions */
 import userReducer from '../redux/userSlice'
 import HotelReducer from '../redux/SearchSlice'
+import DetailsReducer from '../redux/DetailsSlice'
 
-const rootReducer =  combineReducers({user:userReducer, hotels: HotelReducer})
+const rootReducer =  combineReducers({user:userReducer, hotels: HotelReducer, details: DetailsReducer})
 const persitsConfig ={
     key: 'root',
     version: 1,
