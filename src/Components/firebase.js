@@ -1,8 +1,5 @@
 import { initializeApp } from "firebase/app";
 
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: `${process.env.REACT_APP_FIREFOX_APIKEY}`,
   authDomain: "book-easy-8711f.firebaseapp.com",

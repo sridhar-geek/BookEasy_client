@@ -19,7 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 import place from './A_dummy data.json'
 /* Imported files */
-import { singleHotelDetails } from "../api/getHotels";
+import { getApiData } from "../api/getHotels";
 import { getSingleHotelDetails, gettingDetails } from "../redux/SearchSlice";
 import { cardHotel } from "../assests/ImageUrl";
 import Loader from "./Loader";
@@ -70,7 +70,7 @@ const Hotels = ({ place }) => {
   // storing singlehotel in redux store
   const handleClick = async (locationId) => {
     dispatch(gettingDetails());
-    const data = await singleHotelDetails(locationId);
+    const data = await getApiData(`hotels/get-details?location_id=${locationId}`);
     console.log(data)
     dispatch(getSingleHotelDetails(data));
     navigate("/hotelDetails");

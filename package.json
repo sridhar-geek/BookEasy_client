@@ -50,5 +50,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://book-easy-server.vercel.app/"
+  "proxy": "https://localhost:5000"
 }

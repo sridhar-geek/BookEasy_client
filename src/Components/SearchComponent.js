@@ -16,7 +16,7 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
 /* Imported files */
-import { getHotels } from "../api/getHotels";
+import { getApiData } from "../api/getHotels";
 import {getHotelData, gettingDetails } from '../redux/SearchSlice'
 import Loader from "./Loader";
 
@@ -121,12 +121,15 @@ const SearchComponent = () => {
   // storing all hotel details in redux global store
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.hotels);
-
+const latitude = 17.68
+const longitude = 83.20
   const handleSumbit = async (e) => {
     e.preventDefault();
     dispatch(gettingDetails());
     // console.log("call api");
-    const data = await getHotels();
+    const data = await getApiData(
+      `hotels/list-by-latlng?latitude=${latitude}&longitude=${longitude}`
+    );
     // console.log("got response");
     dispatch(getHotelData(data));
     navigate("/hotels");
