@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  isLoaded: false,
+  details : null,
 }
 
 const DetailsSlice = createSlice({
@@ -9,7 +9,7 @@ const DetailsSlice = createSlice({
   initialState,
   reducers: {
     sotreDetails : (state, action)=> {
-        state.isLoaded = action.payload
+        state.details =action.payload
     }
   }  
 })

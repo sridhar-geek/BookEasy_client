@@ -31,7 +31,7 @@ const User = ({ user }) => {
       dispatch(logout());
       toast.success("user logout successful");
     } catch (error) {
-      // console.log(error);
+      console.error(error);
     }
   };
 

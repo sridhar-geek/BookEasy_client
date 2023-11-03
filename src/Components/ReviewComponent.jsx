@@ -8,8 +8,7 @@ import HotelData from "./B_dummy data.json";
 
 const ReviewComponent = () => {
    const singleHotel = useSelector((state) => state.hotels);
-  const details = singleHotel.hotelDetails[0];
-  // console.log(details.rating)
+  const details = singleHotel.hotelDetails;
 
   return (
     <>

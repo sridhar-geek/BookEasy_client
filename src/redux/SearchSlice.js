@@ -20,7 +20,7 @@ const HotelSlice = createSlice({
         getSingleHotelDetails: (state, action) => {
             state.hotelDetails = action.payload;
             state.loading = false
-        }
+        },
     }
 })
 

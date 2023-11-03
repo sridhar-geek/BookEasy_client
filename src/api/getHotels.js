@@ -13,11 +13,10 @@ export const getApiData = async (url) => {
         "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com",
       },
     });
-    console.log(data);
     return data;
   } catch (error) {
     toast.error("error in retreving all hotels");
-    console.log(error);
+    console.error(error);
   }
 };
 

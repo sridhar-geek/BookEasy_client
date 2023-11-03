@@ -45,7 +45,6 @@ const SocialLogin = () => {
       toast.success("Login successful");
       Navigate("/");
     } catch (error) {
-      // console.log(error);
       dispatch(loginFailure(error));
       toast.error("something went wrong, please try again later");
     }

@@ -11,14 +11,12 @@ import {
   Paper,
 } from "@mui/material";
 import { Link } from "react-router-dom";
-import { useJsApiLoader } from "@react-google-maps/api";
-import { useDispatch } from "react-redux";
 
 import Banner_Image from "../assests/Website Main Image.jpg";
 import { cardAttraction, cardHotel } from "../assests/ImageUrl";
 import Header from "../Components/HomePage/Header";
 import SearchComponent from "../Components/SearchComponent";
-import {sotreDetails} from '../redux/DetailsSlice'
+
 const WelcomeNote = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -26,8 +24,9 @@ const WelcomeNote = styled(Box)`
   align-items: center;
   height: 90vh;
   width: 100%;
-  /* background: url("https://c4.wallpaperflare.com/wallpaper/849/275/712/resort-maui-hawaii-widescreen-free-download-1920%C3%971080-wallpaper-preview.jpg")
-    no-repeat; */
+  background: url("https://c4.wallpaperflare.com/wallpaper/849/275/712/resort-maui-hawaii-widescreen-free-download-1920%C3%971080-wallpaper-preview.jpg")
+    no-repeat;
+  /* background-image: url("../assests/Website Main Image.jpg"); */
 `;
 const SearchBox = styled(Paper)`
   padding: 25px;
@@ -46,12 +45,6 @@ const CardHover = styled(Card)`
 `;
 
 const Home = () => {
-    const { isLoaded } = useJsApiLoader({
-      googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
-      libraries: ["places"],
-    });
-    const dispatch = useDispatch()
-    dispatch(sotreDetails(isLoaded))
   return (
     <div>
       <Header />

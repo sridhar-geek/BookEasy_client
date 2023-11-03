@@ -91,10 +91,7 @@ const Link = styled("a")`
 `;
 const HotelDetails = () => {
   const singleHotel = useSelector((state) => state.hotels);
-  // console.log(singleHotel)
-  // console.log(singleHotel.hotelDetails)
   const details = singleHotel.hotelDetails;
-// console.log(details.address)
 
   return (
     <div>
@@ -166,7 +163,7 @@ const HotelDetails = () => {
                 </Typography>
               </Stack>
               <ReviewBox>
-                {/* <ReviewComponent /> */}
+                <ReviewComponent />
                 <Link href={details.write_review} target="blank">
                   Write your Experience
                 </Link>
