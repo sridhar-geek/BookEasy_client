@@ -85,11 +85,12 @@ const ShowHotels = () => {
 
       <Grid container spacing={2}>
         <Grid item>
-          {places?.map((place, i) => (
+          {/* {places?.map((place, i) => (
             <HotelCard key={i} elevation={4}>
               <Hotels place={place} />
             </HotelCard>
-          ))}
+          ))} */}
+          <Hotels />
         </Grid>
         <Grid item></Grid>
       </Grid>

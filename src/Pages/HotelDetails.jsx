@@ -15,7 +15,7 @@ import StarIcon from "@mui/icons-material/Star";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailIcon from "@mui/icons-material/Mail";
 
-// import HotelData from "../Components/B_dummy data.json";
+// import details from "../Components/B_dummy data.json";
 import Header from "../Components/HomePage/Header";
 import { HotelRoomImages } from "../assests/ImageUrl";
 import ReviewComponent from "../Components/ReviewComponent";

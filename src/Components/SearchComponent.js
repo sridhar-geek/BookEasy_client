@@ -23,7 +23,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 /* Imported files */
 import { getApiData } from "../api/getHotels";
 import { getHotelData, gettingDetails } from "../redux/SearchSlice";
-import {sotreDetails} from '../redux/DetailsSlice'
+import {sotreDetails,date} from '../redux/DetailsSlice'
 import Loader from "./Loader";
 
 const ACTIONS = {
@@ -110,6 +110,7 @@ const SearchComponent = () => {
       key: "selection",
     },
   ]);
+  // console.log((range[0].endDate - range[0].startDate)/(24*3600000))
   const [openDate, setOpenDate] = useState(false);
   // handling calenderbox
   const reference = useRef(null);
@@ -151,13 +152,14 @@ const SearchComponent = () => {
   const longitude = 83.2;
   const handleSumbit = async (e) => {
     e.preventDefault();
-    dispatch(gettingDetails());
+    // dispatch(gettingDetails());
    
-    const data = await getApiData(
-      `hotels/list-by-latlng?latitude=${latitude}&longitude=${longitude}`
-    );
-    dispatch(getHotelData(data));
+    // const data = await getApiData(
+    //   `hotels/list-by-latlng?latitude=${latitude}&longitude=${longitude}`
+    // );
+    // dispatch(getHotelData(data));
     dispatch(sotreDetails(state))
+    dispatch(date(range[0]))
     navigate("/hotels");
   };
 

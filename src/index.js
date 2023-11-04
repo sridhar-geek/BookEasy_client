@@ -20,4 +20,6 @@ root.render(
   </Provider>
 );
   // "proxy": "https://book-easy-server.vercel.app/"
+      // "@react-google-maps/api": "^2.19.2",
+
 

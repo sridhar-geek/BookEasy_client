@@ -21,8 +21,10 @@ import place from './A_dummy data.json'
 /* Imported files */
 import { getApiData } from "../api/getHotels";
 import { getSingleHotelDetails, gettingDetails } from "../redux/SearchSlice";
+import { price } from "../redux/DetailsSlice";
 import { cardHotel } from "../assests/ImageUrl";
 import Loader from "./Loader";
+
 
 //Component styles
 const MediaCard = styled(CardMedia)`
@@ -50,30 +52,38 @@ const AvaBtn = styled(Button)`
   }
 `;
 
-const Hotels = ({ place }) => {
-// const Hotels = () => {
+// const Hotels = ({ place }) => {
+const Hotels = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.hotels);
+  const { details, date } = useSelector((state) => state.details);
   const navigate = useNavigate();
-
+  const noOfDays = (date.endDate - date.startDate) / (24 * 3600000);
 // to remove dummy data from api
   const dulipcate = place.ad_position;
+
     // calcluating price for hotel based on no.of days and no.of People
-  const price = () => {
+  const calucaltePrice = () => {
+    const basePrice =
+      details.rooms * 300 + details.adults * 100 + details.children * 50;
      if(!place.price){
-        const price = 800;
+        const price = 800 + basePrice + noOfDays*400
         return price
      }
-    const reservePrice = place.price.slice(1, 3) * 80;
+    const reservePrice =
+      place.price.slice(1, 3) * 50 + basePrice + noOfDays*400
     return reservePrice;
   };
+
   // storing singlehotel in redux store
   const handleClick = async (locationId) => {
-    dispatch(gettingDetails());
-    const data = await getApiData(`hotels/get-details?location_id=${locationId}`);
-    dispatch(getSingleHotelDetails(data[0]));
+    // dispatch(gettingDetails());
+    // const data = await getApiData(`hotels/get-details?location_id=${locationId}`);
+    // dispatch(getSingleHotelDetails(data[0]));
+    dispatch(price(calucaltePrice()));
     navigate("/hotelDetails");
   };
+
 
   return (
     <>
@@ -139,12 +149,11 @@ const Hotels = ({ place }) => {
                 </Box>
                 <Box>
                   <Typography variant="body2" color="text.secondary">
-                    3 nights and 4 adults
+                    {noOfDays} days {details.adults} adults {details.children>0 && <>and {details.children} children </> }
                   </Typography>
                   <Typography variant="h6" marginLeft={2}>
-                    ₹ {price()}
+                    ₹ {calucaltePrice()}
                   </Typography>
-                  <Typography>Gst here</Typography>
                   {loading ? (
                     <Loader open={loading} />
                   ) : (

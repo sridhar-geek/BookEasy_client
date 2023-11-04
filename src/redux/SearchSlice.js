@@ -21,6 +21,7 @@ const HotelSlice = createSlice({
             state.hotelDetails = action.payload;
             state.loading = false
         },
+
     }
 })
 
