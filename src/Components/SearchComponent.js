@@ -38,24 +38,43 @@ const ACTIONS = {
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.RM_IN:
-      if (state.rooms < 10) return { ...state, rooms: state.rooms + 1 };
-      else return{...state}
+      if (state.rooms < 8) {
+        if(state.adults < state.rooms) return{ ...state, adults: state.rooms}
+        return { ...state, rooms: state.rooms + 1 };
+      }
+      else {
+        window.alert('max 8 room can be selected')
+        return { ...state };
+      } 
     case ACTIONS.RM_DC:
       if (state.rooms > 1) return { ...state, rooms: state.rooms - 1 };
-      else return{...state}
+      else {
+        window.alert('min 1 room required')
+        return { ...state };
+      }
     case ACTIONS.AD_IN:
-      if (state.adults < 10) return { ...state, adults: state.adults + 1 };
-      else return{...state}
+      if (state.adults < 16) return { ...state, adults: state.adults + 1 };
+      else {
+        window.alert('max 16 adults are allowed at a time')
+        return { ...state };
+      }
     case ACTIONS.AD_DC:
       if (state.adults > 1) return { ...state, adults: state.adults - 1 };
-      else return{...state}
+      else {
+        window.alert('min 1 adult required')
+        return { ...state };
+      }
     case ACTIONS.CH_IN:
-      if (state.children < 15)
+      if (state.children < 16)
         return { ...state, children: state.children + 1 };
-      else return{...state}
+      else {
+        window.alert('max 16 children allowed at a time')
+        return { ...state };
+      }
     case ACTIONS.CH_DC:
       if (state.children > 0) return { ...state, children: state.children - 1 };
-      else return{...state}
+      else
+        return { ...state };
     default:
       return {...state };
   }
@@ -110,7 +129,6 @@ const SearchComponent = () => {
       key: "selection",
     },
   ]);
-  // console.log((range[0].endDate - range[0].startDate)/(24*3600000))
   const [openDate, setOpenDate] = useState(false);
   // handling calenderbox
   const reference = useRef(null);

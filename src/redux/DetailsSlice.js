@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  details : null,
+  room_adults : null,
   date : null,
   price : 0,
 }
@@ -11,7 +11,7 @@ const DetailsSlice = createSlice({
   initialState,
   reducers: {
     sotreDetails : (state, action)=> {
-        state.details =action.payload
+        state.room_adults = action.payload;
     },
     date: (state, action)=>{
       state.date = action.payload

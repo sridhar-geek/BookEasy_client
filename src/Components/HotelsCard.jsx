@@ -56,7 +56,7 @@ const AvaBtn = styled(Button)`
 const Hotels = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.hotels);
-  const { details, date } = useSelector((state) => state.details);
+  const { room_adults, date } = useSelector((state) => state.details);
   const navigate = useNavigate();
   const noOfDays = (date.endDate - date.startDate) / (24 * 3600000);
 // to remove dummy data from api
@@ -64,19 +64,28 @@ const Hotels = () => {
 
     // calcluating price for hotel based on no.of days and no.of People
   const calucaltePrice = () => {
+    let dayCost = 0
     const basePrice =
-      details.rooms * 300 + details.adults * 100 + details.children * 50;
+      room_adults.rooms * 300 +
+      room_adults.adults * 100 +
+      room_adults.children * 50;
+    if(noOfDays<2)
+      dayCost = 0;
+    else
+    dayCost = noOfDays*300
      if(!place.price){
-        const price = 800 + basePrice + noOfDays*400
+        const price = 800 + basePrice + dayCost
         return price
      }
     const reservePrice =
-      place.price.slice(1, 3) * 50 + basePrice + noOfDays*400
+      place.price.slice(1, 3) * 20 + basePrice + dayCost
     return reservePrice;
   };
 
+
   // storing singlehotel in redux store
-  const handleClick = async (locationId) => {
+  // const handleClick = async (locationId) => {
+  const handleClick =  () => {
     // dispatch(gettingDetails());
     // const data = await getApiData(`hotels/get-details?location_id=${locationId}`);
     // dispatch(getSingleHotelDetails(data[0]));
@@ -149,7 +158,10 @@ const Hotels = () => {
                 </Box>
                 <Box>
                   <Typography variant="body2" color="text.secondary">
-                    {noOfDays} days {details.adults} adults {details.children>0 && <>and {details.children} children </> }
+                    {noOfDays} days {room_adults.adults} adults
+                    {room_adults.children > 0 && (
+                      <>and {room_adults.children} children </>
+                    )}
                   </Typography>
                   <Typography variant="h6" marginLeft={2}>
                     ₹ {calucaltePrice()}

@@ -4,15 +4,8 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 // Import functions from another files
-import Home from "./Pages/Home";
-import Login from "./Pages/Login";
-import Signup from "./Pages/Signup";
-import Footer from "./Components/Footer";
-import ShowHotels from "./Pages/ShowHotels";
-import Attractions from "./Pages/Attractions";
-import Profile from "./Pages/Profile";
-import ProtectedRoute from "./Components/ProtectedRoute";
-import HotelDetails from "./Pages/HotelDetails";
+import {Home, Login, Signup, Footer, ShowHotels, Attractions, Profile, ProtectedRoute, HotelDetails, Payment} from './Pages'
+
 
 function App() {
   return (
@@ -28,6 +21,7 @@ function App() {
         <Route path="/hotelDetails" element={ <HotelDetails /> } />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
+          <Route path="/payment" element={<Payment />} />
         </Route>
       </Routes>
       <Footer />
