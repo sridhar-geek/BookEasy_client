@@ -17,12 +17,11 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import place from './A_dummy data.json'
+// import place from './A_dummy data.json'
 /* Imported files */
 import { getApiData } from "../api/getHotels";
 import { getSingleHotelDetails, gettingDetails } from "../redux/SearchSlice";
 import { price } from "../redux/DetailsSlice";
-import { cardHotel } from "../assests/ImageUrl";
 import Loader from "./Loader";
 
 
@@ -52,8 +51,8 @@ const AvaBtn = styled(Button)`
   }
 `;
 
-// const Hotels = ({ place }) => {
-const Hotels = () => {
+const Hotels = ({ place }) => {
+// const Hotels = () => {
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.hotels);
   const { room_adults, date } = useSelector((state) => state.details);
@@ -84,11 +83,11 @@ const Hotels = () => {
 
 
   // storing singlehotel in redux store
-  // const handleClick = async (locationId) => {
-  const handleClick =  () => {
-    // dispatch(gettingDetails());
-    // const data = await getApiData(`hotels/get-details?location_id=${locationId}`);
-    // dispatch(getSingleHotelDetails(data[0]));
+  const handleClick = async (locationId) => {
+  // const handleClick =  () => {
+    dispatch(gettingDetails());
+    const data = await getApiData(`hotels/get-details?location_id=${locationId}`);
+    dispatch(getSingleHotelDetails(data[0]));
     dispatch(price(calucaltePrice()));
     navigate("/hotelDetails");
   };
@@ -107,8 +106,7 @@ const Hotels = () => {
               image={
                 place.photo
                   ? place.photo.images.large.url
-                  : // : {cardHotel}
-                    "https://imgs.search.brave.com/aPFnAJCGtCjFvRI5vCCVs1edHRYSG5PiucHMlkDOaw8/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTIw/NDQzMDYwL3Bob3Rv/L3RoZS10YWotbWFo/YWwtcGFsYWNlLWhv/dGVsLWF0LWR1c2su/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PUVKa1ZlZUxtXzZu/eW5zN2JmVWxDamdz/UE40STRSOWd0Q3Nm/a3RZX2dsOWs9"
+                  : "https://imgs.search.brave.com/aPFnAJCGtCjFvRI5vCCVs1edHRYSG5PiucHMlkDOaw8/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTIw/NDQzMDYwL3Bob3Rv/L3RoZS10YWotbWFo/YWwtcGFsYWNlLWhv/dGVsLWF0LWR1c2su/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PUVKa1ZlZUxtXzZu/eW5zN2JmVWxDamdz/UE40STRSOWd0Q3Nm/a3RZX2dsOWs9"
               }
               alt="hotel image"
             />

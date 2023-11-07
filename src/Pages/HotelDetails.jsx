@@ -103,29 +103,31 @@ const ReviewBox = styled(Box)`
   border-radius: 15px;
   margin-top: 15px;
 `;
-const Link = styled("a")`
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 5px;
-  background-color: orangered;
-  color: white;
-  &:hover {
-    background-color: red;
-  }
-`;
+// const Link = styled("a")`
+//   text-decoration: none;
+//   padding: 10px;
+//   border-radius: 5px;
+//   background-color: orangered;
+//   color: white;
+//   &:hover {
+//     background-color: red;
+//   }
+// `;
 const PriceBox = styled(Box)`
   display: flex;
   justify-content: space-between;
   padding: 10px;
   `;
 const HotelDetails = () => {
-  // const singleHotel = useSelector((state) => state.hotels);
-  // const details = singleHotel.hotelDetails;
+  const singleHotel = useSelector((state) => state.hotels);
+  const details = singleHotel.hotelDetails;
 
+  console.log('details in Hotel Card'+ details)
   const loggedUser = useSelector((state) => state.user);
   const user = loggedUser.currentUser;
   const { room_adults, date, price } = useSelector((state) => state.details);
 
+  console.log(date.startDate)
   const [showAll, setShowAll] = useState(false);
   const itemsToShow = showAll ? 20 : 10;
 
@@ -138,19 +140,17 @@ const HotelDetails = () => {
   const gst = (price * 15) / 100;
   const discount = (price * 20) / 100;
   const total = price + gst - discount;
-  const stDt = date.startDate.toString();
-  const dateParts = stDt.split(" ");
-  const stDay = dateParts[0];
-  const stMonth = dateParts[1];
-  const stDate = dateParts[2];
 
-  const edDt = date.endDate.toString();
-  const datePart = edDt.split(" ");
-  const edDay = datePart[0];
-  const edMonth = datePart[1];
-  const edDate = datePart[2];
-
-    const details = HotelData.data[0];
+  date.startDate.setHours(0, 0, 0, 0);
+  date.endDate.setHours(0, 0, 0, 0);
+  let options = {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  };
+  const checkIn = date.startDate.toLocaleDateString("en-US", options);
+  const checkOut = date.endDate.toLocaleDateString("en-US", options);
+    // const details = HotelData.data[0];
   return (
     <div>
       <Header />
@@ -265,7 +265,7 @@ const HotelDetails = () => {
                   }}
                 >
                   <Typography variant="h6">
-                    {stDay} {stMonth} {stDate} to {edDay} {edMonth} {edDate}
+                    {checkIn} to {checkOut}
                   </Typography>
                 </Box>
                 <Box>

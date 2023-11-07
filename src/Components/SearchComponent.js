@@ -1,17 +1,11 @@
 import { useState, useEffect, useRef, useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {
-  styled,
-  Box,
-  Grid,
-  Menu,
-  Button,
-  Typography,
-} from "@mui/material";
+import { styled, Box, Grid, Menu, Button, Typography } from "@mui/material";
 import { DateRange } from "react-date-range";
 import { addDays } from "date-fns";
 import format from "date-fns/format";
+
 
 import BedIcon from "@mui/icons-material/Bed";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -23,7 +17,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 /* Imported files */
 import { getApiData } from "../api/getHotels";
 import { getHotelData, gettingDetails } from "../redux/SearchSlice";
-import {sotreDetails,date} from '../redux/DetailsSlice'
+import { sotreDetails, date } from "../redux/DetailsSlice";
 import Loader from "./Loader";
 
 const ACTIONS = {
@@ -39,44 +33,43 @@ const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.RM_IN:
       if (state.rooms < 8) {
-        if(state.adults < state.rooms) return{ ...state, adults: state.rooms}
+        if (state.adults < state.rooms)
+          return { ...state, adults: state.rooms };
         return { ...state, rooms: state.rooms + 1 };
-      }
-      else {
-        window.alert('max 8 room can be selected')
+      } else {
+        window.alert("max 8 room can be selected");
         return { ...state };
-      } 
+      }
     case ACTIONS.RM_DC:
       if (state.rooms > 1) return { ...state, rooms: state.rooms - 1 };
       else {
-        window.alert('min 1 room required')
+        window.alert("min 1 room required");
         return { ...state };
       }
     case ACTIONS.AD_IN:
       if (state.adults < 16) return { ...state, adults: state.adults + 1 };
       else {
-        window.alert('max 16 adults are allowed at a time')
+        window.alert("max 16 adults are allowed at a time");
         return { ...state };
       }
     case ACTIONS.AD_DC:
       if (state.adults > 1) return { ...state, adults: state.adults - 1 };
       else {
-        window.alert('min 1 adult required')
+        window.alert("min 1 adult required");
         return { ...state };
       }
     case ACTIONS.CH_IN:
       if (state.children < 16)
         return { ...state, children: state.children + 1 };
       else {
-        window.alert('max 16 children allowed at a time')
+        window.alert("max 16 children allowed at a time");
         return { ...state };
       }
     case ACTIONS.CH_DC:
       if (state.children > 0) return { ...state, children: state.children - 1 };
-      else
-        return { ...state };
+      else return { ...state };
     default:
-      return {...state };
+      return { ...state };
   }
 };
 
@@ -125,13 +118,14 @@ const SearchComponent = () => {
   const [range, setRange] = useState([
     {
       startDate: new Date(),
-      endDate: addDays(new Date(), 7),
+      endDate: addDays(new Date(), 4),
       key: "selection",
     },
   ]);
   const [openDate, setOpenDate] = useState(false);
   // handling calenderbox
   const reference = useRef(null);
+
   useEffect(() => {
     document.addEventListener("keydown", hideOnEscape, true);
     document.addEventListener("click", hideOnOutsideClick, true);
@@ -170,125 +164,127 @@ const SearchComponent = () => {
   const longitude = 83.2;
   const handleSumbit = async (e) => {
     e.preventDefault();
-    // dispatch(gettingDetails());
-   
-    // const data = await getApiData(
-    //   `hotels/list-by-latlng?latitude=${latitude}&longitude=${longitude}`
-    // );
-    // dispatch(getHotelData(data));
-    dispatch(sotreDetails(state))
-    dispatch(date(range[0]))
+    dispatch(gettingDetails());
+
+    const data = await getApiData(
+      `hotels/list-by-latlng?latitude=${latitude}&longitude=${longitude}`
+    );
+    dispatch(getHotelData(data));
+    dispatch(sotreDetails(state));
+    dispatch(date(range[0]));
     navigate("/hotels");
   };
-
   return (
+          <form onSubmit={handleSumbit}>
     <Container container spacing={2}>
-      <Individual item xs={8} md={6} lg={4}>
-        <BedIcon />
-        <input
-          type="text"
-          required
-          placeholder="Where are you going..."
-          value={destination}
-          onChange={(e) => setDestination(e.target.value)}
-          style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
-        />
-      </Individual>
-      <Individual item xs={8} md={6} lg={4}>
-        <CalendarMonthIcon />
-        <input
-          type="text"
-          value={`${format(range[0].startDate, "ccc-dd-MMM")}  to ${format(
-            range[0].endDate,
-            "ccc-dd-MMM"
-          )}`}
-          readOnly
-          placeholder="Check-in-Date  Check-out-date"
-          onClick={() => setOpenDate((prestate) => !prestate)}
-          style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
-        />
-        <Calender ref={reference}>
-          {openDate && (
-            <DateRange
-              onChange={(item) => setRange([item.selection])}
-              editableDateInputs={true}
-              moveRangeOnFirstSelection={false}
-              ranges={range}
-              months={2}
-              direction="horizontal"
-              minDate={new Date()}
-            />
+        <Individual item xs={8} md={6} lg={4}>
+          <BedIcon />
+          <input
+            type="text"
+            required
+            placeholder="Where are you going..."
+            value={destination}
+            onChange={(e) => setDestination(e.target.value)}
+            style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
+          />
+        </Individual>
+        <Individual item xs={8} md={6} lg={4}>
+          <CalendarMonthIcon />
+          <input
+            type="text"
+            required
+            value={`${format(range[0].startDate, "ccc-dd-MMM")}  to ${format(
+              range[0].endDate,
+              "ccc-dd-MMM"
+            )}`}
+            readOnly
+            placeholder="Check-in-Date  Check-out-date"
+            onClick={() => setOpenDate((prestate) => !prestate)}
+            style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
+          />
+          <Calender ref={reference}>
+            {openDate && (
+              <DateRange
+                onChange={(item) => setRange([item.selection])}
+                editableDateInputs={true}
+                moveRangeOnFirstSelection={false}
+                ranges={range}
+                months={2}
+                direction="horizontal"
+                minDate={new Date()}
+              />
+            )}
+          </Calender>
+        </Individual>
+        <Individual item xs={8} md={6} lg={4}>
+          <PeopleAltIcon />
+          <SelectPeople
+            type="text"
+            onClick={handleClick}
+            readOnly
+            value={`${state.rooms}Rooms ${state.adults}Adults ${state.children}Children`}
+            style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
+          />
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <Items>
+              <Typography>Room</Typography>
+              <Box>
+                <Button
+                  variant="outlined"
+                  onClick={() => reduceFtn({ type: ACTIONS.RM_IN })}
+                >
+                  +
+                </Button>
+                {state.rooms}
+                <Button
+                  variant="outlined"
+                  onClick={() => reduceFtn({ type: ACTIONS.RM_DC })}
+                >
+                  -
+                </Button>
+              </Box>
+            </Items>
+            <Items>
+              <Typography>Adults</Typography>
+              <Box>
+                <Button onClick={() => reduceFtn({ type: ACTIONS.AD_IN })}>
+                  +
+                </Button>
+                {state.adults}
+                <Button onClick={() => reduceFtn({ type: ACTIONS.AD_DC })}>
+                  -
+                </Button>
+              </Box>
+            </Items>
+            <Items>
+              <Typography>Children</Typography>
+              <Box>
+                <Button onClick={() => reduceFtn({ type: ACTIONS.CH_IN })}>
+                  +
+                </Button>
+                {state.children}
+                <Button onClick={() => reduceFtn({ type: ACTIONS.CH_DC })}>
+                  -
+                </Button>
+              </Box>
+            </Items>
+          </Menu>
+          {loading ? (
+            <Loader open={loading} />
+          ) : (
+            <SearchBtn type="submit">Search</SearchBtn>
           )}
-        </Calender>
-      </Individual>
-      <Individual item xs={8} md={6} lg={4}>
-        <PeopleAltIcon />
-        <SelectPeople
-          type="text"
-          onClick={handleClick}
-          readOnly
-          value={`${state.rooms}Rooms ${state.adults}Adults ${state.children}Children`}
-          style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
-        />
-        <Menu
-          id="basic-menu"
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}
-          MenuListProps={{
-            "aria-labelledby": "basic-button",
-          }}
-        >
-          <Items>
-            <Typography>Room</Typography>
-            <Box>
-              <Button
-                variant="outlined"
-                onClick={() => reduceFtn({ type: ACTIONS.RM_IN })}
-              >
-                +
-              </Button>
-              {state.rooms}
-              <Button
-                variant="outlined"
-                onClick={() => reduceFtn({ type: ACTIONS.RM_DC })}
-              >
-                -
-              </Button>
-            </Box>
-          </Items>
-          <Items>
-            <Typography>Adults</Typography>
-            <Box>
-              <Button onClick={() => reduceFtn({ type: ACTIONS.AD_IN })}>
-                +
-              </Button>
-              {state.adults}
-              <Button onClick={() => reduceFtn({ type: ACTIONS.AD_DC })}>
-                -
-              </Button>
-            </Box>
-          </Items>
-          <Items>
-            <Typography>Children</Typography>
-            <Box>
-              <Button onClick={() => reduceFtn({ type: ACTIONS.CH_IN })}>
-                +
-              </Button>
-              {state.children}
-              <Button onClick={() => reduceFtn({ type: ACTIONS.CH_DC })}>
-                -
-              </Button>
-            </Box>
-          </Items>
-        </Menu>
-        {loading ? (
-          <Loader open={loading} />
-        ) : (
-          <SearchBtn onClick={handleSumbit}>Search</SearchBtn>
-        )}
-      </Individual>
+        </Individual>
     </Container>
+          </form>
   );
 };
 
