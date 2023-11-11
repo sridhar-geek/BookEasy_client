@@ -1,7 +1,10 @@
+/** This component shows user profile pic if user exists other wise it shows login button */
+
 import { Button, styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
+/*Import modules from other files  */
 import ShowUserDetails from "./User";
 // styled components
 const LoginBtn = styled(Button)`
@@ -30,5 +33,3 @@ const Login_Signup = () => {
 };
 
 export default Login_Signup;
-
-// this component shows user profile pic if user exists other wise it shows login button

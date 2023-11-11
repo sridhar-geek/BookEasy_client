@@ -21,7 +21,7 @@ import axios from "axios";
 import Header from "../Components/LoginSingupHeader/Header";
 import {loginStart, loginFailure, loginSuccess} from '../redux/userSlice'
 import Loader from "../Components/Loader";
-import SocialLogin from "../Components/SocialLogin";
+import SocialLogin from "../Components/Google login/SocialLogin";
 
 // Component styles
 const Container = styled(Box)`
@@ -66,25 +66,26 @@ const Login = () => {
     const handleClickShowPassword = () => setShowPassword((show) => !show);
        const handleMouseDownPassword = (event) => {
          event.preventDefault();
-       };
+    };
 
 const formData = {
   email, 
   password
 }
-
+console.log(formData)
 // sending data for login
   const sumbitHandler = async (e) => {
     e.preventDefault();
     try {
       dispatch(loginStart())
-      const data = await axios.post('/api/auth/login', formData)
+      const data = await axios.post('http://localhost:5000/api/auth/login', formData)
       dispatch(loginSuccess(data.data))
       toast.success('user login successful')
       navigate('/')
-    } catch (error) {
+    } catch (err) {
       toast.error(error.response.data.msg)
       dispatch(loginFailure(error))
+      console.log(err)
     }
   };
   return (

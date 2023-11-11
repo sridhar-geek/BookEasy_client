@@ -1,4 +1,5 @@
-import React from "react";
+/** This is common  header  for only  login and signup pages  */
+
 import { AppBar, Box, Button, Toolbar, styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
@@ -7,9 +8,6 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import Logo from "../../assests/Hotel_logo.jpeg";
 
 // Component styles
-const Container = styled(AppBar)`
-  background-color: #282525;
-`;
 const RightContainer = styled(Box)`
   display: flex;
   justify-content: space-between;
@@ -36,7 +34,7 @@ const Image = styled("img")`
 `;
 const Login_Header = () => {
   return (
-    <Container elevation={1}>
+    <AppBar elevation={1}>
       <Wrapper>
         <Link to={"/"}>
           <Image src={Logo} alt="logo" />
@@ -50,10 +48,8 @@ const Login_Header = () => {
           </Link>
         </RightContainer>
       </Wrapper>
-    </Container>
+    </AppBar>
   );
 };
 
 export default Login_Header;
-
-// this is common  header  for only  login and signup pages

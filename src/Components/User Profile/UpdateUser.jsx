@@ -1,3 +1,5 @@
+/** Updates user information (photo, name, email and password) */
+
 import React, { useState, useRef, useEffect } from "react";
 import {
   Box,
@@ -24,10 +26,13 @@ import { toast } from "react-toastify";
 import axios from "axios";
 
 /**Imports components from another files */
-import Header from "../Components/HomePage/Header";
-import Loader from "./Loader";
-import { app } from "./firebase";
-import {updateUserFailure, updateUserStart, updateUserSuccess} from '../redux/userSlice'
+import Loader from "../Loader";
+import { app } from "../Google login/firebase";
+import {
+  updateUserFailure,
+  updateUserStart,
+  updateUserSuccess,
+} from "../../redux/userSlice";
 
 // Component styles
 const Container = styled(Box)`
@@ -55,7 +60,7 @@ const AvatarComp = styled(Avatar)`
   width: 120px;
   height: 120px;
   cursor: pointer;
-  margin-left: 20px ;
+  margin-left: 20px;
 `;
 
 const UpdateProfile = () => {
@@ -87,6 +92,7 @@ const UpdateProfile = () => {
       (snapshot) => {
         const progress =
           (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          setImageError(false)
         setImagePercent(Math.round(progress));
       },
       (error) => {
@@ -100,7 +106,7 @@ const UpdateProfile = () => {
     );
   };
 
-  // functions for redux toolkit
+  // retriewing data from user slice
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.user);
   const { currentUser } = useSelector((state) => state.user);
@@ -126,11 +132,8 @@ const UpdateProfile = () => {
 
   // pre populating user details in the update user route
   useEffect(() => {
-    const getDetails = () => {
       setName(currentUser.userDetails.name);
       setEmail(currentUser.userDetails.email);
-    };
-    getDetails();
   }, []);
 
   // sending data to updata user profile
@@ -141,21 +144,20 @@ const UpdateProfile = () => {
       try {
         dispatch(updateUserStart());
         const data = await axios.put(
-          `/api/user/${currentUser.userDetails._id}`,
+          `http:/localhost:5000/api/user/${currentUser.userDetails._id}`,
           formData
         );
         dispatch(updateUserSuccess(data.data));
         toast.success("Update successful");
-      } catch (error) {
-        toast.error(error.response.data.msg);
+      } catch (err) {
         dispatch(updateUserFailure(error));
+        toast.error(error.response.data.msg);
+        console.error(err);
       }
     }
   };
 
   return (
-    <>
-      <Header />
       <Container>
         <Wrapper>
           <form onSubmit={submitHandler}>
@@ -231,6 +233,7 @@ const UpdateProfile = () => {
             <OutlinedInput
               placeholder="Password"
               fullWidth
+              required
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -272,11 +275,8 @@ const UpdateProfile = () => {
           </form>
         </Wrapper>
       </Container>
-    </>
   );
 };
 
 export default UpdateProfile;
 
-
-// updates user profile and upload image to firebase storage

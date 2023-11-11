@@ -10,5 +10,5 @@ const ProtectedRoute = () => {
 
 export default ProtectedRoute;
 
-// this component use to protect user routes
-// it redirects to login page if user is not exists
+/** This component use to protect user routes
+ it redirects to login page if user is not exists */

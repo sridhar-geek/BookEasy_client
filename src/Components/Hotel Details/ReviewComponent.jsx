@@ -1,17 +1,18 @@
-import React from "react";
+/** Takes Each review from parent and display them in formated way */
+
 import { useSelector } from "react-redux";
 import {Avatar, Box, Paper, Typography} from '@mui/material'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
-// import HotelData from "./B_dummy data.json";
+import HotelData from "../B_dummy data.json";
 
 
 
 const ReviewComponent = () => {
-   const singleHotel = useSelector((state) => state.hotels);
-  const details = singleHotel.hotelDetails;
-  console.log({details})
+  //  const singleHotel = useSelector((state) => state.hotels);
+  // const details = singleHotel.hotelDetails;
+  // console.log({details})
 
-  // const details = HotelData.data[0]
+  const details = HotelData.data[0]
   return (
     <>
       {details.room_tips?.map((reviews, i) => (

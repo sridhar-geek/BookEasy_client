@@ -1,3 +1,5 @@
+/** Creating user reducers for updating and acessing user's data from all over the app */
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -69,4 +71,3 @@ export const {
 
 export default userSlice.reducer;
 
-//creates user reducers for updating and acessing user's data from all over the app

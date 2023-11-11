@@ -3,6 +3,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import {
   Box,
   Typography,
@@ -19,15 +20,17 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import MailIcon from "@mui/icons-material/Mail";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 
+// Imports from another file
 import HotelData from "../Components/B_dummy data.json";
-import Header from "../Components/HomePage/Header";
+import Header from "../Components/MainHeader/Header";
 import { HotelRoomImages } from "../assests/ImageUrl";
-import ReviewComponent from "../Components/ReviewComponent";
+import ReviewComponent from "../Components/Hotel Details/ReviewComponent";
 
-const GoogleMap =()=> {
-    const details = HotelData.data[0];
-const lat = Number(details.latitude);
-const lng = Number(details.longitude);
+// google map component
+const GoogleMap = () => {
+  const details = HotelData.data[0];
+  const lat = Number(details.latitude);
+  const lng = Number(details.longitude);
 
   return (
     <APIProvider apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
@@ -38,13 +41,13 @@ const lng = Number(details.longitude);
           mapId={process.env.REACT_APP_MAPID}
         >
           <Marker position={{ lat, lng }} />
-
         </Map>
       </div>
     </APIProvider>
   );
-}
+};
 
+// creates slider of hotel images
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1200 },
@@ -117,30 +120,28 @@ const PriceBox = styled(Box)`
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  `;
-const HotelDetails = () => {
-  const singleHotel = useSelector((state) => state.hotels);
-  const details = singleHotel.hotelDetails;
+`;
 
-  console.log('details in Hotel Card'+ details)
+const HotelDetails = () => {
+  /**Retrieve hotel details from redux store */
+  // const singleHotel = useSelector((state) => state.hotels);
+  // const details = singleHotel.hotelDetails;
+  const details = HotelData.data[0];
+
   const loggedUser = useSelector((state) => state.user);
   const user = loggedUser.currentUser;
   const { room_adults, date, price } = useSelector((state) => state.details);
 
-  console.log(date.startDate)
+  // for showing facilities
   const [showAll, setShowAll] = useState(false);
   const itemsToShow = showAll ? 20 : 10;
 
-  const Navigate = useNavigate()
-  const handleBooking =()=> {
-    Navigate('/payment')
-  }
-
-
+  // calculating cost
   const gst = (price * 15) / 100;
   const discount = (price * 20) / 100;
   const total = price + gst - discount;
 
+  // setting data in readble format
   date.startDate.setHours(0, 0, 0, 0);
   date.endDate.setHours(0, 0, 0, 0);
   let options = {
@@ -150,7 +151,8 @@ const HotelDetails = () => {
   };
   const checkIn = date.startDate.toLocaleDateString("en-US", options);
   const checkOut = date.endDate.toLocaleDateString("en-US", options);
-    // const details = HotelData.data[0];
+
+  const navigate = useNavigate();
   return (
     <div>
       <Header />
@@ -293,7 +295,7 @@ const HotelDetails = () => {
                 <Button
                   fullWidth
                   sx={{ backgroundColor: "red", color: "white" }}
-                  onClick={handleBooking}
+                  onClick={() => navigate("/checkout")}
                 >
                   Continue Booking
                 </Button>
@@ -301,9 +303,9 @@ const HotelDetails = () => {
             </Box>
           </Grid>
         </Grid>
-          <Typography variant="h3">Locate us on Google Map</Typography>
-        <Box height='400px'>
-            <GoogleMap />
+        <Typography variant="h3">Locate us on Google Map</Typography>
+        <Box height="400px">
+          <GoogleMap />
         </Box>
       </Container>
     </div>

@@ -13,9 +13,8 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-
 /* Imported files */
-import Header from "../Components/HomePage/Header";
+import Header from "../Components/MainHeader/Header";
 import SearchComponent from "../Components/SearchComponent";
 import Hotels from "../Components/HotelsCard";
 import MapComponent from "../Components/MapComponent";
@@ -41,15 +40,15 @@ const ShowHotels = () => {
   const hotelDetails = useSelector((state) => state.hotels);
   const places = hotelDetails.places;
 
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("");
 
-  const handleDialog = ()=> {
-    setOpen((prevState)=> !prevState)
-  }
-  const handleClose = ()=> {
-    setOpen(false)
-  }
+  const handleDialog = () => {
+    setOpen((prevState) => !prevState);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const handleChange = (event) => {
     setSort(event.target.value);
   };
@@ -62,10 +61,7 @@ const ShowHotels = () => {
       <SortBox>
         <Typography>{places?.length} Hotels found</Typography>
         <Button onClick={handleDialog}>Map View</Button>
-        <Dialog
-          open={open}
-          onClose={handleClose}
-        >
+        <Dialog open={open} onClose={handleClose}>
           <MapComponent />
         </Dialog>
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -85,12 +81,12 @@ const ShowHotels = () => {
 
       <Grid container spacing={2}>
         <Grid item>
-          {places?.map((place, i) => (
+          {/* {places?.map((place, i) => (
             <HotelCard key={i} elevation={4}>
               <Hotels place={place} />
             </HotelCard>
-          ))}
-          {/* <Hotels /> */}
+          ))} */}
+          <Hotels />
         </Grid>
         <Grid item></Grid>
       </Grid>

@@ -1,25 +1,25 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Box, Typography, Card, CardMedia, CardContent } from "@mui/material";
-import Header from "../Components/HomePage/Header";
+import Header from "../Components/MainHeader/Header";
 import HotelData from "../Components/B_dummy data.json";
 
 const Payment = () => {
   // const singleHotel = useSelector((state) => state.hotels);
   // const details = singleHotel.hotelDetails;
-  const {room_adults, price, date} = useSelector((state)=> state.details)
+  const { room_adults, price, date } = useSelector((state) => state.details);
   const details = HotelData.data[0];
-  const total = price +(price*15/100) -(price*20/100) 
+  const total = price + (price * 15) / 100 - (price * 20) / 100;
 
-date.startDate.setHours(0, 0, 0, 0);
-date.endDate.setHours(0, 0, 0, 0);
-let options = {
-  weekday: "long",
-  month: "long",
-  day: "numeric",
-};
-const checkIn = date.startDate.toLocaleDateString("en-US", options);
-const checkOut = date.endDate.toLocaleDateString("en-US", options);
+  date.startDate.setHours(0, 0, 0, 0);
+  date.endDate.setHours(0, 0, 0, 0);
+  let options = {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  };
+  const checkIn = date.startDate.toLocaleDateString("en-US", options);
+  const checkOut = date.endDate.toLocaleDateString("en-US", options);
   return (
     <>
       <Header />
@@ -66,13 +66,12 @@ const checkOut = date.endDate.toLocaleDateString("en-US", options);
               </Box>
               <Box mt={2}>
                 {/* <Typography>Check In:{date.startDate}</Typography> */}
-                <Typography>Check In:  {checkIn}</Typography>
-                <Typography>Check Out:  {checkOut} </Typography>
+                <Typography>Check In: {checkIn}</Typography>
+                <Typography>Check Out: {checkOut} </Typography>
               </Box>
             </Box>
           </CardContent>
         </Card>
-        
       </Box>
     </>
   );

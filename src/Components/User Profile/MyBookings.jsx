@@ -1,3 +1,5 @@
+/**Shows Bookings of the user */
+
 import React from 'react'
 
 const MyBookings = () => {

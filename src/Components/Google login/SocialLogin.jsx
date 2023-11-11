@@ -1,15 +1,16 @@
+/**Helps user to login with their google account */
+
 import { Button, Box, styled } from "@mui/material";
-import React from "react";
 import GoogleIcon from "@mui/icons-material/Google";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
 /**Import functions form other files */
 import { app } from "./firebase";
-import { loginSuccess, loginFailure } from "../redux/userSlice";
+import { loginSuccess, loginFailure, loginStart } from "../../redux/userSlice";
 
 //styled components
 const GoogleButton = styled(Button)`
@@ -26,6 +27,7 @@ const GoogleButton = styled(Button)`
 const SocialLogin = () => {
   const dispatch = useDispatch();
   const Navigate = useNavigate();
+  const {error} = useSelector((state)=> state.user)
 
   const handleLogin = async () => {
     try {
@@ -38,15 +40,16 @@ const SocialLogin = () => {
         email: result.user.email,
         profilePicture: result.user.photoURL,
       };
-
+      dispatch(loginStart())
       // sending user information server , it will either create user or assign access_token to user
-      const res = await axios.post("/api/auth/socialLogin", resultData);
+      const res = await axios.post("http://localhost:5000/api/auth/socialLogin", resultData);
       dispatch(loginSuccess(res.data));
       toast.success("Login successful");
       Navigate("/");
-    } catch (error) {
+    } catch (err) {
       dispatch(loginFailure(error));
       toast.error("something went wrong, please try again later");
+      console.log(error)
     }
   };
 
@@ -62,4 +65,3 @@ const SocialLogin = () => {
 
 export default SocialLogin;
 
-// Enables user to login with google

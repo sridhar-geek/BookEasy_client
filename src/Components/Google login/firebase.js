@@ -1,3 +1,5 @@
+/** firebase file which allows google authencation and userImage storage */
+
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
@@ -12,4 +14,3 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
-// firebase file which allows google authencation and userImage storage

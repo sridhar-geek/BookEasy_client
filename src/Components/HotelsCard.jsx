@@ -1,3 +1,5 @@
+/** Card that shows hotel info in the show hotel page */
+
 import React from "react";
 import {
   Card,
@@ -17,8 +19,8 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-// import place from './A_dummy data.json'
-/* Imported files */
+import place from './A_dummy data.json'
+/* Import modules from another files */
 import { getApiData } from "../api/getHotels";
 import { getSingleHotelDetails, gettingDetails } from "../redux/SearchSlice";
 import { price } from "../redux/DetailsSlice";
@@ -51,12 +53,15 @@ const AvaBtn = styled(Button)`
   }
 `;
 
-const Hotels = ({ place }) => {
-// const Hotels = () => {
-  const dispatch = useDispatch();
+// const Hotels = ({ place }) => {
+const Hotels = () => {
+  // retriewing data from hotelslice and detailsSlice
   const { loading } = useSelector((state) => state.hotels);
   const { room_adults, date } = useSelector((state) => state.details);
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // calculating no.of days 
   const noOfDays = (date.endDate - date.startDate) / (24 * 3600000);
 // to remove dummy data from api
   const dulipcate = place.ad_position;
@@ -83,11 +88,11 @@ const Hotels = ({ place }) => {
 
 
   // storing singlehotel in redux store
-  const handleClick = async (locationId) => {
-  // const handleClick =  () => {
-    dispatch(gettingDetails());
-    const data = await getApiData(`hotels/get-details?location_id=${locationId}`);
-    dispatch(getSingleHotelDetails(data[0]));
+  // const handleClick = async (locationId) => {
+  const handleClick =  () => {
+    // dispatch(gettingDetails());
+    // const data = await getApiData(`hotels/get-details?location_id=${locationId}`);
+    // dispatch(getSingleHotelDetails(data[0]));
     dispatch(price(calucaltePrice()));
     navigate("/hotelDetails");
   };

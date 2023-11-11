@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../Components/HomePage/Header";
+import Header from "../Components/MainHeader/Header";
 import { Box, styled } from "@mui/material";
 
 const Container = styled(Box)`

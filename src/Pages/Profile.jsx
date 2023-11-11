@@ -1,5 +1,7 @@
+/**This page shows user details and bookings and also provide delete functionality */
+
 import React, { useState } from "react";
-import Header from "../Components/HomePage/Header";
+
 import {
   Box,
   styled,
@@ -22,13 +24,16 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-import UpdateUser from "../Components/UpdateUser";
-import MyBookings from "../Components/MyBookings";
+/**Import modules from anthor files */
+import Header from "../Components/MainHeader/Header";
+import UpdateUser from "../Components/User Profile/UpdateUser";
+import MyBookings from "../Components/User Profile/MyBookings";
 import {
   deleteUserFailure,
   deleteUserStart,
   deleteUserSuccess,
 } from "../redux/userSlice";
+import Loader from "../Components/Loader";
 
 //component Styles
 const Container = styled(Paper)`
@@ -68,10 +73,11 @@ const NoBtn = styled(Button)`
 `;
 
 const Profile = () => {
+  //shows update user, bookings and delete user on click
   const [updateUser, setUpdateUser] = useState(true);
   const [open, setOpen] = useState(false);
 
-  const handleClickOpen = () => {
+  const handleDeleteClick = () => {
     setOpen(true);
   };
 
@@ -86,19 +92,23 @@ const Profile = () => {
   const handleBookings = () => {
     setUpdateUser(false);
   };
+  // retriew data from userSlice
   const { currentUser } = useSelector((state) => state.user);
+  const {loading, error} = useSelector((state)=> state.user)
   const dispatch = useDispatch();
+  // delete account
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
       dispatch(deleteUserStart());
       const data = await axios.delete(
-        `/api/user/${currentUser.userDetails._id}`
+        `http://localhost:5000/api/user/${currentUser.userDetails._id}`
       );
-      dispatch(deleteUserSuccess(data.data));
-    } catch (error) {
-      toast.error("Something went wrong, Please try again later");
+      dispatch(deleteUserSuccess());
+    } catch (err) {
       dispatch(deleteUserFailure(error));
+      toast.error("Something went wrong, Please try again later");
+      console.error(err)
     }
   };
   return (
@@ -125,7 +135,7 @@ const Profile = () => {
             </ListItem>
             <Divider />
             <ListItem>
-              <ListItemButton onClick={handleClickOpen}>
+              <ListItemButton onClick={handleDeleteClick}>
                 <ListItemIcon>
                   <DeleteIcon />
                 </ListItemIcon>
@@ -148,7 +158,11 @@ const Profile = () => {
             <DialogActions
               sx={{ display: "flex", justifyContent: "space-around" }}
             >
-              <DeleteBtn onClick={handleDelete}>Yes</DeleteBtn>
+              {loading ? (
+                <Loader />
+              ) : (
+                <DeleteBtn onClick={handleDelete}>Yes</DeleteBtn>
+              )}
               <NoBtn onClick={handleClose}>No</NoBtn>
             </DialogActions>
           </Dialog>

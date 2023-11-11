@@ -1,3 +1,5 @@
+/**Loader animation  */
+
 import { Backdrop, CircularProgress } from "@mui/material";
 
 const Loader = ({loading}) => {
@@ -17,4 +19,4 @@ const Loader = ({loading}) => {
 
 export default Loader;
 
-// Loader animation
+

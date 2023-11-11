@@ -6,7 +6,6 @@ import { DateRange } from "react-date-range";
 import { addDays } from "date-fns";
 import format from "date-fns/format";
 
-
 import BedIcon from "@mui/icons-material/Bed";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -14,64 +13,13 @@ import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
-/* Imported files */
+/* Importe modules from another files */
 import { getApiData } from "../api/getHotels";
 import { getHotelData, gettingDetails } from "../redux/SearchSlice";
 import { sotreDetails, date } from "../redux/DetailsSlice";
 import Loader from "./Loader";
+import {reducer,ACTIONS} from '../api/SearchComponent_reducer'
 
-const ACTIONS = {
-  RM_IN: "room increment",
-  RM_DC: "room decrement",
-  AD_IN: "adults increment",
-  AD_DC: "adults decrement",
-  CH_IN: "children increment",
-  CH_DC: "children decrement",
-};
-
-const reducer = (state, action) => {
-  switch (action.type) {
-    case ACTIONS.RM_IN:
-      if (state.rooms < 8) {
-        if (state.adults < state.rooms)
-          return { ...state, adults: state.rooms };
-        return { ...state, rooms: state.rooms + 1 };
-      } else {
-        window.alert("max 8 room can be selected");
-        return { ...state };
-      }
-    case ACTIONS.RM_DC:
-      if (state.rooms > 1) return { ...state, rooms: state.rooms - 1 };
-      else {
-        window.alert("min 1 room required");
-        return { ...state };
-      }
-    case ACTIONS.AD_IN:
-      if (state.adults < 16) return { ...state, adults: state.adults + 1 };
-      else {
-        window.alert("max 16 adults are allowed at a time");
-        return { ...state };
-      }
-    case ACTIONS.AD_DC:
-      if (state.adults > 1) return { ...state, adults: state.adults - 1 };
-      else {
-        window.alert("min 1 adult required");
-        return { ...state };
-      }
-    case ACTIONS.CH_IN:
-      if (state.children < 16)
-        return { ...state, children: state.children + 1 };
-      else {
-        window.alert("max 16 children allowed at a time");
-        return { ...state };
-      }
-    case ACTIONS.CH_DC:
-      if (state.children > 0) return { ...state, children: state.children - 1 };
-      else return { ...state };
-    default:
-      return { ...state };
-  }
-};
 
 //Component Styles
 const Container = styled(Grid)`
@@ -93,14 +41,11 @@ const Calender = styled(Box)`
   top: 50px;
   z-index: 2;
 `;
-const SelectPeople = styled("input")`
-  cursor: pointer;
-  border: none;
-`;
 const Items = styled(Box)`
   width: 350px;
   display: flex;
   justify-content: space-between;
+  padding: 0px 30px;
 `;
 const SearchBtn = styled(Button)`
   background-color: orangered;
@@ -113,7 +58,6 @@ const SearchBtn = styled(Button)`
 
 const SearchComponent = () => {
   const [destination, setDestination] = useState("");
-  const navigate = useNavigate();
   //calender component
   const [range, setRange] = useState([
     {
@@ -141,7 +85,7 @@ const SearchComponent = () => {
       setOpenDate(false);
   };
 
-  // for adding adults and childeren in input
+  // for adding rooms, adults and childeren in input
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -151,32 +95,36 @@ const SearchComponent = () => {
     setAnchorEl(null);
   };
 
+  // using useReducer hook to store rooms, adults and childeren
   const [state, reduceFtn] = useReducer(reducer, {
     rooms: 1,
     adults: 1,
     children: 0,
   });
 
-  // storing all hotel details in redux global store
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+// retrewing data from hotelslice
   const { loading } = useSelector((state) => state.hotels);
+  // storing all hotel details in redux global store
   const latitude = 17.68;
   const longitude = 83.2;
   const handleSumbit = async (e) => {
     e.preventDefault();
-    dispatch(gettingDetails());
+    // dispatch(gettingDetails());
 
-    const data = await getApiData(
-      `hotels/list-by-latlng?latitude=${latitude}&longitude=${longitude}`
-    );
-    dispatch(getHotelData(data));
+    // const data = await getApiData(
+    //   `hotels/list-by-latlng?latitude=${latitude}&longitude=${longitude}`
+    // );
+    // dispatch(getHotelData(data));
     dispatch(sotreDetails(state));
     dispatch(date(range[0]));
     navigate("/hotels");
   };
   return (
-          <form onSubmit={handleSumbit}>
-    <Container container spacing={2}>
+    <form onSubmit={handleSumbit}>
+      <Container container spacing={2}>
         <Individual item xs={8} md={6} lg={4}>
           <BedIcon />
           <input
@@ -218,12 +166,17 @@ const SearchComponent = () => {
         </Individual>
         <Individual item xs={8} md={6} lg={4}>
           <PeopleAltIcon />
-          <SelectPeople
+          <input
             type="text"
             onClick={handleClick}
             readOnly
             value={`${state.rooms}Rooms ${state.adults}Adults ${state.children}Children`}
-            style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
+            style={{
+              border: "none",
+              padding: "20px",
+              fontSize: "1.1rem",
+              cursor: "pointer",
+            }}
           />
           <Menu
             id="basic-menu"
@@ -238,7 +191,8 @@ const SearchComponent = () => {
               <Typography>Room</Typography>
               <Box>
                 <Button
-                  variant="outlined"
+                  sx={{ color: "primary" }}
+                  variant="standard"
                   onClick={() => reduceFtn({ type: ACTIONS.RM_IN })}
                 >
                   +
@@ -246,6 +200,7 @@ const SearchComponent = () => {
                 {state.rooms}
                 <Button
                   variant="outlined"
+                  color="primary"
                   onClick={() => reduceFtn({ type: ACTIONS.RM_DC })}
                 >
                   -
@@ -283,8 +238,8 @@ const SearchComponent = () => {
             <SearchBtn type="submit">Search</SearchBtn>
           )}
         </Individual>
-    </Container>
-          </form>
+      </Container>
+    </form>
   );
 };
 

@@ -13,10 +13,12 @@ import {
 import { Link } from "react-router-dom";
 
 import Banner_Image from "../assests/Website Main Image.jpg";
+/* Import modules from another files */
 import { cardAttraction, cardHotel } from "../assests/ImageUrl";
-import Header from "../Components/HomePage/Header";
+import Header from "../Components/MainHeader/Header";
 import SearchComponent from "../Components/SearchComponent";
 
+// Component styles
 const WelcomeNote = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -31,7 +33,7 @@ const WelcomeNote = styled(Box)`
 const SearchBox = styled(Paper)`
   padding: 25px;
   margin: 10px;
-`
+`;
 
 const PaddingBox = styled(Box)`
   padding: 38px;
@@ -49,11 +51,11 @@ const Home = () => {
     <div>
       <Header />
       <WelcomeNote>
-          <Typography variant="h1">Book Easy</Typography>
-          <Typography>Book your next Stay here</Typography>
-          <SearchBox elevation={6}>
-          <SearchComponent  />
-          </SearchBox>
+        <Typography variant="h1">Book Easy</Typography>
+        <Typography>Book your next Stay here</Typography>
+        <SearchBox elevation={6}>
+          <SearchComponent />
+        </SearchBox>
       </WelcomeNote>
       <PaddingBox>
         <Grid container spacing={3}>

@@ -1,3 +1,5 @@
+/**Serves as common footer for all the pages */
+
 import React from "react";
 import { Box, Typography, styled, Button, Grid, Divider } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -5,7 +7,7 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
-/** Imported files  */
+/** Import modules form another files  */
 import AppStore from '../assests/appStore.png'
 import PlayStore from '../assests/playStore.png'
 import Logo from "../assests/Hotel_logo.jpeg";
@@ -132,6 +134,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-// Common footer for all pages

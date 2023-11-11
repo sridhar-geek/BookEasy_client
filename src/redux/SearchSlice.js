@@ -1,3 +1,5 @@
+/**Creating reducers for uploading and accessing Hotel details  */
+
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {

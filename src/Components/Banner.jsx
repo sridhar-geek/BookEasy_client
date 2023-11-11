@@ -1,7 +1,7 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import { bannerImages } from "../../assests/ImageUrl";
+import { bannerImages } from "../assests/ImageUrl";
 import { styled } from "@mui/material";
 const responsive = {
   desktop: {

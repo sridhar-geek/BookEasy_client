@@ -20,7 +20,7 @@ import axios from 'axios'
 /**Imports components from another files */
 import Header from "../Components/LoginSingupHeader/Header";
 import Loader from "../Components/Loader";
-import SocialLogin from "../Components/SocialLogin";
+import SocialLogin from "../Components/Google login/SocialLogin";
 import {loginStart, loginSuccess, loginFailure} from '../redux/userSlice'
 
 // Component styles
@@ -85,13 +85,14 @@ const Signup = () => {
     else{
       try {
          dispatch(loginStart());
-         const data = await axios.post("/api/auth/register", formData);
+         const data = await axios.post("http://localhost:5000/api/auth/register", formData);
          dispatch(loginSuccess(data.data));
         toast.success('user registration successful')
         navigate('/login')
-      } catch (error) {
+      } catch (err) {
       toast.error(error.response.data.msg);
       dispatch(loginFailure(error));
+      console.log(error)
       }
     }
   }
