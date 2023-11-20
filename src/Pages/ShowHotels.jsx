@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
+import HotelsData from '../assests/Api Data/All_hotels.json'
 /* Imported files */
 import Header from "../Components/MainHeader/Header";
 import SearchComponent from "../Components/SearchComponent";
@@ -37,8 +38,9 @@ const HotelCard = styled(Paper)`
 `;
 
 const ShowHotels = () => {
-  const hotelDetails = useSelector((state) => state.hotels);
-  const places = hotelDetails.places;
+  // retriewing data from redux store
+  // const {places} = useSelector((state) => state.hotels);
+const places = HotelsData.result
 
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("");
@@ -81,14 +83,22 @@ const ShowHotels = () => {
 
       <Grid container spacing={2}>
         <Grid item>
-          {/* {places?.map((place, i) => (
-            <HotelCard key={i} elevation={4}>
-              <Hotels place={place} />
-            </HotelCard>
-          ))} */}
-          <Hotels />
+          <Typography>filters here</Typography>
+          <Typography>filters here</Typography>
+          <Typography>filters here</Typography>
+          <Typography>filters here</Typography>
+          <Typography>filters here</Typography>
+          <Typography>filters here</Typography>
+          <Typography>filters here</Typography>
+          <Typography>filters here</Typography>
         </Grid>
-        <Grid item></Grid>
+        <Grid item>
+          {places?.map((place, i) => (
+            <HotelCard elevation={4}>
+              <Hotels place={place} key={i}/>
+            </HotelCard>
+          ))}
+        </Grid>
       </Grid>
     </div>
   );

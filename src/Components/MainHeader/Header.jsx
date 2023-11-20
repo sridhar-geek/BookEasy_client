@@ -3,8 +3,8 @@
 import { AppBar, Box, Toolbar, styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-// import { useEffect, useState } from "react";
-
+import { useState, useEffect } from "react";
+import {setKey, fromLatLng} from 'react-geocode'
 import Logo from "../../assests/Hotel_logo.jpeg";
 /*Import modules from other files  */
 import LoginSignup from "./LoginBtn";
@@ -47,15 +47,18 @@ const Header = () => {
   //   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
   // const coordinates = {lat:latitude, lng:longitude}
-  //   useEffect(() => {
-  //     geocoder.geocode({ location: coordinates }, function (results, status) {
-  //       if (status === "OK") console.log("request success");
-  //       else console.log("request failed");
-
-  //       const address = results[0].formatted_address;
-  //       console.log(address);
-  //     });
-  //   }, [coordinates]);
+  //  setKey(process.env.REACT_APP_GOOGLE_API_KEY);
+  //  const getAddress = async ()=>{
+  //   try {
+  //     const {response} = await fromLatLng(latitude, longitude)
+  //     console.log(response)
+  //     console.log(response[0].geometry.location)
+      
+  //   } catch (error) {
+  //     console.error(error)
+  //   }
+  //  }
+  //  getAddress()
 
   return (
     <AppBar elevation={1}>

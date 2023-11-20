@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   room_adults: null,
-  date: null,
+  arrivalDate:null,
+  departureDate: null,
   price: 0,
 };
 
@@ -15,8 +16,11 @@ const DetailsSlice = createSlice({
     sotreDetails: (state, action) => {
       state.room_adults = action.payload;
     },
-    date: (state, action) => {
-      state.date = action.payload;
+    startDate: (state, action) => {
+      state.arrivalDate = action.payload;
+    },
+    endDate: (state, action) => {
+      state.departureDate = action.payload;
     },
     price: (state, action) => {
       state.price = action.payload;
@@ -24,5 +28,6 @@ const DetailsSlice = createSlice({
   },
 });
 
-export const { sotreDetails, date, price } = DetailsSlice.actions;
+export const { sotreDetails, price, startDate, endDate } = DetailsSlice.actions;
 export default DetailsSlice.reducer;
+

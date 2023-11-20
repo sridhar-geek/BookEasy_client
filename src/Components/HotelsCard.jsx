@@ -1,4 +1,4 @@
-/** Card that shows hotel info in the show hotel page */
+/** Card that shows hotel info in the hotels page */
 
 import React from "react";
 import {
@@ -11,180 +11,139 @@ import {
   styled,
   Box,
   Button,
-  Chip,
+  Stack,
 } from "@mui/material";
-import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import place from './A_dummy data.json'
 /* Import modules from another files */
 import { getApiData } from "../api/getHotels";
 import { getSingleHotelDetails, gettingDetails } from "../redux/SearchSlice";
-import { price } from "../redux/DetailsSlice";
 import Loader from "./Loader";
 
-
 //Component styles
-const MediaCard = styled(CardMedia)`
-  height: 270px;
-  width: 200px;
-`;
-const Span = styled("span")`
-  margin-left: 10px;
-`;
-const RatingBox = styled(Box)`
-  display: flex;
-  margin-bottom: 12px;
-`;
-const FlexBox = styled(Box)`
-  display: flex;
-  justify-content: center;
-`;
-const AvaBtn = styled(Button)`
+const AvaliBtn = styled(Button)`
   background-color: orangered;
   color: white;
   text-transform: capitalize;
+  padding: 5px;
   border-radius: 5px;
+
   &:hover {
-    background-color: #8e0707;
+    background-color: red;
   }
 `;
 
-// const Hotels = ({ place }) => {
-const Hotels = () => {
+const Hotels = ({ place,key }) => {
   // retriewing data from hotelslice and detailsSlice
   const { loading } = useSelector((state) => state.hotels);
-  const { room_adults, date } = useSelector((state) => state.details);
+  const { room_adults, arrivalDate, departureDate } = useSelector(
+    (state) => state.details
+  );
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // calculating no.of days 
-  const noOfDays = (date.endDate - date.startDate) / (24 * 3600000);
-// to remove dummy data from api
-  const dulipcate = place.ad_position;
-
-    // calcluating price for hotel based on no.of days and no.of People
-  const calucaltePrice = () => {
-    let dayCost = 0
-    const basePrice =
-      room_adults.rooms * 300 +
-      room_adults.adults * 100 +
-      room_adults.children * 50;
-    if(noOfDays<2)
-      dayCost = 0;
-    else
-    dayCost = noOfDays*300
-     if(!place.price){
-        const price = 800 + basePrice + dayCost
-        return price
-     }
-    const reservePrice =
-      place.price.slice(1, 3) * 20 + basePrice + dayCost
-    return reservePrice;
-  };
-
+  // calculating no.of days
+  const date1 = new Date(arrivalDate);
+  const date2 = new Date(departureDate);
+  const noOfDays = Math.abs(date2 - date1) / (1000 * 60 * 60 * 24);
+  //calcualating price
+  const price = ((Math.floor(place.min_total_price) * 30) / 100).toFixed(0);
 
   // storing singlehotel in redux store
-  // const handleClick = async (locationId) => {
-  const handleClick =  () => {
+  // const handleClick = async (hotelId) => {
+  const handleClick = () => {
     // dispatch(gettingDetails());
-    // const data = await getApiData(`hotels/get-details?location_id=${locationId}`);
-    // dispatch(getSingleHotelDetails(data[0]));
-    dispatch(price(calucaltePrice()));
+    // const data = await getApiData(
+    //   `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&currency_code=INR`
+    // );
+    // console.log('data returned ')
+    // dispatch(getSingleHotelDetails(data));
     navigate("/hotelDetails");
   };
-
+  const randomNumber = Math.random() * 40;
+  const collectionID = 9715310; //the collection ID from the original url
+  const imageUrl = `https://source.unsplash.com/collection/${collectionID}/480x480/?sig=${randomNumber}`;
 
   return (
-    <>
-      {!dulipcate && (
-        <Card>
-          <CardActionArea
-            sx={{ display: "flex" }}
-            onClick={() => handleClick(place.location_id)}
-          >
-            <MediaCard
-              component="img"
-              image={
-                place.photo
-                  ? place.photo.images.large.url
-                  : "https://imgs.search.brave.com/aPFnAJCGtCjFvRI5vCCVs1edHRYSG5PiucHMlkDOaw8/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNTIw/NDQzMDYwL3Bob3Rv/L3RoZS10YWotbWFo/YWwtcGFsYWNlLWhv/dGVsLWF0LWR1c2su/anBnP3M9NjEyeDYx/MiZ3PTAmaz0yMCZj/PUVKa1ZlZUxtXzZu/eW5zN2JmVWxDamdz/UE40STRSOWd0Q3Nm/a3RZX2dsOWs9"
-              }
-              alt="hotel image"
-            />
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="div"
-                marginbottom={2}
-              >
-                {place.name}
+    <Card sx={{ maxWidth: 750 }}>
+      <CardActionArea
+        sx={{ display: "flex", justifyContent: "start", flexWrap: "nowrap" }}
+        onClick={() => handleClick(place.hotel_id)}
+      >
+        <CardMedia
+          component="img"
+          height="270"
+          sx={{ width: "220px" }}
+          image={imageUrl}
+          alt="hotel "
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5">
+            {key}
+          </Typography>
+          <Typography gutterBottom variant="h5">
+            {place.hotel_name}
+          </Typography>
+          <Typography variant="h6" sx={{ marginBottom: "13px" }}>
+            {place.city}
+          </Typography>
+          <Stack direction="row" gap={2} mb="2">
+            <Typography variant="body2" color="text.secondary">
+              Reviews:
+            </Typography>
+            <Box bgcolor="green" sx={{ padding: "10px", borderRadius: "10px" }}>
+              {place.review_score_word ? place.review_score_word : "Good"}
+            </Box>
+          </Stack>
+          <Box display="flex">
+            <Box mr={10}>
+              <Stack direction="row" gap={2}>
+                <Typography variant="body2" color="text.secondary">
+                  Rating:
+                </Typography>
+                <Rating
+                  defaultValue={Number(place.review_score / 2)}
+                  precision={0.5}
+                  readOnly
+                />
+              </Stack>
+            </Box>
+            <Box>
+              <Typography sx={{ marginLeft: "20px", marginBottom: "10px" }}>
+                {noOfDays} Days {room_adults.adults} adults{" "}
+                {room_adults.children ? (
+                  <>and {room_adults.children} children</>
+                ) : (
+                  <></>
+                )}
               </Typography>
-              <Typography variant="body1" color="text.primary">
-                {place.location_string}
-              </Typography>
+              <Stack direction="row" gap={2}>
+                <Typography variant="h5"> ₹ {price}</Typography>
+                {loading ? (
+                  <Loader />
+                ) : (
+                  <AvaliBtn>
+                    See Availability <ChevronRightIcon />
+                  </AvaliBtn>
+                )}
+              </Stack>
               <Typography
                 variant="body2"
                 color="text.secondary"
-                marginbottom={2}
+                sx={{ marginLeft: "20px" }}
               >
-                {Math.round(place.distance)} km distance from center of the city
+                +Rs {(price * 0.2).toFixed(2)} extra GST and fees
               </Typography>
-              <FlexBox>
-                <Box marginRight={5}>
-                  <RatingBox>
-                    <Rating
-                      value={Number(place.rating)}
-                      precision={0.5}
-                      size="small"
-                      readOnly
-                    />
-                    <Span> out of {place.num_reviews} rantings </Span>
-                  </RatingBox>
-                  <Chip
-                    icon={<ThumbUpIcon />}
-                    label={place.ranking}
-                    variant="outlined"
-                    marginbottom={2}
-                  />
-                  {place.awards?.map((award) => (
-                    <Chip
-                      icon={<EmojiEventsIcon />}
-                      label={award.display_name}
-                      marginbottom={2}
-                    />
-                  ))}
-                </Box>
-                <Box>
-                  <Typography variant="body2" color="text.secondary">
-                    {noOfDays} days {room_adults.adults} adults
-                    {room_adults.children > 0 && (
-                      <>and {room_adults.children} children </>
-                    )}
-                  </Typography>
-                  <Typography variant="h6" marginLeft={2}>
-                    ₹ {calucaltePrice()}
-                  </Typography>
-                  {loading ? (
-                    <Loader open={loading} />
-                  ) : (
-                    <AvaBtn>
-                      See Avalibilty <ChevronRightIcon />
-                    </AvaBtn>
-                  )}
-                </Box>
-              </FlexBox>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      )}
-    </>
+            </Box>
+          </Box>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 };
 
 export default Hotels;
+
 

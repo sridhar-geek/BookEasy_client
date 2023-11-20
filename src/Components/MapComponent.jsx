@@ -40,7 +40,7 @@ const MapComponent = () => {
     <APIProvider apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
       <div style={{ height: "100vh", width: "100vh" }}>
         <Map zoom={9} center={position} mapId={process.env.REACT_APP_MAPID}>
-     <AdvancedMarker position={position} ></AdvancedMarker>
+     <AdvancedMarker  position={position} ></AdvancedMarker>
         </Map>
       </div>
     </APIProvider>

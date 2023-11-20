@@ -1,0 +1,2899 @@
+    {
+    "result": [
+            {
+                "hotel_id": 11015953,
+                "updated_checkout": null,
+                "unit_configuration_label": "<b>2 tents</b>: 6 beds",
+                "accommodation_type": 224,
+                "review_nr": null,
+                "preferred_plus": 0,
+                "hotel_include_breakfast": 0,
+                "class": 0,
+                "countrycode": "in",
+                "is_no_prepayment_block": 1,
+                "hotel_has_vb_boost": 0,
+                "review_score_word": "",
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "class_is_estimated": 0,
+                "extended": 0,
+                "preferred": 0,
+                "distances": [],
+                "genius_discount_percentage": 0,
+                "hotel_name": "3 person Tent",
+                "main_photo_id": 503604469,
+                "soldout": 0,
+                "currencycode": "INR",
+                "type": "property_card",
+                "default_wishlist_name": "Lammasingi",
+                "children_not_allowed": null,
+                "ufi": -2102444,
+                "is_free_cancellable": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/503604469.jpg?k=d85cef1dfb93326264d279e3439a13f9eb685ee4fe31596cbc6fed479b0e475b&o=",
+                "city": "Lanbanigi",
+                "cant_book": null,
+                "badges": [
+                    {
+                        "id": "new_to_booking",
+                        "text": "New to Booking.com",
+                        "badge_variant": "accent"
+                    }
+                ],
+                "hotel_name_trans": "3 person Tent",
+                "updated_checkin": null,
+                "id": "property_card_11015953",
+                "latitude": 17.827945392827,
+                "timezone": "Asia/Kolkata",
+                "default_language": "xu",
+                "checkin": {
+                    "until": "12:00",
+                    "from": "00:00"
+                },
+                "composite_price_breakdown": {
+                    "all_inclusive_amount": {
+                        "value": 2284.79999452829,
+                        "currency": "INR"
+                    },
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "translated_copy": "+Rs. 244.80 taxes and fees",
+                        "amount": {
+                            "value": 245,
+                            "currency": "INR"
+                        }
+                    },
+                    "has_long_stays_weekly_rate_price": 0,
+                    "has_long_stays_monthly_rate_price": 0,
+                    "gross_amount_hotel_currency": {
+                        "value": 2040,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "currency": "INR",
+                        "value": 2040
+                    },
+                    "excluded_amount": {
+                        "value": 244.799994528294,
+                        "currency": "INR"
+                    },
+                    "net_amount": {
+                        "value": 2040,
+                        "currency": "INR"
+                    },
+                    "benefits": [],
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 2040
+                    },
+                    "items": [
+                        {
+                            "details": null,
+                            "item_amount": {
+                                "value": 244.799994528294,
+                                "currency": "INR"
+                            },
+                            "name": "Goods & services tax",
+                            "base": {
+                                "base_amount": 0,
+                                "kind": "variable_amount"
+                            },
+                            "inclusion_type": "excluded",
+                            "kind": "charge"
+                        }
+                    ]
+                },
+                "is_geo_rate": "",
+                "checkout": {
+                    "until": "11:00",
+                    "from": "08:00"
+                },
+                "block_ids": [
+                    "1101595301_382989686_2_0_0",
+                    "1101595301_382989686_1_0_0"
+                ],
+                "has_free_parking": 1,
+                "booking_home": {
+                    "quality_class": 0,
+                    "is_booking_home": 1,
+                    "group": "hotels_and_others",
+                    "segment": 0,
+                    "is_single_unit_property": 1
+                },
+                "city_in_trans": "in Lammasingi",
+                "review_score": null,
+                "is_smart_deal": 0,
+                "longitude": 82.476167993767,
+                "min_total_price": 2040,
+                "is_genius_deal": 0
+            },
+            {
+                "hotel_id": 9621238,
+                "hotel_name": "The Beacon Hotel Visakhapatnam",
+                "distances": [
+                    {
+                        "icon_set": null,
+                        "text": "‎Travel Sustainable‬",
+                        "icon_name": "travel_sustainable"
+                    }
+                ],
+                "genius_discount_percentage": 0,
+                "soldout": 0,
+                "main_photo_id": 442277528,
+                "currencycode": "INR",
+                "type": "property_card",
+                "default_wishlist_name": "Visakhapatnam",
+                "children_not_allowed": null,
+                "ufi": -2114520,
+                "updated_checkout": null,
+                "unit_configuration_label": "<b>2 hotel rooms</b>: 2 beds",
+                "accommodation_type": 204,
+                "countrycode": "in",
+                "is_no_prepayment_block": 1,
+                "review_nr": 12,
+                "preferred_plus": 1,
+                "hotel_include_breakfast": 0,
+                "class": 3,
+                "hotel_has_vb_boost": 0,
+                "review_score_word": "Excellent",
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "class_is_estimated": 0,
+                "preferred": 1,
+                "extended": 0,
+                "block_ids": [
+                    "962123801_369854631_2_42_0",
+                    "962123801_369854631_2_42_0"
+                ],
+                "city_in_trans": "in Visakhapatnam",
+                "longitude": 83.299405,
+                "min_total_price": 4678.2,
+                "review_score": 8.6,
+                "is_smart_deal": 0,
+                "is_genius_deal": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/442277528.jpg?k=5c36671651f183323dc1fdbc39cfcd4ac733966f5449830b2778aedb48c37931&o=",
+                "is_free_cancellable": 1,
+                "cant_book": null,
+                "city": "Visakhapatnam",
+                "badges": [
+                    {
+                        "id": "Mobile Rate",
+                        "text": "Mobile-only price",
+                        "badge_variant": "constructive"
+                    }
+                ],
+                "id": "property_card_9621238",
+                "latitude": 17.7366,
+                "hotel_name_trans": "The Beacon Hotel Visakhapatnam",
+                "updated_checkin": null,
+                "timezone": "Asia/Kolkata",
+                "default_language": "en",
+                "checkin": {
+                    "until": "14:00",
+                    "from": "14:00"
+                },
+                "checkout": {
+                    "until": "12:00",
+                    "from": "12:00"
+                },
+                "composite_price_breakdown": {
+                    "items": [
+                        {
+                            "name": "Goods & services tax",
+                            "details": null,
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 561.38398745209
+                            },
+                            "kind": "charge",
+                            "inclusion_type": "excluded",
+                            "base": {
+                                "kind": "variable_amount",
+                                "base_amount": 0
+                            }
+                        },
+                        {
+                            "name": "Mobile-only price",
+                            "identifier": "mobile-discount",
+                            "item_amount": {
+                                "value": 519.8,
+                                "currency": "INR"
+                            },
+                            "details": "You're getting a reduced rate because you're using a mobile device.",
+                            "kind": "discount",
+                            "base": {
+                                "kind": "rate"
+                            }
+                        }
+                    ],
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 4678.2
+                    },
+                    "benefits": [
+                        {
+                            "icon": null,
+                            "kind": "badge",
+                            "badge_variant": "constructive",
+                            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+                            "name": "Mobile-only price",
+                            "identifier": "mobile-rate"
+                        }
+                    ],
+                    "net_amount": {
+                        "currency": "INR",
+                        "value": 4678.2
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "strikethrough_amount": {
+                        "currency": "INR",
+                        "value": 5198
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "discounted_amount": {
+                        "currency": "INR",
+                        "value": 519.8
+                    },
+                    "excluded_amount": {
+                        "value": 561.38398745209,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "value": 4678.2,
+                        "currency": "INR"
+                    },
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 4678.2
+                    },
+                    "strikethrough_amount_per_night": {
+                        "value": 5198,
+                        "currency": "INR"
+                    },
+                    "charges_details": {
+                        "amount": {
+                            "value": 561,
+                            "currency": "INR"
+                        },
+                        "translated_copy": "+Rs. 561.38 taxes and fees",
+                        "mode": "extra_charges"
+                    },
+                    "all_inclusive_amount": {
+                        "currency": "INR",
+                        "value": 5239.58398745209
+                    },
+                    "has_long_stays_weekly_rate_price": 0
+                },
+                "is_geo_rate": ""
+            },
+            {
+                "hotel_id": 449063,
+                "is_genius_deal": 0,
+                "longitude": 83.4844449162483,
+                "min_total_price": 10998,
+                "review_score": 8,
+                "is_smart_deal": 0,
+                "city_in_trans": "in Bhogāpuram",
+                "has_free_parking": 1,
+                "block_ids": [
+                    "44906301_378448407_2_41_0",
+                    "44906301_378448407_2_41_0"
+                ],
+                "checkout": {
+                    "from": "",
+                    "until": "11:00"
+                },
+                "composite_price_breakdown": {
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "net_amount": {
+                        "value": 10998,
+                        "currency": "INR"
+                    },
+                    "benefits": [],
+                    "gross_amount": {
+                        "value": 10998,
+                        "currency": "INR"
+                    },
+                    "items": [
+                        {
+                            "details": null,
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 1319.75997050107
+                            },
+                            "name": "Goods & services tax",
+                            "base": {
+                                "base_amount": 0,
+                                "kind": "variable_amount"
+                            },
+                            "inclusion_type": "excluded",
+                            "kind": "charge"
+                        }
+                    ],
+                    "has_long_stays_weekly_rate_price": 0,
+                    "charges_details": {
+                        "amount": {
+                            "currency": "INR",
+                            "value": 1320
+                        },
+                        "translated_copy": "+Rs. 1,319.76 taxes and fees",
+                        "mode": "extra_charges"
+                    },
+                    "all_inclusive_amount": {
+                        "currency": "INR",
+                        "value": 12317.7599705011
+                    },
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 10998
+                    },
+                    "gross_amount_per_night": {
+                        "currency": "INR",
+                        "value": 10998
+                    },
+                    "excluded_amount": {
+                        "currency": "INR",
+                        "value": 1319.75997050107
+                    },
+                    "has_long_stays_monthly_rate_price": 0
+                },
+                "is_geo_rate": "",
+                "checkin": {
+                    "until": "",
+                    "from": "13:00"
+                },
+                "default_language": "en",
+                "timezone": "Asia/Kolkata",
+                "id": "property_card_449063",
+                "latitude": 17.983919689954,
+                "updated_checkin": null,
+                "hotel_name_trans": "Sunray Village Resort",
+                "is_free_cancellable": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/244746191.jpg?k=7e0fc639095bc2a94c7895bc87dddb332441b2ed0149b72734c882c2713dc3b1&o=",
+                "city": "Visakhapatnam",
+                "badges": [],
+                "cant_book": null,
+                "children_not_allowed": null,
+                "ufi": -2091620,
+                "type": "property_card",
+                "currencycode": "INR",
+                "default_wishlist_name": "Bhogāpuram",
+                "ribbon_text": "Breakfast included",
+                "soldout": 0,
+                "main_photo_id": 244746191,
+                "hotel_name": "Sunray Village Resort",
+                "distances": [],
+                "genius_discount_percentage": 0,
+                "has_swimming_pool": 1,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "extended": 0,
+                "preferred": 0,
+                "class_is_estimated": 0,
+                "hotel_has_vb_boost": 0,
+                "review_score_word": "Very Good",
+                "countrycode": "in",
+                "is_no_prepayment_block": 0,
+                "review_nr": 59,
+                "preferred_plus": 0,
+                "class": 4,
+                "unit_configuration_label": "<b>2 hotel rooms</b>: 2 beds",
+                "updated_checkout": null,
+                "accommodation_type": 206
+            },
+            {
+                "hotel_id": 4137466,
+                "ufi": -2114520,
+                "children_not_allowed": null,
+                "default_wishlist_name": "Visakhapatnam",
+                "currencycode": "INR",
+                "type": "property_card",
+                "main_photo_id": 378801656,
+                "soldout": 0,
+                "genius_discount_percentage": 0,
+                "distances": [],
+                "hotel_name": "Feel Like Home",
+                "class_is_estimated": 0,
+                "extended": 0,
+                "preferred": 1,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "review_score_word": "Good",
+                "hotel_has_vb_boost": 0,
+                "class": 0,
+                "preferred_plus": 0,
+                "review_nr": 104,
+                "hotel_include_breakfast": 0,
+                "is_no_prepayment_block": 0,
+                "countrycode": "in",
+                "accommodation_type": 220,
+                "updated_checkout": null,
+                "unit_configuration_label": "<b>Entire vacation home – 28 m²</b>: 1 bed • 1 bedroom • 1 bathroom",
+                "is_genius_deal": 0,
+                "is_smart_deal": 0,
+                "review_score": 7.7,
+                "min_total_price": 1863,
+                "longitude": 83.315837,
+                "booking_home": {
+                    "group": "house_like",
+                    "is_single_unit_property": "",
+                    "segment": 1,
+                    "quality_class": 3,
+                    "is_booking_home": 1
+                },
+                "has_free_parking": 1,
+                "city_in_trans": "in Visakhapatnam",
+                "block_ids": [
+                    "413746602_275787632_3_0_0"
+                ],
+                "is_geo_rate": "",
+                "composite_price_breakdown": {
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "strikethrough_amount": {
+                        "value": 2070,
+                        "currency": "INR"
+                    },
+                    "benefits": [
+                        {
+                            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+                            "name": "Mobile-only price",
+                            "identifier": "mobile-rate",
+                            "icon": null,
+                            "kind": "badge",
+                            "badge_variant": "constructive"
+                        }
+                    ],
+                    "net_amount": {
+                        "currency": "INR",
+                        "value": 1863
+                    },
+                    "items": [
+                        {
+                            "base": {
+                                "base_amount": 0,
+                                "kind": "not_applicable"
+                            },
+                            "inclusion_type": "excluded",
+                            "kind": "charge",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 0
+                            },
+                            "details": null,
+                            "name": "TAX"
+                        },
+                        {
+                            "kind": "charge",
+                            "inclusion_type": "excluded",
+                            "base": {
+                                "base_amount": 0,
+                                "kind": "variable_amount"
+                            },
+                            "name": "Goods & services tax",
+                            "details": null,
+                            "item_amount": {
+                                "value": 223.559995003045,
+                                "currency": "INR"
+                            }
+                        },
+                        {
+                            "base": {
+                                "kind": "rate"
+                            },
+                            "kind": "discount",
+                            "item_amount": {
+                                "value": 207,
+                                "currency": "INR"
+                            },
+                            "details": "You're getting a reduced rate because you're using a mobile device.",
+                            "identifier": "mobile-discount",
+                            "name": "Mobile-only price"
+                        }
+                    ],
+                    "gross_amount": {
+                        "value": 1863,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_weekly_rate_price": 0,
+                    "strikethrough_amount_per_night": {
+                        "value": 2070,
+                        "currency": "INR"
+                    },
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "amount": {
+                            "value": 224,
+                            "currency": "INR"
+                        },
+                        "translated_copy": "+Rs. 223.56 taxes and fees"
+                    },
+                    "all_inclusive_amount": {
+                        "value": 2086.55999500304,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "value": 1863,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "currency": "INR",
+                        "value": 223.559995003045
+                    },
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 1863
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "discounted_amount": {
+                        "currency": "INR",
+                        "value": 207
+                    }
+                },
+                "checkout": {
+                    "from": "",
+                    "until": "09:00"
+                },
+                "timezone": "Asia/Kolkata",
+                "default_language": "en",
+                "checkin": {
+                    "until": "",
+                    "from": "10:00"
+                },
+                "hotel_name_trans": "Feel Like Home",
+                "updated_checkin": null,
+                "latitude": 17.712175,
+                "id": "property_card_4137466",
+                "city": "Vizag",
+                "cant_book": null,
+                "badges": [
+                    {
+                        "badge_variant": "constructive",
+                        "text": "Mobile-only price",
+                        "id": "Mobile Rate"
+                    }
+                ],
+                "is_free_cancellable": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/378801656.jpg?k=8c9fd5c077119d316de1cb01b19cb1827287c4e481c65eddde3a205d22b8ae6e&o="
+            },
+            {
+                "hotel_id": 362700,
+                "review_score": 7.7,
+                "is_smart_deal": 0,
+                "longitude": 83.3157017827034,
+                "min_total_price": 16498,
+                "is_genius_deal": 0,
+                "block_ids": [
+                    "36270014_364797552_2_42_0",
+                    "36270014_364797552_1_42_0"
+                ],
+                "has_free_parking": 1,
+                "city_in_trans": "in Visakhapatnam",
+                "checkin": {
+                    "until": "00:00",
+                    "from": "15:00"
+                },
+                "timezone": "Asia/Kolkata",
+                "default_language": "en",
+                "composite_price_breakdown": {
+                    "net_amount": {
+                        "value": 16498,
+                        "currency": "INR"
+                    },
+                    "benefits": [],
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "gross_amount": {
+                        "value": 16498,
+                        "currency": "INR"
+                    },
+                    "items": [
+                        {
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 2969.64011800289
+                            },
+                            "details": null,
+                            "name": "Goods & services tax",
+                            "base": {
+                                "base_amount": 0,
+                                "kind": "variable_amount"
+                            },
+                            "kind": "charge",
+                            "inclusion_type": "excluded"
+                        }
+                    ],
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "amount": {
+                            "currency": "INR",
+                            "value": 2970
+                        },
+                        "translated_copy": "+Rs. 2,969.64 taxes and fees"
+                    },
+                    "all_inclusive_amount": {
+                        "currency": "INR",
+                        "value": 19467.6401180029
+                    },
+                    "has_long_stays_weekly_rate_price": 0,
+                    "has_long_stays_monthly_rate_price": 0,
+                    "gross_amount_hotel_currency": {
+                        "value": 16498,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "value": 16498,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "value": 2969.64011800289,
+                        "currency": "INR"
+                    }
+                },
+                "is_geo_rate": "",
+                "checkout": {
+                    "until": "12:00",
+                    "from": "00:00"
+                },
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/252155224.jpg?k=db12ec094dc0995764dc12792e22695fac5dad8b2781f2ce2568cc75d1b359dd&o=",
+                "is_free_cancellable": 0,
+                "city": "Visakhapatnam",
+                "cant_book": null,
+                "badges": [],
+                "updated_checkin": null,
+                "hotel_name_trans": "Novotel Visakhapatnam Varun Beach",
+                "id": "property_card_362700",
+                "latitude": 17.7108677549073,
+                "type": "property_card",
+                "currencycode": "INR",
+                "default_wishlist_name": "Visakhapatnam",
+                "children_not_allowed": null,
+                "ufi": -2114520,
+                "distances": [
+                    {
+                        "icon_name": "travel_sustainable",
+                        "text": "‎Travel Sustainable‬",
+                        "icon_set": null
+                    }
+                ],
+                "genius_discount_percentage": 0,
+                "has_swimming_pool": 1,
+                "hotel_name": "Novotel Visakhapatnam Varun Beach",
+                "main_photo_id": 252155224,
+                "soldout": 0,
+                "hotel_has_vb_boost": 0,
+                "review_score_word": "Good",
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "extended": 0,
+                "preferred": 1,
+                "class_is_estimated": 0,
+                "unit_configuration_label": "<b>2 hotel rooms</b>: 2 beds",
+                "updated_checkout": null,
+                "accommodation_type": 204,
+                "hotel_include_breakfast": 0,
+                "review_nr": 1064,
+                "preferred_plus": 0,
+                "class": 5,
+                "countrycode": "in",
+                "is_no_prepayment_block": 1
+            },
+            {
+                "hotel_id": 74703,
+                "main_photo_id": 149773522,
+                "soldout": 0,
+                "genius_discount_percentage": 0,
+                "has_swimming_pool": 1,
+                "distances": [
+                    {
+                        "text": "‎Travel Sustainable‬",
+                        "icon_name": "travel_sustainable",
+                        "icon_set": null
+                    }
+                ],
+                "hotel_name": "The Gateway Hotel Beach Road Visakhapatnam",
+                "ufi": -2114520,
+                "children_not_allowed": null,
+                "default_wishlist_name": "Visakhapatnam",
+                "type": "property_card",
+                "currencycode": "INR",
+                "class": 5,
+                "hotel_include_breakfast": 0,
+                "preferred_plus": 0,
+                "review_nr": 940,
+                "is_no_prepayment_block": 1,
+                "countrycode": "in",
+                "accommodation_type": 204,
+                "unit_configuration_label": "2 beds",
+                "updated_checkout": null,
+                "extended": 0,
+                "preferred": 1,
+                "class_is_estimated": 0,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "review_score_word": "Very Good",
+                "hotel_has_vb_boost": 0,
+                "has_free_parking": 1,
+                "city_in_trans": "in Visakhapatnam",
+                "block_ids": [
+                    "7470305_204257907_2_34_0",
+                    "7470305_204257907_1_34_0"
+                ],
+                "is_genius_deal": 0,
+                "is_smart_deal": 0,
+                "review_score": 8,
+                "min_total_price": 10215,
+                "longitude": 83.3163374662399,
+                "updated_checkin": null,
+                "hotel_name_trans": "The Gateway Hotel Beach Road Visakhapatnam",
+                "latitude": 17.7114681982874,
+                "id": "property_card_74703",
+                "badges": [
+                    {
+                        "id": "Mobile Rate",
+                        "badge_variant": "constructive",
+                        "text": "Mobile-only price"
+                    }
+                ],
+                "city": "Visakhapatnam",
+                "cant_book": null,
+                "is_free_cancellable": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/149773522.jpg?k=2f2e0438fd5d1ac65a4666ffd465f42b793ddfceecd70536e390c12857a62fc3&o=",
+                "is_geo_rate": "",
+                "composite_price_breakdown": {
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "translated_copy": "+Rs. 1,225.80 taxes and fees",
+                        "amount": {
+                            "value": 1226,
+                            "currency": "INR"
+                        }
+                    },
+                    "all_inclusive_amount": {
+                        "value": 11440.7999726012,
+                        "currency": "INR"
+                    },
+                    "strikethrough_amount_per_night": {
+                        "currency": "INR",
+                        "value": 11350
+                    },
+                    "has_long_stays_weekly_rate_price": 0,
+                    "discounted_amount": {
+                        "value": 1135,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "gross_amount_hotel_currency": {
+                        "value": 10215,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "currency": "INR",
+                        "value": 1225.79997260123
+                    },
+                    "gross_amount_per_night": {
+                        "currency": "INR",
+                        "value": 10215
+                    },
+                    "net_amount": {
+                        "currency": "INR",
+                        "value": 10215
+                    },
+                    "benefits": [
+                        {
+                            "identifier": "mobile-rate",
+                            "name": "Mobile-only price",
+                            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+                            "badge_variant": "constructive",
+                            "kind": "badge",
+                            "icon": null
+                        }
+                    ],
+                    "strikethrough_amount": {
+                        "currency": "INR",
+                        "value": 11350
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 10215
+                    },
+                    "items": [
+                        {
+                            "kind": "charge",
+                            "inclusion_type": "excluded",
+                            "base": {
+                                "kind": "variable_amount",
+                                "base_amount": 0
+                            },
+                            "name": "Goods & services tax",
+                            "details": null,
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 1225.79997260123
+                            }
+                        },
+                        {
+                            "details": "You're getting a reduced rate because you're using a mobile device.",
+                            "item_amount": {
+                                "value": 1135,
+                                "currency": "INR"
+                            },
+                            "identifier": "mobile-discount",
+                            "name": "Mobile-only price",
+                            "base": {
+                                "kind": "rate"
+                            },
+                            "kind": "discount"
+                        }
+                    ]
+                },
+                "checkout": {
+                    "until": "12:00",
+                    "from": ""
+                },
+                "checkin": {
+                    "until": "",
+                    "from": "14:00"
+                },
+                "timezone": "Asia/Kolkata",
+                "default_language": "en"
+            },
+            {
+                "hotel_id": 1456988,
+                "review_score_word": "Good",
+                "hotel_has_vb_boost": 0,
+                "class_is_estimated": 0,
+                "extended": 0,
+                "preferred": 1,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "accommodation_type": 204,
+                "updated_checkout": null,
+                "unit_configuration_label": "2 beds",
+                "class": 5,
+                "review_nr": 692,
+                "preferred_plus": 0,
+                "hotel_include_breakfast": 0,
+                "is_no_prepayment_block": 0,
+                "countrycode": "in",
+                "default_wishlist_name": "Visakhapatnam",
+                "currencycode": "INR",
+                "type": "property_card",
+                "ufi": -2114520,
+                "children_not_allowed": null,
+                "has_swimming_pool": 1,
+                "genius_discount_percentage": 0,
+                "distances": [
+                    {
+                        "icon_set": null,
+                        "text": "‎Travel Sustainable‬",
+                        "icon_name": "travel_sustainable"
+                    }
+                ],
+                "hotel_name": "Welcomhotel by ITC Hotels, Devee Grand Bay, Visakhapatnam",
+                "main_photo_id": 199209316,
+                "soldout": 0,
+                "timezone": "Asia/Kolkata",
+                "default_language": "en",
+                "checkin": {
+                    "until": "",
+                    "from": "14:00"
+                },
+                "is_geo_rate": "",
+                "composite_price_breakdown": {
+                    "all_inclusive_amount": {
+                        "value": 11983.9999713004,
+                        "currency": "INR"
+                    },
+                    "charges_details": {
+                        "translated_copy": "+Rs. 1,284 taxes and fees",
+                        "amount": {
+                            "value": 1284,
+                            "currency": "INR"
+                        },
+                        "mode": "extra_charges"
+                    },
+                    "has_long_stays_weekly_rate_price": 0,
+                    "has_long_stays_monthly_rate_price": 0,
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 10700
+                    },
+                    "gross_amount_per_night": {
+                        "value": 10700,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "currency": "INR",
+                        "value": 1283.99997130036
+                    },
+                    "net_amount": {
+                        "currency": "INR",
+                        "value": 10700
+                    },
+                    "benefits": [],
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 10700
+                    },
+                    "items": [
+                        {
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 1283.99997130036
+                            },
+                            "details": null,
+                            "name": "Goods & services tax",
+                            "base": {
+                                "kind": "variable_amount",
+                                "base_amount": 0
+                            },
+                            "kind": "charge",
+                            "inclusion_type": "excluded"
+                        }
+                    ]
+                },
+                "checkout": {
+                    "until": "12:00",
+                    "from": ""
+                },
+                "city": "Visakhapatnam",
+                "badges": [],
+                "cant_book": null,
+                "is_free_cancellable": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/199209316.jpg?k=dc865e31e6e7e2b9247ec26436474d33c7aa5780c341713441e329e6186a1ce1&o=",
+                "hotel_name_trans": "Welcomhotel by ITC Hotels, Devee Grand Bay, Visakhapatnam",
+                "updated_checkin": null,
+                "latitude": 17.711933574725,
+                "id": "property_card_1456988",
+                "is_smart_deal": 0,
+                "review_score": 7.8,
+                "min_total_price": 10700,
+                "longitude": 83.3152061196045,
+                "is_genius_deal": 0,
+                "block_ids": [
+                    "145698802_336139758_2_42_0",
+                    "145698802_336139758_1_42_0"
+                ],
+                "has_free_parking": 1,
+                "city_in_trans": "in Visakhapatnam"
+            },
+            {
+                "hotel_id": 7495735,
+                "default_language": "en",
+                "timezone": "Asia/Kolkata",
+                "checkin": {
+                    "from": "15:00",
+                    "until": ""
+                },
+                "checkout": {
+                    "until": "12:00",
+                    "from": ""
+                },
+                "composite_price_breakdown": {
+                    "gross_amount_per_night": {
+                        "value": 15838.2,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "value": 2850.87611328363,
+                        "currency": "INR"
+                    },
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 15838.2
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "discounted_amount": {
+                        "value": 1759.8,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_weekly_rate_price": 0,
+                    "strikethrough_amount_per_night": {
+                        "value": 17598,
+                        "currency": "INR"
+                    },
+                    "all_inclusive_amount": {
+                        "value": 18689.0761132836,
+                        "currency": "INR"
+                    },
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "amount": {
+                            "currency": "INR",
+                            "value": 2851
+                        },
+                        "translated_copy": "+Rs. 2,850.88 taxes and fees"
+                    },
+                    "items": [
+                        {
+                            "name": "VAT",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 0
+                            },
+                            "details": "0 % VAT",
+                            "inclusion_type": "excluded",
+                            "kind": "charge",
+                            "base": {
+                                "percentage": 0,
+                                "kind": "percentage"
+                            }
+                        },
+                        {
+                            "kind": "charge",
+                            "inclusion_type": "excluded",
+                            "base": {
+                                "base_amount": 0,
+                                "kind": "variable_amount"
+                            },
+                            "name": "Goods & services tax",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 2850.87611328363
+                            },
+                            "details": null
+                        },
+                        {
+                            "kind": "discount",
+                            "base": {
+                                "kind": "rate"
+                            },
+                            "name": "Mobile-only price",
+                            "identifier": "mobile-discount",
+                            "details": "You're getting a reduced rate because you're using a mobile device.",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 1759.8
+                            }
+                        }
+                    ],
+                    "gross_amount": {
+                        "value": 15838.2,
+                        "currency": "INR"
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "currency": "INR",
+                        "value": 0
+                    },
+                    "strikethrough_amount": {
+                        "currency": "INR",
+                        "value": 17598
+                    },
+                    "benefits": [
+                        {
+                            "badge_variant": "constructive",
+                            "kind": "badge",
+                            "icon": null,
+                            "identifier": "mobile-rate",
+                            "name": "Mobile-only price",
+                            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device."
+                        }
+                    ],
+                    "net_amount": {
+                        "value": 15838.2,
+                        "currency": "INR"
+                    }
+                },
+                "is_geo_rate": "",
+                "is_free_cancellable": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/338502070.jpg?k=63770225967cf715563fb0514089bca598fd21f3865fba4650779c96116632b4&o=",
+                "city": "Vishakhapatnam",
+                "cant_book": null,
+                "badges": [
+                    {
+                        "text": "Mobile-only price",
+                        "badge_variant": "constructive",
+                        "id": "Mobile Rate"
+                    }
+                ],
+                "id": "property_card_7495735",
+                "latitude": 17.7701127,
+                "hotel_name_trans": "Radisson Blu Resort Visakhapatnam",
+                "updated_checkin": null,
+                "longitude": 83.3722983,
+                "min_total_price": 15838.2,
+                "review_score": 8.2,
+                "is_smart_deal": 0,
+                "is_genius_deal": 0,
+                "block_ids": [
+                    "749573503_331239127_2_41_0",
+                    "749573503_331239127_2_41_0"
+                ],
+                "city_in_trans": "in Visakhapatnam",
+                "hotel_has_vb_boost": 0,
+                "review_score_word": "Very Good",
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "class_is_estimated": 0,
+                "preferred": 1,
+                "extended": 0,
+                "updated_checkout": null,
+                "unit_configuration_label": "2 beds",
+                "accommodation_type": 204,
+                "countrycode": "in",
+                "is_no_prepayment_block": 1,
+                "review_nr": 337,
+                "preferred_plus": 0,
+                "class": 5,
+                "currencycode": "INR",
+                "type": "property_card",
+                "ribbon_text": "Breakfast included",
+                "default_wishlist_name": "Visakhapatnam",
+                "children_not_allowed": null,
+                "ufi": -2114520,
+                "hotel_name": "Radisson Blu Resort Visakhapatnam",
+                "distances": [
+                    {
+                        "icon_name": "travel_sustainable",
+                        "text": "‎Travel Sustainable‬",
+                        "icon_set": null
+                    }
+                ],
+                "has_swimming_pool": 1,
+                "genius_discount_percentage": 0,
+                "soldout": 0,
+                "main_photo_id": 338502070
+            },
+            {
+                "hotel_id": 311581,
+                "checkout": {
+                    "until": "12:30",
+                    "from": "12:00"
+                },
+                "is_geo_rate": "",
+                "composite_price_breakdown": {
+                    "gross_amount_per_night": {
+                        "value": 12000,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "currency": "INR",
+                        "value": 2160
+                    },
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 12000
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "has_long_stays_weekly_rate_price": 0,
+                    "all_inclusive_amount": {
+                        "currency": "INR",
+                        "value": 14160
+                    },
+                    "charges_details": {
+                        "amount": {
+                            "currency": "INR",
+                            "value": 2160
+                        },
+                        "translated_copy": "+Rs. 2,160 taxes and fees",
+                        "mode": "extra_charges"
+                    },
+                    "items": [
+                        {
+                            "base": {
+                                "kind": "percentage",
+                                "percentage": 18
+                            },
+                            "inclusion_type": "excluded",
+                            "kind": "charge",
+                            "details": "18 % Goods & services tax",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 2160
+                            },
+                            "name": "Goods & services tax"
+                        }
+                    ],
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 12000
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "benefits": [],
+                    "net_amount": {
+                        "value": 12000,
+                        "currency": "INR"
+                    }
+                },
+                "checkin": {
+                    "until": "",
+                    "from": "14:00"
+                },
+                "timezone": "Asia/Kolkata",
+                "default_language": "en",
+                "latitude": 17.7205998000992,
+                "id": "property_card_311581",
+                "updated_checkin": null,
+                "hotel_name_trans": "Four Points By Sheraton Visakhapatnam",
+                "city": "Visakhapatnam",
+                "badges": [],
+                "cant_book": null,
+                "is_free_cancellable": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/465685729.jpg?k=9d4718e7a3269fe4fe6648f304ffaef6ed1980d8f36c5f30965e12820b6a5ece&o=",
+                "is_genius_deal": 0,
+                "min_total_price": 12000,
+                "longitude": 83.3125220239162,
+                "is_smart_deal": 0,
+                "review_score": 7.4,
+                "city_in_trans": "in Visakhapatnam",
+                "has_free_parking": 1,
+                "block_ids": [
+                    "31158114_354413213_2_42_0",
+                    "31158115_354413213_2_42_0"
+                ],
+                "preferred": 1,
+                "extended": 0,
+                "class_is_estimated": 0,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "review_score_word": "Good",
+                "hotel_has_vb_boost": 0,
+                "is_no_prepayment_block": 1,
+                "countrycode": "in",
+                "class": 5,
+                "hotel_include_breakfast": 0,
+                "preferred_plus": 0,
+                "review_nr": 359,
+                "accommodation_type": 204,
+                "unit_configuration_label": "<b>2 hotel rooms</b>: 3 beds",
+                "updated_checkout": null,
+                "ufi": -2114520,
+                "children_not_allowed": null,
+                "default_wishlist_name": "Visakhapatnam",
+                "type": "property_card",
+                "currencycode": "INR",
+                "soldout": 0,
+                "main_photo_id": 465685729,
+                "hotel_name": "Four Points By Sheraton Visakhapatnam",
+                "genius_discount_percentage": 0,
+                "has_swimming_pool": 1,
+                "distances": [
+                    {
+                        "icon_set": null,
+                        "text": "‎Travel Sustainable‬",
+                        "icon_name": "travel_sustainable"
+                    }
+                ]
+            },
+            {
+                "hotel_id": 4703015,
+                "id": "property_card_4703015",
+                "latitude": 17.765927,
+                "hotel_name_trans": "Blue Beach Guest House",
+                "updated_checkin": null,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/184314623.jpg?k=29a6572d0d564c7b7788789a2d428ac6f20d3df18ed9534d46c5141b4c097a51&o=",
+                "is_free_cancellable": 0,
+                "cant_book": null,
+                "city": "Visakhapatnam",
+                "badges": [],
+                "checkout": {
+                    "from": "",
+                    "until": "09:00"
+                },
+                "composite_price_breakdown": {
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "net_amount": {
+                        "value": 1000,
+                        "currency": "INR"
+                    },
+                    "benefits": [],
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 1000
+                    },
+                    "items": [
+                        {
+                            "inclusion_type": "excluded",
+                            "kind": "charge",
+                            "base": {
+                                "kind": "variable_amount",
+                                "base_amount": 0
+                            },
+                            "name": "Goods & services tax",
+                            "item_amount": {
+                                "value": 119.999997317791,
+                                "currency": "INR"
+                            },
+                            "details": null
+                        }
+                    ],
+                    "has_long_stays_weekly_rate_price": 0,
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "translated_copy": "+Rs. 120 taxes and fees",
+                        "amount": {
+                            "value": 120,
+                            "currency": "INR"
+                        }
+                    },
+                    "all_inclusive_amount": {
+                        "value": 1119.99999731779,
+                        "currency": "INR"
+                    },
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 1000
+                    },
+                    "excluded_amount": {
+                        "currency": "INR",
+                        "value": 119.999997317791
+                    },
+                    "gross_amount_per_night": {
+                        "value": 1000,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_monthly_rate_price": 0
+                },
+                "is_geo_rate": "",
+                "default_language": "xu",
+                "timezone": "Asia/Kolkata",
+                "checkin": {
+                    "until": "",
+                    "from": "10:00"
+                },
+                "city_in_trans": "in Visakhapatnam",
+                "has_free_parking": 1,
+                "booking_home": {
+                    "group": "house_like",
+                    "segment": 1,
+                    "is_single_unit_property": "",
+                    "quality_class": 3,
+                    "is_booking_home": 1
+                },
+                "block_ids": [
+                    "470301505_245815914_0_0_0"
+                ],
+                "is_genius_deal": 0,
+                "longitude": 83.358832,
+                "min_total_price": 1000,
+                "review_score": 7.2,
+                "is_smart_deal": 0,
+                "countrycode": "in",
+                "is_no_prepayment_block": 0,
+                "preferred_plus": 0,
+                "review_nr": 43,
+                "hotel_include_breakfast": 0,
+                "class": 0,
+                "updated_checkout": null,
+                "unit_configuration_label": "<b>Entire vacation home – 16 m²</b>: 1 bed • 1 bedroom • 1 living room • 1 bathroom",
+                "accommodation_type": 220,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "class_is_estimated": 0,
+                "extended": 0,
+                "preferred": 1,
+                "hotel_has_vb_boost": 0,
+                "review_score_word": "Good",
+                "soldout": 0,
+                "main_photo_id": 184314623,
+                "hotel_name": "Blue Beach Guest House",
+                "distances": [
+                    {
+                        "icon_set": null,
+                        "icon_name": "travel_sustainable",
+                        "text": "‎Travel Sustainable‬"
+                    }
+                ],
+                "genius_discount_percentage": 0,
+                "children_not_allowed": null,
+                "ufi": -2114520,
+                "currencycode": "INR",
+                "type": "property_card",
+                "default_wishlist_name": "Visakhapatnam"
+            },
+            {
+                "hotel_id": 9023511,
+                "main_photo_id": 390350935,
+                "soldout": 0,
+                "genius_discount_percentage": 0,
+                "distances": [],
+                "hotel_name": "Hotel VR Grand",
+                "ufi": -2114538,
+                "children_not_allowed": null,
+                "default_wishlist_name": "Vizianagaram",
+                "currencycode": "INR",
+                "type": "property_card",
+                "class": 3,
+                "review_nr": 10,
+                "preferred_plus": 0,
+                "hotel_include_breakfast": 0,
+                "is_no_prepayment_block": 1,
+                "countrycode": "in",
+                "accommodation_type": 204,
+                "updated_checkout": null,
+                "unit_configuration_label": "<b>2 hotel rooms</b>: 2 beds",
+                "class_is_estimated": 0,
+                "preferred": 1,
+                "extended": 0,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "review_score_word": "Pleasant",
+                "hotel_has_vb_boost": 0,
+                "has_free_parking": 1,
+                "city_in_trans": "in Vizianagram City",
+                "block_ids": [
+                    "902351101_362954284_2_2_0",
+                    "902351101_362954284_2_2_0"
+                ],
+                "is_genius_deal": 0,
+                "is_smart_deal": 0,
+                "review_score": 6.8,
+                "min_total_price": 5010,
+                "longitude": 83.395506,
+                "hotel_name_trans": "Hotel VR Grand",
+                "updated_checkin": null,
+                "latitude": 18.106547,
+                "id": "property_card_9023511",
+                "city": "Vizianagaram",
+                "badges": [],
+                "cant_book": null,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/390350935.jpg?k=bb9229ae9016bf2230763b8fed1ca41dfabbd932cf5d952f248781280fd689e8&o=",
+                "is_free_cancellable": 1,
+                "is_geo_rate": "",
+                "composite_price_breakdown": {
+                    "has_long_stays_monthly_rate_price": 0,
+                    "excluded_amount": {
+                        "value": 601.199986562133,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "currency": "INR",
+                        "value": 5010
+                    },
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 5010
+                    },
+                    "all_inclusive_amount": {
+                        "currency": "INR",
+                        "value": 5611.19998656213
+                    },
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "translated_copy": "+Rs. 601.20 taxes and fees",
+                        "amount": {
+                            "value": 601,
+                            "currency": "INR"
+                        }
+                    },
+                    "has_long_stays_weekly_rate_price": 0,
+                    "items": [
+                        {
+                            "name": "Goods & services tax",
+                            "details": null,
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 601.199986562133
+                            },
+                            "inclusion_type": "excluded",
+                            "kind": "charge",
+                            "base": {
+                                "base_amount": 0,
+                                "kind": "variable_amount"
+                            }
+                        }
+                    ],
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 5010
+                    },
+                    "benefits": [],
+                    "net_amount": {
+                        "currency": "INR",
+                        "value": 5010
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "currency": "INR",
+                        "value": 0
+                    }
+                },
+                "checkout": {
+                    "until": "10:00",
+                    "from": ""
+                },
+                "timezone": "Asia/Kolkata",
+                "default_language": "xu",
+                "checkin": {
+                    "until": "",
+                    "from": "12:00"
+                }
+            },
+            {
+                "hotel_id": 2733863,
+                "genius_discount_percentage": 0,
+                "has_swimming_pool": 1,
+                "distances": [
+                    {
+                        "text": "‎Travel Sustainable‬",
+                        "icon_name": "travel_sustainable",
+                        "icon_set": null
+                    }
+                ],
+                "hotel_name": "Fairfield by Marriott Visakhapatnam",
+                "main_photo_id": 465584770,
+                "soldout": 0,
+                "default_wishlist_name": "Visakhapatnam",
+                "type": "property_card",
+                "currencycode": "INR",
+                "ufi": -2114520,
+                "children_not_allowed": null,
+                "accommodation_type": 204,
+                "unit_configuration_label": "<b>2 hotel rooms</b>: 2 beds",
+                "updated_checkout": null,
+                "class": 4,
+                "hotel_include_breakfast": 0,
+                "preferred_plus": 0,
+                "review_nr": 472,
+                "is_no_prepayment_block": 1,
+                "countrycode": "in",
+                "review_score_word": "Very Good",
+                "hotel_has_vb_boost": 0,
+                "extended": 0,
+                "preferred": 1,
+                "class_is_estimated": 0,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "block_ids": [
+                    "273386301_357986106_2_42_0",
+                    "273386301_357986106_1_42_0"
+                ],
+                "city_in_trans": "in Visakhapatnam",
+                "is_smart_deal": 0,
+                "review_score": 8.2,
+                "min_total_price": 10648,
+                "longitude": 83.245956,
+                "is_genius_deal": 0,
+                "city": "Visakhapatnam",
+                "cant_book": null,
+                "badges": [],
+                "is_free_cancellable": 1,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/465584770.jpg?k=79d2dad6e1c750b3d1e3b5d13a01a514327e3b96361159d1f1064a84a1fc6f93&o=",
+                "updated_checkin": null,
+                "hotel_name_trans": "Fairfield by Marriott Visakhapatnam",
+                "latitude": 17.748111,
+                "id": "property_card_2733863",
+                "checkin": {
+                    "from": "15:00",
+                    "until": ""
+                },
+                "default_language": "en",
+                "timezone": "Asia/Kolkata",
+                "is_geo_rate": "",
+                "composite_price_breakdown": {
+                    "gross_amount": {
+                        "value": 10648,
+                        "currency": "INR"
+                    },
+                    "items": [
+                        {
+                            "details": "18 % Goods & services tax",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 1916.64
+                            },
+                            "name": "Goods & services tax",
+                            "base": {
+                                "percentage": 18,
+                                "kind": "percentage"
+                            },
+                            "kind": "charge",
+                            "inclusion_type": "excluded"
+                        }
+                    ],
+                    "net_amount": {
+                        "value": 10648,
+                        "currency": "INR"
+                    },
+                    "benefits": [],
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "gross_amount_hotel_currency": {
+                        "value": 10648,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "value": 10648,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "value": 1916.64,
+                        "currency": "INR"
+                    },
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "amount": {
+                            "value": 1917,
+                            "currency": "INR"
+                        },
+                        "translated_copy": "+Rs. 1,916.64 taxes and fees"
+                    },
+                    "all_inclusive_amount": {
+                        "currency": "INR",
+                        "value": 12564.64
+                    },
+                    "has_long_stays_weekly_rate_price": 0
+                },
+                "checkout": {
+                    "until": "12:00",
+                    "from": ""
+                }
+            },
+            {
+                "hotel_id": 8984909,
+                "has_free_parking": 1,
+                "city_in_trans": "in Alipur",
+                "block_ids": [
+                    "898490903_360630891_2_0_0",
+                    "898490903_360630891_1_0_0"
+                ],
+                "is_genius_deal": 0,
+                "is_smart_deal": 0,
+                "review_score": 8.3,
+                "min_total_price": 2913.63,
+                "longitude": 83.3011291734874,
+                "updated_checkin": null,
+                "hotel_name_trans": "Super OYO Townhouse 1144 Hotel RCC 7 Lamps",
+                "latitude": 17.7148844180018,
+                "id": "property_card_8984909",
+                "badges": [
+                    {
+                        "text": "Late Escape Deal",
+                        "badge_variant": "constructive",
+                        "id": "Late Escape Campaign"
+                    }
+                ],
+                "city": "Visakhapatnam",
+                "cant_book": null,
+                "is_free_cancellable": 1,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/500662228.jpg?k=bf8bc4b422989ce066175fac4a20e3215ff8cc1049798b611d6ba6e16fb20ab5&o=",
+                "is_geo_rate": "",
+                "composite_price_breakdown": {
+                    "strikethrough_amount_per_night": {
+                        "value": 5946.18,
+                        "currency": "INR"
+                    },
+                    "charges_details": {
+                        "amount": {
+                            "value": 401,
+                            "currency": "INR"
+                        },
+                        "translated_copy": "+Rs. 400.64 taxes and fees",
+                        "mode": "extra_charges"
+                    },
+                    "all_inclusive_amount": {
+                        "value": 3314.2656,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_weekly_rate_price": 0,
+                    "has_long_stays_monthly_rate_price": 0,
+                    "discounted_amount": {
+                        "value": 3032.55,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "currency": "INR",
+                        "value": 2913.63
+                    },
+                    "excluded_amount": {
+                        "currency": "INR",
+                        "value": 400.6356
+                    },
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 2913.63
+                    },
+                    "benefits": [
+                        {
+                            "badge_variant": "constructive",
+                            "kind": "badge",
+                            "icon": null,
+                            "name": "Late Escape Deal",
+                            "identifier": "late-escape-campaign",
+                            "details": "You’re getting a reduced rate because this property is offering a discount on stays between October 1, 2023 and January 3, 2024."
+                        }
+                    ],
+                    "net_amount": {
+                        "value": 2913.63,
+                        "currency": "INR"
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "strikethrough_amount": {
+                        "value": 5946.18,
+                        "currency": "INR"
+                    },
+                    "items": [
+                        {
+                            "details": "12 % Goods & services tax",
+                            "item_amount": {
+                                "value": 349.6356,
+                                "currency": "INR"
+                            },
+                            "name": "Goods & services tax",
+                            "base": {
+                                "percentage": 12,
+                                "kind": "percentage"
+                            },
+                            "kind": "charge",
+                            "inclusion_type": "excluded"
+                        },
+                        {
+                            "inclusion_type": "excluded",
+                            "kind": "charge",
+                            "base": {
+                                "base_amount": 17,
+                                "kind": "per_person_per_night"
+                            },
+                            "name": "Service charge",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 51
+                            },
+                            "details": null
+                        },
+                        {
+                            "kind": "discount",
+                            "base": {
+                                "kind": "rate"
+                            },
+                            "identifier": "campaign_35",
+                            "name": "Late Escape Deal",
+                            "item_amount": {
+                                "value": 3032.55,
+                                "currency": "INR"
+                            },
+                            "details": "You’re getting a reduced rate because this property is offering a discount."
+                        }
+                    ],
+                    "gross_amount": {
+                        "value": 2913.63,
+                        "currency": "INR"
+                    }
+                },
+                "checkout": {
+                    "until": "11:00",
+                    "from": ""
+                },
+                "checkin": {
+                    "from": "12:00",
+                    "until": ""
+                },
+                "timezone": "Asia/Kolkata",
+                "default_language": "en",
+                "main_photo_id": 500662228,
+                "soldout": 0,
+                "genius_discount_percentage": 0,
+                "distances": [
+                    {
+                        "icon_set": null,
+                        "icon_name": "travel_sustainable",
+                        "text": "‎Travel Sustainable‬"
+                    }
+                ],
+                "hotel_name": "Super OYO Townhouse 1144 Hotel RCC 7 Lamps",
+                "ufi": -2088496,
+                "children_not_allowed": null,
+                "default_wishlist_name": "Alipur",
+                "type": "property_card",
+                "currencycode": "INR",
+                "class": 3,
+                "hotel_include_breakfast": 0,
+                "review_nr": 31,
+                "preferred_plus": 0,
+                "is_no_prepayment_block": 1,
+                "countrycode": "in",
+                "accommodation_type": 204,
+                "unit_configuration_label": "2 beds",
+                "updated_checkout": null,
+                "extended": 0,
+                "preferred": 1,
+                "class_is_estimated": 0,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "review_score_word": "Very Good",
+                "hotel_has_vb_boost": 0
+            },
+            {
+                "hotel_id": 10979422,
+                "longitude": 82.854017688416,
+                "min_total_price": 4750,
+                "review_score": null,
+                "is_smart_deal": 0,
+                "is_genius_deal": 0,
+                "block_ids": [
+                    "1097942201_382675046_2_0_0",
+                    "1097942201_382675046_1_0_0"
+                ],
+                "city_in_trans": "in Araku",
+                "has_free_parking": 1,
+                "checkin": {
+                    "from": "12:00",
+                    "until": "12:00"
+                },
+                "timezone": "Asia/Kolkata",
+                "default_language": "en",
+                "checkout": {
+                    "until": "10:00",
+                    "from": "00:00"
+                },
+                "composite_price_breakdown": {
+                    "has_long_stays_monthly_rate_price": 0,
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 4750
+                    },
+                    "gross_amount_per_night": {
+                        "value": 4750,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "value": 569.999987259507,
+                        "currency": "INR"
+                    },
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "amount": {
+                            "currency": "INR",
+                            "value": 570
+                        },
+                        "translated_copy": "+Rs. 570 taxes and fees"
+                    },
+                    "all_inclusive_amount": {
+                        "value": 5319.99998725951,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_weekly_rate_price": 0,
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 4750
+                    },
+                    "items": [
+                        {
+                            "name": "Goods & services tax",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 569.999987259507
+                            },
+                            "details": null,
+                            "kind": "charge",
+                            "inclusion_type": "excluded",
+                            "base": {
+                                "base_amount": 0,
+                                "kind": "variable_amount"
+                            }
+                        }
+                    ],
+                    "net_amount": {
+                        "currency": "INR",
+                        "value": 4750
+                    },
+                    "benefits": [],
+                    "included_taxes_and_charges_amount": {
+                        "currency": "INR",
+                        "value": 0
+                    }
+                },
+                "is_geo_rate": "",
+                "is_free_cancellable": 1,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/502021914.jpg?k=2990664eacb3660ae980791de6f792fc7fd6013e6105b8506c7a44ef30b2ca6d&o=",
+                "badges": [
+                    {
+                        "badge_variant": "accent",
+                        "text": "New to Booking.com",
+                        "id": "new_to_booking"
+                    }
+                ],
+                "city": "Visakhapatnam",
+                "cant_book": null,
+                "id": "property_card_10979422",
+                "latitude": 18.343659179365,
+                "updated_checkin": null,
+                "hotel_name_trans": "MSN Bamboo Resort Araku",
+                "type": "property_card",
+                "currencycode": "INR",
+                "default_wishlist_name": "Araku",
+                "children_not_allowed": null,
+                "ufi": -2089034,
+                "hotel_name": "MSN Bamboo Resort Araku",
+                "distances": [],
+                "genius_discount_percentage": 0,
+                "soldout": 0,
+                "main_photo_id": 502021914,
+                "hotel_has_vb_boost": 0,
+                "review_score_word": "",
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "preferred": 0,
+                "extended": 0,
+                "class_is_estimated": 0,
+                "unit_configuration_label": "<b>2 hotel rooms</b>: 2 beds",
+                "updated_checkout": null,
+                "accommodation_type": 204,
+                "countrycode": "in",
+                "is_no_prepayment_block": 1,
+                "hotel_include_breakfast": 0,
+                "review_nr": null,
+                "preferred_plus": 0,
+                "class": 5
+            },
+            {
+                "hotel_id": 274131,
+                "soldout": 0,
+                "main_photo_id": 357634447,
+                "hotel_name": "Fortune Inn Sree Kanya, Visakhapatnam - Member ITC's Hotel Group",
+                "genius_discount_percentage": 0,
+                "distances": [
+                    {
+                        "icon_name": "travel_sustainable",
+                        "text": "‎Travel Sustainable‬",
+                        "icon_set": null
+                    }
+                ],
+                "ufi": -2114520,
+                "children_not_allowed": null,
+                "default_wishlist_name": "Visakhapatnam",
+                "ribbon_text": "Breakfast included",
+                "type": "property_card",
+                "currencycode": "INR",
+                "is_no_prepayment_block": 1,
+                "countrycode": "in",
+                "class": 4,
+                "preferred_plus": 0,
+                "review_nr": 173,
+                "accommodation_type": 204,
+                "unit_configuration_label": "2 beds",
+                "updated_checkout": null,
+                "extended": 0,
+                "preferred": 1,
+                "class_is_estimated": 0,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "review_score_word": "Very Good",
+                "hotel_has_vb_boost": 0,
+                "city_in_trans": "in Visakhapatnam",
+                "has_free_parking": 1,
+                "block_ids": [
+                    "27413105_275676614_2_41_0",
+                    "27413105_275676614_1_41_0"
+                ],
+                "is_genius_deal": 0,
+                "min_total_price": 8550,
+                "longitude": 83.3022800087929,
+                "is_smart_deal": 0,
+                "review_score": 8.1,
+                "latitude": 17.7267928770388,
+                "id": "property_card_274131",
+                "updated_checkin": null,
+                "hotel_name_trans": "Fortune Inn Sree Kanya, Visakhapatnam - Member ITC's Hotel Group",
+                "city": "Visakhapatnam",
+                "badges": [],
+                "cant_book": null,
+                "is_free_cancellable": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/357634447.jpg?k=34da1164c86fc99d5b47033bc739f164564058de34b67e5b14d46fa2b192b2cb&o=",
+                "checkout": {
+                    "until": "12:00",
+                    "from": ""
+                },
+                "is_geo_rate": "",
+                "composite_price_breakdown": {
+                    "strikethrough_amount": {
+                        "value": 9500,
+                        "currency": "INR"
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "net_amount": {
+                        "currency": "INR",
+                        "value": 8550
+                    },
+                    "benefits": [],
+                    "gross_amount": {
+                        "value": 8550,
+                        "currency": "INR"
+                    },
+                    "items": [
+                        {
+                            "base": {
+                                "base_amount": 0,
+                                "kind": "variable_amount"
+                            },
+                            "kind": "charge",
+                            "inclusion_type": "excluded",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 1025.99997706711
+                            },
+                            "details": null,
+                            "name": "Goods & services tax"
+                        },
+                        {
+                            "name": "Bonus savings",
+                            "identifier": "basic-deal",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 950
+                            },
+                            "details": "You’re getting a reduced rate because this property is offering a discount.",
+                            "kind": "discount",
+                            "base": {
+                                "kind": "rate"
+                            }
+                        }
+                    ],
+                    "has_long_stays_weekly_rate_price": 0,
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "translated_copy": "+Rs. 1,026 taxes and fees",
+                        "amount": {
+                            "currency": "INR",
+                            "value": 1026
+                        }
+                    },
+                    "all_inclusive_amount": {
+                        "value": 9575.99997706711,
+                        "currency": "INR"
+                    },
+                    "strikethrough_amount_per_night": {
+                        "currency": "INR",
+                        "value": 9500
+                    },
+                    "gross_amount_hotel_currency": {
+                        "value": 8550,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "value": 8550,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "currency": "INR",
+                        "value": 1025.99997706711
+                    },
+                    "discounted_amount": {
+                        "currency": "INR",
+                        "value": 950
+                    },
+                    "has_long_stays_monthly_rate_price": 0
+                },
+                "checkin": {
+                    "from": "12:00",
+                    "until": ""
+                },
+                "timezone": "Asia/Kolkata",
+                "default_language": "en"
+            },
+            {
+                "hotel_id": 2472522,
+                "is_genius_deal": 0,
+                "min_total_price": 3540.56,
+                "longitude": 83.3144911006093,
+                "is_smart_deal": 0,
+                "review_score": 7.4,
+                "city_in_trans": "in Visakhapatnam",
+                "has_free_parking": 1,
+                "block_ids": [
+                    "247252201_382577360_2_2_0",
+                    "247252201_382577360_1_2_0"
+                ],
+                "checkout": {
+                    "from": "",
+                    "until": "11:00"
+                },
+                "is_geo_rate": "",
+                "composite_price_breakdown": {
+                    "all_inclusive_amount": {
+                        "value": 3965.42719050348,
+                        "currency": "INR"
+                    },
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "translated_copy": "+Rs. 424.87 taxes and fees",
+                        "amount": {
+                            "value": 425,
+                            "currency": "INR"
+                        }
+                    },
+                    "strikethrough_amount_per_night": {
+                        "value": 7696.88,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_weekly_rate_price": 0,
+                    "discounted_amount": {
+                        "value": 4156.32,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "gross_amount_hotel_currency": {
+                        "value": 3540.56,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "value": 424.867190503478,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "currency": "INR",
+                        "value": 3540.56
+                    },
+                    "net_amount": {
+                        "value": 3540.56,
+                        "currency": "INR"
+                    },
+                    "benefits": [
+                        {
+                            "identifier": "late-escape-campaign",
+                            "name": "Late Escape Deal",
+                            "details": "You’re getting a reduced rate because this property is offering a discount on stays between October 1, 2023 and January 3, 2024.",
+                            "kind": "badge",
+                            "badge_variant": "constructive",
+                            "icon": null
+                        }
+                    ],
+                    "strikethrough_amount": {
+                        "value": 7696.88,
+                        "currency": "INR"
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "currency": "INR",
+                        "value": 0
+                    },
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 3540.56
+                    },
+                    "items": [
+                        {
+                            "inclusion_type": "excluded",
+                            "kind": "charge",
+                            "base": {
+                                "kind": "variable_amount",
+                                "base_amount": 0
+                            },
+                            "name": "Goods & services tax",
+                            "details": null,
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 424.867190503478
+                            }
+                        },
+                        {
+                            "base": {
+                                "kind": "rate"
+                            },
+                            "kind": "discount",
+                            "details": "You’re getting a reduced rate because this property is offering a discount.",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 4156.32
+                            },
+                            "identifier": "campaign_35",
+                            "name": "Late Escape Deal"
+                        }
+                    ]
+                },
+                "default_language": "en",
+                "timezone": "Asia/Kolkata",
+                "checkin": {
+                    "from": "12:00",
+                    "until": ""
+                },
+                "latitude": 17.743716080017,
+                "id": "property_card_2472522",
+                "hotel_name_trans": "Treebo Trend Celeste",
+                "updated_checkin": null,
+                "badges": [
+                    {
+                        "id": "Late Escape Campaign",
+                        "text": "Late Escape Deal",
+                        "badge_variant": "constructive"
+                    }
+                ],
+                "city": "Visakhapatnam",
+                "cant_book": null,
+                "is_free_cancellable": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/102773879.jpg?k=2b34e2e658340743b9c76f963c86043a2495475e5b23a03d5d4e3ab4b5ead56b&o=",
+                "ufi": -2114520,
+                "children_not_allowed": null,
+                "default_wishlist_name": "Visakhapatnam",
+                "currencycode": "INR",
+                "type": "property_card",
+                "soldout": 0,
+                "main_photo_id": 102773879,
+                "hotel_name": "Treebo Trend Celeste",
+                "genius_discount_percentage": 0,
+                "distances": [],
+                "class_is_estimated": 0,
+                "extended": 0,
+                "preferred": 1,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "review_score_word": "Good",
+                "hotel_has_vb_boost": 0,
+                "is_no_prepayment_block": 1,
+                "countrycode": "in",
+                "class": 3,
+                "review_nr": 210,
+                "preferred_plus": 0,
+                "hotel_include_breakfast": 0,
+                "accommodation_type": 204,
+                "updated_checkout": null,
+                "unit_configuration_label": "<b>2 hotel rooms</b>: 4 beds"
+            },
+            {
+                "hotel_id": 10027164,
+                "distances": [],
+                "genius_discount_percentage": 0,
+                "hotel_name": "Sri Brundavan Grand Inn",
+                "main_photo_id": 480401072,
+                "soldout": 0,
+                "currencycode": "INR",
+                "type": "property_card",
+                "default_wishlist_name": "Anakāpalle",
+                "children_not_allowed": null,
+                "ufi": -2088816,
+                "updated_checkout": null,
+                "unit_configuration_label": "2 beds",
+                "accommodation_type": 204,
+                "preferred_plus": 0,
+                "review_nr": 6,
+                "hotel_include_breakfast": 0,
+                "class": 0,
+                "countrycode": "in",
+                "is_no_prepayment_block": 1,
+                "hotel_has_vb_boost": 0,
+                "review_score_word": "Good",
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "class_is_estimated": 0,
+                "preferred": 0,
+                "extended": 0,
+                "block_ids": [
+                    "1002716402_373061754_2_0_0",
+                    "1002716402_373061754_1_0_0"
+                ],
+                "city_in_trans": "in Anakāpalle",
+                "review_score": 7.8,
+                "is_smart_deal": 0,
+                "longitude": 83.0062,
+                "min_total_price": 3076.29,
+                "is_genius_deal": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/480401072.jpg?k=3b4fb44c731f8f721904e3f8d5d5827c06bb584234931dad83e1f5c3715a4c92&o=",
+                "is_free_cancellable": 0,
+                "badges": [
+                    {
+                        "text": "Mobile-only price",
+                        "badge_variant": "constructive",
+                        "id": "Mobile Rate"
+                    }
+                ],
+                "city": "ANAKAPALLI",
+                "cant_book": null,
+                "hotel_name_trans": "Sri Brundavan Grand Inn",
+                "updated_checkin": null,
+                "id": "property_card_10027164",
+                "latitude": 17.688585,
+                "timezone": "Asia/Kolkata",
+                "default_language": "en",
+                "checkin": {
+                    "from": "12:00",
+                    "until": ""
+                },
+                "composite_price_breakdown": {
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 3076.29
+                    },
+                    "items": [
+                        {
+                            "item_amount": {
+                                "value": 369.154791748747,
+                                "currency": "INR"
+                            },
+                            "details": null,
+                            "name": "Goods & services tax",
+                            "base": {
+                                "kind": "variable_amount",
+                                "base_amount": 0
+                            },
+                            "kind": "charge",
+                            "inclusion_type": "excluded"
+                        },
+                        {
+                            "identifier": "mobile-discount",
+                            "name": "Mobile-only price",
+                            "details": "You're getting a reduced rate because you're using a mobile device.",
+                            "item_amount": {
+                                "value": 341.81,
+                                "currency": "INR"
+                            },
+                            "kind": "discount",
+                            "base": {
+                                "kind": "rate"
+                            }
+                        }
+                    ],
+                    "strikethrough_amount": {
+                        "value": 3418.1,
+                        "currency": "INR"
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "currency": "INR",
+                        "value": 0
+                    },
+                    "net_amount": {
+                        "currency": "INR",
+                        "value": 3076.29
+                    },
+                    "benefits": [
+                        {
+                            "identifier": "mobile-rate",
+                            "name": "Mobile-only price",
+                            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+                            "badge_variant": "constructive",
+                            "kind": "badge",
+                            "icon": null
+                        }
+                    ],
+                    "gross_amount_hotel_currency": {
+                        "value": 3076.29,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "value": 369.154791748747,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "value": 3076.29,
+                        "currency": "INR"
+                    },
+                    "discounted_amount": {
+                        "currency": "INR",
+                        "value": 341.81
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "has_long_stays_weekly_rate_price": 0,
+                    "all_inclusive_amount": {
+                        "currency": "INR",
+                        "value": 3445.44479174875
+                    },
+                    "charges_details": {
+                        "amount": {
+                            "currency": "INR",
+                            "value": 369
+                        },
+                        "translated_copy": "+Rs. 369.15 taxes and fees",
+                        "mode": "extra_charges"
+                    },
+                    "strikethrough_amount_per_night": {
+                        "currency": "INR",
+                        "value": 3418.1
+                    }
+                },
+                "is_geo_rate": "",
+                "checkout": {
+                    "from": "",
+                    "until": "12:00"
+                }
+            },
+            {
+                "hotel_id": 288453,
+                "checkout": {
+                    "from": "",
+                    "until": "12:30"
+                },
+                "is_geo_rate": 1,
+                "composite_price_breakdown": {
+                    "has_long_stays_weekly_rate_price": 0,
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "amount": {
+                            "currency": "INR",
+                            "value": 1156
+                        },
+                        "translated_copy": "+Rs. 1,155.60 taxes and fees"
+                    },
+                    "all_inclusive_amount": {
+                        "value": 10785.5999741703,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "value": 9630,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "currency": "INR",
+                        "value": 1155.59997417033
+                    },
+                    "gross_amount_hotel_currency": {
+                        "currency": "INR",
+                        "value": 9630
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "included_taxes_and_charges_amount": {
+                        "currency": "INR",
+                        "value": 0
+                    },
+                    "benefits": [],
+                    "net_amount": {
+                        "currency": "INR",
+                        "value": 9630
+                    },
+                    "items": [
+                        {
+                            "base": {
+                                "kind": "variable_amount",
+                                "base_amount": 0
+                            },
+                            "inclusion_type": "excluded",
+                            "kind": "charge",
+                            "details": null,
+                            "item_amount": {
+                                "value": 1155.59997417033,
+                                "currency": "INR"
+                            },
+                            "name": "Goods & services tax"
+                        }
+                    ],
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 9630
+                    }
+                },
+                "checkin": {
+                    "from": "14:00",
+                    "until": ""
+                },
+                "timezone": "Asia/Kolkata",
+                "default_language": "en",
+                "latitude": 17.7153518686331,
+                "id": "property_card_288453",
+                "updated_checkin": null,
+                "hotel_name_trans": "Green Park, Visakhapatnam",
+                "city": "Visakhapatnam",
+                "cant_book": null,
+                "badges": [],
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/34366594.jpg?k=cfd30ccbc52b2e31857d65e5d5ee34815830364a9a1566b1fd5ddb9eb4230bf6&o=",
+                "is_free_cancellable": 0,
+                "is_genius_deal": 0,
+                "min_total_price": 9630,
+                "longitude": 83.3062899112701,
+                "is_smart_deal": 0,
+                "review_score": 7.6,
+                "city_in_trans": "in Visakhapatnam",
+                "has_free_parking": 1,
+                "block_ids": [
+                    "28845304_372432870_2_33_0",
+                    "28845304_372432870_1_33_0"
+                ],
+                "extended": 0,
+                "preferred": 1,
+                "class_is_estimated": 0,
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "review_score_word": "Good",
+                "hotel_has_vb_boost": 0,
+                "is_no_prepayment_block": 1,
+                "countrycode": "in",
+                "class": 4,
+                "review_nr": 227,
+                "preferred_plus": 0,
+                "accommodation_type": 204,
+                "unit_configuration_label": "<b>2 hotel rooms</b>: 4 beds",
+                "updated_checkout": null,
+                "ufi": -2114520,
+                "children_not_allowed": null,
+                "default_wishlist_name": "Visakhapatnam",
+                "ribbon_text": "Breakfast included",
+                "type": "property_card",
+                "currencycode": "INR",
+                "soldout": 0,
+                "main_photo_id": 34366594,
+                "hotel_name": "Green Park, Visakhapatnam",
+                "genius_discount_percentage": 0,
+                "has_swimming_pool": 1,
+                "distances": [
+                    {
+                        "text": "‎Travel Sustainable‬",
+                        "icon_name": "travel_sustainable",
+                        "icon_set": null
+                    }
+                ]
+            },
+            {
+                "hotel_id": 9100213,
+                "is_free_cancellable": 0,
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/503049572.jpg?k=b810f371f93c3c6913cd3fc320aad38f6639c2789bba59ddcc07e37cc3977241&o=",
+                "badges": [
+                    {
+                        "id": "Mobile Rate",
+                        "text": "Mobile-only price",
+                        "badge_variant": "constructive"
+                    }
+                ],
+                "city": "Pāderu",
+                "cant_book": null,
+                "hotel_name_trans": "pickurstay VBSS CAMPING",
+                "updated_checkin": null,
+                "id": "property_card_9100213",
+                "latitude": 18.080649,
+                "timezone": "Asia/Kolkata",
+                "default_language": "en",
+                "checkin": {
+                    "from": "12:00",
+                    "until": "12:00"
+                },
+                "composite_price_breakdown": {
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 3060
+                    },
+                    "items": [
+                        {
+                            "details": null,
+                            "item_amount": {
+                                "value": 367.19999179244,
+                                "currency": "INR"
+                            },
+                            "name": "Goods & services tax",
+                            "base": {
+                                "base_amount": 0,
+                                "kind": "variable_amount"
+                            },
+                            "kind": "charge",
+                            "inclusion_type": "excluded"
+                        },
+                        {
+                            "kind": "discount",
+                            "base": {
+                                "kind": "rate"
+                            },
+                            "name": "Mobile-only price",
+                            "identifier": "mobile-discount",
+                            "item_amount": {
+                                "currency": "INR",
+                                "value": 540
+                            },
+                            "details": "You're getting a reduced rate because you're using a mobile device."
+                        }
+                    ],
+                    "net_amount": {
+                        "value": 3060,
+                        "currency": "INR"
+                    },
+                    "benefits": [
+                        {
+                            "details": "You’re getting a reduced rate because this property is offering a discount when you book from a mobile device.",
+                            "identifier": "mobile-rate",
+                            "name": "Mobile-only price",
+                            "icon": null,
+                            "kind": "badge",
+                            "badge_variant": "constructive"
+                        }
+                    ],
+                    "strikethrough_amount": {
+                        "value": 3600,
+                        "currency": "INR"
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "currency": "INR",
+                        "value": 0
+                    },
+                    "discounted_amount": {
+                        "value": 540,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "gross_amount_hotel_currency": {
+                        "value": 3060,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "currency": "INR",
+                        "value": 367.19999179244
+                    },
+                    "gross_amount_per_night": {
+                        "currency": "INR",
+                        "value": 3060
+                    },
+                    "all_inclusive_amount": {
+                        "currency": "INR",
+                        "value": 3427.19999179244
+                    },
+                    "charges_details": {
+                        "mode": "extra_charges",
+                        "translated_copy": "+Rs. 367.20 taxes and fees",
+                        "amount": {
+                            "value": 367,
+                            "currency": "INR"
+                        }
+                    },
+                    "strikethrough_amount_per_night": {
+                        "currency": "INR",
+                        "value": 3600
+                    },
+                    "has_long_stays_weekly_rate_price": 0
+                },
+                "is_geo_rate": "",
+                "checkout": {
+                    "until": "10:00",
+                    "from": ""
+                },
+                "block_ids": [
+                    "910021301_362183555_2_2_0",
+                    "910021301_362183555_2_2_0"
+                ],
+                "has_free_parking": 1,
+                "booking_home": {
+                    "is_booking_home": 1,
+                    "quality_class": 0,
+                    "is_single_unit_property": "",
+                    "segment": 0,
+                    "group": "hotels_and_others"
+                },
+                "city_in_trans": "in Pāderu",
+                "review_score": 3.7,
+                "is_smart_deal": 0,
+                "longitude": 82.664587,
+                "min_total_price": 3060,
+                "is_genius_deal": 0,
+                "updated_checkout": null,
+                "unit_configuration_label": "<b>2 tents</b>: 2 beds",
+                "accommodation_type": 224,
+                "preferred_plus": 0,
+                "review_nr": 3,
+                "hotel_include_breakfast": 0,
+                "class": 0,
+                "countrycode": "in",
+                "is_no_prepayment_block": 1,
+                "hotel_has_vb_boost": 0,
+                "review_score_word": "Poor",
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "class_is_estimated": 0,
+                "preferred": 0,
+                "extended": 0,
+                "distances": [],
+                "genius_discount_percentage": 0,
+                "hotel_name": "pickurstay VBSS CAMPING",
+                "main_photo_id": 503049572,
+                "soldout": 0,
+                "currencycode": "INR",
+                "type": "property_card",
+                "default_wishlist_name": "Pāderu",
+                "children_not_allowed": null,
+                "ufi": -2106651
+            },
+            {
+                "hotel_id": 9544830,
+                "currencycode": "INR",
+                "type": "property_card",
+                "ribbon_text": "Breakfast included",
+                "default_wishlist_name": "Araku",
+                "children_not_allowed": null,
+                "ufi": -2089034,
+                "hotel_name": "Itsy By Treebo - Abhitej Inn Jaypore Junction",
+                "distances": [],
+                "genius_discount_percentage": 0,
+                "soldout": 0,
+                "main_photo_id": 433275510,
+                "hotel_has_vb_boost": 0,
+                "review_score_word": "Good",
+                "last_reservation_data": {
+                    "last_reservation_ellapsed_months": 1
+                },
+                "class_is_estimated": 0,
+                "preferred": 1,
+                "extended": 0,
+                "updated_checkout": null,
+                "unit_configuration_label": "<b>2 hotel rooms</b>: 2 beds",
+                "accommodation_type": 204,
+                "countrycode": "in",
+                "is_no_prepayment_block": 1,
+                "preferred_plus": 0,
+                "review_nr": 33,
+                "class": 3,
+                "longitude": 82.8322357708054,
+                "min_total_price": 5158.1,
+                "review_score": 7.4,
+                "is_smart_deal": 0,
+                "is_genius_deal": 0,
+                "block_ids": [
+                    "954483001_382588544_2_1_0",
+                    "954483001_382588544_1_1_0"
+                ],
+                "city_in_trans": "in Araku",
+                "has_free_parking": 1,
+                "timezone": "Asia/Kolkata",
+                "default_language": "xu",
+                "checkin": {
+                    "from": "12:00",
+                    "until": ""
+                },
+                "checkout": {
+                    "until": "11:00",
+                    "from": ""
+                },
+                "composite_price_breakdown": {
+                    "items": [
+                        {
+                            "base": {
+                                "kind": "variable_amount",
+                                "base_amount": 0
+                            },
+                            "kind": "charge",
+                            "inclusion_type": "excluded",
+                            "item_amount": {
+                                "value": 618.971986164898,
+                                "currency": "INR"
+                            },
+                            "details": null,
+                            "name": "Goods & services tax"
+                        },
+                        {
+                            "kind": "discount",
+                            "base": {
+                                "kind": "rate"
+                            },
+                            "identifier": "campaign_35",
+                            "name": "Late Escape Deal",
+                            "item_amount": {
+                                "value": 6055.14,
+                                "currency": "INR"
+                            },
+                            "details": "You’re getting a reduced rate because this property is offering a discount."
+                        }
+                    ],
+                    "gross_amount": {
+                        "currency": "INR",
+                        "value": 5158.1
+                    },
+                    "benefits": [
+                        {
+                            "details": "You’re getting a reduced rate because this property is offering a discount on stays between October 1, 2023 and January 3, 2024.",
+                            "name": "Late Escape Deal",
+                            "identifier": "late-escape-campaign",
+                            "icon": null,
+                            "kind": "badge",
+                            "badge_variant": "constructive"
+                        }
+                    ],
+                    "net_amount": {
+                        "value": 5158.1,
+                        "currency": "INR"
+                    },
+                    "included_taxes_and_charges_amount": {
+                        "value": 0,
+                        "currency": "INR"
+                    },
+                    "strikethrough_amount": {
+                        "value": 11213.24,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_monthly_rate_price": 0,
+                    "discounted_amount": {
+                        "value": 6055.14,
+                        "currency": "INR"
+                    },
+                    "excluded_amount": {
+                        "value": 618.971986164898,
+                        "currency": "INR"
+                    },
+                    "gross_amount_per_night": {
+                        "value": 5158.1,
+                        "currency": "INR"
+                    },
+                    "gross_amount_hotel_currency": {
+                        "value": 5158.1,
+                        "currency": "INR"
+                    },
+                    "strikethrough_amount_per_night": {
+                        "value": 11213.24,
+                        "currency": "INR"
+                    },
+                    "charges_details": {
+                        "amount": {
+                            "currency": "INR",
+                            "value": 619
+                        },
+                        "translated_copy": "+Rs. 618.97 taxes and fees",
+                        "mode": "extra_charges"
+                    },
+                    "all_inclusive_amount": {
+                        "value": 5777.0719861649,
+                        "currency": "INR"
+                    },
+                    "has_long_stays_weekly_rate_price": 0
+                },
+                "is_geo_rate": "",
+                "main_photo_url": "https://cf.bstatic.com/xdata/images/hotel/square60/433275510.jpg?k=b95d066904d8f519a6c07cf63a301c31b078a61e3facdee3af5f195599d1b504&o=",
+                "is_free_cancellable": 0,
+                "cant_book": null,
+                "city": "Araku",
+                "badges": [
+                    {
+                        "badge_variant": "constructive",
+                        "text": "Late Escape Deal",
+                        "id": "Late Escape Campaign"
+                    }
+                ],
+                "id": "property_card_9544830",
+                "latitude": 18.3408821215185,
+                "hotel_name_trans": "Itsy By Treebo - Abhitej Inn Jaypore Junction",
+                "updated_checkin": null
+            }
+        ]
+    }

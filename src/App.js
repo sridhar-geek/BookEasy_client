@@ -33,7 +33,7 @@ function App() {
         <Route path="/hotelDetails" element={<HotelDetails />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
-          <Route path="/checkout" element={<CheckOut />} />
+          {/* <Route path="/checkout" element={<CheckOut />} /> */}
           <Route path="/success" element={<PaymentSuccess />} />
           <Route path="/cancel" element={<PaymentError />} />
         </Route>

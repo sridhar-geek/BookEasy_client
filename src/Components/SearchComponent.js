@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { styled, Box, Grid, Menu, Button, Typography } from "@mui/material";
 import { DateRange } from "react-date-range";
-import { addDays } from "date-fns";
+import { addDays, endOfDay } from "date-fns";
 import format from "date-fns/format";
 
 import BedIcon from "@mui/icons-material/Bed";
@@ -16,7 +16,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 /* Importe modules from another files */
 import { getApiData } from "../api/getHotels";
 import { getHotelData, gettingDetails } from "../redux/SearchSlice";
-import { sotreDetails, date } from "../redux/DetailsSlice";
+import { sotreDetails, startDate, endDate } from "../redux/DetailsSlice";
 import Loader from "./Loader";
 import {reducer,ACTIONS} from '../api/SearchComponent_reducer'
 
@@ -107,19 +107,31 @@ const SearchComponent = () => {
 
 // retrewing data from hotelslice
   const { loading } = useSelector((state) => state.hotels);
-  // storing all hotel details in redux global store
-  const latitude = 17.68;
-  const longitude = 83.2;
+  // converting date into yyy-mm-dd format to use in url
+  const convertDate=(date)=> {
+    let year = date.getFullYear();
+    let month = ("0" + (date.getMonth() + 1)).slice(-2);
+    let day = ("0" + date.getDate()).slice(-2);
+    return   `${year}-${month}-${day}`;
+  }
+  const arrivalDate = convertDate(range[0].startDate)
+  const departureDate = convertDate(range[0].endDate)
+  const latitude = 17.38;
+  const longitude = 78.49;
+  console.log('this data from searchComponent' + arrivalDate)
+  console.log('this data from searchComponent' + departureDate)
+  
+  // storing all hotel details in redux global store  
   const handleSumbit = async (e) => {
     e.preventDefault();
     // dispatch(gettingDetails());
-
     // const data = await getApiData(
-    //   `hotels/list-by-latlng?latitude=${latitude}&longitude=${longitude}`
+    //   `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
     // );
-    // dispatch(getHotelData(data));
+    // dispatch(getHotelData(data.result));
     dispatch(sotreDetails(state));
-    dispatch(date(range[0]));
+    dispatch(startDate(arrivalDate))
+    dispatch(endDate(departureDate));
     navigate("/hotels");
   };
   return (
@@ -236,7 +248,7 @@ const SearchComponent = () => {
             <Loader open={loading} />
           ) : (
             <SearchBtn type="submit">Search</SearchBtn>
-          )}
+           )} 
         </Individual>
       </Container>
     </form>

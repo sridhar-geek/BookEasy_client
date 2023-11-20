@@ -2,17 +2,19 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 
-const BaseUrl = "https://travel-advisor.p.rapidapi.com/"
+const BaseUrl = "https://booking-com15.p.rapidapi.com/api/v1/hotels";
 export const getApiData = async (url) => {
   try {
     const {
-      data: { data },
+      data: { data }
     } = await axios.get(`${BaseUrl}${url}`, {
       headers: {
         "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
-        "X-RapidAPI-Host": "travel-advisor.p.rapidapi.com",
+        "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
       },
     });
+    console.log('data called')
+    console.log(data)
     return data;
   } catch (error) {
     toast.error("error in retreving all hotels");
