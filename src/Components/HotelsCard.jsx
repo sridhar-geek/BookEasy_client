@@ -18,7 +18,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 /* Import modules from another files */
-import { getApiData } from "../api/getHotels";
+import { GetApiData } from "../api/getHotels";
 import {
   getSingleHotelDetails,
   gettingDetails,
@@ -39,7 +39,7 @@ const AvaliBtn = styled(Button)`
   }
 `;
 
-const Hotels = ({ place,key }) => {
+const Hotels = ({ place, key }) => {
   // retriewing data from hotelslice and detailsSlice
   const { loading } = useSelector((state) => state.hotels);
   const { room_adults, arrivalDate, departureDate } = useSelector(
@@ -57,17 +57,15 @@ const Hotels = ({ place,key }) => {
 
   // storing singlehotel in redux store
   // const handleClick = async (hotelId) => {
-  const handleClick = async(hotelId) => {
+  const handleClick = async (hotelId) => {
     dispatch(gettingDetails());
-    const data = await getApiData(
+    const data = await GetApiData(
       `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&currency_code=INR`
     );
-    console.log('data returned ')
+    console.log("data returned ");
     dispatch(getSingleHotelDetails(data));
-          const desc = await getApiData(
-            `/getDescriptionAndInfo?hotel_id=${hotelId}`
-          );
-          dispatch(getDescription(desc))
+    const desc = await GetApiData(`/getDescriptionAndInfo?hotel_id=${hotelId}`);
+    dispatch(getDescription(desc));
     navigate("/hotelDetails");
   };
   const randomNumber = Math.random() * 40;
@@ -153,5 +151,3 @@ const Hotels = ({ place,key }) => {
 };
 
 export default Hotels;
-
-

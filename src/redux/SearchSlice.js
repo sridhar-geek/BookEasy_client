@@ -26,12 +26,20 @@ const HotelSlice = createSlice({
         },
         getDescription: (state, action)=>{
             state.description = action.payload;
+        },
+        gettingDetailsFailure: (state)=> {
+            state.loading = false
         }
 
     }
 })
 
-export const { gettingDetails, getHotelData, getSingleHotelDetails, getDescription } =
-  HotelSlice.actions;
+export const {
+  gettingDetails,
+  getHotelData,
+  getSingleHotelDetails,
+  getDescription,
+  gettingDetailsFailure,
+} = HotelSlice.actions;
 
 export default HotelSlice.reducer;

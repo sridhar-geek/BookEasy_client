@@ -23,7 +23,7 @@ import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 // import data from '../assests/Api Data/singleHotel.json'
 // Imports from another file
 import Header from "../Components/MainHeader/Header";
-import { getApiData } from "../api/getHotels";
+import { GetApiData } from "../api/getHotels";
 import ReviewComponent from "../Components/Hotel Details/ReviewComponent";
 
 // google map component
@@ -133,7 +133,7 @@ const CheckOutBtn = styled(Button)`
   &:hover {
     background-color: red;
   }
-  `;
+`;
 
 const HotelDetails = () => {
   const navigate = useNavigate();
@@ -149,29 +149,30 @@ const HotelDetails = () => {
   // photos are stored in object which don't have fixed name, this code is to access the first value in that object
   const photoObjKey = Object.keys(data.rooms)[0];
   const photoObj = data.rooms[photoObjKey];
-  // calculating price 
-const price = Math.floor(
-  data.composite_price_breakdown.gross_amount_hotel_currency.value
-)*0.3;
-const gst = Math.floor(price*0.3)
-const discount = price*25/100;
-const total = Math.floor(price +gst -discount)
+  // calculating price
+  const price =
+    Math.floor(
+      data.composite_price_breakdown.gross_amount_hotel_currency.value
+    ) * 0.3;
+  const gst = Math.floor(price * 0.3);
+  const discount = (price * 25) / 100;
+  const total = Math.floor(price + gst - discount);
 
-// setting up email address and phone number
-const [emailStr, setEmailStr] = useState('')
-const phone = '+91-'+data.block[0].refundable_until_epoch
-useMemo(()=> {
-  const email = (emailId) => {
-    let str = "";
-    for (let i = 0; i < emailId.length; i++) {
-      if (emailId.charAt(i) === " ") continue;
-      str += emailId.charAt(i);
-    }
-    let str2 = str.toLowerCase() + "@gmail.com";
-    setEmailStr(str2)
-  };
-  email(data.hotel_name)
-},[hotelId])
+  // setting up email address and phone number
+  const [emailStr, setEmailStr] = useState("");
+  const phone = "+91-" + data.block[0].refundable_until_epoch;
+  useMemo(() => {
+    const email = (emailId) => {
+      let str = "";
+      for (let i = 0; i < emailId.length; i++) {
+        if (emailId.charAt(i) === " ") continue;
+        str += emailId.charAt(i);
+      }
+      let str2 = str.toLowerCase() + "@gmail.com";
+      setEmailStr(str2);
+    };
+    email(data.hotel_name);
+  }, [hotelId]);
 
   // calling description api to show description
   // console.log('Iam above useeffect function')
@@ -179,15 +180,15 @@ useMemo(()=> {
   // useEffect(() => {
   //   console.log('I came here to call description')
   //   const description = async () => {
-  //     const desc = await getApiData(
+  //     const desc = await GetApiData(
   //       `/getDescriptionAndInfo?hotel_id=${hotelId}`
   //     );
   //     setDescription(desc);
   //   };
   //   console.log("data called once 1");
-  //   description();  
+  //   description();
   // }, []);
-  console.log(description)
+  console.log(description);
   // setting dummy rating
   const rating = Math.random().toFixed(1) * 3 + 2;
   // for showing facilities
@@ -364,4 +365,3 @@ useMemo(()=> {
 };
 
 export default HotelDetails;
-

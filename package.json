@@ -57,5 +57,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:5000/api"
+  "proxy": "https://book-easy-server-149nqbnr4-sridhar-geek.vercel.app/api"
 }

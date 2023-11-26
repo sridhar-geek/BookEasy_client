@@ -14,13 +14,12 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
 /* Importe modules from another files */
-import { getApiData } from "../api/getHotels";
+import { GetApiData } from "../api/getHotels";
 import { getHotelData, gettingDetails } from "../redux/SearchSlice";
 import { sotreDetails, startDate, endDate } from "../redux/DetailsSlice";
 import Loader from "./Loader";
-import {reducer,ACTIONS} from '../api/SearchComponent_reducer'
+import { reducer, ACTIONS } from "../api/SearchComponent_reducer";
 import PlacesAutoComplete from "./Google Maps/PlacesAuto";
-
 
 //Component Styles
 const Container = styled(Grid)`
@@ -60,7 +59,7 @@ const SearchBtn = styled(Button)`
 const SearchComponent = () => {
   // const [destination, setDestination] = useState("");
   const [latitude, setLatitude] = useState(17.78);
-  const [longitude, setLongitude] = useState(78.32)
+  const [longitude, setLongitude] = useState(78.32);
   //calender component
   const [range, setRange] = useState([
     {
@@ -108,28 +107,28 @@ const SearchComponent = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-// retrewing data from hotelslice
+  // retrewing data from hotelslice
   const { loading } = useSelector((state) => state.hotels);
   // converting date into yyy-mm-dd format to use in url
-  const convertDate=(date)=> {
+  const convertDate = (date) => {
     let year = date.getFullYear();
     let month = ("0" + (date.getMonth() + 1)).slice(-2);
     let day = ("0" + date.getDate()).slice(-2);
-    return   `${year}-${month}-${day}`;
-  }
-  const arrivalDate = convertDate(range[0].startDate)
-  const departureDate = convertDate(range[0].endDate)
-  
-  // storing all hotel details in redux global store  
+    return `${year}-${month}-${day}`;
+  };
+  const arrivalDate = convertDate(range[0].startDate);
+  const departureDate = convertDate(range[0].endDate);
+
+  // storing all hotel details in redux global store
   const handleSumbit = async (e) => {
     e.preventDefault();
     dispatch(gettingDetails());
-    const data = await getApiData(
+    const data = await GetApiData(
       `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
     );
     dispatch(getHotelData(data.result));
     dispatch(sotreDetails(state));
-    dispatch(startDate(arrivalDate))
+    dispatch(startDate(arrivalDate));
     dispatch(endDate(departureDate));
     navigate("/hotels");
   };
@@ -138,7 +137,10 @@ const SearchComponent = () => {
       <Container container spacing={2}>
         <Individual item xs={8} md={6} lg={4}>
           <BedIcon />
-          <PlacesAutoComplete setLatitude ={setLatitude} setLongitude={setLongitude}/>
+          <PlacesAutoComplete
+            setLatitude={setLatitude}
+            setLongitude={setLongitude}
+          />
           {/* <input
             type="text"
             required
@@ -248,7 +250,7 @@ const SearchComponent = () => {
             <Loader open={loading} />
           ) : (
             <SearchBtn type="submit">Search</SearchBtn>
-           )} 
+          )}
         </Individual>
       </Container>
     </form>
