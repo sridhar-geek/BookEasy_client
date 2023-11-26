@@ -5,6 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     places: null,
     hotelDetails: null,
+    description: [],
     loading: false,
 }
 
@@ -23,10 +24,14 @@ const HotelSlice = createSlice({
             state.hotelDetails = action.payload;
             state.loading = false
         },
+        getDescription: (state, action)=>{
+            state.description = action.payload;
+        }
 
     }
 })
 
-export const { gettingDetails, getHotelData, getSingleHotelDetails } = HotelSlice.actions;
+export const { gettingDetails, getHotelData, getSingleHotelDetails, getDescription } =
+  HotelSlice.actions;
 
 export default HotelSlice.reducer;

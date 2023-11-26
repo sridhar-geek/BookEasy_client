@@ -29,11 +29,12 @@ import Header from "../Components/MainHeader/Header";
 import UpdateUser from "../Components/User Profile/UpdateUser";
 import MyBookings from "../Components/User Profile/MyBookings";
 import {
-  deleteUserFailure,
-  deleteUserStart,
-  deleteUserSuccess,
+  userActionStart,
+  delete_Logout,
+  userActionFailure,
 } from "../redux/userSlice";
 import Loader from "../Components/Loader";
+import { useNavigate } from "react-router-dom";
 
 //component Styles
 const Container = styled(Paper)`
@@ -73,9 +74,10 @@ const NoBtn = styled(Button)`
 `;
 
 const Profile = () => {
-  //shows update user, bookings and delete user on click
+  //shows update user, bookings and delete user onClick
   const [updateUser, setUpdateUser] = useState(true);
   const [open, setOpen] = useState(false);
+ const Navigate = useNavigate();
 
   const handleDeleteClick = () => {
     setOpen(true);
@@ -100,15 +102,18 @@ const Profile = () => {
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
-      dispatch(deleteUserStart());
+      dispatch(userActionStart());
       const data = await axios.delete(
-        `http://localhost:5000/api/user/${currentUser.userDetails._id}`
+        `/user/${currentUser.userDetails._id}`
       );
-      dispatch(deleteUserSuccess());
+      dispatch(delete_Logout());
+      Navigate('/')
     } catch (err) {
-      dispatch(deleteUserFailure(error));
-      toast.error("Something went wrong, Please try again later");
-      console.error(err)
+      dispatch(userActionFailure(err));
+      toast.error(err.response.data.msg);
+      // toast.error("Something went wrong, Please try again later");
+      console.error(error)
+      console.log(err)
     }
   };
   return (

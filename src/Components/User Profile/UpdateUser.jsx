@@ -29,9 +29,9 @@ import axios from "axios";
 import Loader from "../Loader";
 import { app } from "../Google login/firebase";
 import {
-  updateUserFailure,
-  updateUserStart,
-  updateUserSuccess,
+  userActionStart,
+  userActionSuccess,
+  userActionFailure,
 } from "../../redux/userSlice";
 
 // Component styles
@@ -142,17 +142,18 @@ const UpdateProfile = () => {
     if (password !== conformPassword) toast.error("Passwords not matched");
     else {
       try {
-        dispatch(updateUserStart());
+        dispatch(userActionStart());
         const data = await axios.put(
-          `http:/localhost:5000/api/user/${currentUser.userDetails._id}`,
+          `/user/${currentUser.userDetails._id}`,
           formData
         );
-        dispatch(updateUserSuccess(data.data));
+        dispatch(userActionSuccess(data.data));
         toast.success("Update successful");
       } catch (err) {
-        dispatch(updateUserFailure(error));
+        dispatch(userActionFailure(err));
         toast.error(error.response.data.msg);
         console.error(err);
+        console.log(error)
       }
     }
   };
@@ -160,7 +161,6 @@ const UpdateProfile = () => {
   return (
       <Container>
         <Wrapper>
-          <form onSubmit={submitHandler}>
             <Stack direction="column" sx={{ alignItems: "center" }}>
               <Typography
                 variant="h3"
@@ -271,8 +271,7 @@ const UpdateProfile = () => {
                 </InputAdornment>
               }
             />
-            {loading ? <Loader /> : <UpdateBtn type="submit">Update</UpdateBtn>}
-          </form>
+            {loading ? <Loader /> : <UpdateBtn onClick={submitHandler}>Update</UpdateBtn>}
         </Wrapper>
       </Container>
   );

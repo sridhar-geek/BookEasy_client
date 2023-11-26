@@ -10,7 +10,6 @@ import {
   Signup,
   Footer,
   ShowHotels,
-  Attractions,
   Profile,
   ProtectedRoute,
   HotelDetails,
@@ -29,7 +28,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/hotels" element={<ShowHotels />} />
-        <Route path="/attractions" element={<Attractions />} />
         <Route path="/hotelDetails" element={<HotelDetails />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />

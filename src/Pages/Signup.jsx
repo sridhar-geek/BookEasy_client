@@ -1,3 +1,5 @@
+/** signup page   Creates new user profile to database */
+
 import React, { useState } from "react";
 import {
   Box,
@@ -21,7 +23,7 @@ import axios from 'axios'
 import Header from "../Components/LoginSingupHeader/Header";
 import Loader from "../Components/Loader";
 import SocialLogin from "../Components/Google login/SocialLogin";
-import {loginStart, loginSuccess, loginFailure} from '../redux/userSlice'
+import {userActionStart,userActionSuccess, userActionFailure} from '../redux/userSlice'
 
 // Component styles
 const Container = styled(Box)`
@@ -48,11 +50,9 @@ const LoginBtn = styled(Button)`
     background-color: red;
   }
 `;
-const SignupText = styled(Typography)`
-  margin: 10px auto;
-`;
 
 const Signup = () => {
+  // store form data (name, email, password)
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -72,6 +72,7 @@ const Signup = () => {
      event.preventDefault();
    };
 
+   // this data sends to server to create user 
   const formData = {
     name,
     email,
@@ -84,15 +85,16 @@ const Signup = () => {
       toast.error('Passwords do not match')
     else{
       try {
-         dispatch(loginStart());
-         const data = await axios.post("http://localhost:5000/api/auth/register", formData);
-         dispatch(loginSuccess(data.data));
+         dispatch(userActionStart());
+         const data = await axios.post("/auth/register", formData);
+         dispatch(userActionSuccess(data.data));              // this is unnecessary change it or leave it
         toast.success('user registration successful')
         navigate('/login')
       } catch (err) {
-      toast.error(error.response.data.msg);
-      dispatch(loginFailure(error));
-      console.log(error)
+        dispatch(userActionFailure(err));
+        console.log(err)
+        console.log(error)
+      toast.error(err.response.data.msg);
       }
     }
   }
@@ -102,7 +104,6 @@ const Signup = () => {
       <Header />
       <Container>
         <Wrapper>
-          <form onSubmit={submitHandler}>
             <Typography
               variant="h3"
               sx={{
@@ -113,6 +114,7 @@ const Signup = () => {
             >
               Signup
             </Typography>
+          <form onSubmit={submitHandler}>
             <TextField
               variant="outlined"
               placeholder="Enter your Name"
@@ -180,12 +182,12 @@ const Signup = () => {
               }
             />
             {loading ? <Loader open={loading} /> : <LoginBtn type="submit">Signup</LoginBtn>}
-            <SignupText>
+            <Typography sx={{margin:'10px,auto'}}>
               Already have an account?{" "}
               <Link to={"/login"} style={{ textDecoration: "none" }}>
                 Login
               </Link>
-            </SignupText>
+            </Typography>
           </form>
           <Divider />
           <SocialLogin />

@@ -11,13 +11,11 @@ import App from "./App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={Store}>
-    {/* <React.StrictMode> */}
     <PersistGate persistor={persistor}>
       <BrowserRouter>
         <App />
       </BrowserRouter>
     </PersistGate>
-    {/* </React.StrictMode> */}
   </Provider>
 );
   // "proxy": "https://book-easy-server.vercel.app/"

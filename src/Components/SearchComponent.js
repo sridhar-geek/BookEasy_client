@@ -19,6 +19,7 @@ import { getHotelData, gettingDetails } from "../redux/SearchSlice";
 import { sotreDetails, startDate, endDate } from "../redux/DetailsSlice";
 import Loader from "./Loader";
 import {reducer,ACTIONS} from '../api/SearchComponent_reducer'
+import PlacesAutoComplete from "./Google Maps/PlacesAuto";
 
 
 //Component Styles
@@ -57,7 +58,9 @@ const SearchBtn = styled(Button)`
 `;
 
 const SearchComponent = () => {
-  const [destination, setDestination] = useState("");
+  // const [destination, setDestination] = useState("");
+  const [latitude, setLatitude] = useState(17.78);
+  const [longitude, setLongitude] = useState(78.32)
   //calender component
   const [range, setRange] = useState([
     {
@@ -116,19 +119,15 @@ const SearchComponent = () => {
   }
   const arrivalDate = convertDate(range[0].startDate)
   const departureDate = convertDate(range[0].endDate)
-  const latitude = 17.38;
-  const longitude = 78.49;
-  console.log('this data from searchComponent' + arrivalDate)
-  console.log('this data from searchComponent' + departureDate)
   
   // storing all hotel details in redux global store  
   const handleSumbit = async (e) => {
     e.preventDefault();
-    // dispatch(gettingDetails());
-    // const data = await getApiData(
-    //   `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
-    // );
-    // dispatch(getHotelData(data.result));
+    dispatch(gettingDetails());
+    const data = await getApiData(
+      `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
+    );
+    dispatch(getHotelData(data.result));
     dispatch(sotreDetails(state));
     dispatch(startDate(arrivalDate))
     dispatch(endDate(departureDate));
@@ -139,14 +138,15 @@ const SearchComponent = () => {
       <Container container spacing={2}>
         <Individual item xs={8} md={6} lg={4}>
           <BedIcon />
-          <input
+          <PlacesAutoComplete setLatitude ={setLatitude} setLongitude={setLongitude}/>
+          {/* <input
             type="text"
             required
             placeholder="Where are you going..."
             value={destination}
             onChange={(e) => setDestination(e.target.value)}
             style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
-          />
+          /> */}
         </Individual>
         <Individual item xs={8} md={6} lg={4}>
           <CalendarMonthIcon />

@@ -20,7 +20,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import MailIcon from "@mui/icons-material/Mail";
 import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
 
-import data from '../assests/Api Data/singleHotel.json'
+// import data from '../assests/Api Data/singleHotel.json'
 // Imports from another file
 import Header from "../Components/MainHeader/Header";
 import { getApiData } from "../api/getHotels";
@@ -28,8 +28,8 @@ import ReviewComponent from "../Components/Hotel Details/ReviewComponent";
 
 // google map component
 const GoogleMap = () => {
-  // const { hotelDetails } = useSelector((state) => state.hotels);
-  // const data = hotelDetails;
+  const { hotelDetails } = useSelector((state) => state.hotels);
+  const data = hotelDetails;
 
   const lat = Number(data.latitude);
   const lng = Number(data.longitude);
@@ -133,16 +133,17 @@ const CheckOutBtn = styled(Button)`
   &:hover {
     background-color: red;
   }
-`;
+  `;
 
 const HotelDetails = () => {
+  const navigate = useNavigate();
   /**Retrieve hotel details from redux store */
-  // const { hotelDetails } = useSelector((state) => state.hotels);
-  // const data = hotelDetails;
-  const hotelId = data.hotel_id;
-
+  const { hotelDetails, description } = useSelector((state) => state.hotels);
+  const data = hotelDetails;
   const { currentUser } = useSelector((state) => state.user);
   const { room_adults } = useSelector((state) => state.details);
+
+  const hotelId = data.hotel_id;
   // for getting arrival date and departure date
   const date = data.block[0].paymentterms.prepayment.timeline.stages[0];
   // photos are stored in object which don't have fixed name, this code is to access the first value in that object
@@ -173,8 +174,10 @@ useMemo(()=> {
 },[hotelId])
 
   // calling description api to show description
-  const [description, setDescription] = useState([]);
+  // console.log('Iam above useeffect function')
+  // const [description, setDescription] = useState([]);
   // useEffect(() => {
+  //   console.log('I came here to call description')
   //   const description = async () => {
   //     const desc = await getApiData(
   //       `/getDescriptionAndInfo?hotel_id=${hotelId}`
@@ -183,15 +186,14 @@ useMemo(()=> {
   //   };
   //   console.log("data called once 1");
   //   description();  
-  // }, [hotelId]);
-  // console.log(description)
+  // }, []);
+  console.log(description)
   // setting dummy rating
   const rating = Math.random().toFixed(1) * 3 + 2;
   // for showing facilities
   const [showAll, setShowAll] = useState(false);
   const itemsToShow = showAll ? 20 : 5;
 
-  const navigate = useNavigate();
   return (
     <div>
       <Header />
@@ -238,11 +240,11 @@ useMemo(()=> {
               <Typography variant="h4" mt={4}>
                 Overview
               </Typography>
-              {/* <Typography mt={2} variant="h6">
+              <Typography mt={2} variant="h6">
                 {description[1]
                   ? description[1].description
                   : description[0].description}
-              </Typography> */}
+              </Typography>
             </Box>
             <Box>
               <Typography variant="h4" mt={4}>

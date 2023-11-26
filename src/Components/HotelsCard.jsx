@@ -19,7 +19,11 @@ import { useNavigate } from "react-router-dom";
 
 /* Import modules from another files */
 import { getApiData } from "../api/getHotels";
-import { getSingleHotelDetails, gettingDetails } from "../redux/SearchSlice";
+import {
+  getSingleHotelDetails,
+  gettingDetails,
+  getDescription,
+} from "../redux/SearchSlice";
 import Loader from "./Loader";
 
 //Component styles
@@ -53,13 +57,17 @@ const Hotels = ({ place,key }) => {
 
   // storing singlehotel in redux store
   // const handleClick = async (hotelId) => {
-  const handleClick = () => {
-    // dispatch(gettingDetails());
-    // const data = await getApiData(
-    //   `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&currency_code=INR`
-    // );
-    // console.log('data returned ')
-    // dispatch(getSingleHotelDetails(data));
+  const handleClick = async(hotelId) => {
+    dispatch(gettingDetails());
+    const data = await getApiData(
+      `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&currency_code=INR`
+    );
+    console.log('data returned ')
+    dispatch(getSingleHotelDetails(data));
+          const desc = await getApiData(
+            `/getDescriptionAndInfo?hotel_id=${hotelId}`
+          );
+          dispatch(getDescription(desc))
     navigate("/hotelDetails");
   };
   const randomNumber = Math.random() * 40;

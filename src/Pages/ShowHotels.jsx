@@ -33,24 +33,23 @@ const SortBox = styled(Paper)`
   border-radius: 10px;
 `;
 
-const HotelCard = styled(Paper)`
-  margin: 20px 60px;
-`;
 
 const ShowHotels = () => {
   // retriewing data from redux store
-  // const {places} = useSelector((state) => state.hotels);
-const places = HotelsData.result
+  const {places} = useSelector((state) => state.hotels);
+// const places = HotelsData.result
 
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("");
 
+  // handles map component
   const handleDialog = () => {
     setOpen((prevState) => !prevState);
   };
   const handleClose = () => {
     setOpen(false);
   };
+  // handles sort 
   const handleChange = (event) => {
     setSort(event.target.value);
   };
@@ -94,9 +93,9 @@ const places = HotelsData.result
         </Grid>
         <Grid item>
           {places?.map((place, i) => (
-            <HotelCard elevation={4}>
+            <Paper sx={{margin: '20px,60px'}} elevation={4}>
               <Hotels place={place} key={i}/>
-            </HotelCard>
+            </Paper>
           ))}
         </Grid>
       </Grid>
@@ -106,4 +105,4 @@ const places = HotelsData.result
 
 export default ShowHotels;
 
-// show
+

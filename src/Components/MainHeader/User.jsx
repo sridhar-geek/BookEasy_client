@@ -4,14 +4,15 @@ import React, { useState } from "react";
 import { Button, Menu, MenuItem, Avatar, Tooltip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
   /*Import modules from other files  */
-import { logout } from "../../redux/userSlice";
+import { delete_Logout, userActionFailure } from "../../redux/userSlice";
 
 const User = ({ user }) => {
   const Navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
   // handles main items to open and close
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -31,12 +32,14 @@ const User = ({ user }) => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.get("http://localhost:5000/api/auth/logout");
-      dispatch(logout());
+      await axios.get(`/user/logout/${currentUser.userDetails._id}`);
+      dispatch(delete_Logout());
       toast.success("user logout successful");
+      Navigate('/')
     } catch (error) {
+      dispatch(userActionFailure(error))
       console.error(error);
-      toast.error("logout failed");
+      toast.error(error.response.data.msg);
     }
   };
 

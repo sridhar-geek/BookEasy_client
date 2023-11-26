@@ -1,3 +1,5 @@
+/**Login  page   login user based on their credentails */
+
 import React, { useState } from "react";
 import {
   Box,
@@ -19,7 +21,7 @@ import axios from "axios";
 
 // import functions from another files
 import Header from "../Components/LoginSingupHeader/Header";
-import {loginStart, loginFailure, loginSuccess} from '../redux/userSlice'
+import {userActionStart, userActionSuccess, userActionFailure} from '../redux/userSlice'
 import Loader from "../Components/Loader";
 import SocialLogin from "../Components/Google login/SocialLogin";
 
@@ -48,12 +50,9 @@ const LoginBtn = styled(Button)`
     background-color: red;
   }
 `
-const SignupText = styled(Typography)`
-  margin :10px  auto;
-`
-
 
 const Login = () => {
+  // display data in input feild
   const [email, setEmail ] = useState('')
   const [password, setPassword] = useState('')
 
@@ -68,23 +67,23 @@ const Login = () => {
          event.preventDefault();
     };
 
+    // data which is send to server
 const formData = {
   email, 
   password
 }
-console.log(formData)
-// sending data for login
   const sumbitHandler = async (e) => {
     e.preventDefault();
     try {
-      dispatch(loginStart())
-      const data = await axios.post('http://localhost:5000/api/auth/login', formData)
-      dispatch(loginSuccess(data.data))
+      dispatch(userActionStart())
+      const data = await axios.post('/auth/login', formData)
+      dispatch(userActionSuccess(data.data))
       toast.success('user login successful')
       navigate('/')
     } catch (err) {
-      toast.error(error.response.data.msg)
-      dispatch(loginFailure(error))
+      dispatch(userActionFailure(err))
+      toast.error(err.response.data.msg)
+      console.log(error)
       console.log(err)
     }
   };
@@ -93,13 +92,13 @@ console.log(formData)
       <Header />
       <Container>
         <Wrapper elevation={10}>
-          <form onSubmit={sumbitHandler}>
             <Typography
               variant="h3"
               sx={{ marginBottom: "20px", textAlign: "center" }}
             >
               Login
             </Typography>
+          <form onSubmit={sumbitHandler}>
             <TextField
               variant="outlined"
               placeholder="Enter your Email"
@@ -133,12 +132,12 @@ console.log(formData)
               }
             />
             {loading ? <Loader open={loading} /> : <LoginBtn type="submit">Login</LoginBtn>}
-            <SignupText>
+            <Typography sx={{margin: '10px, auto'}}>
               New to BookEasy?{" "}
               <Link to={"/signup"} style={{ textDecoration: "none" }}>
                 Signup
               </Link>
-            </SignupText>
+            </Typography>
           </form>
           <Divider />
           <SocialLogin />
@@ -149,5 +148,3 @@ console.log(formData)
 };
 
 export default Login;
-
-// login user
