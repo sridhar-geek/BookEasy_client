@@ -1,21 +1,30 @@
 /** Displays dummy reviews for a hotel */
 
-import { useSelector } from "react-redux";
 import {Avatar, Box, Paper, Typography} from '@mui/material'
 import StarBorderIcon from '@mui/icons-material/StarBorder';
+import { useEffect, useState } from "react";
 
 /**Imports from another modules */
 import reviewsArray from '../../assests/Api Data/review.json'
-// import { useEffect, useState } from "react";
+
 
 
 const ReviewComponent = () => {
+  const [hotelReviews, setHotelReviews] = useState([])
+  useEffect(()=> {
+    // selecting 4 random reviews from reviews array
     const randomNumber = Math.floor(Math.random() * 4);
-    const reviews = reviewsArray.content.slice(randomNumber*4,(randomNumber+1)*4)
+    const reviews = reviewsArray.content.slice(
+      randomNumber * 4,
+      (randomNumber + 1) * 4
+    );
+    setHotelReviews(reviews)
+  },[])
+
 
   return (
     <>
-      {reviews.map((review, i) => (
+      {hotelReviews.map((review, i) => (
         <Paper elevation={4} sx={{ padding: "10px", margin: "10px" }}>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>

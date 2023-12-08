@@ -3,7 +3,7 @@
 import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
-  apiKey: `${process.env.REACT_APP_FIREFOX_APIKEY}`,
+  apiKey: process.env.REACT_APP_FIREFOX_APIKEY,
   authDomain: "book-easy-8711f.firebaseapp.com",
   projectId: "book-easy-8711f",
   storageBucket: "book-easy-8711f.appspot.com",

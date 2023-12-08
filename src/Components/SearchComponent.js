@@ -1,3 +1,4 @@
+/** Adding destination, adding rooms adults and show calender box  */
 import { useState, useEffect, useRef, useReducer } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +7,6 @@ import { DateRange } from "react-date-range";
 import { addDays, endOfDay } from "date-fns";
 import format from "date-fns/format";
 
-import BedIcon from "@mui/icons-material/Bed";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
 
@@ -47,6 +47,7 @@ const Items = styled(Box)`
   justify-content: space-between;
   padding: 0px 30px;
 `;
+const Btn = styled(Button)``
 const SearchBtn = styled(Button)`
   background-color: orangered;
   padding: 10px;
@@ -57,9 +58,7 @@ const SearchBtn = styled(Button)`
 `;
 
 const SearchComponent = () => {
-  // const [destination, setDestination] = useState("");
-  const [latitude, setLatitude] = useState(17.78);
-  const [longitude, setLongitude] = useState(78.32);
+
   //calender component
   const [range, setRange] = useState([
     {
@@ -107,8 +106,10 @@ const SearchComponent = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // retrewing data from hotelslice
+  // retrewing data from redux slice
   const { loading } = useSelector((state) => state.hotels);
+  const {latitude, longitude} = useSelector((state) => state.details)
+
   // converting date into yyy-mm-dd format to use in url
   const convertDate = (date) => {
     let year = date.getFullYear();
@@ -122,34 +123,22 @@ const SearchComponent = () => {
   // storing all hotel details in redux global store
   const handleSumbit = async (e) => {
     e.preventDefault();
-    dispatch(gettingDetails());
-    const data = await GetApiData(
-      `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
-    );
-    dispatch(getHotelData(data.result));
+    // dispatch(gettingDetails());
+    console.log('Search button clicked')
+    // const data = await GetApiData(
+    //   `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
+    // );
+    // console.log('Api data got successfully')
+    // dispatch(getHotelData(data.result));
     dispatch(sotreDetails(state));
     dispatch(startDate(arrivalDate));
     dispatch(endDate(departureDate));
+    console.log('no problem in search component')
     navigate("/hotels");
   };
   return (
-    <form onSubmit={handleSumbit}>
       <Container container spacing={2}>
-        <Individual item xs={8} md={6} lg={4}>
-          <BedIcon />
-          <PlacesAutoComplete
-            setLatitude={setLatitude}
-            setLongitude={setLongitude}
-          />
-          {/* <input
-            type="text"
-            required
-            placeholder="Where are you going..."
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-            style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
-          /> */}
-        </Individual>
+        {/* <PlacesAutoComplete /> */}
         <Individual item xs={8} md={6} lg={4}>
           <CalendarMonthIcon />
           <input
@@ -204,56 +193,65 @@ const SearchComponent = () => {
             <Items>
               <Typography>Room</Typography>
               <Box>
-                <Button
-                  sx={{ color: "primary" }}
-                  variant="standard"
+                <Btn
+                  variant="contained"
                   onClick={() => reduceFtn({ type: ACTIONS.RM_IN })}
                 >
-                  +
-                </Button>
+                  {"  "}+{"  "}
+                </Btn>
                 {state.rooms}
-                <Button
-                  variant="outlined"
-                  color="primary"
+                <Btn
+                  variant="contained"
                   onClick={() => reduceFtn({ type: ACTIONS.RM_DC })}
                 >
                   -
-                </Button>
+                </Btn>
               </Box>
             </Items>
             <Items>
               <Typography>Adults</Typography>
               <Box>
-                <Button onClick={() => reduceFtn({ type: ACTIONS.AD_IN })}>
+                <Btn
+                  variant="contained"
+                  onClick={() => reduceFtn({ type: ACTIONS.AD_IN })}
+                >
                   +
-                </Button>
+                </Btn>
                 {state.adults}
-                <Button onClick={() => reduceFtn({ type: ACTIONS.AD_DC })}>
+                <Btn
+                  variant="contained"
+                  onClick={() => reduceFtn({ type: ACTIONS.AD_DC })}
+                >
                   -
-                </Button>
+                </Btn>
               </Box>
             </Items>
             <Items>
               <Typography>Children</Typography>
               <Box>
-                <Button onClick={() => reduceFtn({ type: ACTIONS.CH_IN })}>
+                <Btn
+                  variant="contained"
+                  onClick={() => reduceFtn({ type: ACTIONS.CH_IN })}
+                >
                   +
-                </Button>
+                </Btn>
                 {state.children}
-                <Button onClick={() => reduceFtn({ type: ACTIONS.CH_DC })}>
+                <Btn
+                  variant="contained"
+                  onClick={() => reduceFtn({ type: ACTIONS.CH_DC })}
+                >
                   -
-                </Button>
+                </Btn>
               </Box>
             </Items>
           </Menu>
           {loading ? (
             <Loader open={loading} />
           ) : (
-            <SearchBtn type="submit">Search</SearchBtn>
+            <SearchBtn onClick={handleSumbit}>Search</SearchBtn>
           )}
         </Individual>
       </Container>
-    </form>
   );
 };
 

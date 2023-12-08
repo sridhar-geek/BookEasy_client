@@ -1,7 +1,7 @@
+/** Show all hotels and map component */
 import {
   Box,
   styled,
-  Grid,
   Paper,
   Typography,
   FormControl,
@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import HotelsData from '../assests/Api Data/All_hotels.json'
+import HotelsData from "../assests/Api Data/All_hotels.json";
 /* Imported files */
 import Header from "../Components/MainHeader/Header";
 import SearchComponent from "../Components/SearchComponent";
@@ -33,11 +33,10 @@ const SortBox = styled(Paper)`
   border-radius: 10px;
 `;
 
-
 const ShowHotels = () => {
   // retriewing data from redux store
-  const {places} = useSelector((state) => state.hotels);
-// const places = HotelsData.result
+  // const {places} = useSelector((state) => state.hotels);
+  const places = HotelsData.result;
 
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("");
@@ -49,9 +48,28 @@ const ShowHotels = () => {
   const handleClose = () => {
     setOpen(false);
   };
-  // handles sort 
+  // handles sort
   const handleChange = (event) => {
     setSort(event.target.value);
+  };
+  // for sorting hotels based on price, rating and popularity
+  const sortHotels = (arr) => {
+     if (sort === "pop") {
+      arr.sort((a,b) => a.hotel_id - b.hotel_id)
+      return arr;
+     }else if (sort === "asc") {
+      arr.sort((a, b) => a.min_total_price - b.min_total_price);
+      return arr;
+    } else if (sort === "desc") {
+      arr.sort((a, b) => b.min_total_price - a.min_total_price);
+      return arr;
+    } else if (sort === "Raasc"){
+      arr.sort((a,b)=> a.review_score - b.review_score)
+      return arr;
+    }else if (sort === "Radesc") {
+      arr.sort((a, b) => b.review_score - a.review_score);
+      return arr;
+    }  else return arr;
   };
   return (
     <div>
@@ -72,33 +90,24 @@ const ShowHotels = () => {
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={10}>Popularity</MenuItem>
-              <MenuItem value={20}>Price high to low</MenuItem>
-              <MenuItem value={30}>Price low to high</MenuItem>
+              <MenuItem value="pop">Popularity</MenuItem>
+              <MenuItem value="asc">Price low to high</MenuItem>
+              <MenuItem value="desc">Price high to low</MenuItem>
+              <MenuItem value="Raasc">Ratings high to low</MenuItem>
+              <MenuItem value="Radesc">Ratings low to high</MenuItem>
             </Select>
           </FormControl>
         </div>
       </SortBox>
-
-      <Grid container spacing={2}>
-        <Grid item>
-          <Typography>filters here</Typography>
-          <Typography>filters here</Typography>
-          <Typography>filters here</Typography>
-          <Typography>filters here</Typography>
-          <Typography>filters here</Typography>
-          <Typography>filters here</Typography>
-          <Typography>filters here</Typography>
-          <Typography>filters here</Typography>
-        </Grid>
-        <Grid item>
-          {places?.map((place, i) => (
-            <Paper sx={{margin: '20px,60px'}} elevation={4}>
-              <Hotels place={place} key={i}/>
+      <Box display='flex' justifyContent='center'>
+        <Box>
+          {sortHotels(places).map((place, i) => (
+            <Paper sx={{ margin: "20px 60px" }} elevation={4}>
+              <Hotels place={place} key={i} />
             </Paper>
           ))}
-        </Grid>
-      </Grid>
+        </Box>
+      </Box>
     </div>
   );
 };
@@ -106,3 +115,22 @@ const ShowHotels = () => {
 export default ShowHotels;
 
 
+      // <Grid container spacing={2}>
+      //   <Grid item>
+      //     <Typography>filters here</Typography>
+      //     <Typography>filters here</Typography>
+      //     <Typography>filters here</Typography>
+      //     <Typography>filters here</Typography>
+      //     <Typography>filters here</Typography>
+      //     <Typography>filters here</Typography>
+      //     <Typography>filters here</Typography>
+      //     <Typography>filters here</Typography>
+      //   </Grid>
+      //   <Grid item>
+      //     {sortHotels(places).map((place, i) => (
+      //       <Paper sx={{ margin: "20px 60px" }} elevation={4}>
+      //         <Hotels place={place} key={i} />
+      //       </Paper>
+      //     ))}
+      //   </Grid>
+      // </Grid>;

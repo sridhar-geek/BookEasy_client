@@ -18,7 +18,6 @@ root.render(
     </PersistGate>
   </Provider>
 );
-  // "proxy": "https://book-easy-server.vercel.app/"
-      // "@react-google-maps/api": "^2.19.2",
+// "https://book-easy-server-149nqbnr4-sridhar-geek.vercel.app/api"
 
 

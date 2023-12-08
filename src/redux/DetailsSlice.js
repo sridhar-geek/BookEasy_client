@@ -7,6 +7,8 @@ const initialState = {
   arrivalDate:null,
   departureDate: null,
   price: 0,
+  latitude: 17.34,
+  longitude: 83.68,
 };
 
 const DetailsSlice = createSlice({
@@ -25,9 +27,15 @@ const DetailsSlice = createSlice({
     price: (state, action) => {
       state.price = action.payload;
     },
+    setLatitude: (state, action) => {
+      state.latitude = action.payload
+    },
+    setLongitude: (state, action) => {
+      state.longitude = action.payload
+    }
   },
 });
 
-export const { sotreDetails, price, startDate, endDate } = DetailsSlice.actions;
+export const { sotreDetails, price, startDate, endDate,setLatitude,setLongitude } = DetailsSlice.actions;
 export default DetailsSlice.reducer;
 

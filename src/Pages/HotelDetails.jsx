@@ -18,9 +18,15 @@ import {
 import StarIcon from "@mui/icons-material/Star";
 import PhoneIcon from "@mui/icons-material/Phone";
 import MailIcon from "@mui/icons-material/Mail";
-import { APIProvider, Map, Marker } from "@vis.gl/react-google-maps";
+import {
+  APIProvider,
+  Map,
+  AdvancedMarker,
+  InfoWindow,
+  useAdvancedMarkerRef,
+} from "@vis.gl/react-google-maps";
 
-// import data from '../assests/Api Data/singleHotel.json'
+import data from "../assests/Api Data/singleHotel.json";
 // Imports from another file
 import Header from "../Components/MainHeader/Header";
 import { GetApiData } from "../api/getHotels";
@@ -28,9 +34,10 @@ import ReviewComponent from "../Components/Hotel Details/ReviewComponent";
 
 // google map component
 const GoogleMap = () => {
-  const { hotelDetails } = useSelector((state) => state.hotels);
-  const data = hotelDetails;
-
+  // const { hotelDetails } = useSelector((state) => state.hotels);
+  // const data = hotelDetails;
+  const [infowindowOpen, setInfowindowOpen] = useState(true);
+  const [markerRef, marker] = useAdvancedMarkerRef();
   const lat = Number(data.latitude);
   const lng = Number(data.longitude);
 
@@ -42,7 +49,21 @@ const GoogleMap = () => {
           center={{ lat, lng }}
           mapId={process.env.REACT_APP_MAPID}
         >
-          <Marker position={{ lat, lng }} />
+          <AdvancedMarker
+            ref={markerRef}
+            onClick={() => setInfowindowOpen(true)}
+            position={{ lat, lng }}
+            title={"AdvancedMarker that opens an Infowindow when clicked."}
+          />
+          {infowindowOpen && (
+            <InfoWindow
+              anchor={marker}
+              maxWidth={200}
+              onCloseClick={() => setInfowindowOpen(false)}
+            >
+              {data.hotel_name}
+            </InfoWindow>
+          )}
         </Map>
       </div>
     </APIProvider>
@@ -137,9 +158,9 @@ const CheckOutBtn = styled(Button)`
 
 const HotelDetails = () => {
   const navigate = useNavigate();
-  /**Retrieve hotel details from redux store */
-  const { hotelDetails, description } = useSelector((state) => state.hotels);
-  const data = hotelDetails;
+  // Retrieve hotel details from redux store 
+  // const { hotelDetails, description } = useSelector((state) => state.hotels);
+  // const data = hotelDetails;
   const { currentUser } = useSelector((state) => state.user);
   const { room_adults } = useSelector((state) => state.details);
 
@@ -188,9 +209,14 @@ const HotelDetails = () => {
   //   console.log("data called once 1");
   //   description();
   // }, []);
-  console.log(description);
+  // console.log(description);
+
   // setting dummy rating
-  const rating = Math.random().toFixed(1) * 3 + 2;
+  const [rating, setRating] = useState(null)
+  useEffect(()=> {
+    const ratingScore = Math.random().toFixed(1) * 3 + 2;
+    setRating(ratingScore);
+  },[])
   // for showing facilities
   const [showAll, setShowAll] = useState(false);
   const itemsToShow = showAll ? 20 : 5;
@@ -242,9 +268,9 @@ const HotelDetails = () => {
                 Overview
               </Typography>
               <Typography mt={2} variant="h6">
-                {description[1]
+                {/* {description[1]
                   ? description[1].description
-                  : description[0].description}
+                  : description[0].description} */}
               </Typography>
             </Box>
             <Box>
@@ -284,6 +310,9 @@ const HotelDetails = () => {
               </ReviewBox>
             </Box>
             <Box>
+              <Typography variant="h4" mt={4}>
+                Contact Us
+              </Typography>
               <Typography>
                 {" "}
                 <PhoneIcon /> {phone}
@@ -355,8 +384,8 @@ const HotelDetails = () => {
             </Box>
           </Grid>
         </Grid>
-        <Typography variant="h3">Locate us on Google Map</Typography>
-        <Box height="400px">
+        {/* <Typography variant="h3">Locate us on Google Map</Typography> */}
+        <Box height="400px" mt={5}>
           <GoogleMap />
         </Box>
       </Container>

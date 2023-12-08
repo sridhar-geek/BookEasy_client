@@ -1,5 +1,4 @@
 /**Helps user to login with their google account */
-
 import { Button, Box, styled } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
@@ -29,7 +28,7 @@ const GoogleButton = styled(Button)`
 
 const SocialLogin = () => {
   const dispatch = useDispatch();
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
   const {error} = useSelector((state)=> state.user)
 
   const handleLogin = async () => {
@@ -38,23 +37,21 @@ const SocialLogin = () => {
       const auth = getAuth(app);
       const result = await signInWithPopup(auth, provider);
       // storing user data in a object
-      const resultData = {
+      const formData = {
         name: result.user.displayName,
         email: result.user.email,
         profilePicture: result.user.photoURL,
       };
       dispatch(userActionStart())
       // sending user information server , it will either create user or assign access_token to user
-      const res = await axios.post("/auth/socialLogin", resultData);
+      const res = await axios.post("/auth/socialLogin", formData);
       dispatch(userActionSuccess(res.data));
       toast.success("Login successful");
-      Navigate("/");
+      navigate("/");
     } catch (err) {
       dispatch(userActionFailure(err));
-      // toast.error("something went wrong, please try again later");
       toast.error(error.response.data.msg);
       console.log(err)
-      console.log(error)
     }
   };
 

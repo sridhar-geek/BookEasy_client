@@ -1,6 +1,6 @@
 /** Card that shows hotel info in the hotels page */
 
-import React from "react";
+import React, { useEffect,useState } from "react";
 import {
   Card,
   CardContent,
@@ -56,21 +56,24 @@ const Hotels = ({ place, key }) => {
   const price = ((Math.floor(place.min_total_price) * 30) / 100).toFixed(0);
 
   // storing singlehotel in redux store
-  // const handleClick = async (hotelId) => {
   const handleClick = async (hotelId) => {
-    dispatch(gettingDetails());
-    const data = await GetApiData(
-      `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&currency_code=INR`
-    );
-    console.log("data returned ");
-    dispatch(getSingleHotelDetails(data));
-    const desc = await GetApiData(`/getDescriptionAndInfo?hotel_id=${hotelId}`);
-    dispatch(getDescription(desc));
+    // dispatch(gettingDetails());
+    // const data = await GetApiData(
+    //   `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&currency_code=INR`
+    // );
+    // dispatch(getSingleHotelDetails(data));
+    // const desc = await GetApiData(`/getDescriptionAndInfo?hotel_id=${hotelId}`);
+    // dispatch(getDescription(desc));
     navigate("/hotelDetails");
   };
-  const randomNumber = Math.random() * 40;
-  const collectionID = 9715310; //the collection ID from the original url
-  const imageUrl = `https://source.unsplash.com/collection/${collectionID}/480x480/?sig=${randomNumber}`;
+  // this code loads unsplash images  only first in render 
+  const [randomImage, setRandomImage] = useState("");
+  useEffect(()=>{
+      const randomNumber = Math.random() * 40;
+      const collectionID = 9715310; //the collection ID from the original url
+      const imageUrl = `https://source.unsplash.com/collection/${collectionID}/480x480/?sig=${randomNumber}`;
+      setRandomImage(imageUrl)
+  },[])
 
   return (
     <Card sx={{ maxWidth: 750 }}>
@@ -82,7 +85,7 @@ const Hotels = ({ place, key }) => {
           component="img"
           height="270"
           sx={{ width: "220px" }}
-          image={imageUrl}
+          image={randomImage}
           alt="hotel "
         />
         <CardContent>

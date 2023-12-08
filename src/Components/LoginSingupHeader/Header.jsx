@@ -1,5 +1,4 @@
 /** This is common  header  for only  login and signup pages  */
-
 import { AppBar, Box, Button, Toolbar, styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
@@ -13,11 +12,6 @@ const RightContainer = styled(Box)`
   justify-content: space-between;
   margin-right: 5%;
 `;
-const Wrapper = styled(Toolbar)`
-  display: flex;
-  justify-content: space-between;
-`;
-
 const Backbtn = styled(Button)`
   color: white;
   background-color: orangered;
@@ -26,7 +20,6 @@ const Backbtn = styled(Button)`
     background-color: red;
   }
 `;
-
 const Image = styled("img")`
   height: 45px;
   width: 70px;
@@ -35,7 +28,7 @@ const Image = styled("img")`
 const Login_Header = () => {
   return (
     <AppBar elevation={1}>
-      <Wrapper>
+      <Toolbar sx={{display:'flex', justifyContent:'space-between'}}>
         <Link to={"/"}>
           <Image src={Logo} alt="logo" />
         </Link>
@@ -47,7 +40,7 @@ const Login_Header = () => {
             </Backbtn>
           </Link>
         </RightContainer>
-      </Wrapper>
+      </Toolbar>
     </AppBar>
   );
 };

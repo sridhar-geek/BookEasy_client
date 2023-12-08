@@ -1,28 +1,32 @@
-import {configureStore,combineReducers } from '@reduxjs/toolkit'
-import storage from 'redux-persist/lib/storage'
-import { persistReducer,persistStore } from 'redux-persist'
+/** redux store for global data storage */
 
-    /*Import modules from other files  */
-import userReducer from '../redux/userSlice'
-import HotelReducer from '../redux/SearchSlice'
-import DetailsReducer from '../redux/DetailsSlice'
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import storage from "redux-persist/lib/storage";
+import { persistReducer, persistStore } from "redux-persist";
 
-const rootReducer =  combineReducers({user:userReducer, hotels: HotelReducer, details: DetailsReducer})
-const persitsConfig ={
-    key: 'root',
-    version: 1,
-    storage,
-}
+/*Import modules from other files  */
+import userReducer from "../redux/userSlice";
+import HotelReducer from "../redux/SearchSlice";
+import DetailsReducer from "../redux/DetailsSlice";
+
+const rootReducer = combineReducers({
+  user: userReducer,
+  hotels: HotelReducer,
+  details: DetailsReducer,
+});
+const persitsConfig = {
+  key: "root",
+  version: 1,
+  storage,
+};
 
 const persitsReducer = persistReducer(persitsConfig, rootReducer);
 
 export const Store = configureStore({
-    reducer:
-       persitsReducer,
-    
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck:false})
-})
+  reducer: persitsReducer,
 
-export const persistor = persistStore(Store)
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ serializableCheck: false }),
+});
 
-// redux store for global data storage
+export const persistor = persistStore(Store);

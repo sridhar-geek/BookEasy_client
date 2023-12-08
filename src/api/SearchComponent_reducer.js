@@ -13,7 +13,11 @@ export const ACTIONS = {
 export const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.RM_IN:
-      if (state.rooms < 8) return { ...state, rooms: state.rooms + 1 };
+      if (state.rooms < 8) {
+        if(state.adults <= state.rooms)
+        return { ...state, rooms: state.rooms+1, adults: state.adults+1}
+        return { ...state, rooms: state.rooms + 1 };
+      }
       else {
         window.alert("max 8 room can be selected");
         return { ...state };
@@ -25,7 +29,9 @@ export const reducer = (state, action) => {
         return { ...state };
       }
     case ACTIONS.AD_IN:
-      if (state.adults < 16) return { ...state, adults: state.adults + 1 };
+      if (state.adults < 12){
+       return { ...state, adults: state.adults + 1 };
+      }
       else {
         window.alert("max 16 adults are allowed at a time");
         return { ...state };
@@ -37,7 +43,7 @@ export const reducer = (state, action) => {
         return { ...state };
       }
     case ACTIONS.CH_IN:
-      if (state.children < 16)
+      if (state.children < 12)
         return { ...state, children: state.children + 1 };
       else {
         window.alert("max 16 children allowed at a time");

@@ -11,7 +11,8 @@ import { toast } from "react-toastify";
 import { delete_Logout, userActionFailure } from "../../redux/userSlice";
 
 const User = ({ user }) => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
+  // retriewing data from user slice
   const { currentUser } = useSelector((state) => state.user);
   // handles main items to open and close
   const [anchorEl, setAnchorEl] = useState(null);
@@ -24,7 +25,7 @@ const User = ({ user }) => {
   };
   // navigattes to profile page
   const handleProfile = () => {
-    Navigate("/profile");
+    navigate("/profile");
   };
   const dispatch = useDispatch();
 
@@ -35,7 +36,7 @@ const User = ({ user }) => {
       await axios.get(`/user/logout/${currentUser.userDetails._id}`);
       dispatch(delete_Logout());
       toast.success("user logout successful");
-      Navigate('/')
+      navigate('/')
     } catch (error) {
       dispatch(userActionFailure(error))
       console.error(error);
