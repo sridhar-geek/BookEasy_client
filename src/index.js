@@ -18,6 +18,5 @@ root.render(
     </PersistGate>
   </Provider>
 );
-// "https://book-easy-server-149nqbnr4-sridhar-geek.vercel.app/api"
 
 

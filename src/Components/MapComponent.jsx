@@ -12,20 +12,19 @@ import { useSelector } from "react-redux";
 import {useNavigate} from 'react-router-dom'
 import {Box, Paper, Typography, Rating, Button} from '@mui/material'
 
-import Hotels from "../assests/Api Data/All_hotels.json";
+// import Hotels from "../assests/Api Data/All_hotels.json";
 
 export default function MapComponent() {
   // retriewing data from redux slices
   const { latitude, longitude } = useSelector((state) => state.details);
-  // const { places } = useSelector((state) => state.hotels);
-  const places = Hotels.result;
+  const { places } = useSelector((state) => state.hotels);
+  // const places = Hotels.result;
   return (
     <div style={{ height: "90vh", width: "85vh" }}>
       <APIProvider apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
         <Map
           zoom={10}
-          // center={{ lat: latitude, lng: longitude }}
-          center={{ lat: 17.35, lng: 83.68 }}
+          center={{ lat: latitude, lng: longitude }}
           mapId={process.env.REACT_APP_MAPID}
           gestureHandling={"greedy"}
           disableDefaultUI={true}

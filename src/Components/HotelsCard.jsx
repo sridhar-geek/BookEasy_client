@@ -57,13 +57,20 @@ const Hotels = ({ place, key }) => {
 
   // storing singlehotel in redux store
   const handleClick = async (hotelId) => {
-    // dispatch(gettingDetails());
-    // const data = await GetApiData(
-    //   `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&currency_code=INR`
-    // );
-    // dispatch(getSingleHotelDetails(data));
-    // const desc = await GetApiData(`/getDescriptionAndInfo?hotel_id=${hotelId}`);
-    // dispatch(getDescription(desc));
+    console.log('See availabilty button clicked')
+    dispatch(gettingDetails());
+    console.log('Loading Dispatch called')
+    const data = await GetApiData(
+      `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${room_adults.adults}&room_qty=${room_adults.rooms}&currency_code=INR`
+    );
+    console.log('api for single hotel detail')
+    dispatch(getSingleHotelDetails(data));
+    console.log('single hotel dispatched')
+    const desc = await GetApiData(`/getDescriptionAndInfo?hotel_id=${hotelId}`);
+    console.log('description api called')
+    dispatch(getDescription(desc));
+    console.log('description is dispatched ')
+    console.log('a call for navigation')
     navigate("/hotelDetails");
   };
   // this code loads unsplash images  only first in render 

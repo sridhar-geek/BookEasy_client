@@ -7,10 +7,9 @@ import { gettingDetailsFailure } from "../redux/SearchSlice";
 const BaseUrl = "https://booking-com15.p.rapidapi.com/api/v1/hotels";
 
 export const GetApiData = async (url) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   console.log('request came to call api data')
   try {
-    console.log('Hey Im in try block')
     const {
       data: { data },
     } = await axios.get(`${BaseUrl}${url}`, {
@@ -19,13 +18,11 @@ export const GetApiData = async (url) => {
         "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
       },
     });
-    console.log("api data called");
-    // console.log(data);
     return data;
   } catch (error) {
     console.log('something went wrong')
     toast.error("error in retreving all hotels");
-    dispatch(gettingDetailsFailure())
+    // dispatch(gettingDetailsFailure())
     console.error(error);
   }
 };

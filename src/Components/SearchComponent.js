@@ -123,13 +123,13 @@ const SearchComponent = () => {
   // storing all hotel details in redux global store
   const handleSumbit = async (e) => {
     e.preventDefault();
-    // dispatch(gettingDetails());
+    dispatch(gettingDetails());
     console.log('Search button clicked')
-    // const data = await GetApiData(
-    //   `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
-    // );
-    // console.log('Api data got successfully')
-    // dispatch(getHotelData(data.result));
+    const data = await GetApiData(
+      `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
+    );
+    console.log('Api data got successfully')
+    dispatch(getHotelData(data.result));
     dispatch(sotreDetails(state));
     dispatch(startDate(arrivalDate));
     dispatch(endDate(departureDate));
@@ -138,7 +138,7 @@ const SearchComponent = () => {
   };
   return (
       <Container container spacing={2}>
-        {/* <PlacesAutoComplete /> */}
+        <PlacesAutoComplete />
         <Individual item xs={8} md={6} lg={4}>
           <CalendarMonthIcon />
           <input

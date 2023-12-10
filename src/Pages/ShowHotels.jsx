@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import HotelsData from "../assests/Api Data/All_hotels.json";
+// import HotelsData from "../assests/Api Data/All_hotels.json";
 /* Imported files */
 import Header from "../Components/MainHeader/Header";
 import SearchComponent from "../Components/SearchComponent";
@@ -35,8 +35,8 @@ const SortBox = styled(Paper)`
 
 const ShowHotels = () => {
   // retriewing data from redux store
-  // const {places} = useSelector((state) => state.hotels);
-  const places = HotelsData.result;
+  const {places} = useSelector((state) => state.hotels);
+  // const places = HotelsData.result;
 
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("");

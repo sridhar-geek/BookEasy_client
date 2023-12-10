@@ -25,8 +25,9 @@ import {
   InfoWindow,
   useAdvancedMarkerRef,
 } from "@vis.gl/react-google-maps";
+import {loadStripe} from '@stripe/stripe-js'
 
-import data from "../assests/Api Data/singleHotel.json";
+// import data from "../assests/Api Data/singleHotel.json";
 // Imports from another file
 import Header from "../Components/MainHeader/Header";
 import { GetApiData } from "../api/getHotels";
@@ -34,8 +35,8 @@ import ReviewComponent from "../Components/Hotel Details/ReviewComponent";
 
 // google map component
 const GoogleMap = () => {
-  // const { hotelDetails } = useSelector((state) => state.hotels);
-  // const data = hotelDetails;
+  const { hotelDetails } = useSelector((state) => state.hotels);
+  const data = hotelDetails;
   const [infowindowOpen, setInfowindowOpen] = useState(true);
   const [markerRef, marker] = useAdvancedMarkerRef();
   const lat = Number(data.latitude);
@@ -159,8 +160,8 @@ const CheckOutBtn = styled(Button)`
 const HotelDetails = () => {
   const navigate = useNavigate();
   // Retrieve hotel details from redux store 
-  // const { hotelDetails, description } = useSelector((state) => state.hotels);
-  // const data = hotelDetails;
+  const { hotelDetails, description } = useSelector((state) => state.hotels);
+  const data = hotelDetails;
   const { currentUser } = useSelector((state) => state.user);
   const { room_adults } = useSelector((state) => state.details);
 
@@ -220,6 +221,25 @@ const HotelDetails = () => {
   // for showing facilities
   const [showAll, setShowAll] = useState(false);
   const itemsToShow = showAll ? 20 : 5;
+// hotel data which sends to checkout page 
+const hotelData = {
+  price : price,
+  hotelName: data.hotel_name,
+  guests: room_adults.adults
+}
+console.log(hotelData)
+  const checkOut = async()=> {
+    const stripe = loadStripe(
+      "pk_live_51O9mYASGJExsISoi9h1fqVrFiVrwmCtSglSzEDH5sUUz7h32ZfvOoRxXGXhCWjFt7Dji3WHt8uOu2WRol312Q1jD00QrKOZNnd"
+    );
+    const response = await axios.post('/create-checkout', hotelData)
+    const session = await response.json()
+    const result = stripe.redirectToCheckout({
+      sessionId : session.id
+    })
+    if(result.error)
+    console.log(result.error)
+  }
 
   return (
     <div>
@@ -268,9 +288,9 @@ const HotelDetails = () => {
                 Overview
               </Typography>
               <Typography mt={2} variant="h6">
-                {/* {description[1]
+                {description[1]
                   ? description[1].description
-                  : description[0].description} */}
+                  : description[0].description}
               </Typography>
             </Box>
             <Box>
@@ -297,7 +317,9 @@ const HotelDetails = () => {
             <Box mt={5} padding={4}>
               <Typography variant="h4">Reviews and Ratings</Typography>
               <Stack direction="row" alignItems="center" spacing={2}>
-                <RatingBox>{rating}</RatingBox>
+                <RatingBox>
+                  {rating} <StarIcon fontSize="large" />
+                </RatingBox>
                 <Typography variant="h7" textAlign="center">
                   Out of 342 reviews
                 </Typography>
@@ -325,7 +347,7 @@ const HotelDetails = () => {
           </Grid>
           <Grid item md={4} lg={4}>
             <Box mt={4}>
-              {currentUser && (
+              {!currentUser && (
                 <CheckOutBtn fullWidth>
                   Login Now to get ₹1000 into your wallet
                 </CheckOutBtn>
@@ -333,7 +355,7 @@ const HotelDetails = () => {
               <Paper sx={{ padding: "20px" }} elevation={3}>
                 <h3 style={{ marginBottom: "0px" }}>₹ {price}</h3>
                 <Typography variant="caption">
-                  + taxes and fee ₹{price}
+                  + taxes and fee ₹{gst}
                 </Typography>
                 <Box
                   sx={{
@@ -352,13 +374,7 @@ const HotelDetails = () => {
                 <Divider sx={{ margin: "10px 0px" }} />
                 <PriceBox>
                   <Typography>Base Price</Typography>
-                  <Typography>
-                    {/* {Number(
-                      data.composite_price_breakdown.gross_amount_hotel_currency
-                        .value
-                    ).toFixed(0)} */}
-                    {price}
-                  </Typography>
+                  <Typography>{price}</Typography>
                 </PriceBox>
                 <PriceBox>
                   <Typography>Gst </Typography>
@@ -376,7 +392,7 @@ const HotelDetails = () => {
                 <CheckOutBtn
                   fullWidth
                   sx={{ backgroundColor: "red", color: "white" }}
-                  onClick={() => navigate("/checkout")}
+                  onClick={checkOut}
                 >
                   Continue Booking
                 </CheckOutBtn>
@@ -384,7 +400,6 @@ const HotelDetails = () => {
             </Box>
           </Grid>
         </Grid>
-        {/* <Typography variant="h3">Locate us on Google Map</Typography> */}
         <Box height="400px" mt={5}>
           <GoogleMap />
         </Box>
