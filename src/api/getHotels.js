@@ -14,7 +14,7 @@ export const GetApiData = async (url) => {
       data: { data },
     } = await axios.get(`${BaseUrl}${url}`, {
       headers: {
-        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY,
+        "X-RapidAPI-Key": process.env.REACT_APP_RAPID_API_KEY_Backup,
         "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
       },
     });

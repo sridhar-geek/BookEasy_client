@@ -8,11 +8,15 @@ import {
   AdvancedMarker,
 } from "@vis.gl/react-google-maps";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {useNavigate} from 'react-router-dom'
 import {Box, Paper, Typography, Rating, Button} from '@mui/material'
 
 // import Hotels from "../assests/Api Data/All_hotels.json";
+// imports from another files
+import {GetApiData} from '../api/getHotels'
+import {gettingDetails, getSingleHotelDetails, getDescription} from '../redux/SearchSlice'
+
 
 export default function MapComponent() {
   // retriewing data from redux slices
@@ -38,7 +42,12 @@ export default function MapComponent() {
 
 // individual marker
 const Markers = ({ points }) => {
+  // retrewing data form redux slice 
+   const { room_adults, arrivalDate, departureDate } = useSelector(
+     (state) => state.details
+   );
   const map = useMap();
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const [markers, setMarkers] = useState({});
   const clusterer = useRef(null);
@@ -70,9 +79,25 @@ const Markers = ({ points }) => {
         });
       };
 
-      // const handleClick =(hotelId) => {
-      //     navigate("/hotelDetails");
-      // }
+    //  const handleClick = async (hotelId) => {
+    //    console.log("See availabilty button clicked");
+    //    dispatch(gettingDetails());
+    //    console.log("Loading Dispatch called");
+    //    const data = await GetApiData(
+    //      `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${room_adults.adults}&room_qty=${room_adults.rooms}&currency_code=INR`
+    //    );
+    //    console.log("api for single hotel detail");
+    //    dispatch(getSingleHotelDetails(data));
+    //    console.log("single hotel dispatched");
+    //    const desc = await GetApiData(
+    //      `/getDescriptionAndInfo?hotel_id=${hotelId}`
+    //    );
+    //    console.log("description api called");
+    //    dispatch(getDescription(desc));
+    //    console.log("description is dispatched ");
+    //    console.log("a call for navigation");
+    //    navigate("/hotelDetails");
+    //  };
 
   return (
     <>

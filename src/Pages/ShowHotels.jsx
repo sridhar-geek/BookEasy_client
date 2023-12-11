@@ -35,7 +35,7 @@ const SortBox = styled(Paper)`
 
 const ShowHotels = () => {
   // retriewing data from redux store
-  const {places} = useSelector((state) => state.hotels);
+  const { places } = useSelector((state) => state.hotels);
   // const places = HotelsData.result;
 
   const [open, setOpen] = useState(false);
@@ -54,22 +54,22 @@ const ShowHotels = () => {
   };
   // for sorting hotels based on price, rating and popularity
   const sortHotels = (arr) => {
-     if (sort === "pop") {
-      arr.sort((a,b) => a.hotel_id - b.hotel_id)
+    if (sort === "pop") {
+      arr.sort((a, b) => a.hotel_id - b.hotel_id);
       return arr;
-     }else if (sort === "asc") {
+    } else if (sort === "asc") {
       arr.sort((a, b) => a.min_total_price - b.min_total_price);
       return arr;
     } else if (sort === "desc") {
       arr.sort((a, b) => b.min_total_price - a.min_total_price);
       return arr;
-    } else if (sort === "Raasc"){
-      arr.sort((a,b)=> a.review_score - b.review_score)
+    } else if (sort === "Raasc") {
+      arr.sort((a, b) => a.review_score - b.review_score);
       return arr;
-    }else if (sort === "Radesc") {
+    } else if (sort === "Radesc") {
       arr.sort((a, b) => b.review_score - a.review_score);
       return arr;
-    }  else return arr;
+    } else return arr;
   };
   return (
     <div>
@@ -99,7 +99,7 @@ const ShowHotels = () => {
           </FormControl>
         </div>
       </SortBox>
-      <Box display='flex' justifyContent='center'>
+      <Box display="flex" justifyContent="center">
         <Box>
           {sortHotels(places).map((place, i) => (
             <Paper sx={{ margin: "20px 60px" }} elevation={4}>
@@ -114,23 +114,22 @@ const ShowHotels = () => {
 
 export default ShowHotels;
 
-
-      // <Grid container spacing={2}>
-      //   <Grid item>
-      //     <Typography>filters here</Typography>
-      //     <Typography>filters here</Typography>
-      //     <Typography>filters here</Typography>
-      //     <Typography>filters here</Typography>
-      //     <Typography>filters here</Typography>
-      //     <Typography>filters here</Typography>
-      //     <Typography>filters here</Typography>
-      //     <Typography>filters here</Typography>
-      //   </Grid>
-      //   <Grid item>
-      //     {sortHotels(places).map((place, i) => (
-      //       <Paper sx={{ margin: "20px 60px" }} elevation={4}>
-      //         <Hotels place={place} key={i} />
-      //       </Paper>
-      //     ))}
-      //   </Grid>
-      // </Grid>;
+// <Grid container spacing={2}>
+//   <Grid item>
+//     <Typography>filters here</Typography>
+//     <Typography>filters here</Typography>
+//     <Typography>filters here</Typography>
+//     <Typography>filters here</Typography>
+//     <Typography>filters here</Typography>
+//     <Typography>filters here</Typography>
+//     <Typography>filters here</Typography>
+//     <Typography>filters here</Typography>
+//   </Grid>
+//   <Grid item>
+//     {sortHotels(places).map((place, i) => (
+//       <Paper sx={{ margin: "20px 60px" }} elevation={4}>
+//         <Hotels place={place} key={i} />
+//       </Paper>
+//     ))}
+//   </Grid>
+// </Grid>;
