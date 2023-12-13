@@ -77,17 +77,16 @@ const Markers = ({ hotels }) => {
     });
   };
 
+  const handleClick = async (event) => {
+    // Stop event propagation
+    event.stopPropagation();
+    // Prevent default behavior of the click event
+    event.preventDefault();
+    console.log("I am in handleclick function ");
+    // Navigate to the hotel details page
+    navigate(`/hotelDetails`);
+  };
 
-const handleClick = async (event) => {
-  // Stop event propagation
-  event.stopPropagation();
-  // Prevent default behavior of the click event
-  event.preventDefault();
-  console.log("I am in handleclick function ");
-  // Navigate to the hotel details page
-  navigate(`/hotelDetails`);
-};
-  
   return (
     <>
       {hotels.map((hotel) => (
@@ -110,7 +109,10 @@ const handleClick = async (event) => {
                 alt="hotel"
               />
               <Box>
-                <Button onClick={(event) => handleClick(event)} sx={{cursor:'pointer', textTransform:'capitalize'}}> 
+                <Button
+                  onClick={(event) => handleClick(event)}
+                  sx={{ cursor: "pointer", textTransform: "capitalize" }}
+                >
                   <Typography variant="body2" ml={1}>
                     {hotel.hotel_name}
                   </Typography>

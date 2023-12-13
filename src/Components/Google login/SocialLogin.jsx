@@ -29,8 +29,7 @@ const GoogleButton = styled(Button)`
 const SocialLogin = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {error} = useSelector((state)=> state.user)
-
+  // login function
   const handleLogin = async () => {
     try {
       const provider = new GoogleAuthProvider();
@@ -50,8 +49,8 @@ const SocialLogin = () => {
       navigate("/");
     } catch (err) {
       dispatch(userActionFailure(err));
-      toast.error(error.response.data.msg);
-      console.log(err)
+      toast.error(err.response.data.msg);
+      console.error(err)
     }
   };
 

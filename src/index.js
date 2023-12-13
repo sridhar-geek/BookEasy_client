@@ -21,13 +21,5 @@ root.render(
 
 
 // "start": "react-scripts '--openssl-legacy-provider start",
-  // "proxy": "https://book-easy-server.vercel.app/api"
+// "proxy": "https://book-easy-server.vercel.app/api"
 
-    // useEffect(() => {
-  //   if (!map) return;
-  //   if (!clusterer.current) {
-  //     clusterer.current = new MarkerClusterer({ map });
-  //   } else {
-  //     clusterer.current.setMaxDistance(50); // Set maximum distance
-  //   }
-  // }, [map]);

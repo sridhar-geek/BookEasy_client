@@ -93,7 +93,6 @@ const Signup = () => {
       } catch (err) {
         dispatch(userActionFailure(err));
         console.log(err)
-        console.log(error)
       toast.error(err.response.data.msg);
       }
     }

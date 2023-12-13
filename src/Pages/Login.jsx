@@ -83,7 +83,6 @@ const formData = {
     } catch (err) {
       dispatch(userActionFailure(err))
       toast.error(err.response.data.msg)
-      console.log(error)
       console.log(err)
     }
   };

@@ -57,5 +57,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"https://book-easy-server.vercel.app/api"
+"proxy": "https://book-easy-server.vercel.app/api"
 }

@@ -13,8 +13,19 @@ const CheckOutBtn = styled(Button)`
   }
 `;
 const CheckoutBtn = ({total, hotelName}) => {
+  const intialData = {
+    amount: total,
+    currency: 'INR',
+    receipt: Date.now().toString()
+  } 
 const handlePayment = async()=> {
-  
+  try {
+    const response = await axios.post("/create-checkout", intialData);
+    const order = response.json()
+    console.log(order)
+  } catch (error) {
+    console.error(error)
+  }
 }
   return (
     <CheckOutBtn fullWidth
