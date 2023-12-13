@@ -8,11 +8,8 @@
     "@googlemaps/markerclusterer": "^2.5.1",
     "@mui/icons-material": "^5.14.9",
     "@mui/material": "^5.14.9",
-    "@reach/combobox": "^0.18.0",
     "@react-google-maps/api": "^2.19.2",
     "@reduxjs/toolkit": "^1.9.6",
-    "@stripe/react-stripe-js": "^2.3.1",
-    "@stripe/stripe-js": "^2.1.11",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -37,7 +34,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-  "start": "react-scripts '--openssl-legacy-provider start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -60,5 +57,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://book-easy-server.vercel.app/api"
+  "proxy":"https://book-easy-server.vercel.app/api"
 }

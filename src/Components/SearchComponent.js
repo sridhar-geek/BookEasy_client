@@ -120,25 +120,25 @@ const SearchComponent = () => {
   const arrivalDate = convertDate(range[0].startDate);
   const departureDate = convertDate(range[0].endDate);
 
+  // console.log(arrivalDate + 'coming from search component')
+  // console.log(departureDate + 'coming from search component')
+
   // storing all hotel details in redux global store
   const handleSumbit = async (e) => {
     e.preventDefault();
-    dispatch(gettingDetails());
-    console.log('Search button clicked')
-    const data = await GetApiData(
-      `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
-    );
-    console.log('Api data got successfully')
-    dispatch(getHotelData(data.result));
+    // dispatch(gettingDetails());
+    // const data = await GetApiData(
+    //   `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
+    // );
+    // dispatch(getHotelData(data.result));
     dispatch(sotreDetails(state));
     dispatch(startDate(arrivalDate));
     dispatch(endDate(departureDate));
-    console.log('no problem in search component')
     navigate("/hotels");
   };
   return (
       <Container container spacing={2}>
-        <PlacesAutoComplete />
+        {/* <PlacesAutoComplete /> */}
         <Individual item xs={8} md={6} lg={4}>
           <CalendarMonthIcon />
           <input

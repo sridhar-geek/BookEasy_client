@@ -13,9 +13,7 @@ import {
   Profile,
   ProtectedRoute,
   HotelDetails,
-  PaymentSuccess,
-  PaymentError,
-  CheckOut,
+  NotFound,
 } from "./Pages";
 
 function App() {
@@ -31,10 +29,8 @@ function App() {
         <Route path="/hotelDetails" element={<HotelDetails />} />
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
-          <Route path="/success" element={<PaymentSuccess />} />
-          <Route path="/cancel" element={<PaymentError />} />
         </Route>
-        <Route path="/checkout" element={<CheckOut />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Box>

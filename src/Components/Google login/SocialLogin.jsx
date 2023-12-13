@@ -15,14 +15,14 @@ import { userActionStart, userActionSuccess, userActionFailure } from "../../red
 const GoogleButton = styled(Button)`
   display: flex;
   color: #131313;
-  background-color: #f08057;
+  background-color: #e34747;
   width: 100%;
   margin: 2px;
   padding: 10px;
   margin: 10px auto;
   border-radius: 10px;
   &:hover {
-    background-color: #e34747;
+    background-color: #f08057;
   }
 `;
 

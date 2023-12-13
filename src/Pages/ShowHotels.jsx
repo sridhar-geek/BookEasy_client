@@ -13,12 +13,12 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-// import HotelsData from "../assests/Api Data/All_hotels.json";
+import HotelsData from "../assests/Api Data/All_hotels.json";
 /* Imported files */
 import Header from "../Components/MainHeader/Header";
 import SearchComponent from "../Components/SearchComponent";
 import Hotels from "../Components/HotelsCard";
-import MapComponent from "../Components/MapComponent";
+import MapComponent from "../Components/Google Maps/MapComponent";
 //Component Styles
 const SearchBox = styled(Box)`
   margin-top: 80px;
@@ -35,8 +35,8 @@ const SortBox = styled(Paper)`
 
 const ShowHotels = () => {
   // retriewing data from redux store
-  const { places } = useSelector((state) => state.hotels);
-  // const places = HotelsData.result;
+  // const { places } = useSelector((state) => state.hotels);
+  const places = HotelsData.result;
 
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("");
@@ -63,12 +63,6 @@ const ShowHotels = () => {
     } else if (sort === "desc") {
       arr.sort((a, b) => b.min_total_price - a.min_total_price);
       return arr;
-    } else if (sort === "Raasc") {
-      arr.sort((a, b) => a.review_score - b.review_score);
-      return arr;
-    } else if (sort === "Radesc") {
-      arr.sort((a, b) => b.review_score - a.review_score);
-      return arr;
     } else return arr;
   };
   return (
@@ -93,17 +87,19 @@ const ShowHotels = () => {
               <MenuItem value="pop">Popularity</MenuItem>
               <MenuItem value="asc">Price low to high</MenuItem>
               <MenuItem value="desc">Price high to low</MenuItem>
-              <MenuItem value="Raasc">Ratings high to low</MenuItem>
-              <MenuItem value="Radesc">Ratings low to high</MenuItem>
             </Select>
           </FormControl>
         </div>
       </SortBox>
       <Box display="flex" justifyContent="center">
         <Box>
-          {sortHotels(places).map((place, i) => (
-            <Paper sx={{ margin: "20px 60px" }} elevation={4}>
-              <Hotels place={place} key={i} />
+          {sortHotels(places).map((place) => (
+            <Paper
+              key={place.hotel_id}
+              sx={{ margin: "20px 60px" }}
+              elevation={4}
+            >
+              <Hotels place={place} />
             </Paper>
           ))}
         </Box>

@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useSelector } from "react-redux";
 import {
   Box,
   Typography,
@@ -25,18 +23,17 @@ import {
   InfoWindow,
   useAdvancedMarkerRef,
 } from "@vis.gl/react-google-maps";
-import {loadStripe} from '@stripe/stripe-js'
 
-// import data from "../assests/Api Data/singleHotel.json";
+import data from "../assests/Api Data/singleHotel.json";
 // Imports from another file
 import Header from "../Components/MainHeader/Header";
-import { GetApiData } from "../api/getHotels";
 import ReviewComponent from "../Components/Hotel Details/ReviewComponent";
+import CheckoutBtn from "../Components/Hotel Details/CheckOut";
 
 // google map component
 const GoogleMap = () => {
-  const { hotelDetails } = useSelector((state) => state.hotels);
-  const data = hotelDetails;
+  // const { hotelDetails } = useSelector((state) => state.hotels);
+  // const data = hotelDetails;
   const [infowindowOpen, setInfowindowOpen] = useState(true);
   const [markerRef, marker] = useAdvancedMarkerRef();
   const lat = Number(data.latitude);
@@ -71,7 +68,7 @@ const GoogleMap = () => {
   );
 };
 
-// creates slider of hotel images
+// creates slider for hotel images
 const responsive = {
   desktop: {
     breakpoint: { max: 3000, min: 1200 },
@@ -96,7 +93,6 @@ const Image = styled("img")`
 const Container = styled(Box)`
   margin-left: 30px;
   padding: 30px;
-  /* width: 70%; */
 `;
 const Title = styled(Box)`
   display: flex;
@@ -110,7 +106,6 @@ const NavBox = styled(Box)`
   width: 100%;
   position: sticky;
   top: 70px;
-  /* border-radius: 10px; */
 `;
 const NavItems = styled(Typography)``;
 const RatingBox = styled(Box)`
@@ -130,22 +125,12 @@ const ReviewBox = styled(Box)`
   border-radius: 15px;
   margin-top: 15px;
 `;
-// const Link = styled("a")`
-//   text-decoration: none;
-//   padding: 10px;
-//   border-radius: 5px;
-//   background-color: orangered;
-//   color: white;
-//   &:hover {
-//     background-color: red;
-//   }
-// `;
 const PriceBox = styled(Box)`
   display: flex;
   justify-content: space-between;
   padding: 10px;
 `;
-const CheckOutBtn = styled(Button)`
+const OfferBtn = styled(Button)`
   background-color: orangered;
   color: white;
   text-transform: capitalize;
@@ -158,14 +143,12 @@ const CheckOutBtn = styled(Button)`
 `;
 
 const HotelDetails = () => {
-  const navigate = useNavigate();
   // Retrieve hotel details from redux store 
-  const { hotelDetails, description } = useSelector((state) => state.hotels);
-  const data = hotelDetails;
+  // const { hotelDetails, description } = useSelector((state) => state.hotels);
+  // const data = hotelDetails;
   const { currentUser } = useSelector((state) => state.user);
   const { room_adults } = useSelector((state) => state.details);
 
-  const hotelId = data.hotel_id;
   // for getting arrival date and departure date
   const date = data.block[0].paymentterms.prepayment.timeline.stages[0];
   // photos are stored in object which don't have fixed name, this code is to access the first value in that object
@@ -194,23 +177,7 @@ const HotelDetails = () => {
       setEmailStr(str2);
     };
     email(data.hotel_name);
-  }, [hotelId]);
-
-  // calling description api to show description
-  // console.log('Iam above useeffect function')
-  // const [description, setDescription] = useState([]);
-  // useEffect(() => {
-  //   console.log('I came here to call description')
-  //   const description = async () => {
-  //     const desc = await GetApiData(
-  //       `/getDescriptionAndInfo?hotel_id=${hotelId}`
-  //     );
-  //     setDescription(desc);
-  //   };
-  //   console.log("data called once 1");
-  //   description();
-  // }, []);
-  // console.log(description);
+  }, []);
 
   // setting dummy rating
   const [rating, setRating] = useState(null)
@@ -221,25 +188,6 @@ const HotelDetails = () => {
   // for showing facilities
   const [showAll, setShowAll] = useState(false);
   const itemsToShow = showAll ? 20 : 5;
-// hotel data which sends to checkout page 
-const hotelData = {
-  price : price,
-  hotelName: data.hotel_name,
-  guests: room_adults.adults
-}
-console.log(hotelData)
-  const checkOut = async()=> {
-    const stripe = loadStripe(
-      "pk_live_51O9mYASGJExsISoi9h1fqVrFiVrwmCtSglSzEDH5sUUz7h32ZfvOoRxXGXhCWjFt7Dji3WHt8uOu2WRol312Q1jD00QrKOZNnd"
-    );
-    const response = await axios.post('/create-checkout', hotelData)
-    const session = await response.json()
-    const result = stripe.redirectToCheckout({
-      sessionId : session.id
-    })
-    if(result.error)
-    console.log(result.error)
-  }
 
   return (
     <div>
@@ -256,8 +204,8 @@ console.log(hotelData)
         dotListClass="custom-dot-list-style"
         itemClass="carousel-item-padding-40-px"
       >
-        {photoObj.photos.map((img, index) => (
-          <Image src={img.url_original} alt="Hotel" />
+        {photoObj.photos.map((img) => (
+          <Image key={img.photo_id} src={img.url_original} alt="Hotel" />
         ))}
       </Carousel>
       <Container>
@@ -288,9 +236,9 @@ console.log(hotelData)
                 Overview
               </Typography>
               <Typography mt={2} variant="h6">
-                {description[1]
+                {/* {description[1]
                   ? description[1].description
-                  : description[0].description}
+                  : description[0].description} */}
               </Typography>
             </Box>
             <Box>
@@ -326,9 +274,6 @@ console.log(hotelData)
               </Stack>
               <ReviewBox>
                 <ReviewComponent />
-                {/* <Link href={details.write_review} target="blank">
-                  Write your Experience
-                </Link> */}
               </ReviewBox>
             </Box>
             <Box>
@@ -336,11 +281,9 @@ console.log(hotelData)
                 Contact Us
               </Typography>
               <Typography>
-                {" "}
                 <PhoneIcon /> {phone}
               </Typography>
               <Typography>
-                {" "}
                 <MailIcon /> {emailStr}
               </Typography>
             </Box>
@@ -348,9 +291,9 @@ console.log(hotelData)
           <Grid item md={4} lg={4}>
             <Box mt={4}>
               {!currentUser && (
-                <CheckOutBtn fullWidth>
+                <OfferBtn fullWidth>
                   Login Now to get ₹1000 into your wallet
-                </CheckOutBtn>
+                </OfferBtn>
               )}
               <Paper sx={{ padding: "20px" }} elevation={3}>
                 <h3 style={{ marginBottom: "0px" }}>₹ {price}</h3>
@@ -389,19 +332,13 @@ console.log(hotelData)
                   <Typography>Total</Typography>
                   <Typography>{total}</Typography>
                 </PriceBox>
-                <CheckOutBtn
-                  fullWidth
-                  sx={{ backgroundColor: "red", color: "white" }}
-                  onClick={checkOut}
-                >
-                  Continue Booking
-                </CheckOutBtn>
+                <CheckoutBtn total={total} hotelName={data.hotel_name}/>
               </Paper>
             </Box>
           </Grid>
         </Grid>
         <Box height="400px" mt={5}>
-          <GoogleMap />
+          {/* <GoogleMap /> */}
         </Box>
       </Container>
     </div>

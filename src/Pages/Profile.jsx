@@ -111,8 +111,6 @@ const Profile = () => {
     } catch (err) {
       dispatch(userActionFailure(err));
       toast.error(err.response.data.msg);
-      // toast.error("Something went wrong, Please try again later");
-      console.error(error)
       console.log(err)
     }
   };

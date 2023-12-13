@@ -24,8 +24,8 @@ const ReviewComponent = () => {
 
   return (
     <>
-      {hotelReviews.map((review, i) => (
-        <Paper elevation={4} sx={{ padding: "10px", margin: "10px" }}>
+      {hotelReviews.map((review) => (
+        <Paper key={review.id} elevation={4} sx={{ padding: "10px", margin: "10px" }}>
           <Box sx={{ display: "flex", justifyContent: "space-between" }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
               <Avatar src={review.userProfile.avatar.urlTemplate} alt="userImage" />
@@ -36,7 +36,7 @@ const ReviewComponent = () => {
               <StarBorderIcon fontSize="small" />{" "}
             </Typography>
           </Box>
-          <Typography key={i} ml={4}>
+          <Typography ml={4}>
             {review.text}
           </Typography>
         </Paper>
