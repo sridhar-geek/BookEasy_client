@@ -8,14 +8,17 @@ import {
 } from "@vis.gl/react-google-maps";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import { useDispatch, useSelector } from "react-redux";
-import {useNavigate} from 'react-router-dom'
-import {Box, Paper, Typography, Rating, Button} from '@mui/material'
+import { useNavigate } from "react-router-dom";
+import { Box, Paper, Typography, Rating, Button } from "@mui/material";
 
-import Hotels from "../../assests/Api Data/All_hotels.json"
+import Hotels from "../../assests/Api Data/All_hotels.json";
 // imports from another files
-import {GetApiData} from '../../api/getHotels'
-import {gettingDetails, getSingleHotelDetails, getDescription} from '../../redux/SearchSlice'
-
+import { GetApiData } from "../../api/getHotels";
+import {
+  gettingDetails,
+  getSingleHotelDetails,
+  getDescription,
+} from "../../redux/SearchSlice";
 
 export default function MapComponent() {
   // retriewing data from redux slices
@@ -28,7 +31,7 @@ export default function MapComponent() {
         <Map
           zoom={10}
           // center={{ lat: latitude, lng: longitude }}
-          center={{lat: 17.69, lng: 83.23}}
+          center={{ lat: 17.69, lng: 83.23 }}
           mapId={process.env.REACT_APP_MAPID}
           gestureHandling={"greedy"}
           disableDefaultUI={true}
@@ -40,7 +43,7 @@ export default function MapComponent() {
   );
 }
 
-    /* individual marker */
+/* individual marker */
 const Markers = ({ hotels }) => {
   // retrewing data form redux slice
   const { room_adults, arrivalDate, departureDate } = useSelector(
@@ -135,26 +138,23 @@ const Markers = ({ hotels }) => {
   );
 };
 
-
-
-  
-  //  const handleClick = async (event, hotelId) => {
-      // event.preventDefault();
-    //    console.log("See availabilty button clicked");
-  //    dispatch(gettingDetails());
-  //    console.log("Loading Dispatch called");
-  //    const data = await GetApiData(
-  //      `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${room_adults.adults}&room_qty=${room_adults.rooms}&currency_code=INR`
-  //    );
-  //    console.log("api for single hotel detail");
-  //    dispatch(getSingleHotelDetails(data));
-  //    console.log("single hotel dispatched");
-  //    const desc = await GetApiData(
-    //      `/getDescriptionAndInfo?hotel_id=${hotelId}`
-    //    );
-  //    console.log("description api called");
-  //    dispatch(getDescription(desc));
-  //    console.log("description is dispatched ");
-  //    console.log("a call for navigation");
-  //    navigate("/hotelDetails");
-  //  };
+//  const handleClick = async (event, hotelId) => {
+// event.preventDefault();
+//    console.log("See availabilty button clicked");
+//    dispatch(gettingDetails());
+//    console.log("Loading Dispatch called");
+//    const data = await GetApiData(
+//      `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${room_adults.adults}&room_qty=${room_adults.rooms}&currency_code=INR`
+//    );
+//    console.log("api for single hotel detail");
+//    dispatch(getSingleHotelDetails(data));
+//    console.log("single hotel dispatched");
+//    const desc = await GetApiData(
+//      `/getDescriptionAndInfo?hotel_id=${hotelId}`
+//    );
+//    console.log("description api called");
+//    dispatch(getDescription(desc));
+//    console.log("description is dispatched ");
+//    console.log("a call for navigation");
+//    navigate("/hotelDetails");
+//  };

@@ -9,6 +9,7 @@ import format from "date-fns/format";
 
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import KingBedIcon from "@mui/icons-material/KingBed";
 
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -30,7 +31,7 @@ const Container = styled(Grid)`
 const Individual = styled(Grid)`
   display: flex;
   align-items: center;
-  padding: 2px;
+  padding: 16px;
   justify-content: space-around;
   border: 3px solid orangered;
   position: relative;
@@ -109,6 +110,8 @@ const SearchComponent = () => {
   // retrewing data from redux slice
   const { loading } = useSelector((state) => state.hotels);
   const {latitude, longitude} = useSelector((state) => state.details)
+  console.log(latitude)
+  console.log(longitude)
 
   // converting date into yyy-mm-dd format to use in url
   const convertDate = (date) => {
@@ -138,7 +141,10 @@ const SearchComponent = () => {
   };
   return (
       <Container container spacing={2}>
-        {/* <PlacesAutoComplete /> */}
+        <Individual item xs={8} md={6} lg={4}>
+        <KingBedIcon />
+        <PlacesAutoComplete />
+        </Individual>
         <Individual item xs={8} md={6} lg={4}>
           <CalendarMonthIcon />
           <input
