@@ -8,7 +8,7 @@ import {
 } from "@vis.gl/react-google-maps";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Box, Paper, Typography, Rating, Button } from "@mui/material";
 
 import Hotels from "../../assests/Api Data/All_hotels.json";
@@ -112,14 +112,11 @@ const Markers = ({ hotels }) => {
                 alt="hotel"
               />
               <Box>
-                <Button
-                  onClick={(event) => handleClick(event)}
-                  sx={{ cursor: "pointer", textTransform: "capitalize" }}
-                >
+                <Link to={"/hotelDetails"} style={{ textDecoration: "none" }}>
                   <Typography variant="body2" ml={1}>
                     {hotel.hotel_name}
                   </Typography>
-                </Button>
+                </Link>
                 <Rating
                   defaultValue={Number(hotel.review_score / 2)}
                   size="small"

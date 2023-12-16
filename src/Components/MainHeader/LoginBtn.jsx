@@ -18,12 +18,12 @@ const LoginBtn = styled(Button)`
 
 const Login_Signup = () => {
   // retriewing user data from user slice
-  const loggedUser = useSelector((state) => state.user);
-  const user = loggedUser.currentUser;
+  const {currentUser} = useSelector((state) => state.user);
+  // const user = currentUser;
   return (
     <>
-      {user ? (
-        <ShowUserDetails user={user} />
+      {currentUser ? (
+        <ShowUserDetails user={currentUser} />
       ) : (
         <Link to={"/login"}>
           <LoginBtn contained>Login/Signup</LoginBtn>
