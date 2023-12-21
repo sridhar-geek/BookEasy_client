@@ -60,7 +60,7 @@ const Signup = () => {
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { loading, error } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.user);
 
   // these states and handlers helps to hide and unhide password 
    const [showPassword, setShowPassword] = useState(false);

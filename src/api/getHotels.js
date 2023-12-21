@@ -2,13 +2,9 @@
 
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
-import { gettingDetailsFailure } from "../redux/SearchSlice";
 const BaseUrl = "https://booking-com15.p.rapidapi.com/api/v1/hotels";
 
 export const GetApiData = async (url) => {
-  // const dispatch = useDispatch()
-  console.log('request came to call api data')
   try {
     const {
       data: { data },
@@ -20,9 +16,7 @@ export const GetApiData = async (url) => {
     });
     return data;
   } catch (error) {
-    console.log('something went wrong')
     toast.error("error in retreving all hotels");
-    // dispatch(gettingDetailsFailure())
     console.error(error);
   }
 };

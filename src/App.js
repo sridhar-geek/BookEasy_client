@@ -32,7 +32,7 @@ function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="/profile" element={<Profile />} />
           <Route path="/PaymentSuccess" element={<PaymentSucess />} />
-          <Route path="/PaymentFailure" element={<PaymentFailure />} />
+          <Route path="/PaymentFailed" element={<PaymentFailure />} />
         </Route>
         <Route path="/*" element={<NotFound />} />
       </Routes>

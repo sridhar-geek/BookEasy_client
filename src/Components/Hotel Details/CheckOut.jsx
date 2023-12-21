@@ -68,7 +68,7 @@ const CheckoutBtn = ({ total }) => {
               arrivalDate: arrivalDate,
               departureDate: departureDate,
             };
-            const hotel = await axios.post("/hotel", hotelData);
+             await axios.post("/hotel", hotelData);
             navigate("/paymentSuccess");
           } catch (error) {
             console.error(error);

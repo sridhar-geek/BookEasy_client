@@ -103,7 +103,7 @@ const Profile = () => {
     e.preventDefault();
     try {
       dispatch(userActionStart());
-      const data = await axios.delete(
+       await axios.delete(
         `/user/${currentUser.userDetails._id}`
       );
       dispatch(delete_Logout());
