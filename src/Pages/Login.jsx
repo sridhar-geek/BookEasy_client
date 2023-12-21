@@ -76,7 +76,7 @@ const formData = {
     e.preventDefault();
     try {
       dispatch(userActionStart())
-      const data = await axios.post('https://book-easy-server.vercel.app/api/auth/login', formData)
+      const data = await axios.post('/api/auth/login', formData)
       dispatch(userActionSuccess(data.data))
       toast.success('user login successful')
       navigate('/')
