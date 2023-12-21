@@ -39,7 +39,7 @@ const AvaliBtn = styled(Button)`
   }
 `;
 
-const Hotels = ({ place, key }) => {
+const Hotels = ({ place }) => {
   // retriewing data from hotelslice and detailsSlice
   const { loading } = useSelector((state) => state.hotels);
   const { room_adults, arrivalDate, departureDate } = useSelector(
@@ -57,15 +57,17 @@ const Hotels = ({ place, key }) => {
 
   // storing singlehotel in redux store
   const handleClick = async (hotelId) => {
-    // dispatch(gettingDetails());
-    // const data = await GetApiData(
-    //   `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${room_adults.adults}&room_qty=${room_adults.rooms}&currency_code=INR`
-    // );
-    // dispatch(getSingleHotelDetails(data));
-    // const desc = await GetApiData(`/getDescriptionAndInfo?hotel_id=${hotelId}`);
-    // dispatch(getDescription(desc));
+    dispatch(gettingDetails());
+    const data = await GetApiData(
+      `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${room_adults.adults}&room_qty=${room_adults.rooms}&currency_code=INR`
+    );
+    dispatch(getSingleHotelDetails(data));
+    const desc = await GetApiData(`/getDescriptionAndInfo?hotel_id=${hotelId}`);
+    dispatch(getDescription(desc));
     navigate("/hotelDetails");
   };
+  console.log(arrivalDate + '   arrival date from hotels card')
+  console.log(departureDate + '   departure date from hotels card')
   // this code loads unsplash images  only first in render 
   const [randomImage, setRandomImage] = useState("");
   useEffect(()=>{
@@ -89,9 +91,6 @@ const Hotels = ({ place, key }) => {
           alt="hotel "
         />
         <CardContent>
-          <Typography gutterBottom variant="h5">
-            {key}
-          </Typography>
           <Typography gutterBottom variant="h5">
             {place.hotel_name}
           </Typography>
@@ -129,7 +128,7 @@ const Hotels = ({ place, key }) => {
                 )}
               </Typography>
               <Stack direction="row" gap={2}>
-                <Typography variant="h5"> ₹ {price}</Typography>
+                <Typography variant="h5"> ₹ {place.min_total_price}</Typography>
                 {loading ? (
                   <Loader />
                 ) : (

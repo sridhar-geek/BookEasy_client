@@ -20,6 +20,5 @@ root.render(
 );
 
 
-// "start": "react-scripts '--openssl-legacy-provider start",
 // "proxy": "https://book-easy-server.vercel.app/api"
 

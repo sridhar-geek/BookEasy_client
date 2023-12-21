@@ -8,11 +8,13 @@ import { persistReducer, persistStore } from "redux-persist";
 import userReducer from "../redux/userSlice";
 import HotelReducer from "../redux/SearchSlice";
 import DetailsReducer from "../redux/DetailsSlice";
+import paymentSlice from "../redux/paymentSlice";
 
 const rootReducer = combineReducers({
   user: userReducer,
   hotels: HotelReducer,
   details: DetailsReducer,
+  payment: paymentSlice,
 });
 const persitsConfig = {
   key: "root",

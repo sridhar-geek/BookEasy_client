@@ -13,7 +13,7 @@ import {
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
-import HotelsData from "../assests/Api Data/All_hotels.json";
+// import HotelsData from "../assests/Api Data/All_hotels.json";
 /* Imported files */
 import Header from "../Components/MainHeader/Header";
 import SearchComponent from "../Components/SearchComponent";
@@ -35,8 +35,8 @@ const SortBox = styled(Paper)`
 
 const ShowHotels = () => {
   // retriewing data from redux store
-  // const { places } = useSelector((state) => state.hotels);
-  const places = HotelsData.result;
+  const { places } = useSelector((state) => state.hotels);
+  // const places = HotelsData.result;
 
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("");
@@ -73,10 +73,7 @@ const ShowHotels = () => {
       </SearchBox>
       <SortBox>
         <Typography>{places?.length} Hotels found</Typography>
-        <Button onClick={handleDialog}>Map View</Button>
-        <Dialog open={open} onClose={handleClose}>
-          <MapComponent />
-        </Dialog>
+
         <div style={{ display: "flex", alignItems: "center" }}>
           <Typography mr={2}> Sort by</Typography>
           <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
@@ -91,6 +88,10 @@ const ShowHotels = () => {
           </FormControl>
         </div>
       </SortBox>
+      <Button onClick={handleDialog}>Map View</Button>
+      <Dialog open={open} onClose={handleClose}>
+        <MapComponent />
+      </Dialog>
       <Box display="flex" justifyContent="center">
         <Box>
           {sortHotels(places).map((place) => (

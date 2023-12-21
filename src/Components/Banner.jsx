@@ -24,24 +24,34 @@ const Image = styled("img")`
 `;
 const Banner = () => {
   return (
-    <Carousel
-      swipeable={false}
-      draggable={false}
-      responsive={responsive}
-      ssr={true}
-      infinite={true}
-      autoPlay={true}
-      autoPlaySpeed={3000}
-      keyBoardControl={true}
-      transitionDuration={400}
-      containerClass="carousel-container"
-      dotListClass="custom-dot-list-style"
-      itemClass="carousel-item-padding-40-px"
-    >
-      {bannerImages.map((img, index) => (
-        <Image src={img.url} alt="Hotel" />
-      ))}
-    </Carousel>
+    <>
+      <div
+        style={{
+          padding: "0px",
+          marginTop: "70px",
+          border: "2px solid orangered",
+        }}
+      >
+        <Carousel
+          swipeable={false}
+          draggable={false}
+          responsive={responsive}
+          ssr={true}
+          infinite={true}
+          autoPlay={true}
+          autoPlaySpeed={3000}
+          keyBoardControl={true}
+          transitionDuration={400}
+          containerClass="carousel-container"
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
+        >
+          {bannerImages.map((img) => (
+            <Image key={img.id} src={img.url} alt="Hotel" />
+          ))}
+        </Carousel>
+      </div>
+    </>
   );
 };
 

@@ -96,7 +96,7 @@ const Profile = () => {
   };
   // retriew data from userSlice
   const { currentUser } = useSelector((state) => state.user);
-  const {loading, error} = useSelector((state)=> state.user)
+  const {loading} = useSelector((state)=> state.user)
   const dispatch = useDispatch();
   // delete account
   const handleDelete = async (e) => {

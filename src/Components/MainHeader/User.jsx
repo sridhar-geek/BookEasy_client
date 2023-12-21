@@ -1,7 +1,7 @@
 /**This component  Navigates user to his profile page and logout user */
 
 import React, { useState } from "react";
-import { Button, Menu, MenuItem, Avatar, Tooltip } from "@mui/material";
+import { Menu, MenuItem, Avatar, Tooltip } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";

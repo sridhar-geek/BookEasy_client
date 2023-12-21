@@ -24,7 +24,7 @@ import {
   useAdvancedMarkerRef,
 } from "@vis.gl/react-google-maps";
 
-import data from "../assests/Api Data/singleHotel.json";
+// import data from "../assests/Api Data/singleHotel.json";
 // Imports from another file
 import Header from "../Components/MainHeader/Header";
 import ReviewComponent from "../Components/Hotel Details/ReviewComponent";
@@ -32,8 +32,8 @@ import CheckoutBtn from "../Components/Hotel Details/CheckOut";
 
 // google map component
 const GoogleMap = () => {
-  // const { hotelDetails } = useSelector((state) => state.hotels);
-  // const data = hotelDetails;
+  const { hotelDetails } = useSelector((state) => state.hotels);
+  const data = hotelDetails;
   const [infowindowOpen, setInfowindowOpen] = useState(true);
   const [markerRef, marker] = useAdvancedMarkerRef();
   const lat = Number(data.latitude);
@@ -144,8 +144,9 @@ const OfferBtn = styled(Button)`
 
 const HotelDetails = () => {
   // Retrieve hotel details from redux store 
-  // const { hotelDetails, description } = useSelector((state) => state.hotels);
-  // const data = hotelDetails;
+  const { hotelDetails, description } = useSelector((state) => state.hotels);
+  const data = hotelDetails;
+  console.log(data)
   const { currentUser } = useSelector((state) => state.user);
   const { room_adults } = useSelector((state) => state.details);
 
@@ -153,6 +154,8 @@ const HotelDetails = () => {
   const date = data.block[0].paymentterms.prepayment.timeline.stages[0];
   // photos are stored in object which don't have fixed name, this code is to access the first value in that object
   const photoObjKey = Object.keys(data.rooms)[0];
+  console.log(date.limit_from_date)
+  console.log(date.limit_until_date)
   const photoObj = data.rooms[photoObjKey];
   // calculating price
   const price =
@@ -236,9 +239,9 @@ const HotelDetails = () => {
                 Overview
               </Typography>
               <Typography mt={2} variant="h6">
-                {/* {description[1]
+                {description[1]
                   ? description[1].description
-                  : description[0].description} */}
+                  : description[0].description}
               </Typography>
             </Box>
             <Box>
@@ -296,7 +299,13 @@ const HotelDetails = () => {
                 </OfferBtn>
               )}
               <Paper sx={{ padding: "20px" }} elevation={3}>
-                <h3 style={{ marginBottom: "0px" }}>₹ {price}</h3>
+                <h3 style={{ marginBottom: "0px" }}>
+                  ₹{" "}
+                  {
+                    data.composite_price_breakdown.gross_amount_hotel_currency
+                      .value
+                  }
+                </h3>
                 <Typography variant="caption">
                   + taxes and fee ₹{gst}
                 </Typography>
@@ -332,13 +341,13 @@ const HotelDetails = () => {
                   <Typography>Total</Typography>
                   <Typography>{total}</Typography>
                 </PriceBox>
-                <CheckoutBtn total={total} hotelName={data.hotel_name}/>
+                <CheckoutBtn total={total} />
               </Paper>
             </Box>
           </Grid>
         </Grid>
         <Box height="400px" mt={5}>
-          {/* <GoogleMap /> */}
+          <GoogleMap />
         </Box>
       </Container>
     </div>

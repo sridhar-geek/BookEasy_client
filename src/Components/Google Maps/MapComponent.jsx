@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import { Box, Paper, Typography, Rating, Button } from "@mui/material";
 
-import Hotels from "../../assests/Api Data/All_hotels.json";
+// import Hotels from "../../assests/Api Data/All_hotels.json";
 // imports from another files
 import { GetApiData } from "../../api/getHotels";
 import {
@@ -20,18 +20,20 @@ import {
   getDescription,
 } from "../../redux/SearchSlice";
 
+
+
 export default function MapComponent() {
   // retriewing data from redux slices
   const { latitude, longitude } = useSelector((state) => state.details);
-  // const { places } = useSelector((state) => state.hotels);
-  const places = Hotels.result;
+  const { places } = useSelector((state) => state.hotels);
+  // const places = Hotels.result;
   return (
-    <div style={{ height: "90vh", width: "85vh" }}>
+    <div style={{ height: "90vh", width: "90vh" }}>
       <APIProvider apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
         <Map
           zoom={10}
-          // center={{ lat: latitude, lng: longitude }}
-          center={{ lat: 17.69, lng: 83.23 }}
+          center={{ lat: latitude, lng: longitude }}
+          // center={{ lat: 17.69, lng: 83.23 }}
           mapId={process.env.REACT_APP_MAPID}
           gestureHandling={"greedy"}
           disableDefaultUI={true}
