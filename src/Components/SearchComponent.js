@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { styled, Box, Grid, Menu, Button, Typography } from "@mui/material";
 import { DateRange } from "react-date-range";
-import { addDays, endOfDay } from "date-fns";
+import { addDays } from "date-fns";
 import format from "date-fns/format";
 
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -27,15 +27,17 @@ const Container = styled(Grid)`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 90%;
 `;
 const Individual = styled(Grid)`
   display: flex;
   align-items: center;
-  padding: 16px ;
+  padding: 16px;
   justify-content: space-around;
-  border: 3px solid orangered;
+  border: 4px solid orangered;
   position: relative;
   min-width: 400px;
+  background-color: white;
 `;
 const Calender = styled(Box)`
   position: absolute;
@@ -48,7 +50,9 @@ const Items = styled(Box)`
   justify-content: space-between;
   padding: 0px 30px;
 `;
-const Btn = styled(Button)``
+const Btn = styled(Button)`
+margin: 2px;
+`
 const SearchBtn = styled(Button)`
   background-color: orangered;
   padding: 10px;
@@ -59,7 +63,7 @@ const SearchBtn = styled(Button)`
 `;
 
 const SearchComponent = () => {
-
+const [destination, setDestination] = useState('')
   //calender component
   const [range, setRange] = useState([
     {
@@ -110,10 +114,8 @@ const SearchComponent = () => {
   // retrewing data from redux slice
   const { loading } = useSelector((state) => state.hotels);
   const {latitude, longitude} = useSelector((state) => state.details)
-  console.log(latitude)
-  console.log(longitude)
 
-  // converting date into yyy-mm-dd format to use in url
+  // converting date into yyyy-mm-dd format to use in url
   const convertDate = (date) => {
     let year = date.getFullYear();
     let month = ("0" + (date.getMonth() + 1)).slice(-2);
@@ -123,8 +125,8 @@ const SearchComponent = () => {
   const arrivalDate = convertDate(range[0].startDate);
   const departureDate = convertDate(range[0].endDate);
   
-  console.log(arrivalDate + '   arrival date from searchComponent')
-  console.log(departureDate + '   departure date form searchComponent')
+  // console.log(arrivalDate + '   arrival date from searchComponent')
+  // console.log(departureDate + '   departure date form searchComponent')
   // storing all hotel details in redux global store
   const handleSumbit = async (e) => {
     e.preventDefault();
@@ -139,124 +141,130 @@ const SearchComponent = () => {
     navigate("/hotels");
   };
   return (
-      <Container container spacing={2}>
-        <Individual item xs={8} md={6} lg={4}>
+    <Container container spacing={2}>
+      <Individual item xs={8} md={6} lg={4}>
         <KingBedIcon />
-        <PlacesAutoComplete />
-        </Individual>
-        <Individual item xs={8} md={6} lg={4}>
-          <CalendarMonthIcon />
-          <input
-            type="text"
-            required
-            value={`${format(range[0].startDate, "ccc-dd-MMM")}  to ${format(
-              range[0].endDate,
-              "ccc-dd-MMM"
-            )}`}
-            readOnly
-            placeholder="Check-in-Date  Check-out-date"
-            onClick={() => setOpenDate((prestate) => !prestate)}
-            style={{ border: "none", padding: "20px", fontSize: "1.1rem" }}
-          />
-          <Calender ref={reference}>
-            {openDate && (
-              <DateRange
-                onChange={(item) => setRange([item.selection])}
-                editableDateInputs={true}
-                moveRangeOnFirstSelection={false}
-                ranges={range}
-                months={2}
-                direction="horizontal"
-                minDate={new Date()}
-              />
-            )}
-          </Calender>
-        </Individual>
-        <Individual item xs={8} md={6} lg={4}>
-          <PeopleAltIcon />
-          <input
-            type="text"
-            onClick={handleClick}
-            readOnly
-            value={`${state.rooms}Rooms ${state.adults}Adults ${state.children}Children`}
-            style={{
-              border: "none",
-              padding: "20px",
-              fontSize: "1.1rem",
-              cursor: "pointer",
-            }}
-          />
-          <Menu
-            id="basic-menu"
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleClose}
-            MenuListProps={{
-              "aria-labelledby": "basic-button",
-            }}
-          >
-            <Items>
-              <Typography>Room</Typography>
-              <Box>
-                <Btn
-                  variant="contained"
-                  onClick={() => reduceFtn({ type: ACTIONS.RM_IN })}
-                >
-                  {"  "}+{"  "}
-                </Btn>
-                {state.rooms}
-                <Btn
-                  variant="contained"
-                  onClick={() => reduceFtn({ type: ACTIONS.RM_DC })}
-                >
-                  -
-                </Btn>
-              </Box>
-            </Items>
-            <Items>
-              <Typography>Adults</Typography>
-              <Box>
-                <Btn
-                  variant="contained"
-                  onClick={() => reduceFtn({ type: ACTIONS.AD_IN })}
-                >
-                  +
-                </Btn>
-                {state.adults}
-                <Btn
-                  variant="contained"
-                  onClick={() => reduceFtn({ type: ACTIONS.AD_DC })}
-                >
-                  -
-                </Btn>
-              </Box>
-            </Items>
-            <Items>
-              <Typography>Children</Typography>
-              <Box>
-                <Btn
-                  variant="contained"
-                  onClick={() => reduceFtn({ type: ACTIONS.CH_IN })}
-                >
-                  +
-                </Btn>
-                {state.children}
-                <Btn
-                  variant="contained"
-                  onClick={() => reduceFtn({ type: ACTIONS.CH_DC })}
-                >
-                  -
-                </Btn>
-              </Box>
-            </Items>
-          </Menu>
-          {loading ? (
-            <Loader open={loading} />
-          ) : (
-            <SearchBtn onClick={handleSumbit}>Search</SearchBtn>
+        <PlacesAutoComplete setDestination={setDestination} />
+      </Individual>
+      <Individual item xs={8} md={6} lg={4}>
+        <CalendarMonthIcon />
+        <input
+          type="text"
+          required
+          value={`${format(range[0].startDate, "ccc-dd-MMM")}  to ${format(
+            range[0].endDate,
+            "ccc-dd-MMM"
+          )}`}
+          readOnly
+          placeholder="Check-in-Date  Check-out-date"
+          onClick={() => setOpenDate((prestate) => !prestate)}
+          style={{ border: "none", padding: "20px", fontSize: "1.1rem", minWidth:'300px' }}
+        />
+        <Calender ref={reference}>
+          {openDate && (
+            <DateRange
+              onChange={(item) => setRange([item.selection])}
+              editableDateInputs={true}
+              moveRangeOnFirstSelection={false}
+              ranges={range}
+              months={2}
+              direction="horizontal"
+              minDate={new Date()}
+            />
           )}
-        </Individual>
-      </Container>
+        </Calender>
+      </Individual>
+      <Individual item xs={8} sm={8} lg={4}>
+        <PeopleAltIcon />
+        <input
+          type="text"
+          onClick={handleClick}
+          readOnly
+          value={`${state.rooms}Rooms ${state.adults}Adults ${state.children}Children`}
+          style={{
+            border: "none",
+            padding: "20px",
+            fontSize: "1.1rem",
+            cursor: "pointer",
+            minWidth:'280px'
+          }}
+        />
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "basic-button",
+          }}
+        >
+          <Items>
+            <Typography>Room</Typography>
+            <Box>
+              <Btn
+                variant="contained"
+                onClick={() => reduceFtn({ type: ACTIONS.RM_IN })}
+              >
+                +
+              </Btn>
+              {"  "}
+              {state.rooms} {"  "}
+              <Btn
+                variant="contained"
+                onClick={() => reduceFtn({ type: ACTIONS.RM_DC })}
+              >
+                -
+              </Btn>
+            </Box>
+          </Items>
+          <Items>
+            <Typography>Adults</Typography>
+            <Box>
+              <Btn
+                variant="contained"
+                onClick={() => reduceFtn({ type: ACTIONS.AD_IN })}
+              >
+                +
+              </Btn>
+              {"  "}
+              {state.adults} {"  "}
+              <Btn
+                variant="contained"
+                onClick={() => reduceFtn({ type: ACTIONS.AD_DC })}
+              >
+                -
+              </Btn>
+            </Box>
+          </Items>
+          <Items>
+            <Typography>Children</Typography>
+            <Box>
+              <Btn
+                variant="contained"
+                onClick={() => reduceFtn({ type: ACTIONS.CH_IN })}
+              >
+                +
+              </Btn>
+              {"  "}
+              {state.children} {"  "}{" "}
+              <Btn
+                variant="contained"
+                onClick={() => reduceFtn({ type: ACTIONS.CH_DC })}
+              >
+                -
+              </Btn>
+            </Box>
+          </Items>
+        </Menu>
+        {loading ? (
+          <Loader open={loading} />
+        ) : (
+          <SearchBtn onClick={handleSumbit} disabled={!destination}>
+            Search
+          </SearchBtn>
+        )}
+      </Individual>
+    </Container>
   );
 };
 

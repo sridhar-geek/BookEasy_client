@@ -4,30 +4,18 @@ import usePlacesAutocomplete, {
   getLatLng,
 } from "use-places-autocomplete";
 import { useDispatch } from "react-redux";
-// import { Grid, styled } from "@mui/material";
-// import BedIcon from "@mui/icons-material/Bed";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 //  /* Imports from other files */
 import { setLatitude, setLongitude } from "../../redux/DetailsSlice";
-// //Component styles
-// const Individual = styled(Grid)`
-//   display: flex;
-//   align-items: center;
-//   padding: 2px;
-//   justify-content: space-around;
-//   border: 3px solid orangered;
-//   position: relative;
-//   min-width: 400px;
-// `;
 
-const PlacesAutocomplete = () => {
-  const dispatch = useDispatch();
-  //   // use placeautocomplete hook
+const PlacesAutocomplete = ({setDestination}) => {
+  const dispatch = useDispatch()
+   // use placeautocomplete hook
   const {
     ready,
     value,
-    suggestions: { status, data },
+    suggestions: { data },
     setValue,
     clearSuggestions,
   } = usePlacesAutocomplete({ debounce: 300 });
@@ -50,7 +38,7 @@ const PlacesAutocomplete = () => {
       dispatch(setLongitude(lng));
     });
   };
-
+  // console.log(value)
   return (
     <>
       <Autocomplete
@@ -64,7 +52,10 @@ const PlacesAutocomplete = () => {
           handleInput({ target: { value: newValue } });
         }}
         onChange={(event, newValue) => {
-          if (newValue) handleSelect(newValue.description);
+          if (newValue) {
+            handleSelect(newValue.description);
+            setDestination(newValue.description)
+          } else setDestination(false)
         }}
         renderInput={(params) => (
           <TextField
@@ -72,6 +63,12 @@ const PlacesAutocomplete = () => {
             label="Search your destination"
             variant="outlined"
             disabled={!ready}
+            inputProps={{
+              ...params.inputProps,
+              autoComplete: "new-password",
+              required: value.length === 0,
+            }}
+            required={true}
           />
         )}
       />

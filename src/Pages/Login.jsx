@@ -32,9 +32,11 @@ const Container = styled(Box)`
   align-items: center;
   margin-top: 60px;
   height: 90vh;
-  background: url("https://imgs.search.brave.com/L4ICNJkqVKh3zD27zjXHEYmlcZCCdPGDnqNQfQvQ5xU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTIw/NDgxMTg2NS9waG90/by9iZWRzLWluLWhv/dGVsLXJvb20tYXQt/dG91cmlzdC1yZXNv/cnQuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPU9FTHBVdFNy/Um5IMUw2bFg5dkcz/UW14ZFI4LXBfYkhX/RjUxYjFEZzRseHM9");
+  background: url("https://drive.google.com/uc?id=1TWij7FNekSHY8Pa--ZbzvSEgQXhIZSea")
+    no-repeat center;
+  background-size: cover;
 `;
-
+/* 1TWij7FNekSHY8Pa--ZbzvSEgQXhIZSea */
 const Wrapper = styled(Paper)`
   max-width: 500px;
   min-width: 450px;
@@ -78,7 +80,7 @@ const formData = {
       dispatch(userActionStart())
       const data = await axios.post('/api/auth/login', formData)
       dispatch(userActionSuccess(data.data))
-      toast.success('user login successful')
+      toast.success('Login successful')
       navigate('/')
     } catch (err) {
       dispatch(userActionFailure(err))

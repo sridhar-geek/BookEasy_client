@@ -35,7 +35,7 @@ const User = ({ user }) => {
     try {
       await axios.get(`/user/logout/${currentUser.userDetails._id}`);
       dispatch(delete_Logout());
-      toast.success("user logout successful");
+      toast.success("Logout successful");
       navigate('/')
     } catch (error) {
       dispatch(userActionFailure(error))

@@ -61,7 +61,7 @@ const Header = () => {
 
   return (
     <AppBar elevation={1}>
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between"}}>
         <Link to={"/"}>
           <Image src={Logo} alt="logo" />
         </Link>
@@ -69,7 +69,7 @@ const Header = () => {
           <LoginSignup />
           <LocationBox>
             <LocationOnIcon sx={{ marginLeft: "20px" }} />
-            <Typography>{address}</Typography>
+            <Typography>{address? address: 'Loading....'}</Typography>
           </LocationBox>
         </RightContainer>
       </Toolbar>

@@ -8,8 +8,8 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 /** Import modules form another files  */
-import AppStore from '../assests/appStore.png'
-import PlayStore from '../assests/playStore.png'
+import AppStore from '../assests/Footer/appStore.png'
+import PlayStore from '../assests/Footer/playStore.png'
 import Logo from "../assests/Hotel_logo.jpeg";
 
 //component styles
@@ -82,8 +82,8 @@ const Footer = () => {
         <Grid container spacing={2}>
           <Grid item textAlign={"center"} xs={6} md={6} lg={3} xl={3}>
             <Heading variant="h4">About Us</Heading>
-            <Item>Who we are</Item>
             <Item>Aim</Item>
+            <Item>Who we are</Item>
             <Item>Work with us</Item>
           </Grid>
           <Grid item textAlign={"center"} xs={6} md={6} lg={3} xl={3}>
@@ -113,8 +113,16 @@ const Footer = () => {
               <LinkedInIcon />
             </SocialBtn>
             <ImageBox>
-              <FooterImage src={AppStore} alt="appStore" />
-              <FooterImage src={PlayStore} alt="playStore" />
+              <FooterImage
+                src={AppStore}
+                style={{ cursor: "pointer" }}
+                alt="appStore"
+              />
+              <FooterImage
+                src={PlayStore}
+                style={{ cursor: "pointer" }}
+                alt="playStore"
+              />
             </ImageBox>
           </Grid>
         </Grid>

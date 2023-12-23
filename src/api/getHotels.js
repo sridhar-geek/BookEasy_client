@@ -2,6 +2,11 @@
 
 import axios from "axios";
 import { toast } from "react-toastify";
+
+// imports from another files
+import Loader from "../Components/Loader";
+
+
 const BaseUrl = "https://booking-com15.p.rapidapi.com/api/v1/hotels";
 
 export const GetApiData = async (url) => {
@@ -16,7 +21,8 @@ export const GetApiData = async (url) => {
     });
     return data;
   } catch (error) {
-    toast.error("error in retreving all hotels");
+    toast.error("error in retreving hotels");
+    <Loader open={false} />
     console.error(error);
   }
 };

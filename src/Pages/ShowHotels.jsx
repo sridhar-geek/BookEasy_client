@@ -54,17 +54,20 @@ const ShowHotels = () => {
   };
   // for sorting hotels based on price, rating and popularity
   const sortHotels = (arr) => {
-    if (sort === "pop") {
-      arr.sort((a, b) => a.hotel_id - b.hotel_id);
-      return arr;
-    } else if (sort === "asc") {
-      arr.sort((a, b) => a.min_total_price - b.min_total_price);
-      return arr;
-    } else if (sort === "desc") {
-      arr.sort((a, b) => b.min_total_price - a.min_total_price);
-      return arr;
-    } else return arr;
+    let sortedArr = [...arr]; // Create a copy of the array
+    if (sort === "pop") sortedArr.sort((a, b) => a.hotel_id - b.hotel_id);
+    else if (sort === "asc")
+      sortedArr.sort((a, b) => a.min_total_price - b.min_total_price);
+    else if (sort === "desc")
+      sortedArr.sort((a, b) => b.min_total_price - a.min_total_price);
+    else if (sort === "ratdesc")
+      sortedArr.sort((a, b) => a.review_score - b.review_score);
+    else if (sort === "ratasc")
+      sortedArr.sort((a, b) => b.review_score - a.review_score);
+
+    return sortedArr;
   };
+
   return (
     <div>
       <Header />
@@ -84,6 +87,8 @@ const ShowHotels = () => {
               <MenuItem value="pop">Popularity</MenuItem>
               <MenuItem value="asc">Price low to high</MenuItem>
               <MenuItem value="desc">Price high to low</MenuItem>
+              <MenuItem value="ratasc">Rating high to low</MenuItem>
+              <MenuItem value="ratdesc">Rating low to high</MenuItem>
             </Select>
           </FormControl>
         </div>

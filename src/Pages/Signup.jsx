@@ -88,7 +88,7 @@ const Signup = () => {
          dispatch(userActionStart());
          const data = await axios.post("/auth/register", formData);
          dispatch(userActionSuccess(data.data));              // this is unnecessary change it or leave it
-        toast.success('user registration successful')
+        toast.success('Registration successful')
         navigate('/login')
       } catch (err) {
         dispatch(userActionFailure(err));
