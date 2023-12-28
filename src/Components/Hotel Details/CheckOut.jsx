@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // imports from another files
-import hotelDetails from "../../assests/Api Data/singleHotel.json";
+// import hotelDetails from "../../assests/Api Data/singleHotel.json";
 import { setDescription, setReason } from "../../redux/paymentSlice";
 import Loader from "../Loader";
 import { userActionStart, stopLoading } from "../../redux/userSlice";
@@ -23,15 +23,13 @@ const BookingBtn = styled(Button)`
 const CheckoutBtn = ({ total }) => {
   // retriewing user details and hotel details  from reduxSlice
   const { currentUser,loading } = useSelector((state) => state.user);
-  // const { hotelDetails } = useSelector((state) => state.hotels);
-  const { room_adults, arrivalDate, departureDate } = useSelector(
+  const { hotelDetails } = useSelector((state) => state.hotels);
+  const { room_adults, arrivalDate, departureDate, photo } = useSelector(
     (state) => state.details
   );
   const userName = currentUser.userDetails.name;
   const email = currentUser.userDetails.email;
 
-  console.log(arrivalDate + 'arrivalDate from Checkout page')
-  console.log(departureDate + 'departureDate from Checkout page')
   const dispatch = useDispatch();
   const navigate = useNavigate();
   // data sent to server to create orderId
@@ -65,6 +63,7 @@ const CheckoutBtn = ({ total }) => {
             // data sent to server to create hotel in user account
             const hotelData = {
               name: hotelDetails.hotel_name,
+              image: photo,
               user: currentUser.userDetails._id,
               paymentId: validate.data.paymentId,
               orderId: validate.data.orderId,
@@ -108,7 +107,7 @@ const CheckoutBtn = ({ total }) => {
   return (
     <>
       {loading ? (
-        <Loader />
+        <Loader open={loading} />
       ) : (
         <BookingBtn fullWidth onClick={handlePayment}>
           Continue Booking

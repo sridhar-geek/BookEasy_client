@@ -120,7 +120,7 @@ const Markers = ({ hotels }) => {
                   </Link>
                 {/* </Button> */}
                 <Rating
-                  defaultValue={Number(hotel.review_score / 2)}
+                  defaultValue={hotel.review_score ? Number(hotel.review_score / 2): 2}
                   size="small"
                   precision={0.5}
                   readOnly

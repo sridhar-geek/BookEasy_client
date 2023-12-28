@@ -155,37 +155,28 @@ const OfferBtn = styled(Button)`
 `;
 
 const HotelDetails = () => {
-  // Retrieve hotel details from redux store 
+  // Retrieve hotel details from redux store
   const { hotelDetails, description } = useSelector((state) => state.hotels);
   const data = hotelDetails;
   const { currentUser } = useSelector((state) => state.user);
-  const { room_adults } = useSelector((state) => state.details);
+  const { room_adults, arrivalDate, departureDate,price } = useSelector((state) => state.details);
 
-  const navigate = useNavigate()
-  const location = useLocation()
-  // for getting arrival date and departure date
-  const date = data.block[0].paymentterms.prepayment.timeline.stages[0];
+  const navigate = useNavigate();
+  const location = useLocation();
   // photos are stored in object which don't have fixed name, this code is to access the first value in that object
   const photoObjKey = Object.keys(data.rooms)[0];
-  console.log(date.limit_from_date)
-  console.log(date.limit_until_date)
   const photoObj = data.rooms[photoObjKey];
 
   // function to send Dummy Hotel room photos when there are no Hotel room photos found with api
-  const sendPhotos = (photoObj, HotelRoomImages)=> {
-    if(photoObj.photos >1)
-    return photoObj.photos
-  else
-  return HotelRoomImages
-  }
+  const sendPhotos = (photoObj, HotelRoomImages) => {
+    if (photoObj.photos.length > 1) return photoObj.photos;
+    else return HotelRoomImages;
+  };
   // calculating price
-  const price =
-    Math.floor(
-      data.composite_price_breakdown.gross_amount_hotel_currency.value
-    ) * 0.3;
-  const gst = Math.floor(price * 0.3);
-  const discount = (price * 25) / 100;
-  const total = Math.floor(price + gst - discount);
+  const actualPrice = Number(price)
+  const gst = Math.floor(actualPrice * 0.3);
+  const discount = Math.floor(actualPrice * 0.15);
+  const total = Math.floor(actualPrice + gst - discount);
 
   // setting up email address and phone number
   const [emailStr, setEmailStr] = useState("");
@@ -202,23 +193,28 @@ const HotelDetails = () => {
     };
     email(data.hotel_name);
   }, []);
+  // setting arrival date and departure date
+  function convertDate(dateString) {
+    var date = new Date(dateString);
+    var options = { year: "numeric", month: "long", day: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  }
 
   // setting dummy rating
-  const [rating, setRating] = useState(null)
-  useEffect(()=> {
+  const [rating, setRating] = useState(null);
+  useEffect(() => {
     const ratingScore = Math.random().toFixed(1) * 3 + 2;
     setRating(ratingScore);
-  },[])
+  }, []);
   // for showing facilities
   const [showAll, setShowAll] = useState(false);
   const itemsToShow = showAll ? 20 : 5;
-  // if user is not logged in navigate to login page 
-  const handleLogin = ()=> {
-    navigate('/login', {state: {from: location}})
-  }
-  console.log(photoObj)
+  // if user is not logged in navigate to login page
+  const handleLogin = () => {
+    navigate("/login", { state: { from: location } });
+  };
   return (
-    <div style={{overflowX:'hidden'}}>
+    <div style={{ overflowX: "hidden" }}>
       <Header />
       <div style={{ marginTop: "80px" }}>
         <Carousel
@@ -233,7 +229,7 @@ const HotelDetails = () => {
           dotListClass="custom-dot-list-style"
           itemClass="carousel-item-padding-40-px"
         >
-          {sendPhotos(photoObj,HotelRoomImages).map((img) => (
+          {sendPhotos(photoObj, HotelRoomImages).map((img) => (
             <Image key={img.photo_id} src={img.url_original} alt="Hotel" />
           ))}
         </Carousel>
@@ -245,7 +241,8 @@ const HotelDetails = () => {
             </RatingBox>
           </Title>
           <Typography variant="subtitle2" margin={2}>
-            {data.address}{"   "}
+            {data.address}
+            {"   "}
             {data.zip}
           </Typography>
           <NavBox>
@@ -333,16 +330,9 @@ const HotelDetails = () => {
                   </OfferBtn>
                 )}
                 <Paper sx={{ padding: "20px" }} elevation={3}>
-                  <h3 style={{ marginBottom: "0px" }}>
-                    ₹{" "}
-                    {
-                      data.composite_price_breakdown.gross_amount_hotel_currency
-                        .value
-                    }
-                  </h3>
-                  <h3 style={{ marginBottom: "0px" }}>Cal {price}</h3>
+                  <h3 style={{ marginBottom: "0px" }}>₹ {price}</h3>
                   <Typography variant="caption">
-                    + taxes and fee ₹{gst} Calculated
+                    + taxes and fee ₹{gst} 
                   </Typography>
                   <Box
                     sx={{
@@ -351,7 +341,8 @@ const HotelDetails = () => {
                     }}
                   >
                     <Typography variant="h6">
-                      {date.limit_from_date} to {date.limit_until_date}
+                      {convertDate(String(arrivalDate))} to{" "}
+                      {convertDate(String(departureDate))}
                     </Typography>
                   </Box>
                   <Box>
@@ -371,6 +362,14 @@ const HotelDetails = () => {
                     <Typography>Discount</Typography>
                     <Typography>{discount}</Typography>
                   </PriceBox>
+                  {currentUser && (
+                    <>
+                      <PriceBox>
+                        <Typography>Additional Discount</Typography>
+                        <Typography>{price * 0.5}</Typography>
+                      </PriceBox>
+                    </>
+                  )}
                   <Divider />
                   <PriceBox>
                     <Typography>Total</Typography>

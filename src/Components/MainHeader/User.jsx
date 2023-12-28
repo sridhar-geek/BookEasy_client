@@ -8,12 +8,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
   /*Import modules from other files  */
-import { delete_Logout, userActionFailure } from "../../redux/userSlice";
+import { delete_Logout, userActionFailure, userActionStart } from "../../redux/userSlice";
+import Loader from "../Loader";
 
 const User = ({ user }) => {
   const navigate = useNavigate();
   // retriewing data from user slice
-  const { currentUser } = useSelector((state) => state.user);
+  const { currentUser, loading } = useSelector((state) => state.user);
   // handles main items to open and close
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -33,6 +34,7 @@ const User = ({ user }) => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
+      dispatch(userActionStart())
       await axios.get(
         `/user/logout/${currentUser.userDetails._id}`
       );
@@ -49,11 +51,15 @@ const User = ({ user }) => {
   return (
     <div>
       <Tooltip title={user.userDetails.name}>
-        <Avatar
-          alt="Profile Photo"
-          src={user.userDetails.profilePicture}
-          onClick={handleClick}
-        />
+        {loading ? (
+          <Loader open={loading} />
+        ) : (
+          <Avatar
+            alt="Profile Photo"
+            src={user.userDetails.profilePicture}
+            onClick={handleClick}
+          />
+        )}
       </Tooltip>
       <Menu
         id="basic-menu"

@@ -25,6 +25,7 @@ import {
   getDescription,
 } from "../redux/SearchSlice";
 import { stopLoading } from "../redux/userSlice";
+import {setPrice, setPhoto} from '../redux/DetailsSlice'
 import Loader from "./Loader";
 
 //Component styles
@@ -46,8 +47,6 @@ const Hotels = ({ place }) => {
   const { room_adults, arrivalDate, departureDate } = useSelector(
     (state) => state.details
   );
-console.log(arrivalDate + 'arrivalDate from hotels card')
-console.log(departureDate + 'deoartureDate from hotels card')
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // calculating no.of days
@@ -58,7 +57,7 @@ console.log(departureDate + 'deoartureDate from hotels card')
   const price = ((Math.floor(place.min_total_price) * 30) / 100).toFixed(0);
 
   // storing singlehotel in redux store
-  const handleClick = async (hotelId) => {
+  const handleClick = async (hotelId, photoUrl) => {
     try {
       dispatch(gettingDetails());
       const data = await GetApiData(
@@ -67,14 +66,14 @@ console.log(departureDate + 'deoartureDate from hotels card')
       dispatch(getSingleHotelDetails(data));
       const desc = await GetApiData(`/getDescriptionAndInfo?hotel_id=${hotelId}`);
       dispatch(getDescription(desc));
+      dispatch(setPrice(price))
+      dispatch(setPhoto(photoUrl))
       navigate("/hotelDetails");
     } catch (error) {
       dispatch(stopLoading())
       console.log(error)
     }
   };
-  // console.log(arrivalDate + '   arrival date from hotels card')
-  // console.log(departureDate + '   departure date from hotels card')
   // this code loads unsplash images  only first in render 
   const [randomImage, setRandomImage] = useState("");
   useEffect(()=>{
@@ -88,7 +87,7 @@ console.log(departureDate + 'deoartureDate from hotels card')
     <Card sx={{ maxWidth: 750 }}>
       <CardActionArea
         sx={{ display: "flex", justifyContent: "start", flexWrap: "nowrap" }}
-        onClick={() => handleClick(place.hotel_id)}
+        onClick={() => handleClick(place.hotel_id, place.main_photo_url)}
       >
         <CardMedia
           component="img"
@@ -119,7 +118,9 @@ console.log(departureDate + 'deoartureDate from hotels card')
                   Rating:
                 </Typography>
                 <Rating
-                  defaultValue={Number(place.review_score / 2)}
+                  defaultValue={
+                    place.review_score ? Number(place.review_score / 2) : 2
+                  }
                   precision={0.5}
                   readOnly
                 />
@@ -135,8 +136,7 @@ console.log(departureDate + 'deoartureDate from hotels card')
                 )}
               </Typography>
               <Stack direction="row" gap={2}>
-                <Typography variant="h5"> ₹ {(place.min_total_price).toFixed(0)}</Typography>
-                <Typography variant="h5"> Cal {price}</Typography>
+                <Typography variant="h5"> ₹ {price}</Typography>
                 {loading ? (
                   <Loader />
                 ) : (
@@ -150,17 +150,7 @@ console.log(departureDate + 'deoartureDate from hotels card')
                 color="text.secondary"
                 sx={{ marginLeft: "20px" }}
               >
-                +Rs {(price * 0.2).toFixed(2)} extra GST and fees Calculated
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ marginLeft: "20px" }}
-              >
-                {
-                  place.composite_price_breakdown.charges_details
-                    .translated_copy
-                }
+                +Rs {(price * 0.2).toFixed(2)} extra GST and fees
               </Typography>
             </Box>
           </Box>
