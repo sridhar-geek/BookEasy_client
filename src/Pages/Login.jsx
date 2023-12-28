@@ -14,7 +14,7 @@ import {
   Divider,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {toast} from 'react-toastify'
 import axios from "axios";
@@ -28,20 +28,21 @@ import SocialLogin from "../Components/Google login/SocialLogin";
 // Component styles
 const Container = styled(Box)`
   display: flex;
-  justify-content: center;
+  /* justify-content: space-between; */
   align-items: center;
   margin-top: 60px;
   height: 90vh;
-  background: url("https://drive.google.com/uc?id=1TWij7FNekSHY8Pa--ZbzvSEgQXhIZSea")
-    no-repeat center;
+  background: url("https://drive.google.com/uc?export=view&id=1TWij7FNekSHY8Pa--ZbzvSEgQXhIZSea ")
+ no-repeat center;
   background-size: cover;
 `;
-/* 1TWij7FNekSHY8Pa--ZbzvSEgQXhIZSea */
 const Wrapper = styled(Paper)`
   max-width: 500px;
-  min-width: 450px;
+  min-width: 200px;
   height: auto;
   padding: 20px;
+  margin-left: 50%;
+  border-radius: 5%;
 `;
 const LoginBtn = styled(Button)`
   width: 100%;
@@ -57,10 +58,13 @@ const Login = () => {
   // display data in input feild
   const [email, setEmail ] = useState('')
   const [password, setPassword] = useState('')
+  
+  // retriewing data from user slice 
+  const {loading} = useSelector((state)=> state.user)
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const {loading} = useSelector((state)=> state.user)
+    const location = useLocation();
 
   // this is for hide and unhide password feild 
     const [showPassword, setShowPassword] = useState(false);
@@ -78,13 +82,16 @@ const formData = {
     e.preventDefault();
     try {
       dispatch(userActionStart())
-      const data = await axios.post('/api/auth/login', formData)
+      const data = await axios.post(
+        `/auth/login`,
+        formData
+      );
       dispatch(userActionSuccess(data.data))
       toast.success('Login successful')
-      navigate('/')
+    navigate(location.state?.from || '/');
     } catch (err) {
       dispatch(userActionFailure(err))
-      toast.error(err.response.data.msg)
+      toast.error(err.response.data?.msg)
       console.log(err)
     }
   };

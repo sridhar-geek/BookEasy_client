@@ -13,7 +13,8 @@ import {startDate, endDate, sotreDetails} from '../redux/DetailsSlice'
 import { GetApiData } from "../api/getHotels";
 import Loader from "../Components/Loader";
 import RainbowText from "../Components/RainBowText";
-
+import { stopLoading } from "../redux/userSlice";
+//images
 import FooterImage from '../assests/HomePage/footerImage.jpg'
 import DelhiImage from '../assests/HomePage/delhi.png'
 import BenguluruImage from '../assests/HomePage/benguluru.png'
@@ -70,17 +71,22 @@ const Home = () => {
   // Get the date 3 days from today and format date
   const dateAfter3Days = new Date(today.setDate(today.getDate() + 3));
   const departureDate = dateAfter3Days.toISOString().slice(0, 10);
-
+  // search hotels based on selected city
   const handleClick = async (latitude, longitude) => {
-    dispatch(gettingDetails());
-    const data = await GetApiData(
-      `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
-    );
-    dispatch(getHotelData(data.result));
-    dispatch(sotreDetails(state));
-    dispatch(startDate(arrivalDate));
-    dispatch(endDate(departureDate));
-    navigate("/hotels");
+    try {
+      dispatch(gettingDetails());
+      const data = await GetApiData(
+        `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
+      );
+      dispatch(getHotelData(data.result));
+      dispatch(sotreDetails(state));
+      dispatch(startDate(arrivalDate));
+      dispatch(endDate(departureDate));
+      navigate("/hotels");
+    } catch (error) {
+      dispatch(stopLoading())
+      console.log(error)
+    }
   };
   return (
     <div style={{ overflowX: "hidden" }}>

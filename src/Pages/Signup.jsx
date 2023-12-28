@@ -23,7 +23,7 @@ import axios from 'axios'
 import Header from "../Components/LoginSingupHeader/Header";
 import Loader from "../Components/Loader";
 import SocialLogin from "../Components/Google login/SocialLogin";
-import {userActionStart,userActionSuccess, userActionFailure} from '../redux/userSlice'
+import {userActionStart,stopLoading, userActionFailure} from '../redux/userSlice'
 
 // Component styles
 const Container = styled(Box)`
@@ -32,13 +32,17 @@ const Container = styled(Box)`
   align-items: center;
   margin-top: 60px;
   height: 90vh;
-  background: url("https://imgs.search.brave.com/L4ICNJkqVKh3zD27zjXHEYmlcZCCdPGDnqNQfQvQ5xU/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTIw/NDgxMTg2NS9waG90/by9iZWRzLWluLWhv/dGVsLXJvb20tYXQt/dG91cmlzdC1yZXNv/cnQuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPU9FTHBVdFNy/Um5IMUw2bFg5dkcz/UW14ZFI4LXBfYkhX/RjUxYjFEZzRseHM9");
+  background: url("https://drive.google.com/uc?export=view&id=1TWij7FNekSHY8Pa--ZbzvSEgQXhIZSea ")
+    no-repeat center;
+  background-size: cover;
 `;
 const Wrapper = styled(Paper)`
   max-width: 600px;
-  min-width: 500px;
+  min-width: 300px;
+  margin-left: 50%;
   height: auto;
   padding: 20px;
+  border-radius: 5%;
 `;
 const LoginBtn = styled(Button)`
   width: 100%;
@@ -79,6 +83,7 @@ const Signup = () => {
     password
   }
 
+  // sending user data to server to register
   const submitHandler = async (e) => {
     e.preventDefault();
     if(password !== conformPassword)
@@ -86,14 +91,14 @@ const Signup = () => {
     else{
       try {
          dispatch(userActionStart());
-         const data = await axios.post("/auth/register", formData);
-         dispatch(userActionSuccess(data.data));              // this is unnecessary change it or leave it
+          await axios.post(`/auth/register`, formData);
+         dispatch(stopLoading())
         toast.success('Registration successful')
         navigate('/login')
       } catch (err) {
         dispatch(userActionFailure(err));
         console.log(err)
-      toast.error(err.response.data.msg);
+      toast.error(err.response.data?.msg);
       }
     }
   }

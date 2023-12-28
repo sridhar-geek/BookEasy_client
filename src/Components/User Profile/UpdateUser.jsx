@@ -40,9 +40,9 @@ const Container = styled(Box)`
   justify-content: center;
   align-items: center;
 `;
-const Wrapper = styled(Paper)`
-  max-width: 600px;
-  min-width: 500px;
+const Wrapper = styled(Box)`
+  max-width: 550px;
+  min-width: 300px;
   height: auto;
   padding: 20px;
 `;

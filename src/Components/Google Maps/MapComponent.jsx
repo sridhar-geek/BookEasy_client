@@ -28,14 +28,12 @@ export default function MapComponent() {
   const { places } = useSelector((state) => state.hotels);
   // const places = Hotels.result;
   return (
-    <div style={{ height: "90vh", width: "90vh" }}>
+    <div style={{ height: "1000px", width: "1000px" }}>
       <APIProvider apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
         <Map
           zoom={10}
           center={{ lat: latitude, lng: longitude }}
-          // center={{ lat: 17.69, lng: 83.23 }}
           mapId={process.env.REACT_APP_MAPID}
-          gestureHandling={"greedy"}
           disableDefaultUI={true}
         >
           <Markers hotels={places} />
@@ -114,11 +112,13 @@ const Markers = ({ hotels }) => {
                 alt="hotel"
               />
               <Box>
-                <Link to={"/hotelDetails"} style={{ textDecoration: "none" }}>
-                  <Typography variant="body2" ml={1}>
-                    {hotel.hotel_name}
-                  </Typography>
-                </Link>
+                {/* <Button onClick={(event) => handleClick(event)}> */}
+                  <Link to={"/hotelDetails"} style={{ textDecoration: "none" }}>
+                    <Typography variant="body2" ml={1}>
+                      {hotel.hotel_name}
+                    </Typography>
+                  </Link>
+                {/* </Button> */}
                 <Rating
                   defaultValue={Number(hotel.review_score / 2)}
                   size="small"
@@ -157,3 +157,7 @@ const Markers = ({ hotels }) => {
 //    console.log("a call for navigation");
 //    navigate("/hotelDetails");
 //  };
+
+
+
+    //  gestureHandling={"greedy"}      used in map component allows double touch and some.................

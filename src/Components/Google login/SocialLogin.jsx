@@ -43,13 +43,13 @@ const SocialLogin = () => {
       };
       dispatch(userActionStart())
       // sending user information server , it will either create user or assign access_token to user
-      const res = await axios.post("/auth/socialLogin", formData);
+      const res = await axios.post(`/auth/socialLogin`, formData);
       dispatch(userActionSuccess(res.data));
       toast.success("Login successful");
       navigate("/");
     } catch (err) {
       dispatch(userActionFailure(err));
-      toast.error(err.response.data.msg);
+      toast.error(err.response?.data?.msg);
       console.error(err)
     }
   };

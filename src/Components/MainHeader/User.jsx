@@ -33,14 +33,16 @@ const User = ({ user }) => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      await axios.get(`/user/logout/${currentUser.userDetails._id}`);
+      await axios.get(
+        `/user/logout/${currentUser.userDetails._id}`
+      );
       dispatch(delete_Logout());
       toast.success("Logout successful");
       navigate('/')
     } catch (error) {
       dispatch(userActionFailure(error))
       console.error(error);
-      toast.error(error.response.data.msg);
+      toast.error(error.response?.data?.msg);
     }
   };
 

@@ -29,6 +29,9 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = false;
     },
+    stopLoading: (state)=> {
+      state.loading = false;
+    },
   },
 });
 
@@ -36,7 +39,8 @@ export const {
   userActionStart,
   userActionSuccess,
   userActionFailure,
-  delete_Logout
+  delete_Logout,
+  stopLoading,
 } = userSlice.actions;
 
 export default userSlice.reducer;

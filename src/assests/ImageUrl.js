@@ -1,52 +1,71 @@
 export const bannerImages = [
   {
-    id: 1,
-    url: "https://media.gettyimages.com/id/1204811865/photo/beds-in-hotel-room-at-tourist-resort.jpg?s=612x612&w=0&k=20&c=OELpUtSrRnH1L6lX9vG3QmxdR8-p_bHWF51b1Dg4lxs=",
+    photo_id: 1,
+    url_original: "https://media.gettyimages.com/photo_id/1204811865/photo/beds-in-hotel-room-at-tourist-resort.jpg?s=612x612&w=0&k=20&c=OELpUtSrRnH1L6lX9vG3QmxdR8-p_bHWF51b1Dg4lxs=",
   },
   {
-    id: 2,
-    url: "https://media.gettyimages.com/id/1161219594/photo/kids-enjoying-splashing-in-swimming-pool.jpg?s=612x612&w=0&k=20&c=X7y_HX25GT2dFzeDb_EKsLqhudMg8rUJd0Du-VX5z7I=",
+    photo_id: 2,
+    url_original: "https://media.gettyimages.com/photo_id/1161219594/photo/kphoto_ids-enjoying-splashing-in-swimming-pool.jpg?s=612x612&w=0&k=20&c=X7y_HX25GT2dFzeDb_EKsLqhudMg8rUJd0Du-VX5z7I=",
   },
   {
-    id: 3,
-    url: "https://cdn.pixabay.com/photo/2023/03/29/10/27/hotel-7885138_640.jpg",
+    photo_id: 3,
+    url_original: "https://cdn.pixabay.com/photo/2023/03/29/10/27/hotel-7885138_640.jpg",
   },
   {
-    id: 4,
-    url: "https://media.gettyimages.com/id/1428674946/photo/busy-front-desk-at-hotel.jpg?s=612x612&w=0&k=20&c=6RscVaa9QRt1vAtNuxnilexQ0Xb3TNyBUBVsr0XvXiY=",
+    photo_id: 4,
+    url_original: "https://media.gettyimages.com/photo_id/1428674946/photo/busy-front-desk-at-hotel.jpg?s=612x612&w=0&k=20&c=6RscVaa9QRt1vAtNuxnilexQ0Xb3TNyBUBVsr0XvXiY=",
   },
 ];
 
 export const HotelRoomImages = [
   {
-    id: 1,
-    url: "https://media.gettyimages.com/id/173587041/photo/hotel-bedroom.jpg?s=612x612&w=0&k=20&c=mzbT-i0sbivf2hK4aAJi0mdYVTUca8o5vij0bJq97Ks=",
+    photo_id: 1,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257337.jpg?k=7ef26393e818b4fec60869d2dbafc671960ce22e79599ac5b055c2f47a360960&o=",
   },
   {
-    id: 2,
-    url: "https://static4.depositphotos.com/1025354/368/i/600/depositphotos_3683483-stock-photo-suite-bed-room-of-a.jpg",
+    photo_id: 2,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257345.jpg?k=a272e7772535ef38ecc2ad49e5ad0e3e838a9c2f0c56c1b18c00693aa6f9a03f&o=",
   },
   {
-    id: 3,
-    url: "https://img.freepik.com/free-photo/interior-modern-comfortable-hotel-room_1232-1822.jpg?size=626&ext=jpg",
+    photo_id: 3,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257301.jpg?k=27575779924abb6325671c60caffd1afa31440fd15c49e0fb9263c557cf913ae&o=",
   },
   {
-    id: 4,
-    url: "https://media.gettyimages.com/id/907633960/photo/lobby-entrance-with-reception-desk-and-lounge-area.jpg?s=612x612&w=0&k=20&c=rGw13Hy03S2qVpVelfIl1zSmtH_UXZsJchFjfr-qSHU=",
+    photo_id: 4,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257356.jpg?k=7b637a6598c0a7ca20f72d6d7e2cc7449b8a0f785f51a5a0951ae962a3140d96&o=",
   },
   {
-    id: 5,
-    url: "https://media.gettyimages.com/id/1250509765/photo/enjoying-a-leisure-holiday.jpg?s=612x612&w=0&k=20&c=QT9vlSIy7EbgT5b2nYXhdZLpUe6h6A3PYuIwa1I54Fk=",
+    photo_id: 5,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257348.jpg?k=465efdd2d0328ef231459e4733c2575f02add52fcfeff2c2cd9641dd368a393e&o=",
   },
   {
-    id: 6,
-    url: "https://img.freepik.com/premium-photo/photo-lunch-restaurant-hotel-photography-ai-generated_925376-7339.jpg?size=626&ext=jpg",
+    photo_id: 6,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257344.jpg?k=bf9287c21d676945792ad242557105cbf7f41d1606f8c25d1ab9f89333de9802&o=",
+  },
+  {
+    photo_id: 7,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257318.jpg?k=43e053190f7cb519facb936a8ea6100c665beb155f08909c7c84c76e6a260722&o=",
+  },
+  {
+    photo_id: 8,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257339.jpg?k=7a6832a7b72751e10fa4d4790aced3201787225a5fb0b18509ce7dd367adca37&o=",
+  },
+  {
+    photo_id: 9,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257289.jpg?k=3d2bfa098fda280ddd1bf032ef5db0d2b4ac63ac13179590aacaf759f55d5a9f&o=",
+  },
+  {
+    photo_id: 10,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257360.jpg?k=6eee458f3653a5a6924ec5afd6b94d8edd5216058835ab2e09c1ac9f2147ff70&o=",
+  },
+  {
+    photo_id: 11,
+    url_original: "https://cf.bstatic.com/xdata/images/hotel/max500/502257304.jpg?k=f552653d5537be7d79382700a3486e80c7f79f3cd8acaf5084ca4a42956e7b90&o=",
   },
 ];
 
 export const logo =
   "https://logodownload.org/wp-content/uploads/2020/02/oyo-logo-1.png";
-
 
 export const cardAttraction =
   "https://imgs.search.brave.com/4pps5UEfrE7v1LHaDEY8S_YJ879z3BCdcbYsrak7y-c/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvNDcy/OTA5NDQyL3Bob3Rv/L2JhY2t3YXRlcnMt/b2Yta2VyYWxhLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1p/YndSaVpKWkdjeEc1/TUxXRlVvd2NYTTlY/SzNuWm5rbGs5Wkgx/UXVzM0M0PQ";

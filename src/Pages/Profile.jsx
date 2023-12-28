@@ -38,21 +38,21 @@ import { useNavigate } from "react-router-dom";
 
 //component Styles
 const Container = styled(Paper)`
-  margin-top: 80px;
+  margin: 80px 7% 20px 7%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 7%;
-  margin-right: 7%;
-  margin-bottom: 20px;
 `;
 const LeftBox = styled(Box)`
   margin-right: 2%;
   background-color: #f4bef2;
-  height: 75vh;
+  height: 85vh;
 `;
-const RightBox = styled(Paper)`
+const RightBox = styled(Box)`
   margin-left: 2%;
+  height: 75vh;
+  width: 80%;
+  overflow-y: auto;
 `;
 const DeleteBtn = styled(Button)`
   background-color: red;
@@ -77,7 +77,7 @@ const Profile = () => {
   //shows update user, bookings and delete user onClick
   const [updateUser, setUpdateUser] = useState(true);
   const [open, setOpen] = useState(false);
- const Navigate = useNavigate();
+  const Navigate = useNavigate();
 
   const handleDeleteClick = () => {
     setOpen(true);
@@ -96,22 +96,23 @@ const Profile = () => {
   };
   // retriew data from userSlice
   const { currentUser } = useSelector((state) => state.user);
-  const {loading} = useSelector((state)=> state.user)
+  const { loading } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   // delete account
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
       dispatch(userActionStart());
-       await axios.delete(
+      await axios.delete(
         `/user/${currentUser.userDetails._id}`
       );
       dispatch(delete_Logout());
-      Navigate('/')
+      Navigate("/");
     } catch (err) {
       dispatch(userActionFailure(err));
-      toast.error(err.response.data.msg);
-      console.log(err)
+      toast.error(err.response.data?.msg);
+      handleClose()
+      console.log(err);
     }
   };
   return (
@@ -119,56 +120,61 @@ const Profile = () => {
       <Header />
       <Container elevation={6}>
         <LeftBox>
-          <List>
-            <ListItem>
-              <ListItemButton onClick={hanleProfile}>
-                <ListItemIcon>
-                  <AccountCircleIcon />
-                </ListItemIcon>
-                <ListItemText primary="Profile" />
-              </ListItemButton>
-            </ListItem>
-            <ListItem>
-              <ListItemButton onClick={handleBookings}>
-                <ListItemIcon>
-                  <AllInboxIcon />
-                </ListItemIcon>
-                <ListItemText primary="My bookings" />
-              </ListItemButton>
-            </ListItem>
-            <Divider />
-            <ListItem>
-              <ListItemButton onClick={handleDeleteClick}>
-                <ListItemIcon>
-                  <DeleteIcon />
-                </ListItemIcon>
-                <ListItemText primary="Delete Account" />
-              </ListItemButton>
-            </ListItem>
-          </List>
+          <div style={{ marginTop: "30%" }}>
+            <List>
+              <ListItem>
+                <ListItemButton onClick={hanleProfile}>
+                  <ListItemIcon>
+                    <AccountCircleIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Profile" />
+                </ListItemButton>
+              </ListItem>
+              <ListItem>
+                <ListItemButton onClick={handleBookings}>
+                  <ListItemIcon>
+                    <AllInboxIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="My bookings" />
+                </ListItemButton>
+              </ListItem>
+              <Divider />
+              <ListItem>
+                <ListItemButton onClick={handleDeleteClick}>
+                  <ListItemIcon>
+                    <DeleteIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Delete Account" />
+                </ListItemButton>
+              </ListItem>
+            </List>
+          </div>
         </LeftBox>
+        <Divider orientation="vertical" flexItem />{" "}
         <RightBox>
           {updateUser ? <UpdateUser /> : <MyBookings />}
-          <Dialog
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="alert-dialog-title"
-            aria-describedby="alert-dialog-description"
-          >
-            <DialogTitle id="alert-dialog-title">
-              {"Are you sure you want to Delete your account?"}
-            </DialogTitle>
-            <DialogActions
-              sx={{ display: "flex", justifyContent: "space-around" }}
-            >
-              {loading ? (
-                <Loader />
-              ) : (
-                <DeleteBtn onClick={handleDelete}>Yes</DeleteBtn>
-              )}
-              <NoBtn onClick={handleClose}>No</NoBtn>
-            </DialogActions>
-          </Dialog>
+          {loading ? (
+            <Loader open={loading} />
+          ) : (
+            <>
+              <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+              >
+                <DialogTitle id="alert-dialog-title">
+                  {"Are you sure you want to Delete your account?"}
+                </DialogTitle>
+                <DialogActions
+                  sx={{ display: "flex", justifyContent: "space-around" }}
+                >
+                  <DeleteBtn onClick={handleDelete}>Yes</DeleteBtn>
+                  <NoBtn onClick={handleClose}>No</NoBtn>
+                </DialogActions>
+              </Dialog>
+            </>
+          )}
         </RightBox>
       </Container>
     </div>

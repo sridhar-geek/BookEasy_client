@@ -20,5 +20,5 @@ root.render(
 );
 
 
-// "proxy": "https://book-easy-server.vercel.app/api"
+// serverUrl =  https://book-easy-server.vercel.app/api
 

@@ -3,12 +3,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  room_adults: null,
+  room_adults: {rooms:1, adults:1, children:0},
   arrivalDate:null,
   departureDate: null,
   price: 0,
-  latitude: 17.34,
-  longitude: 83.68,
+  latitude: 17.69,
+  longitude: 83.23,
 };
 
 const DetailsSlice = createSlice({

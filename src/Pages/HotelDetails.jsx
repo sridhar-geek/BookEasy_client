@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 import {
   Box,
   Typography,
@@ -29,6 +30,7 @@ import {
 import Header from "../Components/MainHeader/Header";
 import ReviewComponent from "../Components/Hotel Details/ReviewComponent";
 import CheckoutBtn from "../Components/Hotel Details/CheckOut";
+import {HotelRoomImages} from '../assests/ImageUrl'
 
 // google map component
 const GoogleMap = () => {
@@ -107,7 +109,17 @@ const NavBox = styled(Box)`
   position: sticky;
   top: 70px;
 `;
-const NavItems = styled(Typography)``;
+const NavItems = styled('a')`
+cursor: pointer;
+::after{
+  content:'';
+  position: absolute;
+  color: orangered;
+  width: 100%;
+  height: 3px;
+  top: 50px;
+}
+`;
 const RatingBox = styled(Box)`
   display: flex;
   align-items: center;
@@ -146,10 +158,11 @@ const HotelDetails = () => {
   // Retrieve hotel details from redux store 
   const { hotelDetails, description } = useSelector((state) => state.hotels);
   const data = hotelDetails;
-  console.log(data)
   const { currentUser } = useSelector((state) => state.user);
   const { room_adults } = useSelector((state) => state.details);
 
+  const navigate = useNavigate()
+  const location = useLocation()
   // for getting arrival date and departure date
   const date = data.block[0].paymentterms.prepayment.timeline.stages[0];
   // photos are stored in object which don't have fixed name, this code is to access the first value in that object
@@ -157,6 +170,14 @@ const HotelDetails = () => {
   console.log(date.limit_from_date)
   console.log(date.limit_until_date)
   const photoObj = data.rooms[photoObjKey];
+
+  // function to send Dummy Hotel room photos when there are no Hotel room photos found with api
+  const sendPhotos = (photoObj, HotelRoomImages)=> {
+    if(photoObj.photos >1)
+    return photoObj.photos
+  else
+  return HotelRoomImages
+  }
   // calculating price
   const price =
     Math.floor(
@@ -191,165 +212,186 @@ const HotelDetails = () => {
   // for showing facilities
   const [showAll, setShowAll] = useState(false);
   const itemsToShow = showAll ? 20 : 5;
-
+  // if user is not logged in navigate to login page 
+  const handleLogin = ()=> {
+    navigate('/login', {state: {from: location}})
+  }
+  console.log(photoObj)
   return (
-    <div>
+    <div style={{overflowX:'hidden'}}>
       <Header />
-      <Carousel
-        swipeable={false}
-        draggable={false}
-        responsive={responsive}
-        ssr={true}
-        infinite={true}
-        keyBoardControl={true}
-        transitionDuration={400}
-        containerClass="carousel-container"
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
-      >
-        {photoObj.photos.map((img) => (
-          <Image key={img.photo_id} src={img.url_original} alt="Hotel" />
-        ))}
-      </Carousel>
-      <Container>
-        <Title>
-          <Typography variant="h3">{data.hotel_name}</Typography>
-          <RatingBox>
-            {rating} <StarIcon fontSize="large" />
-          </RatingBox>
-        </Title>
-        <Typography variant="subtitle2" margin={2}>
-          {data.address}
-          {data.zip}
-        </Typography>
-        <NavBox>
-          <NavItems>Overview</NavItems>
-          <NavItems>Facilities</NavItems>
-          <NavItems>Reviews</NavItems>
-          <NavItems>Contact</NavItems>
-          <NavItems>Locate Us</NavItems>
-        </NavBox>
-        <Divider
-          sx={{ margin: 2, bgcolor: "black", position: "sticky", top: "100px" }}
-        />
-        <Grid container spacing={2}>
-          <Grid item md={8} lg={8}>
-            <Box>
-              <Typography variant="h4" mt={4}>
-                Overview
-              </Typography>
-              <Typography mt={2} variant="h6">
-                {description[1]
-                  ? description[1].description
-                  : description[0].description}
-              </Typography>
-            </Box>
-            <Box>
-              <Typography variant="h4" mt={4}>
-                Amenities
-              </Typography>
-              {data.property_highlight_strip
-                ?.slice(0, itemsToShow)
-                .map((item, i) => (
-                  <Chip
-                    sx={{ padding: 2, margin: 1, userSelect: "none" }}
-                    key={i}
-                    label={item.name}
-                    variant="outlined"
-                  />
-                ))}
-              <Button
-                sx={{ textTransform: "capitalize" }}
-                onClick={() => setShowAll(!showAll)}
-              >
-                {showAll ? "Show less" : "...Show More"}
-              </Button>
-            </Box>
-            <Box mt={5} padding={4}>
-              <Typography variant="h4">Reviews and Ratings</Typography>
-              <Stack direction="row" alignItems="center" spacing={2}>
-                <RatingBox>
-                  {rating} <StarIcon fontSize="large" />
-                </RatingBox>
-                <Typography variant="h7" textAlign="center">
-                  Out of 342 reviews
+      <div style={{ marginTop: "80px" }}>
+        <Carousel
+          swipeable={false}
+          draggable={false}
+          responsive={responsive}
+          ssr={true}
+          infinite={true}
+          keyBoardControl={true}
+          transitionDuration={400}
+          containerClass="carousel-container"
+          dotListClass="custom-dot-list-style"
+          itemClass="carousel-item-padding-40-px"
+        >
+          {sendPhotos(photoObj,HotelRoomImages).map((img) => (
+            <Image key={img.photo_id} src={img.url_original} alt="Hotel" />
+          ))}
+        </Carousel>
+        <Container>
+          <Title>
+            <Typography variant="h3">{data.hotel_name}</Typography>
+            <RatingBox>
+              {rating} <StarIcon fontSize="large" />
+            </RatingBox>
+          </Title>
+          <Typography variant="subtitle2" margin={2}>
+            {data.address}{"   "}
+            {data.zip}
+          </Typography>
+          <NavBox>
+            <NavItems>Overview</NavItems>
+            <NavItems>Facilities</NavItems>
+            <NavItems>Reviews</NavItems>
+            <NavItems>Contact</NavItems>
+            <NavItems>Locate Us</NavItems>
+          </NavBox>
+          <Divider
+            sx={{
+              margin: 2,
+              bgcolor: "black",
+              position: "sticky",
+              top: "100px",
+            }}
+          />
+          <Grid container spacing={2}>
+            <Grid item md={8} lg={8}>
+              <Box>
+                <Typography variant="h4" mt={4}>
+                  Overview
                 </Typography>
-              </Stack>
-              <ReviewBox>
-                <ReviewComponent />
-              </ReviewBox>
-            </Box>
-            <Box>
-              <Typography variant="h4" mt={4}>
-                Contact Us
-              </Typography>
-              <Typography>
-                <PhoneIcon /> {phone}
-              </Typography>
-              <Typography>
-                <MailIcon /> {emailStr}
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item md={4} lg={4}>
-            <Box mt={4}>
-              {!currentUser && (
-                <OfferBtn fullWidth>
-                  Login Now to get ₹1000 into your wallet
-                </OfferBtn>
-              )}
-              <Paper sx={{ padding: "20px" }} elevation={3}>
-                <h3 style={{ marginBottom: "0px" }}>
-                  ₹{" "}
-                  {
-                    data.composite_price_breakdown.gross_amount_hotel_currency
-                      .value
-                  }
-                </h3>
-                <Typography variant="caption">
-                  + taxes and fee ₹{gst}
+                <Typography mt={2} variant="h6">
+                  {description[1]
+                    ? description[1].description
+                    : description[0].description}
                 </Typography>
-                <Box
-                  sx={{
-                    padding: "7px",
-                    textAlign: "center",
-                  }}
+              </Box>
+              <Box>
+                <Typography variant="h4" mt={4}>
+                  Amenities
+                </Typography>
+                {data.property_highlight_strip
+                  ?.slice(0, itemsToShow)
+                  .map((item, i) => (
+                    <Chip
+                      sx={{ padding: 2, margin: 1, userSelect: "none" }}
+                      key={i}
+                      label={item.name}
+                      variant="outlined"
+                    />
+                  ))}
+                <Button
+                  sx={{ textTransform: "capitalize" }}
+                  onClick={() => setShowAll(!showAll)}
                 >
-                  <Typography variant="h6">
-                    {date.limit_from_date} to {date.limit_until_date}
+                  {showAll ? "Show less" : "...Show More"}
+                </Button>
+              </Box>
+              <Box mt={5} padding={4}>
+                <Typography variant="h4">Reviews and Ratings</Typography>
+                <Stack direction="row" alignItems="center" spacing={2}>
+                  <RatingBox>
+                    {rating} <StarIcon fontSize="large" />
+                  </RatingBox>
+                  <Typography variant="h7" textAlign="center">
+                    Out of 342 reviews
                   </Typography>
-                </Box>
-                <Box>
-                  {room_adults.rooms} Rooms &{" "}
-                  {room_adults.adults + room_adults.children} Guests
-                </Box>
-                <Divider sx={{ margin: "10px 0px" }} />
-                <PriceBox>
-                  <Typography>Base Price</Typography>
-                  <Typography>{price}</Typography>
-                </PriceBox>
-                <PriceBox>
-                  <Typography>Gst </Typography>
-                  <Typography>{gst}</Typography>
-                </PriceBox>
-                <PriceBox>
-                  <Typography>Discount</Typography>
-                  <Typography>{discount}</Typography>
-                </PriceBox>
-                <Divider />
-                <PriceBox>
-                  <Typography>Total</Typography>
-                  <Typography>{total}</Typography>
-                </PriceBox>
-                <CheckoutBtn total={total} />
-              </Paper>
-            </Box>
+                </Stack>
+                <ReviewBox>
+                  <ReviewComponent />
+                </ReviewBox>
+              </Box>
+              <Box>
+                <Typography variant="h4" mt={4}>
+                  Contact Us
+                </Typography>
+                <Typography>
+                  <PhoneIcon /> {phone}
+                </Typography>
+                <Typography>
+                  <MailIcon /> {emailStr}
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item md={4} lg={4}>
+              <Box mt={4}>
+                {!currentUser && (
+                  <OfferBtn fullWidth onClick={handleLogin}>
+                    <span style={{ padding: "10px", fontSize: "1.2rem" }}>
+                      Login
+                    </span>{" "}
+                    to get 50% discount
+                  </OfferBtn>
+                )}
+                <Paper sx={{ padding: "20px" }} elevation={3}>
+                  <h3 style={{ marginBottom: "0px" }}>
+                    ₹{" "}
+                    {
+                      data.composite_price_breakdown.gross_amount_hotel_currency
+                        .value
+                    }
+                  </h3>
+                  <h3 style={{ marginBottom: "0px" }}>Cal {price}</h3>
+                  <Typography variant="caption">
+                    + taxes and fee ₹{gst} Calculated
+                  </Typography>
+                  <Box
+                    sx={{
+                      padding: "7px",
+                      textAlign: "center",
+                    }}
+                  >
+                    <Typography variant="h6">
+                      {date.limit_from_date} to {date.limit_until_date}
+                    </Typography>
+                  </Box>
+                  <Box>
+                    {room_adults.rooms} Rooms &{" "}
+                    {room_adults.adults + room_adults.children} Guests
+                  </Box>
+                  <Divider sx={{ margin: "10px 0px" }} />
+                  <PriceBox>
+                    <Typography>Base Price</Typography>
+                    <Typography>{price}</Typography>
+                  </PriceBox>
+                  <PriceBox>
+                    <Typography>Gst </Typography>
+                    <Typography>{gst}</Typography>
+                  </PriceBox>
+                  <PriceBox>
+                    <Typography>Discount</Typography>
+                    <Typography>{discount}</Typography>
+                  </PriceBox>
+                  <Divider />
+                  <PriceBox>
+                    <Typography>Total</Typography>
+                    <Typography>{total}</Typography>
+                  </PriceBox>
+                  {!currentUser ? (
+                    <OfferBtn fullWidth onClick={handleLogin}>
+                      Continue Booking
+                    </OfferBtn>
+                  ) : (
+                    <CheckoutBtn total={total} />
+                  )}
+                </Paper>
+              </Box>
+            </Grid>
           </Grid>
-        </Grid>
-        <Box height="400px" mt={5}>
-          <GoogleMap />
-        </Box>
-      </Container>
+          <Box height="400px" mt={5}>
+            <GoogleMap />
+          </Box>
+        </Container>
+      </div>
     </div>
   );
 };

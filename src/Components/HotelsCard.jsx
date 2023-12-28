@@ -24,6 +24,7 @@ import {
   gettingDetails,
   getDescription,
 } from "../redux/SearchSlice";
+import { stopLoading } from "../redux/userSlice";
 import Loader from "./Loader";
 
 //Component styles
@@ -45,7 +46,8 @@ const Hotels = ({ place }) => {
   const { room_adults, arrivalDate, departureDate } = useSelector(
     (state) => state.details
   );
-// console.log(arrivalDate + 'com')
+console.log(arrivalDate + 'arrivalDate from hotels card')
+console.log(departureDate + 'deoartureDate from hotels card')
   const navigate = useNavigate();
   const dispatch = useDispatch();
   // calculating no.of days
@@ -57,22 +59,27 @@ const Hotels = ({ place }) => {
 
   // storing singlehotel in redux store
   const handleClick = async (hotelId) => {
-    dispatch(gettingDetails());
-    const data = await GetApiData(
-      `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${room_adults.adults}&room_qty=${room_adults.rooms}&currency_code=INR`
-    );
-    dispatch(getSingleHotelDetails(data));
-    const desc = await GetApiData(`/getDescriptionAndInfo?hotel_id=${hotelId}`);
-    dispatch(getDescription(desc));
-    navigate("/hotelDetails");
+    try {
+      dispatch(gettingDetails());
+      const data = await GetApiData(
+        `/getHotelDetails?hotel_id=${hotelId}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${room_adults.adults}&room_qty=${room_adults.rooms}&currency_code=INR`
+      );
+      dispatch(getSingleHotelDetails(data));
+      const desc = await GetApiData(`/getDescriptionAndInfo?hotel_id=${hotelId}`);
+      dispatch(getDescription(desc));
+      navigate("/hotelDetails");
+    } catch (error) {
+      dispatch(stopLoading())
+      console.log(error)
+    }
   };
-  console.log(arrivalDate + '   arrival date from hotels card')
-  console.log(departureDate + '   departure date from hotels card')
+  // console.log(arrivalDate + '   arrival date from hotels card')
+  // console.log(departureDate + '   departure date from hotels card')
   // this code loads unsplash images  only first in render 
   const [randomImage, setRandomImage] = useState("");
   useEffect(()=>{
       const randomNumber = Math.random() * 40;
-      const collectionID = 9715310; //the collection ID from the original url
+      const collectionID = 9715310; //the collection ID is from unsplash to get hotel collections images 
       const imageUrl = `https://source.unsplash.com/collection/${collectionID}/480x480/?sig=${randomNumber}`;
       setRandomImage(imageUrl)
   },[])
@@ -128,7 +135,8 @@ const Hotels = ({ place }) => {
                 )}
               </Typography>
               <Stack direction="row" gap={2}>
-                <Typography variant="h5"> ₹ {place.min_total_price}</Typography>
+                <Typography variant="h5"> ₹ {(place.min_total_price).toFixed(0)}</Typography>
+                <Typography variant="h5"> Cal {price}</Typography>
                 {loading ? (
                   <Loader />
                 ) : (
@@ -142,7 +150,17 @@ const Hotels = ({ place }) => {
                 color="text.secondary"
                 sx={{ marginLeft: "20px" }}
               >
-                +Rs {(price * 0.2).toFixed(2)} extra GST and fees
+                +Rs {(price * 0.2).toFixed(2)} extra GST and fees Calculated
+              </Typography>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ marginLeft: "20px" }}
+              >
+                {
+                  place.composite_price_breakdown.charges_details
+                    .translated_copy
+                }
               </Typography>
             </Box>
           </Box>

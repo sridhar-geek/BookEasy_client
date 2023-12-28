@@ -21,6 +21,7 @@ import { sotreDetails, startDate, endDate } from "../redux/DetailsSlice";
 import Loader from "./Loader";
 import { reducer, ACTIONS } from "../api/SearchComponent_reducer";
 import PlacesAutoComplete from "./Google Maps/PlacesAuto";
+import { stopLoading } from "../redux/userSlice";
 
 //Component Styles
 const Container = styled(Grid)`
@@ -125,20 +126,25 @@ const [destination, setDestination] = useState('')
   const arrivalDate = convertDate(range[0].startDate);
   const departureDate = convertDate(range[0].endDate);
   
-  // console.log(arrivalDate + '   arrival date from searchComponent')
-  // console.log(departureDate + '   departure date form searchComponent')
+  console.log(arrivalDate + '   arrival date from searchComponent')
+  console.log(departureDate + '   departure date form searchComponent')
   // storing all hotel details in redux global store
   const handleSumbit = async (e) => {
     e.preventDefault();
-    dispatch(gettingDetails());
-    const data = await GetApiData(
-      `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
-    );
-    dispatch(getHotelData(data.result));
-    dispatch(sotreDetails(state));
-    dispatch(startDate(arrivalDate));
-    dispatch(endDate(departureDate));
-    navigate("/hotels");
+    try {
+      dispatch(gettingDetails());
+      const data = await GetApiData(
+        `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
+      );
+      dispatch(getHotelData(data.result));
+      dispatch(sotreDetails(state));
+      dispatch(startDate(arrivalDate));
+      dispatch(endDate(departureDate));
+      navigate("/hotels");
+    } catch (error) {
+      dispatch(stopLoading())
+      console.log(error)
+    }
   };
   return (
     <Container container spacing={2}>

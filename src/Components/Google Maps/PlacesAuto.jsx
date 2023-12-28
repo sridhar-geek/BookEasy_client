@@ -53,6 +53,7 @@ const PlacesAutocomplete = ({setDestination}) => {
         }}
         onChange={(event, newValue) => {
           if (newValue) {
+            console.log(newValue)
             handleSelect(newValue.description);
             setDestination(newValue.description)
           } else setDestination(false)
