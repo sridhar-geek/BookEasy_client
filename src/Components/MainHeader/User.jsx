@@ -7,8 +7,12 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
-  /*Import modules from other files  */
-import { delete_Logout, userActionFailure, userActionStart } from "../../redux/userSlice";
+/*Import modules from other files  */
+import {
+  delete_Logout,
+  userActionFailure,
+  userActionStart,
+} from "../../redux/userSlice";
 import Loader from "../Loader";
 
 const User = ({ user }) => {
@@ -34,15 +38,13 @@ const User = ({ user }) => {
   const handleLogout = async (e) => {
     e.preventDefault();
     try {
-      dispatch(userActionStart())
-      await axios.get(
-        `/user/logout/${currentUser.userDetails._id}`
-      );
+      dispatch(userActionStart());
+      await axios.get(`/user/logout/${currentUser.userDetails._id}`);
       dispatch(delete_Logout());
       toast.success("Logout successful");
-      navigate('/')
+      navigate("/");
     } catch (error) {
-      dispatch(userActionFailure(error))
+      dispatch(userActionFailure(error));
       console.error(error);
       toast.error(error.response?.data?.msg);
     }
@@ -51,31 +53,32 @@ const User = ({ user }) => {
   return (
     <div>
       <Tooltip title={user.userDetails.name}>
-        {loading ? (
-          <Loader open={loading} />
-        ) : (
-          <Avatar
-            alt="Profile Photo"
-            src={user.userDetails.profilePicture}
-            onClick={handleClick}
-          />
-        )}
+        <Avatar
+          alt="Profile Photo"
+          src={user.userDetails.profilePicture}
+          onClick={handleClick}
+        />
       </Tooltip>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          "aria-labelledby": "basic-button",
-        }}
-      >
-        <MenuItem onClick={handleProfile}>Profile</MenuItem>
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
-      </Menu>
+      {loading ? (
+        <Loader open={loading} />
+      ) : (
+        <>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem onClick={handleProfile}>Profile</MenuItem>
+            <MenuItem onClick={handleLogout}>Logout</MenuItem>
+          </Menu>
+        </>
+      )}
     </div>
   );
 };
 
 export default User;
-

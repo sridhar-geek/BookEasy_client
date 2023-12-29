@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Header from "../Components/MainHeader/Header";
 import SearchComponent from "../Components/SearchComponent";
 import {gettingDetails, getHotelData} from '../redux/SearchSlice'
-import {startDate, endDate, sotreDetails} from '../redux/DetailsSlice'
+import {startDate, endDate, sotreDetails, setLatitude, setLongitude} from '../redux/DetailsSlice'
 import { GetApiData } from "../api/getHotels";
 import Loader from "../Components/Loader";
 import RainbowText from "../Components/RainBowText";
@@ -82,6 +82,8 @@ const Home = () => {
       dispatch(sotreDetails(state));
       dispatch(startDate(arrivalDate));
       dispatch(endDate(departureDate));
+      dispatch(setLatitude(latitude))
+      dispatch(setLongitude(longitude))
       navigate("/hotels");
     } catch (error) {
       dispatch(stopLoading())

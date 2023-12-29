@@ -28,18 +28,19 @@ export default function MapComponent() {
   const { places } = useSelector((state) => state.hotels);
   // const places = Hotels.result;
   return (
-    <div style={{ height: "1000px", width: "1000px" }}>
-      <APIProvider apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
+    <APIProvider apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
+      <div style={{ height: "90vh", width: "90vw" }}>
         <Map
           zoom={10}
           center={{ lat: latitude, lng: longitude }}
           mapId={process.env.REACT_APP_MAPID}
-          disableDefaultUI={true}
+          gestureHandling={"greedy"}
+          // disableDefaultUI={true}
         >
           <Markers hotels={places} />
         </Map>
-      </APIProvider>
-    </div>
+      </div>
+    </APIProvider>
   );
 }
 

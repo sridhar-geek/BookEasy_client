@@ -151,7 +151,7 @@ const UpdateProfile = () => {
         toast.success("Update successful");
       } catch (err) {
         dispatch(userActionFailure(err));
-        toast.error(error.response.data.msg);
+        toast.error(error.response.data?.msg);
         console.error(err);
       }
     }

@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-
+import { Link } from "react-router-dom";
 // import HotelsData from "../assests/Api Data/All_hotels.json";
 /* Imported files */
 import Header from "../Components/MainHeader/Header";
@@ -84,8 +84,8 @@ const ShowHotels = () => {
         <SearchComponent />
       </SearchBox>
       <SortBox>
-        <Typography fontSize='1.1rem' fontWeight='bolder' fontFamily='Popins'>
-          <span style={{ fontSize: "1.2rem"}}>
+        <Typography fontSize="1.1rem" fontWeight="bolder" fontFamily="Popins">
+          <span style={{ fontSize: "1.2rem" }}>
             {sortHotels(places)?.length}
           </span>{" "}
           Hotels found
@@ -112,6 +112,13 @@ const ShowHotels = () => {
           </FormControl>
         </div>
       </SortBox>
+      <Button onClick={handleDialog} sx={{ textTransform: "capitalize" }}>
+        Map View
+      </Button>
+      <Dialog open={open} onClose={handleClose}>
+        <MapComponent />
+      </Dialog>
+
       <Box display="flex" justifyContent="center">
         <Box>
           {sortHotels(places).map((place) => (
