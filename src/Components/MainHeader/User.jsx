@@ -36,7 +36,7 @@ const User = ({ user }) => {
     try {
       dispatch(userActionStart())
       await axios.get(
-        `/user/logout/${currentUser.userDetails._id}`
+        `https://book-easy-client.vercel.app/api/user/logout/${currentUser.userDetails._id}`
       );
       dispatch(delete_Logout());
       toast.success("Logout successful");
