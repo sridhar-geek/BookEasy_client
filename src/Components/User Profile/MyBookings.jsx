@@ -58,7 +58,9 @@ const MyBookings = () => {
   useEffect(() => {
     const getHotels = async () => {
       try {
-        const hotelData = await axios.get(`/hotel`);
+        const hotelData = await axios.get(
+          `${process.env.REACT_APP_SERVER_URL}/hotel`
+        );
         setHotels(hotelData.data);
       } catch (error) {
         let message = error.response?.data?.msg;

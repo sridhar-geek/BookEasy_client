@@ -29,7 +29,7 @@ export default function MapComponent() {
   // const places = Hotels.result;
   return (
     <APIProvider apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
-      <div style={{ height: "90vh", width: "90vw" }}>
+      <div style={{ height: "90vh", width: "100%" }}>
         <Map
           zoom={10}
           center={{ lat: latitude, lng: longitude }}

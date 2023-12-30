@@ -82,16 +82,17 @@ const formData = {
     e.preventDefault();
     try {
       dispatch(userActionStart())
-      const data = await axios.post(
-        `/auth/login`,
-        formData
-      );
+    const data = await axios.post(
+      `${process.env.REACT_APP_SERVER_URL}/auth/login`,
+      formData,
+      { withCredentials: true }
+    );
       dispatch(userActionSuccess(data.data))
       toast.success('Login successful')
     navigate(location.state?.from || '/');
     } catch (err) {
       dispatch(userActionFailure(err))
-      toast.error(err.response.data?.msg)
+      toast.error(err.response?.data?.msg)
       console.log(err)
     }
   };

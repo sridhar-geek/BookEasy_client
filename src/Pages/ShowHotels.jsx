@@ -93,9 +93,9 @@ const ShowHotels = () => {
         <Button onClick={handleDialog} sx={{ textTransform: "capitalize" }}>
           Map View
         </Button>
-        <Dialog open={open} onClose={handleClose}>
+        {/* <Dialog open={open} onClose={handleClose}>
           <MapComponent />
-        </Dialog>
+        </Dialog> */}
         <div style={{ display: "flex", alignItems: "center" }}>
           <Typography mr={2}> Sort by</Typography>
           <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
@@ -112,10 +112,12 @@ const ShowHotels = () => {
           </FormControl>
         </div>
       </SortBox>
-      <Button onClick={handleDialog} sx={{ textTransform: "capitalize" }}>
-        Map View
-      </Button>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog
+        fullWidth={true}
+        maxWidth={"md"}
+        open={open}
+        onClose={handleClose}
+      >
         <MapComponent />
       </Dialog>
 
