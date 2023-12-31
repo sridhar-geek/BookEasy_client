@@ -59,7 +59,6 @@ const CheckoutBtn = ({ total }) => {
           const body = { ...response };
           try {
             const validate = await axios.post(`/payment/validate`, body);
-            console.log(validate.data);
             // data sent to server to create hotel in user account
             const hotelData = {
               name: hotelDetails.hotel_name,

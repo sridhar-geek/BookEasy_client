@@ -30,7 +30,7 @@ const WelcomeNote = styled(Box)`
   align-items: center;
   height: 90vh;
   width: 100%;
-  background: url("https://drive.google.com/uc?export=view&id=1LC3Dpiy5pBc7X9t6xnTgB1u7J2Av6cmm")
+  background: url("https://drive.google.com/uc?export=view&id=18RiT-S_1J_7hnOj5wDOPzsw3Yke4dwuO")
     no-repeat center;
   -webkit-background-size: cover;
   -moz-background-size: cover;

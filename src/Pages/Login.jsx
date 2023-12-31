@@ -32,8 +32,8 @@ const Container = styled(Box)`
   align-items: center;
   margin-top: 60px;
   height: 90vh;
-  background: url("https://drive.google.com/uc?export=view&id=1TWij7FNekSHY8Pa--ZbzvSEgQXhIZSea ")
- no-repeat center;
+  background: url("https://drive.google.com/uc?export=view&id=1U6tA9_2uhCMlA3QVvecGcb3G3acQOLBA")
+    no-repeat;
   background-size: cover;
 `;
 const Wrapper = styled(Paper)`
@@ -83,7 +83,7 @@ const formData = {
     try {
       dispatch(userActionStart())
     const data = await axios.post(
-      `${process.env.REACT_APP_SERVER_URL}/auth/login`,
+      `http:localhost:5000/api/auth/login`,
       formData,
       { withCredentials: true }
     );

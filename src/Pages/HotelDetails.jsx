@@ -176,7 +176,13 @@ const HotelDetails = () => {
   const actualPrice = Number(price)
   const gst = Math.floor(actualPrice * 0.3);
   const discount = Math.floor(actualPrice * 0.15);
-  const total = Math.floor(actualPrice + gst - discount);
+  const additionalDiscount = Math.floor(actualPrice * 0.5);
+  const getTotal = ()=> {
+    if( currentUser.userDetails.discounts > 0) 
+      return Math.floor(actualPrice + gst - (discount + additionalDiscount));
+    else 
+    return Math.floor(actualPrice + gst - discount);
+  }
 
   // setting up email address and phone number
   const [emailStr, setEmailStr] = useState("");
@@ -332,7 +338,7 @@ const HotelDetails = () => {
                 <Paper sx={{ padding: "20px" }} elevation={3}>
                   <h3 style={{ marginBottom: "0px" }}>₹ {price}</h3>
                   <Typography variant="caption">
-                    + taxes and fee ₹{gst} 
+                    + taxes and fee ₹{gst}
                   </Typography>
                   <Box
                     sx={{
@@ -362,7 +368,7 @@ const HotelDetails = () => {
                     <Typography>Discount</Typography>
                     <Typography>{discount}</Typography>
                   </PriceBox>
-                  {currentUser && (
+                  {currentUser.userDetails.discounts > 0 && (
                     <>
                       <PriceBox>
                         <Typography>Additional Discount</Typography>
@@ -373,14 +379,14 @@ const HotelDetails = () => {
                   <Divider />
                   <PriceBox>
                     <Typography>Total</Typography>
-                    <Typography>{total}</Typography>
+                    <Typography>{getTotal}</Typography>
                   </PriceBox>
                   {!currentUser ? (
                     <OfferBtn fullWidth onClick={handleLogin}>
                       Continue Booking
                     </OfferBtn>
                   ) : (
-                    <CheckoutBtn total={total} />
+                    <CheckoutBtn total={getTotal} />
                   )}
                 </Paper>
               </Box>
