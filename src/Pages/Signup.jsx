@@ -32,8 +32,8 @@ const Container = styled(Box)`
   align-items: center;
   margin-top: 60px;
   height: 90vh;
-  background: url("https://drive.google.com/uc?export=view&id=1TWij7FNekSHY8Pa--ZbzvSEgQXhIZSea ")
-    no-repeat center;
+  background: url("https://drive.google.com/uc?export=view&id=1CYy4fOxOXE6mXI_mRyO5XNdhSefGX5Ka")
+    no-repeat;
   background-size: cover;
 `;
 const Wrapper = styled(Paper)`
@@ -91,7 +91,10 @@ const Signup = () => {
     else{
       try {
          dispatch(userActionStart());
-          await axios.post(`/auth/register`, formData);
+          await axios.post(
+            `${process.env.REACT_APP_SERVER_URL}/auth/register`,
+            formData
+          );
          dispatch(stopLoading())
         toast.success('Registration successful')
         navigate('/login')
