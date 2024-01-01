@@ -2,7 +2,7 @@
 import { Button, Box, styled } from "@mui/material";
 import GoogleIcon from "@mui/icons-material/Google";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -43,7 +43,10 @@ const SocialLogin = () => {
       };
       dispatch(userActionStart())
       // sending user information server , it will either create user or assign access_token to user
-      const res = await axios.post(`/auth/socialLogin`, formData);
+      const res = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/auth/socialLogin`,
+        formData
+      );
       dispatch(userActionSuccess(res.data));
       toast.success("Login successful");
       navigate("/");

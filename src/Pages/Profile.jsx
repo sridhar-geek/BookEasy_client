@@ -104,7 +104,7 @@ const Profile = () => {
     try {
       dispatch(userActionStart());
       await axios.delete(
-        `/user/${currentUser.userDetails._id}`
+        `${process.env.REACT_APP_SERVER_URL}/user/${currentUser.userDetails._id}`
       );
       dispatch(delete_Logout());
       Navigate("/");

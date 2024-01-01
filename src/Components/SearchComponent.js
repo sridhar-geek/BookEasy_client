@@ -126,8 +126,7 @@ const [destination, setDestination] = useState('')
   const arrivalDate = convertDate(range[0].startDate);
   const departureDate = convertDate(range[0].endDate);
   
-  console.log(arrivalDate + '   arrival date from searchComponent')
-  console.log(departureDate + '   departure date form searchComponent')
+
   // storing all hotel details in redux global store
   const handleSumbit = async (e) => {
     e.preventDefault();

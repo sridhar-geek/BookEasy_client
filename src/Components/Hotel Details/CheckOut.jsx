@@ -1,10 +1,10 @@
+/** Checkout function which handles whole razorpay payment and create hotel in user's account */
 import { Button, styled } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // imports from another files
-// import hotelDetails from "../../assests/Api Data/singleHotel.json";
 import { setDescription, setReason } from "../../redux/paymentSlice";
 import Loader from "../Loader";
 import { userActionStart, stopLoading } from "../../redux/userSlice";
@@ -43,7 +43,10 @@ const CheckoutBtn = ({ total }) => {
     try {
       // creating orderId
       dispatch(userActionStart())
-      const response = await axios.post(`/payment/create-checkout`, intialData);
+      const response = await axios.post(
+        `${process.env.REACT_APP_SERVER_URL}/payment/create-checkout`,
+        intialData
+      );
       const options = {
         key: "rzp_test_rw6Q39PW7qKf1t",
         amount: total * 100,
@@ -58,7 +61,10 @@ const CheckoutBtn = ({ total }) => {
           dispatch(stopLoading())
           const body = { ...response };
           try {
-            const validate = await axios.post(`/payment/validate`, body);
+            const validate = await axios.post(
+              `${process.env.REACT_APP_SERVER_URL}/payment/validate`,
+              body
+            );
             // data sent to server to create hotel in user account
             const hotelData = {
               name: hotelDetails.hotel_name,
@@ -73,10 +79,14 @@ const CheckoutBtn = ({ total }) => {
               arrivalDate: arrivalDate,
               departureDate: departureDate,
             };
-            await axios.post(`/hotel`, hotelData);
+            await axios.post(
+              `${process.env.REACT_APP_SERVER_URL}/hotel`,
+              hotelData
+            );
             dispatch(stopLoading())
             navigate("/paymentSuccess");
           } catch (error) {
+            dispatch(stopLoading())
             console.error(error);
           }
         },
@@ -90,6 +100,7 @@ const CheckoutBtn = ({ total }) => {
         },
       };
       const rzp = new window.Razorpay(options);
+      // if payment failed 
       rzp.on("payment.failed", function (response) {
         dispatch(setDescription(response.error.description));
         dispatch(setReason(response.error.reason));
@@ -99,6 +110,7 @@ const CheckoutBtn = ({ total }) => {
       rzp.open();
       e.preventDefault();
     } catch (error) {
+      dispatch(stopLoading())
       console.error(error);
     }
   };

@@ -59,14 +59,14 @@ const MyBookings = () => {
     const getHotels = async () => {
       try {
         const hotelData = await axios.get(
-          `http://localhost:5000/api/hotel`
+          `${process.env.REACT_APP_SERVER_URL}/hotel`
         );
         setHotels(hotelData.data);
       } catch (error) {
         let message = error.response?.data?.msg;
         let errorMessage = message + " " + currentUser.userDetails.name;
         toast.error(errorMessage);
-        console.log(error);
+        console.error(error);
       }
     };
     getHotels();

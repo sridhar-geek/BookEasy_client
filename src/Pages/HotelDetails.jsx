@@ -25,7 +25,6 @@ import {
   useAdvancedMarkerRef,
 } from "@vis.gl/react-google-maps";
 
-// import data from "../assests/Api Data/singleHotel.json";
 // Imports from another file
 import Header from "../Components/MainHeader/Header";
 import ReviewComponent from "../Components/Hotel Details/ReviewComponent";
@@ -160,7 +159,7 @@ const HotelDetails = () => {
   const data = hotelDetails;
   const { currentUser } = useSelector((state) => state.user);
   const { room_adults, arrivalDate, departureDate,price } = useSelector((state) => state.details);
-
+// for navigation 
   const navigate = useNavigate();
   const location = useLocation();
   // photos are stored in object which don't have fixed name, this code is to access the first value in that object
@@ -186,7 +185,11 @@ const HotelDetails = () => {
 
   // setting up email address and phone number
   const [emailStr, setEmailStr] = useState("");
-  const phone = "+91-" + data.block[0].refundable_until_epoch;
+  const getPhoneNumber =()=> {
+    const phone = data.block[0].refundable_until_epoch;
+    if( phone ) return "+91-"+phone
+    else return "+91-082345658"
+  }
   useMemo(() => {
     const email = (emailId) => {
       let str = "";
@@ -219,6 +222,7 @@ const HotelDetails = () => {
   const handleLogin = () => {
     navigate("/login", { state: { from: location } });
   };
+
   return (
     <div style={{ overflowX: "hidden" }}>
       <Header />
@@ -318,7 +322,7 @@ const HotelDetails = () => {
                   Contact Us
                 </Typography>
                 <Typography>
-                  <PhoneIcon /> {phone}
+                  <PhoneIcon /> {getPhoneNumber()}
                 </Typography>
                 <Typography>
                   <MailIcon /> {emailStr}
@@ -379,14 +383,14 @@ const HotelDetails = () => {
                   <Divider />
                   <PriceBox>
                     <Typography>Total</Typography>
-                    <Typography>{getTotal}</Typography>
+                    <Typography>{getTotal()}</Typography>
                   </PriceBox>
                   {!currentUser ? (
                     <OfferBtn fullWidth onClick={handleLogin}>
                       Continue Booking
                     </OfferBtn>
                   ) : (
-                    <CheckoutBtn total={getTotal} />
+                    <CheckoutBtn total={getTotal()} />
                   )}
                 </Paper>
               </Box>

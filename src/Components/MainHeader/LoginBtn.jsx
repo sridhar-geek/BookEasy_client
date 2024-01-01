@@ -19,7 +19,6 @@ const LoginBtn = styled(Button)`
 const Login_Signup = () => {
   // retriewing user data from user slice
   const {currentUser} = useSelector((state) => state.user);
-  // const user = currentUser;
   return (
     <>
       {currentUser ? (

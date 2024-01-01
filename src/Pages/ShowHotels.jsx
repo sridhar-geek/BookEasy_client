@@ -12,8 +12,6 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
-// import HotelsData from "../assests/Api Data/All_hotels.json";
 /* Imported files */
 import Header from "../Components/MainHeader/Header";
 import SearchComponent from "../Components/SearchComponent";
@@ -38,7 +36,6 @@ const SortBox = styled(Paper)`
 const ShowHotels = () => {
   // retriewing data from redux store
   const { places } = useSelector((state) => state.hotels);
-  // const places = HotelsData.result;
 
   const [open, setOpen] = useState(false);
   const [sort, setSort] = useState("");
@@ -93,9 +90,6 @@ const ShowHotels = () => {
         <Button onClick={handleDialog} sx={{ textTransform: "capitalize" }}>
           Map View
         </Button>
-        {/* <Dialog open={open} onClose={handleClose}>
-          <MapComponent />
-        </Dialog> */}
         <div style={{ display: "flex", alignItems: "center" }}>
           <Typography mr={2}> Sort by</Typography>
           <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>

@@ -1,5 +1,4 @@
 /** Home page  */
-
 import React from "react";
 import { Box, styled, Typography, Grid} from "@mui/material";
 import { useDispatch,useSelector } from "react-redux";
@@ -64,6 +63,7 @@ const Home = () => {
   const state = {
     rooms: 1,
     adults: 1,
+    children: 0,
   };
   // Get today's date and formate date
   const today = new Date();
@@ -87,7 +87,7 @@ const Home = () => {
       navigate("/hotels");
     } catch (error) {
       dispatch(stopLoading())
-      console.log(error)
+      console.error(error)
     }
   };
   return (

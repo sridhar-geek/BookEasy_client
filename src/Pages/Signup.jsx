@@ -100,8 +100,8 @@ const Signup = () => {
         navigate('/login')
       } catch (err) {
         dispatch(userActionFailure(err));
-        console.log(err)
-      toast.error(err.response.data?.msg);
+        console.error(err)
+      toast.error(err.response?.data?.msg);
       }
     }
   }

@@ -9,9 +9,9 @@ import {
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
-import { Box, Paper, Typography, Rating, Button } from "@mui/material";
+import { Box, Paper, Typography, Rating} from "@mui/material";
 
-// import Hotels from "../../assests/Api Data/All_hotels.json";
+
 // imports from another files
 import { GetApiData } from "../../api/getHotels";
 import {
@@ -26,7 +26,6 @@ export default function MapComponent() {
   // retriewing data from redux slices
   const { latitude, longitude } = useSelector((state) => state.details);
   const { places } = useSelector((state) => state.hotels);
-  // const places = Hotels.result;
   return (
     <APIProvider apiKey={process.env.REACT_APP_GOOGLE_API_KEY}>
       <div style={{ height: "90vh", width: "100%" }}>
@@ -86,7 +85,7 @@ const Markers = ({ hotels }) => {
     event.stopPropagation();
     // Prevent default behavior of the click event
     event.preventDefault();
-    console.log("I am in handleclick function ");
+    console.log("I am in hotelDetails navigation function ");
     // Navigate to the hotel details page
     navigate(`/hotelDetails`);
   };

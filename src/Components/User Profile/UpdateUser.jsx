@@ -144,14 +144,14 @@ const UpdateProfile = () => {
       try {
         dispatch(userActionStart());
         const data = await axios.put(
-          `/user/${currentUser.userDetails._id}`,
+          `${process.env.REACT_APP_SERVER_URL}/user/${currentUser.userDetails._id}`,
           formData
         );
         dispatch(userActionSuccess(data.data));
         toast.success("Update successful");
       } catch (err) {
         dispatch(userActionFailure(err));
-        toast.error(error.response.data?.msg);
+        toast.error(error.response?.data?.msg);
         console.error(err);
       }
     }

@@ -38,7 +38,6 @@ const PlacesAutocomplete = ({setDestination}) => {
       dispatch(setLongitude(lng));
     });
   };
-  // console.log(value)
   return (
     <>
       <Autocomplete
@@ -53,7 +52,6 @@ const PlacesAutocomplete = ({setDestination}) => {
         }}
         onChange={(event, newValue) => {
           if (newValue) {
-            console.log(newValue)
             handleSelect(newValue.description);
             setDestination(newValue.description)
           } else setDestination(false)
