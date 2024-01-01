@@ -372,14 +372,14 @@ const HotelDetails = () => {
                     <Typography>Discount</Typography>
                     <Typography>{discount}</Typography>
                   </PriceBox>
-                  {currentUser.userDetails.discounts > 0 && (
+                  {currentUser?  currentUser.userDetails.discounts > 0 && (
                     <>
                       <PriceBox>
                         <Typography>Additional Discount</Typography>
                         <Typography>{price * 0.5}</Typography>
                       </PriceBox>
                     </>
-                  )}
+                  ): (<></>)}
                   <Divider />
                   <PriceBox>
                     <Typography>Total</Typography>

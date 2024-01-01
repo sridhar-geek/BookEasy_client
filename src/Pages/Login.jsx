@@ -84,8 +84,7 @@ const formData = {
       dispatch(userActionStart())
     const data = await axios.post(
       `${process.env.REACT_APP_SERVER_URL}/auth/login`,
-      formData,
-      { withCredentials: true }
+      formData
     );
       dispatch(userActionSuccess(data.data))
       toast.success('Login successful')
