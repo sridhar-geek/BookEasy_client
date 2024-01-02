@@ -1,8 +1,9 @@
 /** Home page  */
-import React from "react";
+import React,{useEffect} from "react";
 import { Box, styled, Typography, Grid} from "@mui/material";
 import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 /* Import modules from another files */
 import Header from "../Components/MainHeader/Header";
@@ -12,7 +13,7 @@ import {startDate, endDate, sotreDetails, setLatitude, setLongitude} from '../re
 import { GetApiData } from "../api/getHotels";
 import Loader from "../Components/Loader";
 import RainbowText from "../Components/RainBowText";
-import { stopLoading } from "../redux/userSlice";
+import { stopLoading,delete_Logout } from "../redux/userSlice";
 //images
 import FooterImage from '../assests/HomePage/footerImage.jpg'
 import DelhiImage from '../assests/HomePage/delhi.png'
@@ -58,7 +59,29 @@ const BanguluruImage = styled('img')`
 const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  // retreiewing data from redux slice 
   const { loading } = useSelector((state) => state.hotels);
+  const { currentUser } = useSelector((state) => state.user);
+
+  // checks expiry time of token, if token expires it automatically remove userDetails from redux store
+  useEffect(()=> {
+    if(currentUser){
+    const checkTokenValidity = () => async () => {
+      try {
+        const token = currentUser.token;
+        const decodedToken = jwtDecode(token);
+        const currentTime = Date.now() / 1000; // Convert to seconds
+          console.log(decodedToken.exp)
+          console.log({currentTime})
+        if (decodedToken.exp < currentTime) 
+          dispatch(delete_Logout());  
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    checkTokenValidity()
+  }
+  },[])
 
   // setting rooms, adults, arrivalDate, departureDate for calling API
   const state = {
