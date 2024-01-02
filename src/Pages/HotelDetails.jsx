@@ -29,7 +29,7 @@ import {
 import Header from "../Components/MainHeader/Header";
 import ReviewComponent from "../Components/Hotel Details/ReviewComponent";
 import CheckoutBtn from "../Components/Hotel Details/CheckOut";
-import {HotelRoomImages} from '../assests/ImageUrl'
+import { HotelRoomImages } from "../assests/ImageUrl";
 
 // google map component
 const GoogleMap = () => {
@@ -108,16 +108,16 @@ const NavBox = styled(Box)`
   position: sticky;
   top: 80px;
 `;
-const NavItems = styled('a')`
-cursor: pointer;
-::after{
-  content:'';
-  position: sticky;
-  color: orangered;
-  width: 100%;
-  height: 3px;
-  top: 50px;
-}
+const NavItems = styled("a")`
+  cursor: pointer;
+  ::after {
+    content: "";
+    position: sticky;
+    color: orangered;
+    width: 100%;
+    height: 3px;
+    top: 50px;
+  }
 `;
 const RatingBox = styled(Box)`
   display: flex;
@@ -158,8 +158,10 @@ const HotelDetails = () => {
   const { hotelDetails, description } = useSelector((state) => state.hotels);
   const data = hotelDetails;
   const { currentUser } = useSelector((state) => state.user);
-  const { room_adults, arrivalDate, departureDate,price } = useSelector((state) => state.details);
-// for navigation 
+  const { room_adults, arrivalDate, departureDate, price } = useSelector(
+    (state) => state.details
+  );
+  // for navigation
   const navigate = useNavigate();
   const location = useLocation();
   // photos are stored in object which don't have fixed name, this code is to access the first value in that object
@@ -172,25 +174,25 @@ const HotelDetails = () => {
     else return HotelRoomImages;
   };
   // calculating price
-  const actualPrice = Number(price)
+  const actualPrice = Number(price);
   const gst = Math.floor(actualPrice * 0.3);
   const discount = Math.floor(actualPrice * 0.15);
   const additionalDiscount = Math.floor(actualPrice * 0.5);
-  const getTotal = ()=> {
-    if( currentUser){
-    if( currentUser.userDetails.discounts > 0) 
-      return Math.floor(actualPrice + gst - (discount + additionalDiscount));
-    }else 
-    return Math.floor(actualPrice + gst - discount);
-  }
+  const getTotal = () => {
+    if (currentUser) {
+      if (currentUser.userDetails.discounts > 0)
+        return Math.floor(actualPrice + gst - (discount + additionalDiscount));
+      else return Math.floor(actualPrice + gst - discount);
+    } else return Math.floor(actualPrice + gst - discount);
+  };
 
   // setting up email address and phone number
   const [emailStr, setEmailStr] = useState("");
-  const getPhoneNumber =()=> {
+  const getPhoneNumber = () => {
     const phone = data.block[0].refundable_until_epoch;
-    if( phone ) return "+91-"+phone
-    else return "+91-082345658"
-  }
+    if (phone) return "+91-" + phone;
+    else return "+91-082345658";
+  };
   useMemo(() => {
     const email = (emailId) => {
       let str = "";
@@ -373,14 +375,18 @@ const HotelDetails = () => {
                     <Typography>Discount</Typography>
                     <Typography>{discount}</Typography>
                   </PriceBox>
-                  {currentUser?  currentUser.userDetails.discounts > 0 && (
-                    <>
-                      <PriceBox>
-                        <Typography>Additional Discount</Typography>
-                        <Typography>{price * 0.5}</Typography>
-                      </PriceBox>
-                    </>
-                  ): (<></>)}
+                  {currentUser ? (
+                    currentUser.userDetails.discounts > 0 && (
+                      <>
+                        <PriceBox>
+                          <Typography>Additional Discount</Typography>
+                          <Typography>{price * 0.5}</Typography>
+                        </PriceBox>
+                      </>
+                    )
+                  ) : (
+                    <></>
+                  )}
                   <Divider />
                   <PriceBox>
                     <Typography>Total</Typography>

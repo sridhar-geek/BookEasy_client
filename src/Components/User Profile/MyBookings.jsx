@@ -95,6 +95,7 @@ const MyBookings = () => {
   };
   // delete hotel
   const handleDelete = async (hotelId) => {
+    console.log({hotelId})
     try {
       dispatch(userActionStart());
       await axios.delete(
@@ -178,6 +179,7 @@ const MyBookings = () => {
                 <Typography>
                   Amount Paid: <ExtraStyle>{hotel.amount}</ExtraStyle>{" "}
                 </Typography>
+                <Typography>HotelId :{"  "} {hotel._id} </Typography>
               </CardContent>
               <Link
                 onClick={handleDeleteClick}
