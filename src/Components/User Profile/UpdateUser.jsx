@@ -145,7 +145,12 @@ const UpdateProfile = () => {
         dispatch(userActionStart());
         const data = await axios.put(
           `${process.env.REACT_APP_SERVER_URL}/user/${currentUser.userDetails._id}`,
-          formData
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${currentUser.token}`,
+            },
+          }
         );
         dispatch(userActionSuccess(data.data));
         toast.success("Update successful");

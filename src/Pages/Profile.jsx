@@ -104,13 +104,18 @@ const Profile = () => {
     try {
       dispatch(userActionStart());
       await axios.delete(
-        `${process.env.REACT_APP_SERVER_URL}/user/${currentUser.userDetails._id}`
+        `${process.env.REACT_APP_SERVER_URL}/user/${currentUser.userDetails._id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${currentUser.token}`,
+          },
+        }
       );
       dispatch(delete_Logout());
       Navigate("/");
     } catch (err) {
       dispatch(userActionFailure(err));
-      toast.error(err.response.data?.msg);
+      toast.error(err.response?.data?.msg);
       handleClose()
       console.log(err);
     }

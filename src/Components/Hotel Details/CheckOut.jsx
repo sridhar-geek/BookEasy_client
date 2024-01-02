@@ -51,7 +51,12 @@ const maxAmount = ()=> {
       dispatch(userActionStart())
       const response = await axios.post(
         `${process.env.REACT_APP_SERVER_URL}/payment/create-checkout`,
-        intialData
+        intialData,
+        {
+          headers: {
+            Authorization: `Bearer ${currentUser.token}`,
+          },
+        }
       );
       dispatch(stopLoading())
       const options = {
@@ -70,7 +75,12 @@ const maxAmount = ()=> {
           try {
             const validate = await axios.post(
               `${process.env.REACT_APP_SERVER_URL}/payment/validate`,
-              body
+              body,
+              {
+                headers: {
+                  Authorization: `Bearer ${currentUser.token}`,
+                },
+              }
             );
             // data sent to server to create hotel in user account
             const hotelData = {
@@ -88,7 +98,12 @@ const maxAmount = ()=> {
             };
             await axios.post(
               `${process.env.REACT_APP_SERVER_URL}/hotel`,
-              hotelData
+              hotelData,
+              {
+                headers: {
+                  Authorization: `Bearer ${currentUser.token}`,
+                },
+              }
             );
             dispatch(stopLoading())
             navigate("/paymentSuccess");

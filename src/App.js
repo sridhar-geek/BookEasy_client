@@ -2,7 +2,6 @@ import { Box, CssBaseline } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
     /*Import modules from other files  */
 import {
   Home,

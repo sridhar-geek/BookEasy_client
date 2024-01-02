@@ -40,7 +40,12 @@ const User = ({ user }) => {
     try {
       dispatch(userActionStart())
       await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/user/logout/${currentUser.userDetails._id}`
+        `${process.env.REACT_APP_SERVER_URL}/user/logout/${currentUser.userDetails._id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${currentUser.token}`,
+          },
+        }
       );
       dispatch(delete_Logout());
       toast.success("Logout successful");

@@ -59,7 +59,12 @@ const MyBookings = () => {
     const getHotels = async () => {
       try {
         const hotelData = await axios.get(
-          `${process.env.REACT_APP_SERVER_URL}/hotel`
+          `${process.env.REACT_APP_SERVER_URL}/hotel`,
+          {
+            headers: {
+              Authorization: `Bearer ${currentUser.token}`,
+            },
+          }
         );
         setHotels(hotelData.data);
       } catch (error) {
@@ -93,14 +98,19 @@ const MyBookings = () => {
     try {
       dispatch(userActionStart());
       await axios.delete(
-        `${process.env.REACT_APP_SERVER_URL}/hotel/${hotelId}`
+        `${process.env.REACT_APP_SERVER_URL}/hotel/${hotelId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${currentUser.token}`,
+          },
+        }
       );
       handleClose();
       dispatch(stopLoading());
       toast.success("Reservation Cancelled");
     } catch (err) {
       dispatch(userActionFailure(err));
-      toast.error(err.response.data?.msg);
+      toast.error(err.response?.data?.msg);
       console.log(err);
     }
   };
