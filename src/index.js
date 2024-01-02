@@ -8,7 +8,8 @@ import axios from 'axios'
 import { Store, persistor } from "./api/store";
 import App from "./App";
 
-axios.defaults.withCredentials = true;
+   // this code made cookie to store in browser and send it along in every authorization request
+axios.defaults.withCredentials = true;     
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={Store}>

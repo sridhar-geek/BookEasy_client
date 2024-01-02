@@ -62,12 +62,12 @@ const PlacesAutocomplete = ({setDestination}) => {
             label="Search your destination"
             variant="outlined"
             disabled={!ready}
-            inputProps={{
-              ...params.inputProps,
-              autoComplete: "new-password",
-              required: value.length === 0,
-            }}
-            required={true}
+            // inputProps={{
+            //   ...params.inputProps,
+            //   autoComplete: "new-password",
+            //   required: value.length === 0,
+            // }}
+            // required={true}
           />
         )}
       />

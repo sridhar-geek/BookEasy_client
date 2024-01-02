@@ -106,13 +106,13 @@ const NavBox = styled(Box)`
   background-color: #ffffff;
   width: 100%;
   position: sticky;
-  top: 70px;
+  top: 80px;
 `;
 const NavItems = styled('a')`
 cursor: pointer;
 ::after{
   content:'';
-  position: absolute;
+  position: sticky;
   color: orangered;
   width: 100%;
   height: 3px;
@@ -177,9 +177,10 @@ const HotelDetails = () => {
   const discount = Math.floor(actualPrice * 0.15);
   const additionalDiscount = Math.floor(actualPrice * 0.5);
   const getTotal = ()=> {
+    if( currentUser){
     if( currentUser.userDetails.discounts > 0) 
       return Math.floor(actualPrice + gst - (discount + additionalDiscount));
-    else 
+    }else 
     return Math.floor(actualPrice + gst - discount);
   }
 
@@ -226,7 +227,7 @@ const HotelDetails = () => {
   return (
     <div style={{ overflowX: "hidden" }}>
       <Header />
-      <div style={{ marginTop: "80px" }}>
+      <div style={{ marginTop: "65px" }}>
         <Carousel
           swipeable={false}
           draggable={false}

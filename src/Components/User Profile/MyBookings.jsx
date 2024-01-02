@@ -92,7 +92,9 @@ const MyBookings = () => {
   const handleDelete = async (hotelId) => {
     try {
       dispatch(userActionStart());
-      await axios.delete(`/hotel/${hotelId}`);
+      await axios.delete(
+        `${process.env.REACT_APP_SERVER_URL}/hotel/${hotelId}`
+      );
       handleClose();
       dispatch(stopLoading());
       toast.success("Reservation Cancelled");
@@ -113,7 +115,7 @@ const MyBookings = () => {
               sx={{
                 maxWidth: 650,
                 display: "flex",
-                justifyContent: "start",
+                justifyContent: "space-between",
                 flexWrap: "nowrap",
               }}
             >
@@ -170,7 +172,7 @@ const MyBookings = () => {
               <Link
                 onClick={handleDeleteClick}
                 style={{
-                  paddingTop: "40px 5px 5px 5px",
+                  padding: "10px",
                   textDecoration: "none",
                   fontSize: "0.7rem",
                   color: "red",

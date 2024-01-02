@@ -1,7 +1,7 @@
 /** Checkout function which handles whole razorpay payment and create hotel in user's account */
 import { Button, styled } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 
 // imports from another files
@@ -32,9 +32,15 @@ const CheckoutBtn = ({ total }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+// mainpulating price so that maximum amount exceeds warning won't come in razorpay payment gateway
+const maxAmount = ()=> {
+  if(total < 12500) return total*100;
+  else return total*10
+}
   // data sent to server to create orderId
   const intialData = {
-    amount: total * 100,
+    amount: maxAmount(),
     currency: "INR",
     receipt: Date.now().toString(),
   };
@@ -47,9 +53,10 @@ const CheckoutBtn = ({ total }) => {
         `${process.env.REACT_APP_SERVER_URL}/payment/create-checkout`,
         intialData
       );
+      dispatch(stopLoading())
       const options = {
         key: "rzp_test_rw6Q39PW7qKf1t",
-        amount: total * 100,
+        amount: maxAmount(),
         currency: "INR",
         name: "Book Easy",
         description: hotelDetails.hotel_name,
@@ -105,7 +112,8 @@ const CheckoutBtn = ({ total }) => {
         dispatch(setDescription(response.error.description));
         dispatch(setReason(response.error.reason));
         dispatch(stopLoading())
-        navigate("/paymentFailed");
+        navigate("/paymentFailed", { state: { from: location } });
+
       });
       rzp.open();
       e.preventDefault();

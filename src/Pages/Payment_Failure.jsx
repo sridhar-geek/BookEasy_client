@@ -9,6 +9,7 @@ import Header from "../Components/MainHeader/Header";
 const Text = styled(Typography)`
   margin-top: 15px;
   font-weight: bold;
+  font-family: "Ysabeau";
 `
 const Payment_Failure = () => {
   const {description, reason} = useSelector((state)=> state.payment)
@@ -24,26 +25,31 @@ const Payment_Failure = () => {
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
+        bgcolor="#ffb3c1"
       >
-        <Text>
+        <Typography variant="h2" fontFamily="Lemonada" mb="40px" ml="40px">
           Sorry {currentUser.userDetails.name} your Payment was Failure !!!
-        </Text>
+        </Typography>
 
-        <Text>
+        <Text variant="h6">
           Reason for the payment failed:{" "}
           {reason ? reason : "Insufficient balance of your account"}
         </Text>
 
-        <Text>
+        <Text variant="h6">
           Description of the payment:{" "}
           {description ? description : "Please check our balance and try again"}
         </Text>
 
-        <Text>
+        <Text variant="h5">
           Please{" "}
           <Link
-            to={location.state?.from || '/'}
-            style={{ textDecoration: "none", color: "red", fontWeight: "bold" }}
+            to={location.state?.from || "/"}
+            style={{
+              textDecoration: "none",
+              color: "green",
+              fontWeight: "bold",
+            }}
           >
             Click here
           </Link>

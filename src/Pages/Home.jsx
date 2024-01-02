@@ -3,6 +3,7 @@ import React from "react";
 import { Box, styled, Typography, Grid} from "@mui/material";
 import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'js-cookie'
 
 /* Import modules from another files */
 import Header from "../Components/MainHeader/Header";
@@ -59,6 +60,14 @@ const Home = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { loading } = useSelector((state) => state.hotels);
+
+
+  // To get a cookie
+  const Cookie = Cookies.get("access_token");
+  console.log({Cookie})
+
+
+  
   // setting rooms, adults, arrivalDate, departureDate for calling API
   const state = {
     rooms: 1,
