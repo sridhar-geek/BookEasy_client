@@ -52,6 +52,7 @@ const PlacesAutocomplete = ({setDestination}) => {
         }}
         onChange={(event, newValue) => {
           if (newValue) {
+            console.log(newValue)
             handleSelect(newValue.description);
             setDestination(newValue.description)
           } else setDestination(false)
@@ -62,12 +63,7 @@ const PlacesAutocomplete = ({setDestination}) => {
             label="Search your destination"
             variant="outlined"
             disabled={!ready}
-            // inputProps={{
-            //   ...params.inputProps,
-            //   autoComplete: "new-password",
-            //   required: value.length === 0,
-            // }}
-            // required={true}
+            required={true}
           />
         )}
       />

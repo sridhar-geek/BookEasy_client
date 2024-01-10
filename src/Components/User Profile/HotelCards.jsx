@@ -141,7 +141,7 @@ const HotelCards = ({ hotel, setReload }) => {
           <ExtraStyle>{dateConversion(hotel.createdAt)}</ExtraStyle>{" "}
         </Typography>
         <Typography>
-          Amount Paid: <ExtraStyle>{hotel.amount}</ExtraStyle>{" "}
+          Amount Paid: <ExtraStyle>₹ {hotel.amount}</ExtraStyle>{" "}
         </Typography>
       </CardContent>
       <Link

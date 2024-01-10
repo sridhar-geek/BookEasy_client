@@ -69,6 +69,7 @@ const Home = () => {
     const checkTokenValidity = () => async () => {
       try {
         const token = currentUser.token;
+        console.log({token})
         const decodedToken = jwtDecode(token);
         const currentTime = Date.now() / 1000; // Convert to seconds
           console.log(decodedToken.exp)

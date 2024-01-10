@@ -32,32 +32,33 @@ const Header = () => {
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
   const [address, setAddress] = useState("");
-    //error callback function
-  const errorCallback = (error) => {
-    console.log(error);
-  };
-  // success callback function
-  const successCallback = (position) => {
-    setLatitude(position.coords.latitude);
-    setLongitude(position.coords.longitude);
-  };
-  //function to get lat and lng from browser
-  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+  //   //error callback function
+  // const errorCallback = (error) => {
+  //   console.log(error);
+  // };
+  // // success callback function
+  // const successCallback = (position) => {
+  //   setLatitude(position.coords.latitude);
+  //   setLongitude(position.coords.longitude);
+  // };
+  // //function to get lat and lng from browser
+  // navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
 
-  // converts latitude and longitude into readble address
-  useEffect(() => {
-    const geocoder = new window.google.maps.Geocoder();
-    geocoder.geocode(
-      { location: { lat: latitude, lng: longitude } },
-      (results, status) => {
-        if (status === "OK") {
-          setAddress(results[9].formatted_address);
-        } else {
-          console.error("Geocode failed due to: " + status);
-        }
-      }
-    );
-  }, [latitude, longitude]);
+  // // converts latitude and longitude into readble address
+  // useEffect(() => {
+  //   const geocoder = new window.google.maps.Geocoder();
+  //   geocoder.geocode(
+  //     { location: { lat: latitude, lng: longitude } },
+  //     (results, status) => {
+  //       if (status === "OK") {
+  //         console.log(results)
+  //         setAddress(results[9].formatted_address);
+  //       } else {
+  //         console.error("Geocode failed due to: " + status);
+  //       }
+  //     }
+  //   );
+  // }, [latitude, longitude]);
 
   return (
     <AppBar elevation={1}>
