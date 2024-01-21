@@ -24,6 +24,7 @@ import Header from "../Components/LoginSingupHeader/Header";
 import {userActionStart, userActionSuccess, userActionFailure} from '../redux/userSlice'
 import Loader from "../Components/Loader";
 import SocialLogin from "../Components/Google login/SocialLogin";
+import LoginSignup from '../assests/LoginSignup.jpg'
 
 // Component styles
 const Container = styled(Box)`
@@ -32,8 +33,7 @@ const Container = styled(Box)`
   align-items: center;
   margin-top: 60px;
   height: 90vh;
-  background: url("https://drive.google.com/uc?export=view&id=1CYy4fOxOXE6mXI_mRyO5XNdhSefGX5Ka")
-    no-repeat;
+background-repeat: no-repeat;
   background-size: cover;
 `;
 const Wrapper = styled(Paper)`
@@ -92,20 +92,19 @@ const formData = {
     } catch (err) {
       dispatch(userActionFailure(err))
       toast.error(err.response?.data?.msg)
-      console.error(err)
     }
   };
   return (
     <>
       <Header />
-      <Container>
+      <Container sx={{ backgroundImage: `url(${LoginSignup})` }}>
         <Wrapper elevation={10}>
-            <Typography
-              variant="h3"
-              sx={{ marginBottom: "20px", textAlign: "center" }}
-            >
-              Login
-            </Typography>
+          <Typography
+            variant="h3"
+            sx={{ marginBottom: "20px", textAlign: "center" }}
+          >
+            Login
+          </Typography>
           <form onSubmit={sumbitHandler}>
             <TextField
               variant="outlined"
@@ -139,8 +138,12 @@ const formData = {
                 </InputAdornment>
               }
             />
-            {loading ? <Loader open={loading} /> : <LoginBtn type="submit">Login</LoginBtn>}
-            <Typography sx={{margin: '10px, auto'}}>
+            {loading ? (
+              <Loader open={loading} />
+            ) : (
+              <LoginBtn type="submit">Login</LoginBtn>
+            )}
+            <Typography sx={{ margin: "10px, auto" }}>
               New to BookEasy?{" "}
               <Link to={"/signup"} style={{ textDecoration: "none" }}>
                 Signup

@@ -1,21 +1,29 @@
+// this page appears when user search routes other than provided
+
 import React from "react";
 import { Box, Typography, styled } from "@mui/material";
 
 // import from another files
 import Header from "../Components/MainHeader/Header";
 import { Link } from "react-router-dom";
+import PageNotFound from '../assests/pageNotFound.png'
 
 // component styles
 const Container = styled(Box)`
-  background: url("https://drive.google.com/uc?export=view&id=1bzFPHFVnU_FwFnSuDarGdljSDB5XxfcQ")
-    no-repeat center;
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+display: flex;
+justify-content: center;
+height: 90vh;
 `;
 const NotFound = () => {
   return (
     <div>
       <Header />
-      <Container height="90vh" display="flex" justifyContent="center">
+      <Container
+        sx={{ backgroundImage: `url(${PageNotFound})` }}
+      >
         <div
           style={{
             display: "flex",
@@ -35,7 +43,8 @@ const NotFound = () => {
               }}
             >
               Click here
-            </Link>{" "} to go back to Home page
+            </Link>{" "}
+            to go back to Home page
           </Typography>
         </div>
       </Container>

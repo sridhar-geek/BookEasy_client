@@ -6,6 +6,7 @@ import { styled, Box, Grid, Menu, Button, Typography } from "@mui/material";
 import { DateRange } from "react-date-range";
 import { addDays } from "date-fns";
 import format from "date-fns/format";
+import { getAllInfoByISO } from "iso-country-currency";
 
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
@@ -17,7 +18,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 /* Importe modules from another files */
 import { GetApiData } from "../api/getHotels";
 import { getHotelData, gettingDetails } from "../redux/SearchSlice";
-import { sotreDetails, startDate, endDate } from "../redux/DetailsSlice";
+import { sotreDetails, startDate, endDate, setCurrencyCode,setCurrencySymbol } from "../redux/DetailsSlice";
 import Loader from "./Loader";
 import { reducer, ACTIONS } from "../api/SearchComponent_reducer";
 import PlacesAutoComplete from "./Google Maps/PlacesAuto";
@@ -64,7 +65,45 @@ const SearchBtn = styled(Button)`
 `;
 
 const SearchComponent = () => {
-const [destination, setDestination] = useState('')
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+  const [destination, setDestination] = useState("");
+  const [countryCode, setcountryCode] = useState("");
+  // retrewing data from redux slice
+  const { loading } = useSelector((state) => state.hotels);
+  const { latitude, longitude } = useSelector((state) => state.details);
+  // getting country code based on latitude and longitude
+  useEffect(() => {
+    if (destination) {
+      const geocoder = new window.google.maps.Geocoder();
+      geocoder.geocode(
+        { location: { lat: latitude, lng: longitude } },
+        (results, status) => {
+          if (status === "OK") {
+            const country = results[0].address_components.find((component) =>
+              component.types.includes("country")
+            );
+            setcountryCode(country.short_name);
+          } else {
+            console.error("Geocode failed due to: " + status);
+          }
+        }
+      );
+    }
+  }, [latitude, longitude]);
+
+  // getting currency code and currcency symbol based on country code
+  if(countryCode){
+    const getCurrency = (countryCode)=>{
+      const data =  getAllInfoByISO(countryCode)
+      dispatch(setCurrencyCode(data.currency))
+      dispatch(setCurrencySymbol(data.symbol))
+    }
+  getCurrency(countryCode)
+  }
+
+
   //calender component
   const [range, setRange] = useState([
     {
@@ -109,12 +148,6 @@ const [destination, setDestination] = useState('')
     children: 0,
   });
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  // retrewing data from redux slice
-  const { loading } = useSelector((state) => state.hotels);
-  const {latitude, longitude} = useSelector((state) => state.details)
 
   // converting date into yyyy-mm-dd format to use in url
   const convertDate = (date) => {
@@ -125,7 +158,6 @@ const [destination, setDestination] = useState('')
   };
   const arrivalDate = convertDate(range[0].startDate);
   const departureDate = convertDate(range[0].endDate);
-  
 
   // storing all hotel details in redux global store
   const handleSumbit = async (e) => {
@@ -141,8 +173,7 @@ const [destination, setDestination] = useState('')
       dispatch(endDate(departureDate));
       navigate("/hotels");
     } catch (error) {
-      dispatch(stopLoading())
-      console.log(error)
+      dispatch(stopLoading());
     }
   };
   return (
@@ -163,7 +194,12 @@ const [destination, setDestination] = useState('')
           readOnly
           placeholder="Check-in-Date  Check-out-date"
           onClick={() => setOpenDate((prestate) => !prestate)}
-          style={{ border: "none", padding: "20px", fontSize: "1.1rem", minWidth:'300px' }}
+          style={{
+            border: "none",
+            padding: "20px",
+            fontSize: "1.1rem",
+            minWidth: "300px",
+          }}
         />
         <Calender ref={reference}>
           {openDate && (
@@ -191,7 +227,7 @@ const [destination, setDestination] = useState('')
             padding: "20px",
             fontSize: "1.1rem",
             cursor: "pointer",
-            minWidth:'280px'
+            minWidth: "280px",
           }}
         />
         <Menu

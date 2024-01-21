@@ -157,7 +157,6 @@ const UpdateProfile = () => {
       } catch (err) {
         dispatch(userActionFailure(err));
         toast.error(error.response?.data?.msg);
-        console.error(err);
       }
     }
   };

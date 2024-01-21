@@ -44,7 +44,7 @@ const AvaliBtn = styled(Button)`
 const Hotels = ({ place }) => {
   // retriewing data from hotelslice and detailsSlice
   const { loading } = useSelector((state) => state.hotels);
-  const { room_adults, arrivalDate, departureDate } = useSelector(
+  const { room_adults, arrivalDate, departureDate, currencySymbol } = useSelector(
     (state) => state.details
   );
   const navigate = useNavigate();
@@ -71,7 +71,6 @@ const Hotels = ({ place }) => {
       navigate("/hotelDetails");
     } catch (error) {
       dispatch(stopLoading())
-      console.log(error)
     }
   };
   // this code loads unsplash images  only first in render 
@@ -136,7 +135,10 @@ const Hotels = ({ place }) => {
                 )}
               </Typography>
               <Stack direction="row" gap={2}>
-                <Typography variant="h5"> ₹ {price}</Typography>
+                <Typography variant="h5">
+                  {" "}
+                  {currencySymbol} {price}
+                </Typography>
                 {loading ? (
                   <Loader />
                 ) : (

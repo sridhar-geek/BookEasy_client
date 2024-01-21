@@ -158,7 +158,7 @@ const HotelDetails = () => {
   const { hotelDetails, description } = useSelector((state) => state.hotels);
   const data = hotelDetails;
   const { currentUser } = useSelector((state) => state.user);
-  const { room_adults, arrivalDate, departureDate, price } = useSelector(
+  const { room_adults, arrivalDate, departureDate, price,currencySymbol } = useSelector(
     (state) => state.details
   );
   // for navigation
@@ -343,9 +343,12 @@ const HotelDetails = () => {
                   </OfferBtn>
                 )}
                 <Paper sx={{ padding: "20px" }} elevation={3}>
-                  <h3 style={{ marginBottom: "0px" }}>₹ {price}</h3>
+                  <h3 style={{ marginBottom: "0px" }}>
+                    {currencySymbol} {price}
+                  </h3>
                   <Typography variant="caption">
-                    + taxes and fee ₹{gst}
+                    + taxes and fee {currencySymbol}
+                    {gst}
                   </Typography>
                   <Box
                     sx={{

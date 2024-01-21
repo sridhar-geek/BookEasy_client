@@ -52,7 +52,6 @@ const User = ({ user }) => {
       navigate("/");
     } catch (error) {
       dispatch(userActionFailure(error));
-      console.error(error);
       toast.error(error.response?.data?.msg);
     }
   };

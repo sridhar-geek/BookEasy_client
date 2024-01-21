@@ -53,7 +53,6 @@ const SocialLogin = () => {
     } catch (err) {
       dispatch(userActionFailure(err));
       toast.error(err.response?.data?.msg);
-      console.error(err)
     }
   };
 

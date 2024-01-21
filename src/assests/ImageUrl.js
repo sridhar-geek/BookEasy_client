@@ -1,21 +1,3 @@
-export const bannerImages = [
-  {
-    photo_id: 1,
-    url_original: "https://media.gettyimages.com/photo_id/1204811865/photo/beds-in-hotel-room-at-tourist-resort.jpg?s=612x612&w=0&k=20&c=OELpUtSrRnH1L6lX9vG3QmxdR8-p_bHWF51b1Dg4lxs=",
-  },
-  {
-    photo_id: 2,
-    url_original: "https://media.gettyimages.com/photo_id/1161219594/photo/kphoto_ids-enjoying-splashing-in-swimming-pool.jpg?s=612x612&w=0&k=20&c=X7y_HX25GT2dFzeDb_EKsLqhudMg8rUJd0Du-VX5z7I=",
-  },
-  {
-    photo_id: 3,
-    url_original: "https://cdn.pixabay.com/photo/2023/03/29/10/27/hotel-7885138_640.jpg",
-  },
-  {
-    photo_id: 4,
-    url_original: "https://media.gettyimages.com/photo_id/1428674946/photo/busy-front-desk-at-hotel.jpg?s=612x612&w=0&k=20&c=6RscVaa9QRt1vAtNuxnilexQ0Xb3TNyBUBVsr0XvXiY=",
-  },
-];
 
 export const HotelRoomImages = [
   {

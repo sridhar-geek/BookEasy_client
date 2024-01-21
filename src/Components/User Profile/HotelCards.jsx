@@ -70,7 +70,6 @@ const HotelCards = ({ hotel, setReload }) => {
   };
   // delete hotel
   const handleDelete = async (hotelId) => {
-    console.log({ hotelId });
     try {
       dispatch(userActionStart());
       await axios.delete(
@@ -88,7 +87,6 @@ const HotelCards = ({ hotel, setReload }) => {
     } catch (err) {
       dispatch(userActionFailure(err));
       toast.error(err.response?.data?.msg);
-      console.log(err);
     }
   };
   return (
@@ -141,7 +139,10 @@ const HotelCards = ({ hotel, setReload }) => {
           <ExtraStyle>{dateConversion(hotel.createdAt)}</ExtraStyle>{" "}
         </Typography>
         <Typography>
-          Amount Paid: <ExtraStyle>₹ {hotel.amount}</ExtraStyle>{" "}
+          Amount Paid:{" "}
+          <ExtraStyle>
+            {hotel.Symbol} {hotel.amount}
+          </ExtraStyle>{" "}
         </Typography>
       </CardContent>
       <Link

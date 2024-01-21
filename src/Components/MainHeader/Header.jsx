@@ -4,10 +4,13 @@ import { AppBar, Box, Toolbar, Typography, styled } from "@mui/material";
 import { Link } from "react-router-dom";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import { useState, useEffect } from "react";
-import Logo from "../../assests/Hotel_logo.jpeg";
+import { useLocation } from "react-router-dom";
+import { useDispatch,useSelector } from "react-redux";
 
 /*Import modules from other files  */
+import Logo from "../../assests/Hotel_logo.jpeg";
 import LoginSignup from "./LoginBtn";
+import { setPlace } from "../../redux/DetailsSlice";
 
 //component styles
 const RightContainer = styled(Box)`
@@ -28,13 +31,19 @@ const Image = styled("img")`
 `;
 
 const Header = () => {
-  // varaibles to store lat, lng and address
+
+  const dispatch = useDispatch()
+  const location = useLocation()
+
+  // varaibles to store lat, lng
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-  const [address, setAddress] = useState("");
+
+// retriewing data from details slice 
+const {place} = useSelector((state)=> state.details)
     //error callback function
   const errorCallback = (error) => {
-    console.log(error);
+    console.error(error);
   };
   // success callback function
   const successCallback = (position) => {
@@ -46,19 +55,20 @@ const Header = () => {
 
   // converts latitude and longitude into readble address
   useEffect(() => {
-    const geocoder = new window.google.maps.Geocoder();
+    if( '/' === location.pathname){
+   const geocoder = new window.google.maps.Geocoder();
     geocoder.geocode(
       { location: { lat: latitude, lng: longitude } },
       (results, status) => {
         if (status === "OK") {
-          console.log(results)
-          setAddress(results[9].formatted_address);
+          dispatch(setPlace(results[9].formatted_address))
         } else {
           console.error("Geocode failed due to: " + status);
         }
       }
     );
-  }, [latitude, longitude]);
+    }
+  }, [latitude, longitude, location.pathname]);
 
   return (
     <AppBar elevation={1}>
@@ -70,7 +80,7 @@ const Header = () => {
           <LoginSignup />
           <LocationBox>
             <LocationOnIcon sx={{ marginLeft: "20px" }} />
-            <Typography>{address? address: 'Loading....'}</Typography>
+            <Typography>{place? place: 'Loading....'}</Typography>
           </LocationBox>
         </RightContainer>
       </Toolbar>

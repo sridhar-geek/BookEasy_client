@@ -7,18 +7,17 @@ import {
   AdvancedMarker,
 } from "@vis.gl/react-google-maps";
 import { MarkerClusterer } from "@googlemaps/markerclusterer";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import {  useSelector } from "react-redux";
 import { Box, Paper, Typography, Rating} from "@mui/material";
 
 
 // imports from another files
-import { GetApiData } from "../../api/getHotels";
-import {
-  gettingDetails,
-  getSingleHotelDetails,
-  getDescription,
-} from "../../redux/SearchSlice";
+// import { GetApiData } from "../../api/getHotels";
+// import {
+//   gettingDetails,
+//   getSingleHotelDetails,
+//   getDescription,
+// } from "../../redux/SearchSlice";
 
 
 
@@ -46,12 +45,13 @@ export default function MapComponent() {
 /* individual marker */
 const Markers = ({ hotels }) => {
   // retrewing data form redux slice
-  const { room_adults, arrivalDate, departureDate } = useSelector(
-    (state) => state.details
-  );
+  // const { room_adults, arrivalDate, departureDate } = useSelector(
+  //   (state) => state.details
+  // );
+  // const dispatch = useDispatch()
+  // const navigate = useNavigate();
+
   const map = useMap();
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [markers, setMarkers] = useState({});
   const clusterer = useRef(null);
 
@@ -80,15 +80,15 @@ const Markers = ({ hotels }) => {
     });
   };
 
-  const handleClick = async (event) => {
-    // Stop event propagation
-    event.stopPropagation();
-    // Prevent default behavior of the click event
-    event.preventDefault();
-    console.log("I am in hotelDetails navigation function ");
-    // Navigate to the hotel details page
-    navigate(`/hotelDetails`);
-  };
+  // const handleClick = async (event) => {
+  //   // Stop event propagation
+  //   event.stopPropagation();
+  //   // Prevent default behavior of the click event
+  //   event.preventDefault();
+  //   console.log("I am in hotelDetails navigation function ");
+  //   // Navigate to the hotel details page
+  //   navigate(`/hotelDetails`);
+  // };
 
   return (
     <>
@@ -113,11 +113,11 @@ const Markers = ({ hotels }) => {
               />
               <Box>
                 {/* <Button onClick={(event) => handleClick(event)}> */}
-                  <Link to={"/hotelDetails"} style={{ textDecoration: "none" }}>
+                  {/* <Link to={"/hotelDetails"} style={{ textDecoration: "none" }}> */}
                     <Typography variant="body2" ml={1}>
                       {hotel.hotel_name}
                     </Typography>
-                  </Link>
+                  {/* </Link> */}
                 {/* </Button> */}
                 <Rating
                   defaultValue={hotel.review_score ? Number(hotel.review_score / 2): 2}

@@ -10,6 +10,9 @@ const initialState = {
   photo:'',
   latitude: 17.69,
   longitude: 83.23,
+  place:'',
+  currencyCode:'INR',
+  currencySymbol: '₹',
 };
 
 const DetailsSlice = createSlice({
@@ -36,10 +39,19 @@ const DetailsSlice = createSlice({
     },
     setLongitude: (state, action) => {
       state.longitude = action.payload
-    }
+    },
+    setPlace: (state, action) => {
+      state.place = action.payload
+    },
+    setCurrencyCode: (state,action)=>{
+      state.currencyCode = action.payload
+    },
+    setCurrencySymbol: (state, action)=> {
+      state.currencySymbol = action.payload
+    },
   },
 });
 
-export const { sotreDetails, setPrice, setPhoto, startDate, endDate,setLatitude,setLongitude } = DetailsSlice.actions;
+export const { sotreDetails, setPrice, setPhoto, startDate, endDate,setLatitude,setLongitude, setPlace, setCurrencyCode, setCurrencySymbol } = DetailsSlice.actions;
 export default DetailsSlice.reducer;
 

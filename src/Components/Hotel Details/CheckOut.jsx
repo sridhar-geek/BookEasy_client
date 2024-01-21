@@ -24,7 +24,7 @@ const CheckoutBtn = ({ total }) => {
   // retriewing user details and hotel details  from reduxSlice
   const { currentUser,loading } = useSelector((state) => state.user);
   const { hotelDetails } = useSelector((state) => state.hotels);
-  const { room_adults, arrivalDate, departureDate, photo } = useSelector(
+  const { room_adults, arrivalDate, departureDate, photo,currencyCode,currencySymbol } = useSelector(
     (state) => state.details
   );
   const userName = currentUser.userDetails.name;
@@ -41,7 +41,7 @@ const maxAmount = ()=> {
   // data sent to server to create orderId
   const intialData = {
     amount: maxAmount(),
-    currency: "INR",
+    currency: currencyCode,
     receipt: Date.now().toString(),
   };
   // main function which calls razorPay window
@@ -62,7 +62,7 @@ const maxAmount = ()=> {
       const options = {
         key: "rzp_test_rw6Q39PW7qKf1t",
         amount: maxAmount(),
-        currency: "INR",
+        currency:  currencyCode ,
         name: "Book Easy",
         description: hotelDetails.hotel_name,
         image:
@@ -70,7 +70,7 @@ const maxAmount = ()=> {
         order_id: response.data.id,
         // validating payment
         handler: async function (response) {
-          dispatch(stopLoading())
+          dispatch(stopLoading());
           const body = { ...response };
           try {
             const validate = await axios.post(
@@ -95,6 +95,7 @@ const maxAmount = ()=> {
               amount: total,
               arrivalDate: arrivalDate,
               departureDate: departureDate,
+              Symbol: currencySymbol,
             };
             await axios.post(
               `${process.env.REACT_APP_SERVER_URL}/hotel`,
@@ -105,10 +106,10 @@ const maxAmount = ()=> {
                 },
               }
             );
-            dispatch(stopLoading())
+            dispatch(stopLoading());
             navigate("/paymentSuccess");
           } catch (error) {
-            dispatch(stopLoading())
+            dispatch(stopLoading());
             console.error(error);
           }
         },

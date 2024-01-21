@@ -21,6 +21,7 @@ import BenguluruImage from '../assests/HomePage/benguluru.png'
 import GoaImage from '../assests/HomePage/Goa.png'
 import MumbaiImage from '../assests/HomePage/Mumbai.png'
 import VisakhapatnamImage from '../assests/HomePage/Visakhapatnam.png'
+import BannerImage from '../assests/HomePage/HotelBanner.jpg'
 
 // Component styles
 const WelcomeNote = styled(Box)`
@@ -30,12 +31,9 @@ const WelcomeNote = styled(Box)`
   align-items: center;
   height: 90vh;
   width: 100%;
-  background: url("https://drive.google.com/uc?export=view&id=18RiT-S_1J_7hnOj5wDOPzsw3Yke4dwuO")
-    no-repeat center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+background-position: center;
+background-size: cover;
+background-repeat: no-repeat;
 `;
 const Image = styled('img')`
   height: 250px;
@@ -64,25 +62,22 @@ const Home = () => {
   const { currentUser } = useSelector((state) => state.user);
 
   // checks expiry time of token, if token expires it automatically remove userDetails from redux store
-  useEffect(()=> {
-    if(currentUser){
-    const checkTokenValidity = () => async () => {
+if(currentUser){
+    const checkTokenValidity = () => {
       try {
         const token = currentUser.token;
-        console.log({token})
-        const decodedToken = jwtDecode(token);
+        const decodedToken =  jwtDecode(token);
         const currentTime = Date.now() / 1000; // Convert to seconds
-          console.log(decodedToken.exp)
-          console.log({currentTime})
         if (decodedToken.exp < currentTime) 
           dispatch(delete_Logout());  
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     }
-    checkTokenValidity()
-  }
-  },[])
+
+  checkTokenValidity()
+}
+
 
   // setting rooms, adults, arrivalDate, departureDate for calling API
   const state = {
@@ -100,9 +95,11 @@ const Home = () => {
   const handleClick = async (latitude, longitude) => {
     try {
       dispatch(gettingDetails());
+      console.log('request from homePage')
       const data = await GetApiData(
         `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
       );
+      console.log('request send to hotel api')
       dispatch(getHotelData(data.result));
       dispatch(sotreDetails(state));
       dispatch(startDate(arrivalDate));
@@ -118,7 +115,7 @@ const Home = () => {
   return (
     <div style={{ overflowX: "hidden" }}>
       <Header />
-      <WelcomeNote>
+      <WelcomeNote sx={{ backgroundImage: `url(${BannerImage})` }}>
         <Typography
           variant="h1"
           color="orangered"
@@ -130,7 +127,12 @@ const Home = () => {
         {loading ? <Loader open={loading} /> : <SearchComponent />}
       </WelcomeNote>
       <Box margin="10px 3px 0px 3px" bgcolor="#EEF0E5" padding="10px">
-        <Typography variant="h4" marginLeft='5%' fontWeight="bold" fontFamily="Poppins">
+        <Typography
+          variant="h4"
+          marginLeft="5%"
+          fontWeight="bold"
+          fontFamily="Poppins"
+        >
           Top destinations in India
         </Typography>
       </Box>

@@ -117,7 +117,6 @@ const Profile = () => {
       dispatch(userActionFailure(err));
       toast.error(err.response?.data?.msg);
       handleClose()
-      console.log(err);
     }
   };
   return (
