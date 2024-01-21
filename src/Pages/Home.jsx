@@ -1,5 +1,5 @@
 /** Home page  */
-import React,{useEffect} from "react";
+import React  from "react";
 import { Box, styled, Typography, Grid} from "@mui/material";
 import { useDispatch,useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
