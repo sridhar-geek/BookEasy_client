@@ -113,11 +113,11 @@ const Footer = () => {
               <LinkedInIcon />
             </SocialBtn>
             <ImageBox>
-              <FooterImage
+              {/* <FooterImage
                 src={playStore}
                 style={{ cursor: "pointer" }}
                 alt="appStore"
-              />
+              /> */}
               <FooterImage
                 src={microsoft}
                 style={{ cursor: "pointer" }}
