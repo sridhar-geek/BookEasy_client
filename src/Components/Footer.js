@@ -9,7 +9,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 /** Import modules form another files  */
 import microsoft from '../assests/Footer/microsoft.png'
-import playStore from '../assests/Footer/playstore.png'
+// import playStore from '../assests/Footer/playstore.png'
 import Logo from "../assests/Hotel_logo.jpeg";
 
 //component styles
