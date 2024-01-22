@@ -8,8 +8,8 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 
 /** Import modules form another files  */
-import Microsoft from '../assests/Footer/microsoft.png'
-import PlayStore from "../assests/Footer/playstore.png";
+import microsoft from '../assests/Footer/microsoft.png'
+import playStore from '../assests/Footer/playstore.png'
 import Logo from "../assests/Hotel_logo.jpeg";
 
 //component styles
@@ -114,12 +114,12 @@ const Footer = () => {
             </SocialBtn>
             <ImageBox>
               <FooterImage
-                src={Microsoft}
+                src={playStore}
                 style={{ cursor: "pointer" }}
                 alt="appStore"
               />
               <FooterImage
-                src={PlayStore}
+                src={microsoft}
                 style={{ cursor: "pointer" }}
                 alt="playStore"
               />
