@@ -9,7 +9,7 @@ import { jwtDecode } from "jwt-decode";
 import Header from "../Components/MainHeader/Header";
 import SearchComponent from "../Components/SearchComponent";
 import {gettingDetails, getHotelData} from '../redux/SearchSlice'
-import {startDate, endDate, sotreDetails, setLatitude, setLongitude} from '../redux/DetailsSlice'
+import {startDate, endDate, sotreDetails, setLatitude, setLongitude, setCurrencyCode, setCurrencySymbol} from '../redux/DetailsSlice'
 import { GetApiData } from "../api/getHotels";
 import Loader from "../Components/Loader";
 import RainbowText from "../Components/RainBowText";
@@ -79,12 +79,14 @@ if(currentUser){
 }
 
 
-  // setting rooms, adults, arrivalDate, departureDate for calling API
+  // setting rooms, adults, arrivalDate, departureDate, currrencyCode, currencySymbol for calling API
   const state = {
     rooms: 1,
     adults: 1,
     children: 0,
   };
+  const currencyCode = 'INR'
+  const currencySymbol = '₹'
   // Get today's date and formate date
   const today = new Date();
   const arrivalDate = today.toISOString().slice(0, 10);
@@ -95,17 +97,17 @@ if(currentUser){
   const handleClick = async (latitude, longitude) => {
     try {
       dispatch(gettingDetails());
-      console.log('request from homePage')
       const data = await GetApiData(
         `/searchHotelsByCoordinates?latitude=${latitude}&longitude=${longitude}&arrival_date=${arrivalDate}&departure_date=${departureDate}&adults=${state.adults}&room_qty=${state.rooms}&currency_code=INR`
       );
-      console.log('request send to hotel api')
       dispatch(getHotelData(data.result));
       dispatch(sotreDetails(state));
       dispatch(startDate(arrivalDate));
       dispatch(endDate(departureDate));
       dispatch(setLatitude(latitude))
       dispatch(setLongitude(longitude))
+      dispatch(setCurrencyCode(currencyCode))
+      dispatch(setCurrencySymbol(currencySymbol))
       navigate("/hotels");
     } catch (error) {
       dispatch(stopLoading())

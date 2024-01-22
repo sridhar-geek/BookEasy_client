@@ -152,7 +152,7 @@ const Hotels = ({ place }) => {
                 color="text.secondary"
                 sx={{ marginLeft: "20px" }}
               >
-                +Rs {(price * 0.2).toFixed(2)} extra GST and fees
+                +{" "}{currencySymbol}{(price * 0.2).toFixed(2)} extra GST and fees
               </Typography>
             </Box>
           </Box>
