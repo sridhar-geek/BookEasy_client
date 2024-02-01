@@ -99,6 +99,7 @@ const SearchComponent = () => {
       const data =  getAllInfoByISO(countryCode)
       dispatch(setCurrencyCode(data.currency))
       dispatch(setCurrencySymbol(data.symbol))
+      console.log(data)
     }
   getCurrency(countryCode)
   }

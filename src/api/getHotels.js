@@ -15,7 +15,6 @@ export const GetApiData = async (url) => {
         "X-RapidAPI-Host": "booking-com15.p.rapidapi.com",
       },
     });
-    console.log(data)
     return data;
   } catch (error) {
     toast.error("error in retreving hotels");

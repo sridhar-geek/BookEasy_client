@@ -24,6 +24,7 @@ import Header from "../Components/LoginSingupHeader/Header";
 import Loader from "../Components/Loader";
 import SocialLogin from "../Components/Google login/SocialLogin";
 import {userActionStart,stopLoading, userActionFailure} from '../redux/userSlice'
+import LoginSignup from "../assests/LoginSignup.jpg";
 
 // Component styles
 const Container = styled(Box)`
@@ -32,8 +33,7 @@ const Container = styled(Box)`
   align-items: center;
   margin-top: 60px;
   height: 90vh;
-  background: url("https://drive.google.com/uc?export=view&id=1CYy4fOxOXE6mXI_mRyO5XNdhSefGX5Ka")
-    no-repeat;
+background-repeat: no-repeat;
   background-size: cover;
 `;
 const Wrapper = styled(Paper)`
@@ -108,7 +108,7 @@ const Signup = () => {
   return (
     <>
       <Header />
-      <Container>
+      <Container sx={{backgroundImage:`url(${LoginSignup})`}}>
         <Wrapper>
             <Typography
               variant="h3"
