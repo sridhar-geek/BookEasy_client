@@ -1,0 +1,9 @@
+REACT_APP_FIREBOX_APIKEY =  Login to google firebox and generate api key
+
+REACT_APP_RAPID_API_KEY =  Use Booking.com in Rapid api, subscribe to get api key
+
+REACT_APP_GOOGLE_API_KEY = Login to google console to get api key and set billing account for autocomplete and geoLocation features
+
+REACT_APP_MAPID =  To render map in custom style (dark, city.....) and to use clusters on map
+
+REACT_APP_SERVER_URL = your server url 
